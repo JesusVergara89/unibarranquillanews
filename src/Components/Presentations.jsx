@@ -21,7 +21,6 @@ const Presentations = () => {
         muted={true}
         loop={true}
       />
-      <h1 className='welcome'>WELCOME TO MY BLOG</h1>
     </div>
   )
 }
