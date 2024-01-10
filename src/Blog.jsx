@@ -1,6 +1,7 @@
 import React from 'react'
 import Presentations from './Components/Presentations'
 import Header from './Components/Header'
+import Columns from './Components/Columns'
 
 function Blog() {
   return (
@@ -9,6 +10,8 @@ function Blog() {
       <Header />
 
       <Presentations />
+
+      <Columns/>
 
     </div>
   )
