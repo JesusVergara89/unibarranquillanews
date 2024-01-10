@@ -1,0 +1,117 @@
+:root {
+  --base_color: #E9F6FA;
+  --color_1: #DAF0F7;
+  --color_2: #CBE9F4;
+  --color_3: #A6DAEC;
+  --color_4: #79C7E3;
+  --color_5: #4DB5D9;
+  --color_6: #4DB5D9;
+  --color_7: #35A6CC;
+  --color_8: #1E96BE;
+  --color_9: #1C8EB4;
+  --color_10: #1A85AB;
+  --color_11: #17779A;
+  --color_12: #146988;
+  --color_13: #0F4E65;
+  --color_14: #0D4559;
+  --color_15: #103B49;
+}
+
+.Header {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10%;
+  top: 0;
+  position: fixed;
+  z-index: 15;
+}
+
+.Header span {
+  all: unset;
+}
+
+.Header h1 {
+  font-size: 1.5rem;
+}
+
+.name_background {
+  width: 200px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 5px;
+  padding-right: 1px;
+  overflow: hidden;
+}
+
+.name_background h1 {
+  margin: 0;
+}
+
+@keyframes fadeInInfinite {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Aplicar animación a cada letra con retraso */
+.L1 h1 {
+  animation: fadeInInfinite 11s ease-in-out 0s infinite;
+}
+
+.L2 h1 {
+  animation: fadeInInfinite 11s ease-in-out 1s infinite;
+}
+
+.L3 h1 {
+  animation: fadeInInfinite 11s ease-in-out 2s infinite;
+}
+
+.L4 h1 {
+  animation: fadeInInfinite 11s ease-in-out 3s infinite;
+}
+
+.L5 h1 {
+  animation: fadeInInfinite 11s ease-in-out 4s infinite;
+}
+
+.L6 h1 {
+  animation: fadeInInfinite 11s ease-in-out 5s infinite;
+}
+
+.L7 h1 {
+  animation: fadeInInfinite 11s ease-in-out 6s infinite;
+}
+
+.L8 h1 {
+  animation: fadeInInfinite 11s ease-in-out 7s infinite;
+}
+
+.L9 h1 {
+  animation: fadeInInfinite 11s ease-in-out 8s infinite;
+}
+
+.L10 h1 {
+  animation: fadeInInfinite 11s ease-in-out 9s infinite;
+}
+
+.L11 h1 {
+  animation: fadeInInfinite 11s ease-in-out 10s infinite;
+}
+
+.L12 h1 {
+  animation: fadeInInfinite 11s ease-in-out 11s infinite;
+}
