@@ -36,3 +36,16 @@
 	animation: adjust-position linear forwards;
 	animation-timeline: scroll(root block);
 }
+
+.column__item-imgwrap img {
+    border-radius: 1em;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 0.75;
+    object-fit: cover;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
