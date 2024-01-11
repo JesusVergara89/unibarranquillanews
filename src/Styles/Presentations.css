@@ -19,47 +19,18 @@
 
 .Video {
   width: 90%;
-  height: 100%;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 60px;
+  overflow: hidden; 
   position: relative;
 }
 
-
-@media (800px < width <= 950px) {
-  .Video {
-    width: 90%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 35px; 
-    position: relative;
-  }
-}
-
-@media (600px < width <= 800px) {
-  .Video {
-    width: 90%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px; 
-    position: relative;
-  }
-}
-
-@media (100px < width <= 600px) {
-  .Video {
-    width: 90%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top:16px;
-    position: relative;
-  }
+.Video img {
+  width: 100%; 
+  display: block; 
+  position: absolute; 
+  left: 0;
 }
