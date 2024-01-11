@@ -19,18 +19,41 @@
 
 .Video {
   width: 90%;
-  height: 400px;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 60px;
-  overflow: hidden; 
-  position: relative;
+  overflow: hidden;
+  position: relative;  
 }
 
 .Video img {
-  width: 100%; 
-  display: block; 
-  position: absolute; 
+  width: 80%;
+  display: block;
   left: 0;
+  border: 25px solid var(--color_15); 
+}
+
+.Video h1 {
+  position: absolute;
+  z-index: 10;
+  font-size: 2.8rem;
+  font-weight: bolder;
+  letter-spacing: 45px;
+  text-shadow: 4px 4px 16px var(--color_15);
+}
+
+@media ( width <= 650px ) {
+  .Video h1 {
+    position: absolute;
+    z-index: 10;
+    font-size: 2.8rem;
+    font-weight: bolder;
+    letter-spacing: 10px;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    white-space: nowrap;
+  }
+
 }

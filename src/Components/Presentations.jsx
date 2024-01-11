@@ -15,6 +15,7 @@ const Presentations = () => {
   return (
     <div className='Video'>
       <img src={fractal} alt="" />
+      <h1>WELCOME</h1>
     </div>
   )
 }
