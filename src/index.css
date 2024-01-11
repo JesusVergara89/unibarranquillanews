@@ -22,13 +22,12 @@
   --color_13: #0F4E65;
   --color_14: #0D4559;
   --color_15: #103B49;
-  width: 100%;
 }
 
 body, html {
   margin: 0;
   padding: 0;
-  background-color: var(--color_1);
+  background-color: var(--color_15);
 }
 
 

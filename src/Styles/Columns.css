@@ -18,10 +18,9 @@
 }
 
 .container {
-	columns: 3;
-	width: 100%;
+	columns: 2;
+	width: 90%;
 	column-gap: 32px;
-	background-color: var(--color_15);
 	padding-top: 32px;
 }
 
@@ -54,11 +53,13 @@
 	0% {
 	  opacity: 0;
 	  translate: 0 100px;
+	  scale: 0.5;
 	}
   
 	100% {
 	  opacity: 1;
 	  translate: 0 0;
+	  scale: 1;
 	}
   }
   
