@@ -3,6 +3,7 @@ import Presentations from './Components/Presentations'
 import Header from './Components/Header'
 import Columns from './Components/Columns'
 import Aboutblog from './Components/Aboutblog'
+import Socialmedia from './Components/Socialmedia'
 
 function Blog() {
   return (
@@ -15,6 +16,8 @@ function Blog() {
       <Aboutblog/>
 
       <Columns/>
+
+      <Socialmedia/>
 
     </div>
   )
