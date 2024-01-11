@@ -25,7 +25,8 @@
   align-items: center;
   margin-top: 60px;
   overflow: hidden;
-  position: relative;  
+  position: relative;
+  margin-bottom: 30px;  
 }
 
 .Video img {
