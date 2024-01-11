@@ -22,10 +22,12 @@
   height: 70px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   top: 0;
   position: fixed;
   z-index: 15;
+  animation: enhence-header linear both;
+  animation-timeline: scroll(root block);
 }
 
 .Header span {
@@ -46,11 +48,19 @@
   padding-top: 5px;
   padding-right: 1px;
   overflow: hidden;
+  padding-left: 10%;
 }
 
 .name_background h1 {
   margin: 0;
 }
+
+@keyframes enhence-header {
+  to {
+    background-color: var(--color_4);
+    backdrop-filter: blur(500px);
+  }
+} 
 
 @keyframes fadeInInfinite {
   0% {

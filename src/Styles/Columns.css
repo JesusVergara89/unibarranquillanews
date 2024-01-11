@@ -1,7 +1,28 @@
+:root {
+	--base_color: #E9F6FA;
+	--color_1: #DAF0F7;
+	--color_2: #CBE9F4;
+	--color_3: #A6DAEC;
+	--color_4: #79C7E3;
+	--color_5: #4DB5D9;
+	--color_6: #4DB5D9;
+	--color_7: #35A6CC;
+	--color_8: #1E96BE;
+	--color_9: #1C8EB4;
+	--color_10: #1A85AB;
+	--color_11: #17779A;
+	--color_12: #146988;
+	--color_13: #0F4E65;
+	--color_14: #0D4559;
+	--color_15: #103B49;
+}
+
 .container {
 	columns: 3;
 	width: 100%;
 	column-gap: 32px;
+	background-color: var(--color_15);
+	padding-top: 32px;
 }
 
 .container img {
@@ -11,12 +32,13 @@
 	margin-bottom: 32px;
 }
 
-@media (width <= 768px){
+@media (width <=768px) {
 	.container {
 		columns: 2;
 		width: 100%;
 		column-gap: 10px;
 	}
+
 	.container img {
 		border-radius: 4px;
 		width: 100%;
