@@ -26,8 +26,6 @@
   top: 0;
   position: fixed;
   z-index: 15;
-  animation: enhence-header linear both;
-  animation-timeline: scroll(root block);
 }
 
 .Header span {
@@ -54,13 +52,6 @@
 .name_background h1 {
   margin: 0;
 }
-
-@keyframes enhence-header {
-  to {
-    background-color: var(--color_11);
-    backdrop-filter: blur(5px);
-  }
-} 
 
 @keyframes fadeInInfinite {
   0% {
