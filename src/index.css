@@ -2,6 +2,7 @@
   font-family: 'OrkneyRegular';
   font-weight: normal;
   font-style: normal;
+  width: 100%;
 }
 
 :root {
@@ -21,13 +22,15 @@
   --color_13: #0F4E65;
   --color_14: #0D4559;
   --color_15: #103B49;
+  width: 100%;
 }
 
-body {
+body, html {
   margin: 0;
   padding: 0;
   background-color: var(--color_1);
 }
+
 
 button {
   margin: 0;
@@ -44,10 +47,9 @@ h5 {
 
 .Blog {
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var();
 }
