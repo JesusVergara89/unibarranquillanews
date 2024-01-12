@@ -22,7 +22,7 @@
 	width: 90%;
 	column-gap: 32px;
 	padding-top: 32px;
-	margin-bottom: 100px;
+	margin-bottom: 140px;
 }
 
 .container img {
@@ -40,7 +40,7 @@
 		columns: 1;
 		width: 100%;
 		column-gap: 10px;
-		margin-bottom: 160px;
+		margin-bottom: 120px;
 	}
 
 	.container img {
