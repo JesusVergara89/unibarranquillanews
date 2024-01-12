@@ -4,6 +4,7 @@ import Header from './Components/Header'
 import Columns from './Components/Columns'
 import Aboutblog from './Components/Aboutblog'
 import Socialmedia from './Components/Socialmedia'
+import Networks from './Components/Networks'
 
 function Blog() {
   return (
@@ -13,11 +14,15 @@ function Blog() {
 
       <Presentations />
 
-      <Aboutblog/>
+      <Aboutblog />
 
-      <Columns/>
+      <Columns />
 
-      <Socialmedia/>
+      <Networks />
+
+      <Socialmedia />
+
+
 
     </div>
   )
