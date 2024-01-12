@@ -37,10 +37,10 @@
 
 @media (width <=768px) {
 	.container {
-		columns: 2;
+		columns: 1;
 		width: 100%;
 		column-gap: 10px;
-		margin-bottom: 70px;
+		margin-bottom: 120px;
 	}
 
 	.container img {

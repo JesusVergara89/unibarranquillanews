@@ -22,7 +22,7 @@
   height: 70px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   top: 0;
   position: fixed;
   z-index: 15;
@@ -47,7 +47,47 @@
   padding-top: 5px;
   padding-right: 1px;
   overflow: hidden;
-  padding-left: 3%;
+  padding-left: 1%;
+}
+
+.menu {
+  width: auto;
+  height: auto;
+  padding-right: 2%;
+}
+
+.menu button:nth-child(2){
+  display: none;
+}
+.menu button:nth-child(3){
+  display: none;
+}
+.menu button:nth-child(4){
+  display: none;
+}
+.menu button:nth-child(5){
+  display: none;
+}
+.Header button {
+  all: unset;
+  width: 50px;
+  height: auto;
+}
+
+@media ( width < 650px ){
+  .name_background {
+    display: none;
+  }
+  .menu {
+    width: auto;
+    height: auto;
+    padding-left: 2%;
+  }
+  .Header button {
+    all: unset;
+    width: 50px;
+    height: auto;
+  }
 }
 
 .name_background h1 {

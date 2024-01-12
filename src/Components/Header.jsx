@@ -18,6 +18,13 @@ const Header = () => {
         <span className='L11'><h1>R</h1></span>
         <span className='L12'><h1>A</h1></span>
       </div>
+      <div className="menu">
+        <button>HOME</button>
+        <button>ENGINEERING</button>
+        <button>TRAVEL</button>
+        <button>EXPERIENCE</button>
+        <button>LITERATURE</button>
+      </div>
     </header>
   )
 }
