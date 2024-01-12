@@ -78,6 +78,12 @@ all: unset;
   height: auto;
 }
 
+.Header button:hover {
+  cursor: pointer;
+  text-shadow: 4px 4px 16px var(--color_15);
+  transform: scale(1.1);
+}
+
 @media ( width < 650px ){
   .name_background {
     display: none;
