@@ -32,6 +32,10 @@
   all: unset;
 }
 
+.Header a {
+all: unset;
+}
+
 .Header h1 {
   font-size: 1.5rem;  
   color: var(--color_1);
