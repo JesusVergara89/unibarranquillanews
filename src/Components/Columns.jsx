@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/Columns.css'
+import '../Styles/Columns.css'
 import { useNavigate } from 'react-router-dom'
 
 const Columns = () => {
