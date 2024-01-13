@@ -20,12 +20,11 @@
   .About-this-blog {
     width: 60%;
     height: auto;
-    text-align: justify;
   }
 
   .About-this-blog h2 {
     color: var(--color_5);
-    text-align: justify;
+    text-align: center;
   }
   
   .About-this-blog p:first-child {

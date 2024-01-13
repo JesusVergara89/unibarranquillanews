@@ -21,10 +21,10 @@ const Header = () => {
       </div>
       <div className="menu">
         <button><Link to='/'>HOME</Link></button>
-        <button>ENGINEERING</button>
-        <button>TRAVEL</button>
-        <button>EXPERIENCE</button>
-        <button>LITERATURE</button>
+        <button><Link to='/ENGINEERING'>ENGINEERING</Link></button>
+        <button><Link to='/TRAVEL'>TRAVEL</Link></button>
+        <button><Link to='/EXPERIENCE'>EXPERIENCE</Link></button>
+        <button><Link to='/LITERATURE'>LITERATURE</Link></button>
       </div>
     </header>
   )
