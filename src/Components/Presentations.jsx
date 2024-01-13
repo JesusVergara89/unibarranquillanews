@@ -14,7 +14,7 @@ const Presentations = () => {
     <article className='main_page'>
       <div className='Video'>
         <img src={sky} alt="" />
-        <h1>WELCOME</h1>
+        <h1>WELCOME bitch</h1>
       </div>
 
       <Aboutblog />
