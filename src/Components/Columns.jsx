@@ -12,35 +12,35 @@ const Columns = () => {
     return (
         <div className="container">
             <button onClick={() => navigateEngi('/ENGINEERING')}  >
-                <img onClick={() => navigateEngi('/ENGINEERING')} src="https://personal-data-base-of-photos.netlify.app/assets/8.3c3e05e1.jpg" />
+                <img onClick={() => navigateEngi('/ENGINEERING')} src="https://photo-data-base.netlify.app/assets/engineering.057f9f57.jpg" />
             </button>
 
             <button onClick={() => navigateTravel('/TRAVEL')}  >
-                <img onClick={() => navigateTravel('/TRAVEL')}  src="https://personal-data-base-of-photos.netlify.app/assets/7.263d9146.jpg" />
+                <img onClick={() => navigateTravel('/TRAVEL')}  src="https://photo-data-base.netlify.app/assets/travel.bf0d0916.jpg" />
             </button>
 
             <button  >
-                <img  src="https://personal-data-base-of-photos.netlify.app/assets/5.b3f65e56.jpg" />
+                <img  src="https://photo-data-base.netlify.app/assets/literature.18726617.jpg" />
             </button>
 
             <button  >
-                <img  src="https://personal-data-base-of-photos.netlify.app/assets/3.c93764da.png" />
+                <img  src="https://photo-data-base.netlify.app/assets/experience.ad46d59e.jpg" />
             </button>
 
             <button >
-                <img  src="https://personal-data-base-of-photos.netlify.app/assets/2.996cd67c.png" />
+                <img  src="https://photo-data-base.netlify.app/assets/5.b3f65e56.jpg" />
             </button>
 
             <button >
-                <img  src="https://personal-data-base-of-photos.netlify.app/assets/1.21598796.jpg" />
+                <img  src="https://photo-data-base.netlify.app/assets/5.b3f65e56.jpg" />
             </button>
 
             <button >
-                <img  src="https://personal-data-base-of-photos.netlify.app/assets/8.3c3e05e1.jpg" />
+                <img src="https://photo-data-base.netlify.app/assets/5.b3f65e56.jpg" />
             </button>
 
             <button >
-                <img  src="https://personal-data-base-of-photos.netlify.app/assets/7.263d9146.jpg" />
+                <img  src="https://photo-data-base.netlify.app/assets/5.b3f65e56.jpg" />
             </button>
 
         </div >
