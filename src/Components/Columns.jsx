@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom'
 const Columns = () => {
     
 
-    const navigateEngi = useNavigate()    
+    const navigateEngi = useNavigate()
+    
+    const navigateTravel = useNavigate()
 
     return (
         <div className="container">
@@ -13,8 +15,8 @@ const Columns = () => {
                 <img onClick={() => navigateEngi('/ENGINEERING')} src="https://personal-data-base-of-photos.netlify.app/assets/8.3c3e05e1.jpg" />
             </button>
 
-            <button >
-                <img  src="https://personal-data-base-of-photos.netlify.app/assets/7.263d9146.jpg" />
+            <button onClick={() => navigateTravel('/TRAVEL')}  >
+                <img onClick={() => navigateTravel('/TRAVEL')}  src="https://personal-data-base-of-photos.netlify.app/assets/7.263d9146.jpg" />
             </button>
 
             <button  >

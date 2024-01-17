@@ -3,6 +3,7 @@ import Header from './Components/Header'
 import Presentations from './Components/Presentations'
 import { Route, Routes } from 'react-router-dom'
 import Engineering from './Components/Engineering'
+import Travel from './Components/Travel'
 
 
 
@@ -18,6 +19,9 @@ function Blog() {
         />
         <Route path='/ENGINEERING'
           element={<Engineering/>}
+        />
+         <Route path='/TRAVEL'
+          element={<Travel/>}
         />
       </Routes>
 
