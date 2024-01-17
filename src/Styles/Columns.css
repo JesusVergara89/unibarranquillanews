@@ -33,24 +33,41 @@
 	z-index: 2;
 }
 
+.container h2 {
+	width: 80px;
+	height: auto;
+	position: absolute;
+    top: 45%;
+	left: calc( 50% - 40px);
+	z-index: 5;
+	text-align: center;
+	background-color: white;
+	padding: 0.3rem;	
+	border-radius: 4px;
+}
+
+.container h2:hover {
+	box-shadow: black 0px 2px 4px 0px, black 0px 2px 16px 0px;
+}
+
 .container button:hover {
 	cursor: pointer;
 }
 
 .container img {
-	border-radius: 4px;
+	border-radius: 8px;
 	width: 100%;
 	height: auto;
 	animation: reveal linear both;
 	animation-timeline: view();
 	animation-range: entry 20% cover 40%;
 	object-fit: cover;
-	transform: scale(0.91);
+	transform: scale(0.90);
 	transition: transform 0.5s ease;
 }
 
 .container img:hover {
-	transform: scale(0.98);
+	transform: scale(0.91);
 	box-shadow: var(--base_color) 0px 2px 4px 0px, var(--color_1) 0px 2px 16px 0px;
 }
 

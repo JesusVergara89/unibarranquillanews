@@ -1,4 +1,5 @@
 import React from 'react'
+import '../Styles/Networks.css'
 
 const Networks = () => {
   return (

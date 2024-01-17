@@ -4,7 +4,7 @@ import '../Styles/Socialmedia.css'
 const Socialmedia = () => {
   return (
     <footer>
-        this is the footer, i'll work on this soon
+        <i className='bx bxl-instagram'></i>
     </footer>
   )
 }
