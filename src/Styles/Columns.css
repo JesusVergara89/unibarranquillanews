@@ -37,7 +37,7 @@
 	width: 80px;
 	height: auto;
 	position: absolute;
-    top: 45%;
+    top: 55%;
 	left: calc( 50% - 40px);
 	z-index: 5;
 	text-align: center;
@@ -46,7 +46,22 @@
 	border-radius: 4px;
 }
 
+.container h3 {
+	width: 60px;
+	height: auto;
+	position: absolute;
+    top: 45%;
+	left: calc( 50% - 30px);
+	z-index: 5;
+	text-align: center;
+	background-color: white;
+	padding: 0.3rem;	
+	border-radius: 4px;
+	font-size: 0.6rem;
+}
+
 .container h2:hover {
+	background-color: var(--color_1);
 	box-shadow: black 0px 2px 4px 0px, black 0px 2px 16px 0px;
 }
 

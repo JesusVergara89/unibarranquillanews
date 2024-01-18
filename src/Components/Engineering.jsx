@@ -3,7 +3,10 @@ import '../Styles/Engineering.css'
 
 const Engineering = () => {
   return (
-    <div>Engineering</div>
+    <article className="engineering_section">
+      <div className="visualization-div-header"></div>
+      hello
+    </article>
   )
 }
 
