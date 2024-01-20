@@ -6,27 +6,12 @@ const Aboutblog = () => {
         <article className='About-this-blog'>
 
             <p>
-            My name is Jesus, and I am the creator of this online space where I share my fascination for engineering, my personal experiences, exciting travels, literary reflections, and much more.
+            ¡Bienvenidos a la plataforma digital de noticias de la Universidad de Barranquilla!
             </p>
 
-            <h2>Engineering and Technology </h2>
             <p>
-            As a passionate engineer, I will explore the thrilling world of engineering and technology. From innovative advancements to practical projects, this blog will be a place to discover and discuss the impact of technology on our daily lives.
-            </p>
-            <h2>Travel and Adventures</h2>
-            <p>
-            Discover fascinating places and diverse cultures with me. From travel tips to stories of my own experiences, I hope to inspire you to explore the world and enjoy new adventures.
-            </p>
-            <h2>Personal Experiences</h2>
-            <p>
-            Join me on my personal journey as I share stories, reflections, and lessons learned. Life is a journey full of ups and downs, and here I will share my experiences to connect with you on a more personal level.
-            </p>
-
-            <h2> Literature and Culture</h2>
-            <p>
-            Immerse yourself in the world of literature and culture. I will share book reviews, literary reflections, and together we will explore different forms of artistic expression that enrich our lives.
-            </p>
-
+            En Unibarranquilla Noticias, estamos emocionados de ser tu fuente de información y actualización constante sobre todo lo que acontece en nuestra vibrante comunidad universitaria. Aquí encontrarás una variedad de temas que reflejan la diversidad de intereses y actividades que enriquecen nuestra vida académica y estudiantil. ¡Explora, descubre y mantente conectado!
+            </p>         
 
         </article>
     )

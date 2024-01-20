@@ -29,7 +29,7 @@
   
   .About-this-blog p:first-child {
     color: var(--color_4);
-    text-align: justify;
+    text-align: center;
   }
 
   .About-this-blog p {
