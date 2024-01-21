@@ -24,6 +24,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
   }
 
   .visualization-div-header {
@@ -39,4 +40,66 @@
     .visualization-div-header {
       background: linear-gradient(to right, var(--color_1), var(--color_15));
     }
+  }
+
+  .title-actualidad {
+    font-size: 2rem;
+    color: var(--color_1);
+  }
+
+  .description-actualidad {
+    width: 60%;
+    color: var(--color_3);
+  }
+
+  .body-actualidad {
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    gap: 0.8rem;
+    padding: 0.3rem;
+  }
+
+  .Card-actualidad {
+    width: 45%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    padding: 0.4rem;
+  }
+
+  .Card-actualidad-title {
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    background-color: green;
+  }
+
+  .Card-actualidad-body {
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    text-align: justify;
+  }
+
+  .Card-actualidad-Editor {
+    width: 100%;
+    height: 15%;
+    text-align: center;
+    text-align: right;
+    background-color: var(--base_color);
+  }
+
+  .Card-actualidad-Date {
+    width: 100%;
+    height: 15%;
+    text-align: center;
+    text-align: right;
   }
