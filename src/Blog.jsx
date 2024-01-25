@@ -6,6 +6,7 @@ import Engineering from './Components/Engineering'
 import Travel from './Components/Travel'
 import Literature from './Components/Literature'
 import Experience from './Components/Experience'
+import Asuntox from './Components/Asuntox'
 
 
 
@@ -30,6 +31,9 @@ function Blog() {
         />
         <Route path='/EXPERIENCE'
           element={<Experience/>}
+        />
+        <Route path='/ASUNTOS'
+          element={<Asuntox/>}
         />
       </Routes>
 

@@ -52,3 +52,23 @@ h5 {
   justify-content: center;
   align-items: center;
 }
+
+.img-actualidad {
+  display: block;
+  width: 50%;
+  height: auto;
+  margin-bottom: 20px;
+  margin-left: -40%;
+}
+
+.news-number {
+  width: 70px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: 0.1rem solid var(--color_15);
+  margin-bottom: 20px;
+}

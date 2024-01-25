@@ -25,7 +25,7 @@
   justify-content: space-between;
   top: 0;
   position: fixed;
-  z-index: 15;
+  z-index: 1000;
 }
 
 .Header span {
@@ -70,6 +70,9 @@ all: unset;
   display: none;
 }
 .menu button:nth-child(5){
+  display: none;
+}
+.menu button:nth-child(6){
   display: none;
 }
 .Header button {

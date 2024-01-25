@@ -28,6 +28,7 @@ const Header = () => {
         <button><Link to='/TRAVEL'>TRAVEL</Link></button>
         <button><Link to='/EXPERIENCE'>EXPERIENCE</Link></button>
         <button><Link to='/LITERATURE'>LITERATURE</Link></button>
+        <button><Link to='/ASUNTOS'>ASUNTOS</Link></button>
       </div>
     </header>
   )
