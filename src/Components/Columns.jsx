@@ -17,6 +17,8 @@ const Columns = () => {
 
     const navigateVida = useNavigate()
 
+    const navigateEvento = useNavigate()
+
     return (
         <div className="container">
             <button className='outside-btn' onClick={() => navigateEngi('/ENGINEERING')}  >
@@ -49,14 +51,14 @@ const Columns = () => {
                 <h3>Asuntos Estudiantiles</h3>
             </button>
 
-            <button className='outside-btn' onClick={() => navigateEngi('/VIDA')} >
-                <img onClick={() => navigateEngi('/VIDA')} src="https://photo-data-base.netlify.app/assets/estudiantes.a90aad50.jpg" />
+            <button className='outside-btn' onClick={() => navigateVida('/VIDA')} >
+                <img onClick={() => navigateVida('/VIDA')} src="https://photo-data-base.netlify.app/assets/estudiantes.a90aad50.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Vida Estudiantil</h3>
             </button>
 
-            <button className='outside-btn' >
-                <img src="https://photo-data-base.netlify.app/assets/evento.b25824db.jpg" />
+            <button className='outside-btn' onClick={() => navigateEvento('/EVENTO')} >
+                <img onClick={() => navigateEvento('/EVENTO')} src="https://photo-data-base.netlify.app/assets/evento.b25824db.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Eventos y Actividades</h3>
             </button>

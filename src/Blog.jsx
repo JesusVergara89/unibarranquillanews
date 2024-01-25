@@ -8,6 +8,7 @@ import Literature from './Components/Literature'
 import Experience from './Components/Experience'
 import Asuntox from './Components/Asuntox'
 import Vida from './Components/Vida'
+import Eventos from './Components/Eventos'
 
 
 
@@ -18,26 +19,29 @@ function Blog() {
       <Header />
 
       <Routes>
-      <Route path='/'
+        <Route path='/'
           element={<Presentations />}
         />
         <Route path='/ENGINEERING'
-          element={<Engineering/>}
+          element={<Engineering />}
         />
-         <Route path='/TRAVEL'
-          element={<Travel/>}
+        <Route path='/TRAVEL'
+          element={<Travel />}
         />
         <Route path='/LITERATURE'
-          element={<Literature/>}
+          element={<Literature />}
         />
         <Route path='/EXPERIENCE'
-          element={<Experience/>}
+          element={<Experience />}
         />
         <Route path='/ASUNTOS'
-          element={<Asuntox/>}
+          element={<Asuntox />}
         />
         <Route path='/VIDA'
-          element={<Vida/>}
+          element={<Vida />}
+        />
+        <Route path='/EVENTO'
+          element={<Eventos/>}
         />
       </Routes>
 
