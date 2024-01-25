@@ -7,6 +7,7 @@ import Travel from './Components/Travel'
 import Literature from './Components/Literature'
 import Experience from './Components/Experience'
 import Asuntox from './Components/Asuntox'
+import Vida from './Components/Vida'
 
 
 
@@ -34,6 +35,9 @@ function Blog() {
         />
         <Route path='/ASUNTOS'
           element={<Asuntox/>}
+        />
+        <Route path='/VIDA'
+          element={<Vida/>}
         />
       </Routes>
 

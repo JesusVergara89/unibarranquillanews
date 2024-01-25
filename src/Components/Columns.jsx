@@ -3,10 +3,10 @@ import '../Styles/Columns.css'
 import { useNavigate } from 'react-router-dom'
 
 const Columns = () => {
-    
+
 
     const navigateEngi = useNavigate()
-    
+
     const navigateTravel = useNavigate()
 
     const navigateLiterature = useNavigate()
@@ -14,6 +14,8 @@ const Columns = () => {
     const navigateExperience = useNavigate()
 
     const navigateAsuntos = useNavigate()
+
+    const navigateVida = useNavigate()
 
     return (
         <div className="container">
@@ -24,7 +26,7 @@ const Columns = () => {
             </button>
 
             <button id='outside-btn' onClick={() => navigateTravel('/TRAVEL')}  >
-                <img onClick={() => navigateTravel('/TRAVEL')}  src="https://photo-data-base.netlify.app/assets/arte.be73a92a.jpg" />
+                <img onClick={() => navigateTravel('/TRAVEL')} src="https://photo-data-base.netlify.app/assets/arte.be73a92a.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Cultura y Arte</h3>
             </button>
@@ -42,13 +44,13 @@ const Columns = () => {
             </button>
 
             <button className='outside-btn' onClick={() => navigateAsuntos('/ASUNTOS')} >
-                <img onClick={() => navigateAsuntos('/ASUNTOS')}  src="https://photo-data-base.netlify.app/assets/escuela.28c8ae9e.jpg" />
+                <img onClick={() => navigateAsuntos('/ASUNTOS')} src="https://photo-data-base.netlify.app/assets/escuela.28c8ae9e.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Asuntos Estudiantiles</h3>
             </button>
 
-            <button className='outside-btn' >
-                <img  src="https://photo-data-base.netlify.app/assets/estudiantes.a90aad50.jpg" />
+            <button className='outside-btn' onClick={() => navigateEngi('/VIDA')} >
+                <img onClick={() => navigateEngi('/VIDA')} src="https://photo-data-base.netlify.app/assets/estudiantes.a90aad50.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Vida Estudiantil</h3>
             </button>
@@ -60,7 +62,7 @@ const Columns = () => {
             </button>
 
             <button className='outside-btn' >
-                <img  src="https://photo-data-base.netlify.app/assets/entrevista.6f892194.jpg" />
+                <img src="https://photo-data-base.netlify.app/assets/entrevista.6f892194.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Entrevistas y Perfiles</h3>
             </button>

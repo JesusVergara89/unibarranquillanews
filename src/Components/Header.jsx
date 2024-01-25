@@ -29,6 +29,7 @@ const Header = () => {
         <button><Link to='/EXPERIENCE'>EXPERIENCE</Link></button>
         <button><Link to='/LITERATURE'>LITERATURE</Link></button>
         <button><Link to='/ASUNTOS'>ASUNTOS</Link></button>
+        <button><Link to='/VIDA'>VIDA</Link></button>
       </div>
     </header>
   )
