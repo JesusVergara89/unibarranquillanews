@@ -7,7 +7,7 @@ const Engineering = () => {
 
   const update = useActualidad()
 
-  //console.log(update)
+  console.log(update)
 
   return (
     <article className="engineering_section">
@@ -23,7 +23,9 @@ const Engineering = () => {
         {
           update?.map((news, i) => (
             <div className="Card-actualidad" key={news.id}>
+              <div className="news-number">{`News #${i + 1}`}</div>
               <h3 className="Card-actualidad-title">{news.Title}</h3>
+              <img className='img-actualidad' src={news.Pic} alt="" />
               <h4 className="Card-actualidad-Editor">{`By ${news.Editor}`}</h4>
               <p className="Card-actualidad-body">{news.Body}</p>
               <h5 className="Card-actualidad-Date">{news.Date}</h5>
