@@ -60,10 +60,19 @@
   font-size: 1.5rem;
   font-weight: bolder;
   letter-spacing: 15px;
-  bottom: 45px;
+  bottom: 75px;
   text-shadow: 4px 4px 16px var(--color_15);
 }
 .Video h3 {
+  position: absolute;
+  z-index: 10;
+  font-size: 1rem;
+  font-weight: bolder;
+  letter-spacing: 8px;
+  bottom: 50px;
+  text-shadow: 4px 4px 16px var(--color_15);
+}
+.Video h4 {
   position: absolute;
   z-index: 10;
   font-size: 1rem;
@@ -85,6 +94,37 @@
     overflow: hidden;
     position: relative;
     margin-bottom: 30px;  
+  }
+
+  .Video h2 {
+    position: absolute;
+    z-index: 10;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    letter-spacing: 15px;
+    bottom: 50px;
+    text-shadow: 4px 4px 16px var(--color_15);
+    transform: scale(0.75);
+  }
+  .Video h3 {
+    position: absolute;
+    z-index: 10;
+    font-size: 1rem;
+    font-weight: bolder;
+    letter-spacing: 8px;
+    bottom: 35px;
+    text-shadow: 4px 4px 16px var(--color_15);
+    transform: scale(0.75);
+  }
+  .Video h4 {
+    position: absolute;
+    z-index: 10;
+    font-size: 1rem;
+    font-weight: bolder;
+    letter-spacing: 8px;
+    bottom: 15px;
+    text-shadow: 4px 4px 16px var(--color_15);
+    transform: scale(0.75);
   }
 
 }
@@ -119,20 +159,31 @@
     z-index: 10;
     font-size: 1.5rem;
     font-weight: bolder;
-    letter-spacing: 10px;
-    bottom: 35px;
+    letter-spacing: 15px;
+    bottom: 75px;
     text-shadow: 4px 4px 16px var(--color_15);
-    transform: scale(0.85);
+    transform: scale(0.65);
   }
   .Video h3 {
     position: absolute;
     z-index: 10;
     font-size: 1rem;
     font-weight: bolder;
-    letter-spacing: 5px;
-    bottom: 22px;
-    text-shadow: 4px 4px 16px var(--color_15);    
-    transform: scale(0.85);
+    letter-spacing: 8px;
+    bottom: 50px;
+    text-shadow: 4px 4px 16px var(--color_15);
+    transform: scale(0.65);
   }
+  .Video h4 {
+    position: absolute;
+    z-index: 10;
+    font-size: 1rem;
+    font-weight: bolder;
+    letter-spacing: 8px;
+    bottom: 25px;
+    text-shadow: 4px 4px 16px var(--color_15);
+    transform: scale(0.65);
+  }
+
 
 }

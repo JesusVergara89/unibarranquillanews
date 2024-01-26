@@ -16,7 +16,8 @@ const Presentations = () => {
         <img src={sky} alt="" />
         <h1>WELCOME</h1>
         <h2>UNIVERSITY</h2>
-        <h3>NEWSPAPER</h3>
+        <h3>INDEPENDET</h3>
+        <h4>NEWSPAPER</h4>
       </div>
 
       <Aboutblog />
