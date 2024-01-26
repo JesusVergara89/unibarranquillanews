@@ -9,6 +9,7 @@ import Experience from './Components/Experience'
 import Asuntox from './Components/Asuntox'
 import Vida from './Components/Vida'
 import Eventos from './Components/Eventos'
+import Entrevista from './Components/Entrevista'
 
 
 
@@ -42,6 +43,9 @@ function Blog() {
         />
         <Route path='/EVENTO'
           element={<Eventos/>}
+        />
+        <Route path='/ENTREVISTA'
+          element={<Entrevista/>}
         />
       </Routes>
 

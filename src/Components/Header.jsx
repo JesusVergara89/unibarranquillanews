@@ -31,6 +31,7 @@ const Header = () => {
         <button><Link to='/ASUNTOS'>ASUNTOS</Link></button>
         <button><Link to='/VIDA'>VIDA</Link></button>
         <button><Link to='/EVENTO'>EVENTO</Link></button>
+        <button><Link to='/ENTREVISTA'>ENTREVISTA</Link></button>
       </div>
     </header>
   )

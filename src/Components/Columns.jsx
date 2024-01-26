@@ -19,6 +19,8 @@ const Columns = () => {
 
     const navigateEvento = useNavigate()
 
+    const navigateEntrevista = useNavigate()
+
     return (
         <div className="container">
             <button className='outside-btn' onClick={() => navigateEngi('/ENGINEERING')}  >
@@ -63,8 +65,8 @@ const Columns = () => {
                 <h3>Eventos y Actividades</h3>
             </button>
 
-            <button className='outside-btn' >
-                <img src="https://photo-data-base.netlify.app/assets/entrevista.6f892194.jpg" />
+            <button className='outside-btn' onClick={() => navigateEntrevista('/ENTREVISTA')} >
+                <img  onClick={() => navigateEntrevista('/ENTREVISTA')} src="https://photo-data-base.netlify.app/assets/entrevista.6f892194.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Entrevistas y Perfiles</h3>
             </button>
