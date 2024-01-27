@@ -45,6 +45,7 @@
 .description-actualidad {
   width: 60%;
   color: var(--color_3);
+  margin-bottom: 60px;
 }
 
 .body-actualidad {
@@ -86,23 +87,6 @@
   margin-bottom: 20px;
 }
 
-.Card-actualidad-title {
-  width: 100%;
-  height: 20%;
-  text-align: center;
-  font-size: 1.3rem;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.img-actualidad {
-  display: block;
-  width: 50%;
-  height: auto;
-  margin-bottom: 20px;
-  margin-left: -40%;
-}
-
 .Card-actualidad-Editor {
   width: 100%;
   height: 15%;
@@ -127,9 +111,56 @@
   text-align: center;
   text-align: right;
   padding: 0.5rem;
-  margin-right: 30px;
+  margin-right: 20%;
   font-weight: bold;
   font-size: 0.8rem;
+}
+
+.Card-social {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color_13);
+  border-radius: 5px;
+  color: var(--base_color);
+  gap: 10%;
+}
+
+.Card-social-btn {
+  width: 10%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Card-social-btn button {
+  width: 24px;
+  border: none;
+  background: unset; 
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.Card-social-btn .bx {
+  font-size: 24px;
+  color: var(--base_color);
+}
+
+.Card-social-btn button:hover{
+  background-color: var(--color_4);
+  color: var(--color_15);
+}
+.Card-social-btn .bx:hover {
+  font-size: 24px;
+  color: var(--color_15);
 }
 
 
@@ -146,6 +177,7 @@
   .description-actualidad {
     width: 75%;
     color: var(--color_3);
+    margin-bottom: 50px;
   }
 
   .Card-actualidad-Editor {
