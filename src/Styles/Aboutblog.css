@@ -53,7 +53,12 @@
   text-align: center;
 }
 
-.About-this-blog p {
+.About-this-blog p:nth-child(3) {
   color: var(--color_1);
-  text-align: justify;
+  text-align: left;
+}
+
+.About-this-blog p:nth-child(4) {
+  color: var(--color_1);
+  text-align: center;
 }

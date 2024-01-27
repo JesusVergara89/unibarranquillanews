@@ -13,6 +13,10 @@ const Aboutblog = () => {
 
             <p>
             En Unibarranquilla Noticias, estamos emocionados de ser tu fuente de información y actualización constante sobre todo lo que acontece en nuestra vibrante comunidad universitaria. Aquí encontrarás una variedad de temas que reflejan la diversidad de intereses y actividades que enriquecen nuestra vida académica y estudiantil. ¡Explora, descubre y mantente conectado!
+            </p>
+
+            <p>
+                Nuestras secciones
             </p>         
 
         </article>
