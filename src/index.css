@@ -72,3 +72,21 @@ h5 {
   border-bottom: 0.1rem solid var(--color_15);
   margin-bottom: 20px;
 }
+
+.Card-actualidad-title {
+  width: 90%;
+  height: 20%;
+  text-align: left;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.loading-container {
+ width: 100%;
+ height: 100vh;
+ background-color: var(--color_15);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
