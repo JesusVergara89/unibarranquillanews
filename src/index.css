@@ -44,6 +44,10 @@ h5 {
   all: unset;
 }
 
+a{
+  all: unset;
+}
+
 .Blog {
   width: 100%;
   min-height: 100vh;
