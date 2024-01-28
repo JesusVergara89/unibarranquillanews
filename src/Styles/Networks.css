@@ -1,0 +1,78 @@
+:root {
+    --color_1: #FFFFFF;
+    --color_2: #006400;
+    --color_3: #ADD8E6;
+    --color_4: #8B0000;
+    --color_5: #001F3F;
+    --color_6: #333333;
+    --color_7: #000000;
+  }
+
+  .Networks {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    margin-top: 20px;
+    margin-bottom: 150px;
+    gap: 50px;
+  }
+
+  .images-reserves {
+    width: 80%;
+    color: var(--color_7);
+    font-size: 1.2rem;
+    position: relative;
+    text-align: left;
+  }
+
+  .images-reserves a {
+    color: var(--color_4);
+    text-decoration-line: underline;
+  }
+
+  .images-reserves a:hover{
+    cursor: pointer;
+  }
+
+  .contact-powerby {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .contact {
+    width: 40%;
+    height: auto;
+    position: relative;
+    border-right: 2px solid var(--color_7);
+  }
+
+  .contact p {
+    width: 95%;
+  }
+
+  .powerby {
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    border-left: 2px solid var(--color_7);
+  }
+
+  .powerby img {
+    width: 80px;
+    height: auto;
+  }
+
+  .reserve-rights {
+    margin-top: 30px;
+    text-align: center;
+  }

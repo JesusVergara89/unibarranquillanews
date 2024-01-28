@@ -13,7 +13,6 @@
 	width: 90%;
 	column-gap: 32px;
 	padding-top: 32px;
-	margin-bottom: 140px;
 }
 
 .container button {
@@ -83,7 +82,6 @@
 		columns: 1;
 		width: 100%;
 		column-gap: 10px;
-		margin-bottom: 120px;
 	}
 
 	.container img {
