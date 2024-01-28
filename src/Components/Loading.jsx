@@ -3,7 +3,7 @@ import { lineSpinner } from 'ldrs';
 
 const Loading = () => {
 
-    const newColor = '#A6DAEC'
+    const newColor = '#111111'
     lineSpinner.register();
     return (
         <div className="loading-container">
