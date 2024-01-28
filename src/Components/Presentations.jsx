@@ -1,5 +1,5 @@
 import '../Styles/Presentations.css'
-import sky from '../Images/sky.jpg'
+import sky from '../Images/news.jpg'
 import Columns from '../Components/Columns'
 import Aboutblog from '../Components/Aboutblog'
 import Socialmedia from '../Components/Socialmedia'
