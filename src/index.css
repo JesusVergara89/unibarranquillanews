@@ -219,7 +219,7 @@ a{
 
 .Card-social-btn .bx {
   font-size: 24px;
-  color: var(--base_color);
+  color: var(--color_1);
 }
 
 .Card-social-btn button:hover{
