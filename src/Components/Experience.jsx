@@ -1,5 +1,4 @@
 import React from 'react'
-import '../Styles/Experience.css'
 import useResearch from '../Hooks/useResearch'
 import Loading from './Loading'
 

@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react'
-import '../Styles/Engineering.css'
 import useActualidad from '../Hooks/useActualidad'
 import Loading from './Loading'
 

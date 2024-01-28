@@ -1,21 +1,13 @@
 :root {
-  --base_color: #E9F6FA;
-  --color_1: #DAF0F7;
-  --color_2: #CBE9F4;
-  --color_3: #A6DAEC;
-  --color_4: #79C7E3;
-  --color_5: #4DB5D9;
-  --color_6: #4DB5D9;
-  --color_7: #35A6CC;
-  --color_8: #1E96BE;
-  --color_9: #1C8EB4;
-  --color_10: #1A85AB;
-  --color_11: #17779A;
-  --color_12: #146988;
-  --color_13: #0F4E65;
-  --color_14: #0D4559;
-  --color_15: #103B49;
+  --color_1: #FFFFFF;
+  --color_2: #006400;
+  --color_3: #ADD8E6;
+  --color_4: #8B0000;
+  --color_5: #001F3F;
+  --color_6: #333333;
+  --color_7: #000000;
 }
+
 
 footer {
   width: 100%;
@@ -23,7 +15,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color_15);
+  background-color: var(--color_1);
   position: fixed;
   bottom: 0;
   z-index: 10;
@@ -41,10 +33,10 @@ footer {
 
 .footer-inter .bx {
   font-size: 28px;
-  color: var(--color_1);
+  color: var(--color_7);
   transition: background-color 0.3s ease;
 }
 
 .footer-inter .bx:hover {
-  color: var(--color_3);
+  color: var(--color_4);
 }

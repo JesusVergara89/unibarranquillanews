@@ -1,5 +1,4 @@
 import React from 'react'
-import '../Styles/Entrevista.css'
 import useEntrevista from '../Hooks/useEntrevista'
 import Loading from './Loading'
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import useAsuntos from '../Hooks/useAsuntos'
-import '../Styles/Asuntosx.css'
 import Loading from './Loading'
 
 const Asuntox = () => {

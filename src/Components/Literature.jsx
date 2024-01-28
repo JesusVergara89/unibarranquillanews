@@ -1,5 +1,4 @@
 import React from 'react'
-import '../Styles/Literature.css'
 import useSport from '../Hooks/useSport'
 import Loading from './Loading'
 

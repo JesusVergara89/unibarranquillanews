@@ -1,5 +1,4 @@
 import React from 'react'
-import '../Styles/Travel.css'
 import useCulture from '../Hooks/UseCulture'
 import Loading from './Loading'
 

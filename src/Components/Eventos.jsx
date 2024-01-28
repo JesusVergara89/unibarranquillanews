@@ -1,6 +1,5 @@
 import React from 'react'
 import useEventos from '../Hooks/useEventos'
-import '../Styles/Eventos.css'
 import Loading from './Loading'
 
 const Eventos = () => {

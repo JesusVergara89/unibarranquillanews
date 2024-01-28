@@ -1,20 +1,11 @@
 :root {
-	--base_color: #E9F6FA;
-	--color_1: #DAF0F7;
-	--color_2: #CBE9F4;
-	--color_3: #A6DAEC;
-	--color_4: #79C7E3;
-	--color_5: #4DB5D9;
-	--color_6: #4DB5D9;
-	--color_7: #35A6CC;
-	--color_8: #1E96BE;
-	--color_9: #1C8EB4;
-	--color_10: #1A85AB;
-	--color_11: #17779A;
-	--color_12: #146988;
-	--color_13: #0F4E65;
-	--color_14: #0D4559;
-	--color_15: #103B49;
+	--color_1: #FFFFFF;
+	--color_2: #006400;
+	--color_3: #ADD8E6;
+	--color_4: #8B0000;
+	--color_5: #001F3F;
+	--color_6: #333333;
+	--color_7: #000000;
 }
 
 .container {
@@ -37,12 +28,12 @@
 	width: 80px;
 	height: auto;
 	position: absolute;
-    top: 55%;
-	left: calc( 50% - 40px);
+	top: 55%;
+	left: calc(50% - 40px);
 	z-index: 5;
 	text-align: center;
-	background-color: white;
-	padding: 0.3rem;	
+	background-color: var(--color_1);
+	padding: 0.3rem;
 	border-radius: 4px;
 }
 
@@ -50,12 +41,12 @@
 	width: 150px;
 	height: auto;
 	position: absolute;
-    top: 40%;
-	left: calc( 50% - 75px);
+	top: 40%;
+	left: calc(50% - 75px);
 	z-index: 5;
 	text-align: center;
-	background-color: white;
-	padding: 0.3rem;	
+	background-color: var(--color_1);
+	padding: 0.3rem;
 	border-radius: 4px;
 	font-size: 0.75rem;
 	border: 2px solid var(--color_15);
@@ -84,7 +75,7 @@
 
 .container img:hover {
 	transform: scale(0.91);
-	box-shadow: var(--base_color) 0px 2px 4px 0px, var(--color_1) 0px 2px 16px 0px;
+	box-shadow: var(--color_1) 0px 2px 4px 0px, var(--color_7) 0px 2px 16px 0px;
 }
 
 @media (width <=768px) {
