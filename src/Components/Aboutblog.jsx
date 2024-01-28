@@ -6,7 +6,7 @@ const Aboutblog = () => {
         <article className='About-this-blog'>
 
             <p>
-            ¡Bienvenidos a la plataforma digital de noticias de la Universidad de Barranquilla!
+            ¡Bienvenidos a la plataforma digital independiente de noticias de la Universidad de Barranquilla!
             </p>
 
             <a href="https://www.unibarranquilla.edu.co/" target="_blank">Página oficial de la universidad</a>
