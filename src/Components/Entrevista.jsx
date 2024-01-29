@@ -27,7 +27,11 @@ const Entrevista = () => {
                 <h3 className="Card-actualidad-title">{entrev.Title}</h3>
                 <img className='img-actualidad' src={entrev.Pic} alt="" />
                 <h4 className="Card-actualidad-Editor">{`By ${entrev.Editor}`}</h4>
-                <p className="Card-actualidad-body">{entrev.Body}</p>
+                <p className="Card-actualidad-body">
+                {entrev.Body.split('\n').map((line, index) => (
+                  <p key={index}>{line}</p>
+                ))}
+              </p>
                 <h5 className="Card-actualidad-Date">{entrev.Date}</h5>
                 <button className="Card-link"> <a href={entrev.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                 <div className='Card-social'>

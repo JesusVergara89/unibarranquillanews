@@ -27,7 +27,11 @@ const Travel = () => {
                 <h3 className="Card-actualidad-title">{cult.Title}</h3>
                 <img className='img-actualidad' src={cult.Pic} alt="" />
                 <h4 className="Card-actualidad-Editor">{`By ${cult.Editor}`}</h4>
-                <p className="Card-actualidad-body">{cult.Body}</p>
+                <p className="Card-actualidad-body">
+                  {cult.Body.split('\n').map((line, index) => (
+                    <p key={index}>{line}</p>
+                  ))}
+                </p>
                 <h5 className="Card-actualidad-Date">{cult.Date}</h5>
                 <button className="Card-link"> <a href={cult.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                 <div className='Card-social'>

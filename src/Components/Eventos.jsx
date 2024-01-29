@@ -24,7 +24,11 @@ const Eventos = () => {
                 <h3 className="Card-actualidad-title">{evento.Title}</h3>
                 <img className='img-actualidad' src={evento.Pic} alt="" />
                 <h4 className="Card-actualidad-Editor">{`By ${evento.Editor}`}</h4>
-                <p className="Card-actualidad-body">{evento.Body}</p>
+                <p className="Card-actualidad-body">
+                  {evento.Body.split('\n').map((line, index) => (
+                    <p key={index}>{line}</p>
+                  ))}
+                </p>
                 <h5 className="Card-actualidad-Date">{evento.Date}</h5>
                 <button className="Card-link"> <a href={evento.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                 <div className='Card-social'>

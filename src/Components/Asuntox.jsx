@@ -25,7 +25,11 @@ const Asuntox = () => {
                                 <h3 className="Card-actualidad-title">{asunto.Title}</h3>
                                 <img className='img-actualidad' src={asunto.Pic} alt="" />
                                 <h4 className="Card-actualidad-Editor">{`By ${asunto.Editor}`}</h4>
-                                <p className="Card-actualidad-body">{asunto.Body}</p>
+                                <p className="Card-actualidad-body">
+                                    {asunto.Body.split('\n').map((line, index) => (
+                                        <p key={index}>{line}</p>
+                                    ))}
+                                </p>
                                 <h5 className="Card-actualidad-Date">{asunto.Date}</h5>
                                 <button className="Card-link"> <a href={asunto.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                                 <div className='Card-social'>

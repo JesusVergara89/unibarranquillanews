@@ -24,7 +24,11 @@ const Vida = () => {
                 <h3 className="Card-actualidad-title">{vida.Title}</h3>
                 <img className='img-actualidad' src={vida.Pic} alt="" />
                 <h4 className="Card-actualidad-Editor">{`By ${vida.Editor}`}</h4>
-                <p className="Card-actualidad-body">{vida.Body}</p>
+                <p className="Card-actualidad-body">
+                  {vida.Body.split('\n').map((line, index) => (
+                    <p key={index}>{line}</p>
+                  ))}
+                </p>
                 <h5 className="Card-actualidad-Date">{vida.Date}</h5>
                 <button className="Card-link"> <a href={vida.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                 <div className='Card-social'>

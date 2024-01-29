@@ -25,7 +25,11 @@ const Experience = () => {
                 <h3 className="Card-actualidad-title">{research.Title}</h3>
                 <img className='img-actualidad' src={research.Pic} alt="" />
                 <h4 className="Card-actualidad-Editor">{`By ${research.Editor}`}</h4>
-                <p className="Card-actualidad-body">{research.Body}</p>
+                <p className="Card-actualidad-body">
+                {research.Body.split('\n').map((line, index) => (
+                  <p key={index}>{line}</p>
+                ))}
+              </p>
                 <h5 className="Card-actualidad-Date">{research.Date}</h5>
                 <button className="Card-link"> <a href={research.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                 <div className='Card-social'>
