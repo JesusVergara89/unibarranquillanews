@@ -5,7 +5,7 @@ import Loading from './Loading'
 const Experience = () => {
 
   const researchs = useResearch()
-  const currentURL = window.location.href;
+  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/EXPERIENCE'
   return (
     <article className="engineering_section">
       <div className="visualization-div-header"></div>

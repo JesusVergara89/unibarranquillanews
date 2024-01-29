@@ -5,7 +5,7 @@ import Loading from './Loading'
 const Vida = () => {
 
   const vidas = useVida()
-  const currentURL = window.location.href;
+  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/VIDA'
   return (
     <article className="engineering_section">
       <div className="visualization-div-header"></div>

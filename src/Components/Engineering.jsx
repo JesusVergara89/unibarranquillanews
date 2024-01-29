@@ -5,7 +5,7 @@ import Loading from './Loading'
 const Engineering = () => {
 
   const update = useActualidad()
-  const currentURL = window.location.href;
+  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/ENGINEERING'
   return (
     <article className="engineering_section">
       <div className="visualization-div-header"></div>

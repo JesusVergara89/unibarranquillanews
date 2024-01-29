@@ -6,7 +6,7 @@ const Travel = () => {
 
   const culture = useCulture()
 
-  const currentURL = window.location.href;
+  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/TRAVEL'
 
   return (
     <article className="engineering_section">

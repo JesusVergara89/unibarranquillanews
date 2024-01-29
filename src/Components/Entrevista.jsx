@@ -6,7 +6,7 @@ const Entrevista = () => {
 
   const entrevista = useEntrevista()
 
-  const currentURL = window.location.href;
+  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/ENTREVISTA'
 
   return (
     <article className="engineering_section">

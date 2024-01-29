@@ -6,7 +6,7 @@ const Literature = () => {
 
   const sports = useSport()
 
-  const currentURL = window.location.href;
+  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/LITERATURE'
 
   return (
     <article className="engineering_section">
