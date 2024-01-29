@@ -26,6 +26,7 @@ const Asuntox = () => {
                                 <img className='img-actualidad' src={asunto.Pic} alt="" />
                                 <h4 className="Card-actualidad-Editor">{`By ${asunto.Editor}`}</h4>
                                 <p className="Card-actualidad-body">
+                                    
                                     {asunto.Body.split('\n').map((line, index) => (
                                         <p key={index}>{line}</p>
                                     ))}

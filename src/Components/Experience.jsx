@@ -25,6 +25,7 @@ const Experience = () => {
                 <h3 className="Card-actualidad-title">{research.Title}</h3>
                 <img className='img-actualidad' src={research.Pic} alt="" />
                 <h4 className="Card-actualidad-Editor">{`By ${research.Editor}`}</h4>
+                
                 <p className="Card-actualidad-body">
                 {research.Body.split('\n').map((line, index) => (
                   <p key={index}>{line}</p>

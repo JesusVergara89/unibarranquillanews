@@ -24,6 +24,7 @@ const Engineering = () => {
               <h3 className="Card-actualidad-title">{news.Title}</h3>
               <img className='img-actualidad' src={news.Pic} alt="" />
               <h4 className="Card-actualidad-Editor">{`By ${news.Editor}`}</h4>
+              
               <p className="Card-actualidad-body">
                 {news.Body.split('\n').map((line, index) => (
                   <p key={index}>{line}</p>

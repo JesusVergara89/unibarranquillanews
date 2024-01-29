@@ -28,6 +28,7 @@ const Literature = () => {
                 <h3 className="Card-actualidad-title">{sport.Title}</h3>
                 <img className='img-actualidad' src={sport.Pic} alt="" />
                 <h4 className="Card-actualidad-Editor">{`By ${sport.Editor}`}</h4>
+                
                 <p className="Card-actualidad-body">
                   {sport.Body.split('\n').map((line, index) => (
                     <p key={index}>{line}</p>

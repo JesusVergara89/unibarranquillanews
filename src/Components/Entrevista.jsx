@@ -27,6 +27,7 @@ const Entrevista = () => {
                 <h3 className="Card-actualidad-title">{entrev.Title}</h3>
                 <img className='img-actualidad' src={entrev.Pic} alt="" />
                 <h4 className="Card-actualidad-Editor">{`By ${entrev.Editor}`}</h4>
+                
                 <p className="Card-actualidad-body">
                 {entrev.Body.split('\n').map((line, index) => (
                   <p key={index}>{line}</p>

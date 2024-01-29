@@ -23,6 +23,7 @@ const Eventos = () => {
                 <div className="news-number">{`News #${i + 1}`}</div>
                 <h3 className="Card-actualidad-title">{evento.Title}</h3>
                 <img className='img-actualidad' src={evento.Pic} alt="" />
+                
                 <h4 className="Card-actualidad-Editor">{`By ${evento.Editor}`}</h4>
                 <p className="Card-actualidad-body">
                   {evento.Body.split('\n').map((line, index) => (
