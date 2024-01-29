@@ -29,6 +29,7 @@ const Travel = () => {
                 <h4 className="Card-actualidad-Editor">{`By ${cult.Editor}`}</h4>
                 <p className="Card-actualidad-body">{cult.Body}</p>
                 <h5 className="Card-actualidad-Date">{cult.Date}</h5>
+                <button className="Card-link"> <a href={cult.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                 <div className='Card-social'>
                   <h5>Comparte:</h5>
                   <div className="Card-social-btn">

@@ -29,6 +29,7 @@ const Entrevista = () => {
                 <h4 className="Card-actualidad-Editor">{`By ${entrev.Editor}`}</h4>
                 <p className="Card-actualidad-body">{entrev.Body}</p>
                 <h5 className="Card-actualidad-Date">{entrev.Date}</h5>
+                <button className="Card-link"> <a href={entrev.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                 <div className='Card-social'>
                   <h5>Comparte:</h5>
                   <div className="Card-social-btn">

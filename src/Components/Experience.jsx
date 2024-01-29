@@ -27,6 +27,7 @@ const Experience = () => {
                 <h4 className="Card-actualidad-Editor">{`By ${research.Editor}`}</h4>
                 <p className="Card-actualidad-body">{research.Body}</p>
                 <h5 className="Card-actualidad-Date">{research.Date}</h5>
+                <button className="Card-link"> <a href={research.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                 <div className='Card-social'>
                   <h5>Comparte:</h5>
                   <div className="Card-social-btn">

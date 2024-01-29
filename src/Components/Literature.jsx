@@ -30,6 +30,7 @@ const Literature = () => {
                 <h4 className="Card-actualidad-Editor">{`By ${sport.Editor}`}</h4>
                 <p className="Card-actualidad-body">{sport.Body}</p>
                 <h5 className="Card-actualidad-Date">{sport.Date}</h5>
+                <button className="Card-link"> <a href={sport.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                 <div className='Card-social'>
                   <h5>Comparte:</h5>
                   <div className="Card-social-btn">

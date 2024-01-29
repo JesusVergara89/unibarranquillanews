@@ -184,6 +184,29 @@ a{
   font-size: 0.8rem;
 }
 
+.Card-link a {
+  all: unset;
+}
+
+.Card-link {
+  width: 70px;
+  height: auto;
+  text-align: center;
+  all: unset;
+  background-color: var(--color_7);
+  color: var(--color_1);
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.Card-link:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  background-color: var(--color_4);
+}
+
 .Card-social {
   width: 100%;
   height: auto;
