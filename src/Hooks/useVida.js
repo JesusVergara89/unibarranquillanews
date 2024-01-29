@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 const useVida = () =>  {
     const [vidas, setVidas] = useState()
     useEffect(() => {
-        const URL = 'https://script.google.com/macros/s/AKfycbxJveCljMSJ6c-YZn9srGPyzLWKkyC25u4s7SQWLRDDfaI_DbvhJCdcJXqyj8eTQe9E/exec?action=data'
+        const URL = 'https://script.google.com/macros/s/AKfycbxM4JXRIpze7_lr7kKmzrqByWEBZaL7_aQ8KPwgUZf-78cFsHRagzIrISJCEKErlJ_vEw/exec?action=data'
         axios.get(URL)
             .then(({ data }) => setVidas(data))
             .catch(err => console.log(err))

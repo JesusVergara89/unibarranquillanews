@@ -12,10 +12,10 @@ const Entrevista = () => {
     <article className="engineering_section">
       <div className="visualization-div-header"></div>
       <h2 className="title-actualidad">
-        ACTUALIDAD UNIVERSITARIA
+        ENTREVISTAS Y PERFILES
       </h2>
       <p className='description-actualidad'>
-        Mantente al tanto de las últimas noticias, eventos y desarrollos en nuestra universidad. Desde anuncios importantes hasta logros destacados de nuestros estudiantes y profesores.
+        Conoce a fondo a los líderes, académicos y personalidades que forman parte de nuestra comunidad universitaria. Descubre sus historias, experiencias y contribuciones a la educación superior.
       </p>
 
       {entrevista ? (

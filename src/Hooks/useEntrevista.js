@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 const useEntrevista = () => {
     const [entrevista, setEntrevista] = useState()
     useEffect(() => {
-        const URL = 'https://script.google.com/macros/s/AKfycby93NwVFeMVKIeKpfdLbKGoG8uPv3OmAh2tpja2hiwF65ZQsTvfYNhK0iNKXzliphlLiA/exec?action=data'
+        const URL = 'https://script.google.com/macros/s/AKfycby64WFc-nzuBheWiBRFyXL4gI7kN3YX_U-OBZLi4l-RJv9NPUQC_1i2GhRTV9y1FNGV/exec?action=data'
         axios.get(URL)
             .then(({ data }) => setEntrevista(data))
             .catch(err => console.log(err))
