@@ -5,6 +5,8 @@ import Loading from './Loading'
 const Vida = () => {
 
   const vidas = useVida()
+  const currentURL = window.location.href;
+  console.log(currentURL)
   return (
     <article className="engineering_section">
       <div className="visualization-div-header"></div>
@@ -24,7 +26,7 @@ const Vida = () => {
                 <h3 className="Card-actualidad-title">{vida.Title}</h3>
                 <img className='img-actualidad' src={vida.Pic} alt="" />
                 <h4 className="Card-actualidad-Editor">{`By ${vida.Editor}`}</h4>
-                
+
                 <p className="Card-actualidad-body">
                   {vida.Body.split('\n').map((line, index) => (
                     <p key={index}>{line}</p>
@@ -37,7 +39,7 @@ const Vida = () => {
                   <div className="Card-social-btn">
                     <button
                       onClick={() => {
-                        const url = `https://www.facebook.com/sharer/sharer.php?u=https://bit.ly/3SzyQkU'`;
+                        const url = `https://www.facebook.com/sharer/sharer.php?u=${currentURL}`;
                         window.open(url, '_blank');
                       }}
                     ><i className='bx bxl-facebook-square'></i></button>
