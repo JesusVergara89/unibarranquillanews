@@ -6,7 +6,6 @@ const Vida = () => {
 
   const vidas = useVida()
   const currentURL = window.location.href;
-  console.log(currentURL)
   return (
     <article className="engineering_section">
       <div className="visualization-div-header"></div>
