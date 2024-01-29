@@ -5,7 +5,7 @@ import Loading from './Loading'
 const Experience = () => {
 
   const researchs = useResearch()
-
+  const currentURL = window.location.href;
   return (
     <article className="engineering_section">
       <div className="visualization-div-header"></div>
@@ -38,7 +38,7 @@ const Experience = () => {
                   <div className="Card-social-btn">
                     <button
                       onClick={() => {
-                        const url = `https://www.facebook.com/sharer/sharer.php?u=https://bit.ly/3SzyQkU'`;
+                        const url = `https://www.facebook.com/sharer/sharer.php?u=${currentURL}`;
                         window.open(url, '_blank');
                       }}
                     ><i className='bx bxl-facebook-square'></i></button>

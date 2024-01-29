@@ -6,7 +6,7 @@ const Travel = () => {
 
   const culture = useCulture()
 
-  console.log(culture)
+  const currentURL = window.location.href;
 
   return (
     <article className="engineering_section">
@@ -40,7 +40,7 @@ const Travel = () => {
                   <div className="Card-social-btn">
                     <button
                       onClick={() => {
-                        const url = `https://www.facebook.com/sharer/sharer.php?u=https://bit.ly/3SzyQkU'`;
+                        const url = `https://www.facebook.com/sharer/sharer.php?u=${currentURL}`;
                         window.open(url, '_blank');
                       }}
                     ><i className='bx bxl-facebook-square'></i></button>
