@@ -1,7 +1,9 @@
 import React from 'react'
 import '../Styles/Networks.css'
+import { useNavigate } from 'react-router-dom'
 
 const Networks = () => {
+  const navigateOpen = useNavigate()
   return (
     <article className='Networks'>
       <p className="images-reserves">
@@ -23,6 +25,10 @@ const Networks = () => {
       <p className="reserve-rights">
         All rights reserved.
       </p>
+
+      <button className="work-with-us" onClick={() => navigateOpen('/OPENPOSSITIONS')} >
+        TRABAJOS
+      </button>
 
     </article>
   )

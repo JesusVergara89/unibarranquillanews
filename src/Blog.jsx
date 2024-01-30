@@ -10,6 +10,7 @@ import Asuntox from './Components/Asuntox'
 import Vida from './Components/Vida'
 import Eventos from './Components/Eventos'
 import Entrevista from './Components/Entrevista'
+import Workus from './Components/Workus'
 
 
 
@@ -42,10 +43,13 @@ function Blog() {
           element={<Vida />}
         />
         <Route path='/EVENTO'
-          element={<Eventos/>}
+          element={<Eventos />}
         />
         <Route path='/ENTREVISTA'
-          element={<Entrevista/>}
+          element={<Entrevista />}
+        />
+        <Route path='/OPENPOSSITIONS'
+          element={<Workus/>}
         />
       </Routes>
 
