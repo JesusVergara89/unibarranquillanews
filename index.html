@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/orkney" type="text/css"/>
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/orkney" type="text/css" />
   <link rel="icon" type="image/svg" href="./src/Images/grid.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UNIBARRANQUILLA NEWSPAPER</title>
@@ -13,7 +13,69 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+  <script>
+    function disableIE() {
+      if (document.all) {
+        return false;
+      }
+    }
+    function disableNS(e) {
+      if (document.layers || (document.getElementById && !document.all)) {
+        if (e.which == 2 || e.which == 3) {
+          return false;
+        }
+      }
+    }
+    if (document.layers) {
+      document.captureEvents(Event.MOUSEDOWN);
+      document.onmousedown = disableNS;
+    }
+    else {
+      document.onmouseup = disableNS;
+      document.oncontextmenu = disableIE;
+    }
+    document.oncontextmenu = new Function("return false");
+  </script>
+  <script language="JavaScript">
 
+    window.onload = function () {
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      }, false);
+      document.addEventListener("keydown", function (e) {
+        //document.onkeydown = function(e) {
+        // "I" key
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+          disabledEvent(e);
+        }
+        // "J" key
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+          disabledEvent(e);
+        }
+        // "S" key + macOS
+        if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+          disabledEvent(e);
+        }
+        // "U" key
+        if (e.ctrlKey && e.keyCode == 85) {
+          disabledEvent(e);
+        }
+        // "F12" key
+        if (event.keyCode == 123) {
+          disabledEvent(e);
+        }
+      }, false);
+      function disabledEvent(e) {
+        if (e.stopPropagation) {
+          e.stopPropagation();
+        } else if (window.event) {
+          window.event.cancelBubble = true;
+        }
+        e.preventDefault();
+        return false;
+      }
+    }
+  </script>
 </body>
 
 </html>
