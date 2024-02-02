@@ -4,6 +4,7 @@ import Columns from '../Components/Columns'
 import Aboutblog from '../Components/Aboutblog'
 import Socialmedia from '../Components/Socialmedia'
 import Networks from '../Components/Networks'
+import Recent from './Recent'
 const Presentations = () => {
 
   //const [windowWidt, setWindowWidt] = useState((window.innerWidth))
@@ -21,6 +22,8 @@ const Presentations = () => {
       </div>
 
       <Aboutblog />
+
+      <Recent/>
 
       <Columns />
 
