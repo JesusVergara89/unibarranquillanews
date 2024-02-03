@@ -9,9 +9,12 @@ import useResearch from '../Hooks/useResearch';
 import useVida from '../Hooks/useVida';
 import useAsuntos from '../Hooks/useAsuntos';
 import '../Styles/Recen.css';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const Recent = () => {
-    const [data, setData] = useState(null); // Inicializar data como null
+    const [data, setData] = useState(null);
 
     const actualidad = useActualidad();
     const entrevista = useEntrevista();
@@ -22,10 +25,45 @@ const Recent = () => {
     const vidas = useVida();
     const asuntos = useAsuntos();
 
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        vertical: false,
+        verticalSwiping: false,
+        centerMode: true,
+        centerPadding: '10px',
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 400, 
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            }
+        ]
+    };
+
+
+
     useEffect(() => {
-
         if (actualidad && asuntos && entrevista && eventos && researchs && culture && sports && vidas) {
-
             setData([actualidad[0], asuntos[0], entrevista[0], eventos[0], researchs[0], culture[0], sports[0], vidas[0]]);
         }
     }, [actualidad, asuntos, entrevista, eventos, researchs, culture, sports, vidas]);
@@ -34,7 +72,7 @@ const Recent = () => {
         <article className="Recent-news">
             <h2>Artículos más recientes</h2>
             {data ? (
-                <div className="recent-news-main">
+                <Slider className="recent-news-slider" {...settings}>
                     {data.map((unit, i) => (
                         <div className="recent-news-card" key={i}>
                             <h3 className="recent-news-title">{unit.Title.slice(0, 60)}</h3>
@@ -44,7 +82,7 @@ const Recent = () => {
                             </button>
                         </div>
                     ))}
-                </div>
+                </Slider>
             ) : (
                 <Loading />
             )}

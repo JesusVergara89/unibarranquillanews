@@ -37,7 +37,8 @@
 }
 
 .recent-news-card {
-    width: 100px;
+    width: 100%;
+    max-width: 200px; 
     height: 170px;
     background-color: #ffffff;
     border-radius: 8px;
@@ -50,8 +51,9 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    position: relative;
     border: 0.01rem solid var(--color_7);
+    overflow: hidden;
+    position: relative;
 }
 
 .recent-news-title {
@@ -68,13 +70,12 @@
 }
 
 .recen-btn {
-    width: 30px;
+    width: 100%;
     height: 20px;
-    left: calc(50% - 20px);
-    top: calc(100% - 30px);
     position: absolute;
+    bottom: 0;
     border: none;
-    border-radius: 4px;
+    left: 0;
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: var(--color_4);
@@ -83,4 +84,42 @@
 
 .recen-btn:hover {
     background-color: var(--color_5);
+}
+
+.recent-news-slider {
+    width: 80%; 
+    margin: 0 auto; 
+}
+
+.slick-arrow {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 50%;
+    background-color: var(--color_4) !important;
+}
+
+@media (200px <= width < 600px) {
+    .recent-news-card {
+        width: 100%;
+        max-width: 200px; 
+        height: 170px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        padding-top: 5px;
+        padding-left: 5px;
+        padding-bottom: 50px;
+        padding-right: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        border: 0.01rem solid var(--color_7);
+        transform: scale(0.8);
+        overflow: hidden;
+    } 
 }
