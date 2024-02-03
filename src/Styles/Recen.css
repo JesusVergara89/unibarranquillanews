@@ -56,6 +56,11 @@
     position: relative;
 }
 
+.recent-news-card:hover{
+    cursor: pointer;
+    box-shadow: 0 0 5px var(--color_4);
+}
+
 .recent-news-title {
     font-size: 0.6rem;
     margin-bottom: 4px;

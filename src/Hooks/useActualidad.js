@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 const useActualidad = () => {
     const [update, setUpdate] = useState()
     useEffect(() => {
-        const URL = 'https://script.google.com/macros/s/AKfycbzzqynLDUsNRi1cgYw29-RGyjh8BauFAHTnFMe2Tl1oTykp_AxzBk5mmUnh_BEtg1hGSw/exec?action=data'
+        const URL = 'https://script.google.com/macros/s/AKfycby3kSZq3PsmAb2eZ2sx1Q4nTc9MpfV--ylcijQji2ptGO7ZpbTXhFhbcdlq8cjykSMkpA/exec?action=data'
         axios.get(URL)
             .then(({ data }) => setUpdate(data))
             .catch(err => console.log(err))
