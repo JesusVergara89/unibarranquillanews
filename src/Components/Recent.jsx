@@ -51,7 +51,7 @@ const Recent = () => {
                 }
             },
             {
-                breakpoint: 400, 
+                breakpoint: 400,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -60,7 +60,9 @@ const Recent = () => {
         ]
     };
 
-
+    const openUrl = (url) => {
+        window.open(url, '_blank');
+    };
 
     useEffect(() => {
         if (actualidad && asuntos && entrevista && eventos && researchs && culture && sports && vidas) {
@@ -74,11 +76,11 @@ const Recent = () => {
             {data ? (
                 <Slider className="recent-news-slider" {...settings}>
                     {data.map((unit, i) => (
-                        <div className="recent-news-card" key={i}>
+                        <div onClick={() => openUrl(unit.interLink)} className="recent-news-card" key={i}>
                             <h3 className="recent-news-title">{unit.Title.slice(0, 60)}</h3>
                             <img src={unit.Pic} alt="" className="recent-news-img" />
-                            <button className="recen-btn">
-                                <a href={unit.Link} target="_blank" rel="noopener noreferrer">ver</a>
+                            <button onClick={() => openUrl(unit.interLink)} className="recen-btn">
+                                <a href={unit.interLink} target="_blank" rel="noopener noreferrer">ver</a>
                             </button>
                         </div>
                     ))}
