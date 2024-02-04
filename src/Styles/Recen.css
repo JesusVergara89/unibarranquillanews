@@ -87,6 +87,10 @@
     color: var(--color_1);
 }
 
+.recen-btn a {
+    font-size: 1.1rem;
+}
+
 .recen-btn:hover {
     background-color: var(--color_5);
 }
