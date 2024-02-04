@@ -13,7 +13,7 @@ const Asuntox = () => {
                 ASUNTOS UNIVERSITARIOS
             </h2>
             <p className='description-actualidad'>
-                Enfocándonos en las preocupaciones y necesidades de los estudiantes, abordaremos temas relevantes como becas, orientación académica, oportunidades de empleo y todo aquello que impacta directamente en tu experiencia universitaria.
+            Esta sección es una ventana al vibrante entrelazamiento entre la vida estudiantil y el pulso urbano. Desde eventos académicos destacados hasta iniciativas comunitarias, esta sección captura la esencia de cómo las instituciones educativas y sus entornos se complementan, impactando tanto a estudiantes como a residentes locales.
             </p>
 
             {asuntos ? (
