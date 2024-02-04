@@ -10,7 +10,7 @@ const Asuntox = () => {
         <article className="engineering_section">
             <div className="visualization-div-header"></div>
             <h2 className="title-actualidad">
-                ASUNTOS UNIVERSITARIOS
+                Mi universidad, mi ciudad 
             </h2>
             <p className='description-actualidad'>
             Esta sección es una ventana al vibrante entrelazamiento entre la vida estudiantil y el pulso urbano. Desde eventos académicos destacados hasta iniciativas comunitarias, esta sección captura la esencia de cómo las instituciones educativas y sus entornos se complementan, impactando tanto a estudiantes como a residentes locales.
