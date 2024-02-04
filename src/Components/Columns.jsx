@@ -48,7 +48,7 @@ const Columns = () => {
             </button>
 
             <button className='outside-btn' onClick={() => navigateAsuntos('/ASUNTOS')} >
-                <img onClick={() => navigateAsuntos('/ASUNTOS')} src="https://photo-data-base.netlify.app/assets/escuela.28c8ae9e.jpg" />
+                <img onClick={() => navigateAsuntos('/ASUNTOS')} src="https://photo-data-base.netlify.app/assets/city.850437a4.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Mi universidad, mi ciudad</h3>
             </button>
