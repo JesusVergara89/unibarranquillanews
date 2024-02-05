@@ -11,6 +11,7 @@ import Vida from './Components/Vida'
 import Eventos from './Components/Eventos'
 import Entrevista from './Components/Entrevista'
 import Workus from './Components/Workus'
+import Tecnologia from './Components/Tecnologia'
 
 
 
@@ -49,7 +50,10 @@ function Blog() {
           element={<Entrevista />}
         />
         <Route path='/OPENPOSSITIONS'
-          element={<Workus/>}
+          element={<Workus />}
+        />
+        <Route path='/TECNOLOGIA'
+          element={<Tecnologia/>}
         />
       </Routes>
 

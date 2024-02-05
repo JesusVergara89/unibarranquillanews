@@ -24,11 +24,11 @@
 }
 
 .Header a {
-all: unset;
+  all: unset;
 }
 
 .Header h1 {
-  font-size: 1.5rem;  
+  font-size: 1.5rem;
   color: var(--color_1);
 }
 
@@ -56,33 +56,46 @@ all: unset;
   background-color: var(--color_7);
 }
 
-.menu button:nth-child(2){
+.menu button:nth-child(2) {
   display: none;
 }
-.menu button:nth-child(3){
+
+.menu button:nth-child(3) {
   display: none;
 }
-.menu button:nth-child(4){
+
+.menu button:nth-child(4) {
   display: none;
 }
-.menu button:nth-child(5){
+
+.menu button:nth-child(5) {
   display: none;
 }
-.menu button:nth-child(6){
+
+.menu button:nth-child(6) {
   display: none;
 }
-.menu button:nth-child(7){
+
+.menu button:nth-child(7) {
   display: none;
 }
-.menu button:nth-child(8){
+
+.menu button:nth-child(8) {
   display: none;
 }
-.menu button:nth-child(9){
+
+.menu button:nth-child(9) {
   display: none;
 }
-.menu button:nth-child(10){
+
+.menu button:nth-child(10) {
   display: none;
 }
+
+.menu button:nth-child(11) {
+  display: none;
+}
+
 .Header button {
   all: unset;
   width: 50px;
@@ -95,10 +108,11 @@ all: unset;
   transform: scale(1.1);
 }
 
-@media ( width < 650px ){
+@media (width < 650px) {
   .name_background {
     display: none;
   }
+
   .menu {
     width: 60px;
     height: auto;
@@ -108,6 +122,7 @@ all: unset;
     color: var(--color_1);
     background-color: var(--color_7);
   }
+
   .Header button {
     all: unset;
     width: 50px;

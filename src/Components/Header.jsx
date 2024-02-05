@@ -41,6 +41,7 @@ const Header = () => {
         <button><Link to='/EVENTO'>EVENTO</Link></button>
         <button><Link to='/ENTREVISTA'>ENTREVISTA</Link></button>
         <button><Link to='/OPENPOSSITIONS'>WORKS</Link></button>
+        <button><Link to='/TECNOLOGIA'>TECNOLOGIA</Link></button>
       </div>
     </header>
   );
