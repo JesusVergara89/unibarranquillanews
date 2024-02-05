@@ -1,14 +1,12 @@
-import React from 'react';
-import useCulture from '../Hooks/UseCulture';
-import Loading from './Loading';
+import React from 'react'
+import useCulture from '../Hooks/UseCulture'
+import Loading from './Loading'
 
-/**
- * Component for displaying travel-related content.
- * @returns {JSX.Element} Travel component JSX
- */
 const Travel = () => {
-  const culture = useCulture();
-  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/TRAVEL';
+
+  const culture = useCulture()
+
+  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/TRAVEL'
 
   return (
     <article className="engineering_section">
@@ -17,7 +15,7 @@ const Travel = () => {
         CULTURA Y ARTE
       </h2>
       <p className='description-actualidad'>
-        Explore the cultural and artistic scene in Unibarranquilla. Reviews of events, interviews with local and prominent artists, as well as coverage of cultural activities organized by the university.
+        Explora la escena cultural y artística en Unibarranquilla. Reseñas de eventos, entrevistas con artistas locales y destacados, así como la cobertura de actividades culturales organizadas por la universidad.
       </p>
 
       {culture ? (
@@ -29,16 +27,16 @@ const Travel = () => {
                 <h3 className="Card-actualidad-title">{cult.Title}</h3>
                 <img className='img-actualidad' src={cult.Pic} alt="" />
                 <h4 className="Card-actualidad-Editor">{`By ${cult.Editor}`}</h4>
-
+                
                 <p className="Card-actualidad-body">
                   {cult.Body.split('\n').map((line, index) => (
                     <p key={index}>{line}</p>
                   ))}
                 </p>
                 <h5 className="Card-actualidad-Date">{cult.Date}</h5>
-                <button className="Card-link"> <a href={cult.Link} target="_blank" rel="noopener noreferrer">View more</a> </button>
+                <button className="Card-link"> <a href={cult.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                 <div className='Card-social'>
-                  <h5>Share:</h5>
+                  <h5>Comparte:</h5>
                   <div className="Card-social-btn">
                     <button
                       onClick={() => {
@@ -49,7 +47,7 @@ const Travel = () => {
                     <button
                       onClick={() => {
                         const truncatedText = cult.Title.slice(0, 50);
-                        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(truncatedText)}&url=${currentURL}`;
+                        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(truncatedText)}&url=https://bit.ly/3SzyQkU`;
                         window.open(url, '_blank');
                       }}
                     ><i className='bx bxl-twitter' ></i></button>
@@ -62,7 +60,7 @@ const Travel = () => {
         <Loading />
       )}
     </article>
-  );
-};
+  )
+}
 
-export default Travel;
+export default Travel
