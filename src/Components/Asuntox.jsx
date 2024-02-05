@@ -2,23 +2,31 @@ import React from 'react'
 import useAsuntos from '../Hooks/useAsuntos'
 import Loading from './Loading'
 
+/**
+ * Functional component representing the 'Asuntox' section.
+ * It displays news articles related to university life and city events.
+ */
 const Asuntox = () => {
-
+    // Custom hook to fetch news articles
     const asuntos = useAsuntos()
+    // Current URL of the page
     const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/ASUNTOS'
+
     return (
         <article className="engineering_section">
             <div className="visualization-div-header"></div>
             <h2 className="title-actualidad">
-                Mi universidad, mi ciudad 
+                Mi universidad, mi ciudad
             </h2>
             <p className='description-actualidad'>
-            Esta sección es una ventana al vibrante entrelazamiento entre la vida estudiantil y el pulso urbano. Desde eventos académicos destacados hasta iniciativas comunitarias, esta sección captura la esencia de cómo las instituciones educativas y sus entornos se complementan, impactando tanto a estudiantes como a residentes locales.
+                This section provides insight into the vibrant interplay between student life and urban pulse. From notable academic events to community initiatives, this section captures the essence of how educational institutions and their environments complement each other, impacting both students and local residents.
             </p>
 
+            {/* Display news articles if available, otherwise show loading indicator */}
             {asuntos ? (
                 <div className="body-actualidad">
                     {
+                        // Map through news articles
                         asuntos?.map((asunto, i) => (
                             <div className="Card-actualidad" key={i}>
                                 <div className="news-number">{`News #${i + 1}`}</div>
@@ -26,26 +34,31 @@ const Asuntox = () => {
                                 <img className='img-actualidad' src={asunto.Pic} alt="" />
                                 <h4 className="Card-actualidad-Editor">{`By ${asunto.Editor}`}</h4>
                                 <p className="Card-actualidad-body">
-                                    
+                                    {/* Split body content by newline and display */}
                                     {asunto.Body.split('\n').map((line, index) => (
                                         <p key={index}>{line}</p>
                                     ))}
                                 </p>
                                 <h5 className="Card-actualidad-Date">{asunto.Date}</h5>
+                                {/* Button to view full article */}
                                 <button className="Card-link"> <a href={asunto.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
+                                {/* Social sharing options */}
                                 <div className='Card-social'>
                                     <h5>Comparte:</h5>
                                     <div className="Card-social-btn">
+                                        {/* Share on Facebook */}
                                         <button
                                             onClick={() => {
                                                 const url = `https://www.facebook.com/sharer/sharer.php?u=${currentURL}`;
                                                 window.open(url, '_blank');
                                             }}
                                         ><i className='bx bxl-facebook-square'></i></button>
+                                        {/* Share on Twitter */}
                                         <button
                                             onClick={() => {
+                                                // Truncate title for Twitter sharing
                                                 const truncatedText = asunto.Title.slice(0, 50);
-                                                const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(truncatedText)}&url=https://bit.ly/3SzyQkU`;
+                                                const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(truncatedText)}&url=${currentURL}`;
                                                 window.open(url, '_blank');
                                             }}
                                         ><i className='bx bxl-twitter' ></i></button>
@@ -55,6 +68,7 @@ const Asuntox = () => {
                         ))}
                 </div>
             ) : (
+                // Show loading indicator if news articles are being fetched
                 <Loading />
             )}
         </article>
