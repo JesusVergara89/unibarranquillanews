@@ -1,10 +1,16 @@
-import React from 'react'
-import '../Styles/Header.css'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../Styles/Header.css';
 
+/**
+ * Header component represents the top navigation bar of the website.
+ * It contains the logo and menu items for different sections of the website.
+ * @returns {JSX.Element} Header component
+ */
 const Header = () => {
   return (
     <header className='Header'>
+      {/* Logo section */}
       <div className="name_background">
         <span className='L1'><h1>U</h1></span>
         <span className='L2'><h1>N</h1></span>
@@ -17,12 +23,14 @@ const Header = () => {
         <span className='L9'><h1>N</h1></span>
         <span className='L10'><h1>Q</h1></span>
         <span className='L11'><h1>U</h1></span>
-        <span className='L12'><h1>I</h1></span>        
+        <span className='L12'><h1>I</h1></span>
         <span className='L13'><h1>L</h1></span>
-        <span className='L14'><h1>L</h1></span>        
+        <span className='L14'><h1>L</h1></span>
         <span className='L15'><h1>A</h1></span>
       </div>
+      {/* Menu section */}
       <div className="menu">
+        {/* Navigation buttons */}
         <button><Link to='/'>HOME</Link></button>
         <button><Link to='/ENGINEERING'>ENGINEERING</Link></button>
         <button><Link to='/TRAVEL'>TRAVEL</Link></button>
@@ -35,7 +43,7 @@ const Header = () => {
         <button><Link to='/OPENPOSSITIONS'>WORKS</Link></button>
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;
