@@ -20,7 +20,7 @@ const Literature = () => {
         UNIVERSITY SPORTS
       </h2>
       <p className='description-actualidad'>
-        Follow closely the achievements and performances of our sports teams. Learn about sports events, interviews with standout athletes, and analysis of university championships.
+      Sigue de cerca los logros y desempeños de nuestros equipos deportivos. Infórmate sobre eventos deportivos, entrevistas con atletas destacados y análisis de campeonatos universitarios.
       </p>
 
       {/* Check if sports data is available */}

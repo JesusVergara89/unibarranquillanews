@@ -19,7 +19,7 @@ const Asuntox = () => {
                 Mi universidad, mi ciudad
             </h2>
             <p className='description-actualidad'>
-                This section provides insight into the vibrant interplay between student life and urban pulse. From notable academic events to community initiatives, this section captures the essence of how educational institutions and their environments complement each other, impacting both students and local residents.
+            Esta sección ofrece una visión del vibrante intercambio entre la vida estudiantil y el pulso urbano. Desde destacados eventos académicos hasta iniciativas comunitarias, esta sección captura la esencia de cómo las instituciones educativas y sus entornos se complementan mutuamente, impactando tanto a los estudiantes como a los residentes locales.
             </p>
 
             {/* Display news articles if available, otherwise show loading indicator */}

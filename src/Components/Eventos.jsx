@@ -19,7 +19,7 @@ const Eventos = () => {
         EVENTOS Y ACTIVIDADES
       </h2>
       <p className='description-actualidad'>
-        Stay informed about upcoming events, conferences, seminars, and social activities that enrich our university life. Don't miss any opportunity to participate and be an active part of the community.
+      Mantente informado sobre los próximos eventos, conferencias, seminarios y actividades sociales que enriquecen nuestra vida universitaria. No te pierdas ninguna oportunidad de participar y ser una parte activa de la comunidad.
       </p>
 
       {/* Display events if available, otherwise show loading indicator */}

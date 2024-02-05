@@ -19,7 +19,7 @@ const Entrevista = () => {
         ENTREVISTAS Y PERFILES
       </h2>
       <p className='description-actualidad'>
-        Get to know the leaders, academics, and personalities who are part of our university community. Discover their stories, experiences, and contributions to higher education.
+      Conoce a los líderes, académicos y personalidades que forman parte de nuestra comunidad universitaria. Descubre sus historias, experiencias y contribuciones a la educación superior.
       </p>
 
       {/* Display interviews if available, otherwise show loading indicator */}
