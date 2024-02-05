@@ -17,7 +17,76 @@
   <!-- Script to import the main React component -->
   <script type="module" src="/src/main.jsx"></script>
 
+  <!-- Script to disable right-click and specific keyboard shortcuts -->
+  <script>
+    // Function to disable right-click menu in Internet Explorer
+    function disableIE() {
+      if (document.all) {
+        return false;
+      }
+    }
+    // Function to disable right-click menu in Netscape
+    function disableNS(e) {
+      if (document.layers || (document.getElementById && !document.all)) {
+        if (e.which == 2 || e.which == 3) {
+          return false;
+        }
+      }
+    }
+    // Attach event listeners based on browser type
+    if (document.layers) {
+      document.captureEvents(Event.MOUSEDOWN);
+      document.onmousedown = disableNS;
+    } else {
+      document.onmouseup = disableNS;
+      document.oncontextmenu = disableIE;
+    }
+    // Disable context menu globally
+    document.oncontextmenu = new Function("return false");
+  </script>
 
+  <!-- Script to disable context menu and specific keyboard shortcuts -->
+  <script language="JavaScript">
+    window.onload = function () {
+      // Disable context menu on window load
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      }, false);
+      // Disable specific keyboard shortcuts
+      document.addEventListener("keydown", function (e) {
+        // "I" key
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+          disabledEvent(e);
+        }
+        // "J" key
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+          disabledEvent(e);
+        }
+        // "S" key + macOS
+        if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+          disabledEvent(e);
+        }
+        // "U" key
+        if (e.ctrlKey && e.keyCode == 85) {
+          disabledEvent(e);
+        }
+        // "F12" key
+        if (event.keyCode == 123) {
+          disabledEvent(e);
+        }
+      }, false);
+      // Function to disable events
+      function disabledEvent(e) {
+        if (e.stopPropagation) {
+          e.stopPropagation();
+        } else if (window.event) {
+          window.event.cancelBubble = true;
+        }
+        e.preventDefault();
+        return false;
+      }
+    }
+  </script>
 
 </body>
 
