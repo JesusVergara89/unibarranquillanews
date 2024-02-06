@@ -50,30 +50,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    border: 0.01rem solid var(--color_7);
+    justify-content: center;
     overflow: hidden;
     position: relative;
+    border: 0.01rem solid var(--color_4);
 }
 
 .recent-news-card:hover {
     cursor: pointer;
-    box-shadow: 0 0 5px var(--color_4);
+    box-shadow: 0px 0px 10px  var(--color_4);
 }
 
 .recent-news-title {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     margin-bottom: 4px;
     font-weight: bold;
     text-align: left;
 }
 
 .recent-news-img {
-    width: 100%;
+    width: 50%;
     height: auto;
     border-radius: 8px;
-    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
-    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    
+    margin-top: 10px;
 }
 
 .recen-btn {

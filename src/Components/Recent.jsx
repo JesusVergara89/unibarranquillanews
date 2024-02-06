@@ -55,7 +55,7 @@ const Recent = () => {
             {
                 breakpoint: 400,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                     slidesToScroll: 1,
                 }
             }
@@ -79,7 +79,7 @@ const Recent = () => {
                 <Slider className="recent-news-slider" {...settings}>
                     {data.map((unit, i) => (
                         <div onClick={() => openUrl(unit.interLink)} className="recent-news-card" key={i}>
-                            <h3 className="recent-news-title">{unit.Title.slice(0, 60)}</h3>
+                            <h3 className="recent-news-title">{unit.Title.slice(0, 100)}</h3>
                             <img src={unit.Pic} alt="" className="recent-news-img" />
                             <button onClick={() => openUrl(unit.interLink)} className="recen-btn">
                                 <a href={unit.interLink} target="_blank" rel="noopener noreferrer">ver</a>
