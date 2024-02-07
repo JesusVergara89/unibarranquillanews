@@ -9,14 +9,10 @@ import useResearch from '../Hooks/useResearch';
 import useVida from '../Hooks/useVida';
 import useAsuntos from '../Hooks/useAsuntos';
 import '../Styles/Recen.css';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import useTecnologia from '../Hooks/useTecnologia';
-
+import Carrusel from './Carrusel';
 const Recent = () => {
     const [data, setData] = useState(null);
-
     const actualidad = useActualidad();
     const entrevista = useEntrevista();
     const eventos = useEventos();
@@ -26,41 +22,6 @@ const Recent = () => {
     const vidas = useVida();
     const asuntos = useAsuntos();
     const tecnologias = useTecnologia()
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        vertical: false,
-        verticalSwiping: false,
-        centerMode: true,
-        centerPadding: '10px',
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                }
-            },
-            {
-                breakpoint: 400,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                }
-            }
-        ]
-    };
 
     const openUrl = (url) => {
         window.open(url, '_blank');
@@ -76,21 +37,10 @@ const Recent = () => {
         <article className="Recent-news">
             <h2>Artículos más recientes</h2>
             {data ? (
-                <Slider className="recent-news-slider" {...settings}>
-                    {data.map((unit, i) => (
-                        <div onClick={() => openUrl(unit.interLink)} className="recent-news-card" key={i}>
-                            <h3 className="recent-news-title">{unit.Title.slice(0, 80)}</h3>
-                            <img src={unit.Pic} alt="" className="recent-news-img" />
-                            <button onClick={() => openUrl(unit.interLink)} className="recen-btn">
-                                <a href={unit.interLink} target="_blank" rel="noopener noreferrer">ver</a>
-                            </button>
-                        </div>
-                    ))}
-                </Slider>
+                <Carrusel data={data} />
             ) : (
                 <Loading />
             )}
-
             <h4>
                 Nuestras secciones
             </h4>
