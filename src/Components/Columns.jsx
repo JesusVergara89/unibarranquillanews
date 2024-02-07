@@ -28,7 +28,7 @@ const Columns = () => {
             <button className='outside-btn' onClick={() => navigateEngi('/ENGINEERING')}  >
                 <img onClick={() => navigateEngi('/ENGINEERING')} src="https://photo-data-base.netlify.app/assets/people.e4fef31b.jpg" />
                 <h2 >Ver más</h2>
-                <h3>Actualidad Universitaria</h3>
+                <h3>Actualidad</h3>
             </button>
 
             <button id='outside-btn' onClick={() => navigateTravel('/TRAVEL')}  >
@@ -40,7 +40,7 @@ const Columns = () => {
             <button className='outside-btn' onClick={() => navigateLiterature('/LITERATURE')} >
                 <img onClick={() => navigateLiterature('/LITERATURE')} src="https://photo-data-base.netlify.app/assets/deporte.01eed798.jpg" />
                 <h2 >Ver más</h2>
-                <h3>Deportes Universitarios</h3>
+                <h3>Deportes</h3>
             </button>
 
             <button className='outside-btn' onClick={() => navigateExperience('/EXPERIENCE')} >

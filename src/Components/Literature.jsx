@@ -17,10 +17,10 @@ const Literature = () => {
     <article className="engineering_section">
       <div className="visualization-div-header"></div>
       <h2 className="title-actualidad">
-        DEPORTES UNIVERSITARIOS
+        DEPORTES
       </h2>
       <p className='description-actualidad'>
-      Sigue de cerca los logros y desempeños de nuestros equipos deportivos. Infórmate sobre eventos deportivos, entrevistas con atletas destacados y análisis de campeonatos universitarios.
+      Sigue de cerca los logros y desempeños de nuestros equipos deportivos. Infórmate sobre eventos deportivos en la ciudad y el pais, entrevistas con atletas destacados y análisis de campeonatos.
       </p>
 
       {/* Check if sports data is available */}
