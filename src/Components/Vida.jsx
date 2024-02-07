@@ -45,7 +45,7 @@ const Vida = () => {
                     <button
                       onClick={() => {
                         const truncatedText = vida.Title.slice(0, 50);
-                        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(truncatedText)}&url=https://bit.ly/3SzyQkU`;
+                        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(truncatedText)}&url=${currentURL}`;
                         window.open(url, '_blank');
                       }}
                     ><i className='bx bxl-twitter' ></i></button>

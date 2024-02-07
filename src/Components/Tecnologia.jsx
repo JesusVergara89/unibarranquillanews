@@ -6,6 +6,8 @@ const Tecnologia = () => {
 
     const tecnologias = useTecnologia()
 
+    const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/TECNOLOGIA'
+
     return (
         <article className="engineering_section">
             <div className="visualization-div-header"></div>
@@ -49,7 +51,7 @@ const Tecnologia = () => {
                                     <button
                                         onClick={() => {
                                             const truncatedText = tech.Title.slice(0, 50);
-                                            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(truncatedText)}&url=https://bit.ly/3SzyQkU`;
+                                            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(truncatedText)}&url=${currentURL}`;
                                             window.open(url, '_blank');
                                         }}
                                     ><i className='bx bxl-twitter' ></i></button>
