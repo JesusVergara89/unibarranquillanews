@@ -15,10 +15,10 @@ const Engineering = () => {
     <article className="engineering_section">
       <div className="visualization-div-header"></div>
       <h2 className="title-actualidad">
-        ACTUALIDAD UNIVERSITARIA
+        ACTUALIDAD
       </h2>
       <p className='description-actualidad'>
-      Mantente informado sobre las últimas noticias, eventos y desarrollos en nuestra universidad. Desde importantes anuncios hasta destacados logros de nuestros estudiantes y profesores.
+      Mantente informado sobre las últimas noticias de nuestra universidad y del mundo. Desde importantes anuncios hasta destacados logros de nuestros estudiantes y profesores.
       </p>
 
       {/* Display updates if available, otherwise show loading indicator */}
