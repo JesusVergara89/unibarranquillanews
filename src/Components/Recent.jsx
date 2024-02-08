@@ -22,11 +22,7 @@ const Recent = () => {
     const vidas = useVida();
     const asuntos = useAsuntos();
     const tecnologias = useTecnologia()
-
-    const openUrl = (url) => {
-        window.open(url, '_blank');
-    };
-
+    
     useEffect(() => {
         if (actualidad && asuntos && entrevista && eventos && researchs && culture && sports && vidas && tecnologias) {
             setData([actualidad[0], asuntos[0], entrevista[0], eventos[0], researchs[0], culture[0], sports[0], vidas[0], tecnologias[0]]);
