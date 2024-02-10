@@ -8,6 +8,12 @@ import '../Styles/Header.css';
  * @returns {JSX.Element} Header component
  */
 const Header = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Desplazamiento suave
+    });
+  };
   return (
     <header className='Header'>
       {/* Logo section */}
@@ -31,7 +37,7 @@ const Header = () => {
       {/* Menu section */}
       <div className="menu">
         {/* Navigation buttons */}
-        <button><Link to='/'>HOME</Link></button>
+        <button onClick={scrollToTop} ><Link to='/'>HOME</Link></button>
         <button><Link to='/ENGINEERING'>ENGINEERING</Link></button>
         <button><Link to='/TRAVEL'>TRAVEL</Link></button>
         <button><Link to='/EXPERIENCE'>EXPERIENCE</Link></button>
@@ -41,8 +47,8 @@ const Header = () => {
         <button><Link to='/EVENTO'>EVENTO</Link></button>
         <button><Link to='/ENTREVISTA'>ENTREVISTA</Link></button>
         <button><Link to='/OPENPOSSITIONS'>WORKS</Link></button>
-        <button><Link to='/TECNOLOGIA'>TECNOLOGIA</Link></button>
-      </div>
+        <button><Link to='/TECNOLOGIA'>TECNOLOGIA</Link></button>    
+      </div> 
     </header>
   );
 }
