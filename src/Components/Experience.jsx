@@ -14,9 +14,12 @@ const Experience = () => {
   // Define current URL for sharing purposes
   const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/EXPERIENCE';
 
+  const dataTitle = 'INVESTIGACIÓN Y DESARROLLO'
+  const dataDescription = 'Sumérgete en el vibrante tejido urbano donde convergen la vida estudiantil y la innovación académica. Explora los hallazgos más recientes y los proyectos pioneros desarrollados por nuestros destacados académicos y estudiantes. Adéntrate en las contribuciones que nuestra universidad ofrece al conocimiento y al progreso científico en el bullicioso entorno de la ciudad.'
+
   return (
     <article className="engineering_section">
-      <CardNoticia datataToShare={researchs} currentURL={currentURL} />
+      <CardNoticia datataToShare={researchs} currentURL={currentURL} dataTitle={dataTitle} dataDescription={dataDescription} />
     </article>
   );
 }

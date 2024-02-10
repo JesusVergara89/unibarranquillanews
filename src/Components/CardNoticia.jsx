@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Loading from './Loading';
 
-const CardNoticia = ({datataToShare, currentURL}) => {
+const CardNoticia = ({datataToShare, currentURL, dataTitle, dataDescription}) => {
     const [paginaActual, setPaginaActual] = useState(1);
     const elementosPorPagina = 3; 
 
@@ -15,9 +15,9 @@ const CardNoticia = ({datataToShare, currentURL}) => {
     return (
         <article className="engineering_section">
             <div className="visualization-div-header"></div>
-            <h2 className="title-actualidad">ACTUALIDAD</h2>
+            <h2 className="title-actualidad">{dataTitle}</h2>
             <p className='description-actualidad'>
-                Mantente informado sobre las últimas noticias de nuestra universidad y del mundo. Desde importantes anuncios hasta destacados logros de nuestros estudiantes y profesores.
+                {dataDescription}
             </p>
 
             {datataToShare ? (

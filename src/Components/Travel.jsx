@@ -1,6 +1,6 @@
 import React from 'react'
 import useCulture from '../Hooks/UseCulture'
-import Loading from './Loading'
+import CardNoticia from './CardNoticia'
 
 const Travel = () => {
 
@@ -8,57 +8,12 @@ const Travel = () => {
 
   const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/TRAVEL'
 
+  const dataTitle = 'CULTURA Y ARTE'
+  const dataDescription = 'Explora la escena cultural y artística en Unibarranquilla. Reseñas de eventos, entrevistas con artistas locales y destacados, así como la cobertura de actividades culturales organizadas por la universidad.'
+
   return (
     <article className="engineering_section">
-      <div className="visualization-div-header"></div>
-      <h2 className="title-actualidad">
-        CULTURA Y ARTE
-      </h2>
-      <p className='description-actualidad'>
-        Explora la escena cultural y artística en Unibarranquilla. Reseñas de eventos, entrevistas con artistas locales y destacados, así como la cobertura de actividades culturales organizadas por la universidad.
-      </p>
-
-      {culture ? (
-        <div className="body-actualidad">
-          {
-            culture?.map((cult, i) => (
-              <div className="Card-actualidad" key={cult.id}>
-                <div className="news-number">{`News #${i + 1}`}</div>
-                <h3 className="Card-actualidad-title">{cult.Title}</h3>
-                <img className='img-actualidad' src={cult.Pic} alt="" />
-                <h4 className="Card-actualidad-Editor">{`By ${cult.Editor}`}</h4>
-                
-                <p className="Card-actualidad-body">
-                  {cult.Body.split('\n').map((line, index) => (
-                    <p key={index}>{line}</p>
-                  ))}
-                </p>
-                <h5 className="Card-actualidad-Date">{cult.Date}</h5>
-                <button className="Card-link"> <a href={cult.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
-                <div className='Card-social'>
-                  <h5>Comparte:</h5>
-                  <div className="Card-social-btn">
-                    <button
-                      onClick={() => {
-                        const url = `https://www.facebook.com/sharer/sharer.php?u=${currentURL}`;
-                        window.open(url, '_blank');
-                      }}
-                    ><i className='bx bxl-facebook-square'></i></button>
-                    <button
-                      onClick={() => {
-                        const truncatedText = cult.Title.slice(0, 50);
-                        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(truncatedText)}&url=${currentURL}`;
-                        window.open(url, '_blank');
-                      }}
-                    ><i className='bx bxl-twitter' ></i></button>
-                  </div>
-                </div>
-              </div>
-            ))}
-        </div>
-      ) : (
-        <Loading />
-      )}
+      <CardNoticia datataToShare={culture} currentURL={currentURL} dataTitle={dataTitle} dataDescription={dataDescription} />
     </article>
   )
 }

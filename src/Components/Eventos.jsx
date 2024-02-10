@@ -12,9 +12,12 @@ const Eventos = () => {
   // Current URL of the page
   const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/EVENTO'
 
+  const dataTitle = 'EVENTOS'
+  const dataDescription = 'Entérate de los eventos próximos, conferencias, seminarios y actividades sociales que enriquecen nuestra vida universitaria y de la ciudad. No te pierdas ninguna oportunidad de participar y ser parte activa de la comunidad.'
+
   return (
     <article className="engineering_section">
-      <CardNoticia datataToShare={eventos} currentURL={currentURL} />
+      <CardNoticia datataToShare={eventos} currentURL={currentURL} dataTitle={dataTitle} dataDescription={dataDescription} />
     </article>
   )
 }
