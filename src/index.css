@@ -308,3 +308,35 @@ a{
     margin: 0;
   }
 }
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  width: 100px;
+  height: 30px;
+  background-color: var(--color_4);
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.current-page {
+  width: 150px;
+  height: 30px;
+  text-align: center;
+}
+
+.pagination-controls button:disabled {
+  background-color: var(--color_7);
+  cursor: not-allowed;
+}

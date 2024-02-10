@@ -1,33 +1,46 @@
-import useActualidad from '../Hooks/useActualidad'
-import Loading from './Loading'
+import React, { useState } from 'react';
+import useActualidad from '../Hooks/useActualidad';
+import Loading from './Loading';
 
-/**
- * Functional component representing the Engineering section of the blog.
- * It displays updates, news, and developments related to university life.
- */
 const Engineering = () => {
-  // Custom hook to fetch updates
-  const update = useActualidad()
-  // Current URL of the page
-  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/ENGINEERING'
+  const [paginaActual, setPaginaActual] = useState(1);
+  const elementosPorPagina = 3; // Cambia esto al número deseado de elementos por página
+
+  const update = useActualidad();
+  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/ENGINEERING';
+
+  // Calcular los índices de inicio y fin de los elementos a mostrar en la página actual
+  const indiceInicio = (paginaActual - 1) * elementosPorPagina;
+  const indiceFinal = paginaActual * elementosPorPagina;
+
+  // Manejar el cambio de página
+  const cambiarPagina = (nuevaPagina) => {
+    setPaginaActual(nuevaPagina);
+  };
 
   return (
     <article className="engineering_section">
       <div className="visualization-div-header"></div>
-      <h2 className="title-actualidad">
-        ACTUALIDAD
-      </h2>
+      <h2 className="title-actualidad">ACTUALIDAD</h2>
       <p className='description-actualidad'>
-      Mantente informado sobre las últimas noticias de nuestra universidad y del mundo. Desde importantes anuncios hasta destacados logros de nuestros estudiantes y profesores.
+        Mantente informado sobre las últimas noticias de nuestra universidad y del mundo. Desde importantes anuncios hasta destacados logros de nuestros estudiantes y profesores.
       </p>
 
-      {/* Display updates if available, otherwise show loading indicator */}
       {update ? (
         <div className="body-actualidad">
-          {/* Map through updates */}
-          {update?.map((news, i) => (
+          <div className="pagination-controls">
+            <button onClick={() => cambiarPagina(paginaActual - 1)} disabled={paginaActual === 1}>
+              Anterior
+            </button>
+            <h2 className='current-page'>{`Página ${paginaActual}`}</h2>
+            <button onClick={() => cambiarPagina(paginaActual + 1)} disabled={indiceFinal >= update.length}>
+              Siguiente
+            </button>
+          </div>
+          {/* Mapear solo los elementos correspondientes a la página actual */}
+          {update.slice(indiceInicio, indiceFinal).map((news, i) => (
             <div className="Card-actualidad" key={i}>
-              <div className="news-number">{`News #${i + 1}`}</div>
+              <div className="news-number">{`News #${indiceInicio + i + 1}`}</div>
               <h3 className="Card-actualidad-title">{news.Title}</h3>
               <img className='img-actualidad' src={news.Pic} alt="" />
               <h4 className="Card-actualidad-Editor">{`By ${news.Editor}`}</h4>
@@ -65,13 +78,23 @@ const Engineering = () => {
               </div>
             </div>
           ))}
+
+          {/* Controles de paginación */}
+          <div className="pagination-controls">
+            <button onClick={() => cambiarPagina(paginaActual - 1)} disabled={paginaActual === 1}>
+              Anterior
+            </button>
+            <h2 className='current-page'>{`Página ${paginaActual}`}</h2>
+            <button onClick={() => cambiarPagina(paginaActual + 1)} disabled={indiceFinal >= update.length}>
+              Siguiente
+            </button>
+          </div>
         </div>
       ) : (
-        // Show loading indicator if updates are being fetched
         <Loading />
       )}
     </article>
-  )
-}
+  );
+};
 
-export default Engineering
+export default Engineering;
