@@ -12,6 +12,7 @@ import Eventos from './Components/Eventos'
 import Entrevista from './Components/Entrevista'
 import Workus from './Components/Workus'
 import Tecnologia from './Components/Tecnologia'
+import NotFound from './Components/NotFound'
 
 
 
@@ -55,6 +56,7 @@ function Blog() {
         <Route path='/TECNOLOGIA'
           element={<Tecnologia/>}
         />
+         <Route path="*" element={<NotFound />} />
       </Routes>
 
     </div>
