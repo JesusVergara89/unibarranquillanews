@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import useAsuntos from '../Hooks/useAsuntos';
 import CardNoticia from './CardNoticia';
 
@@ -7,7 +8,17 @@ const Asuntox = () => {
 
     const dataTitle = 'MI UNIVERISIDAD, MI CIUDAD'
     const dataDescription = 'Aquí te sumergimos en la vida estudiantil y el dinamismo urbano que define nuestra comunidad. Desde eventos académicos hasta iniciativas comunitarias, descubre cómo nuestra universidad y la ciudad se entrelazan para enriquecer nuestra experiencia y dejar una marca positiva en nuestra comunidad.'
-
+    
+    useEffect(()=>{
+        scrollToTop()
+    },[])
+    
+    const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth' 
+        });
+    };
     return (
         <article className="engineering_section">
             <CardNoticia datataToShare={asuntos} currentURL={currentURL} dataTitle={dataTitle} dataDescription={dataDescription} />

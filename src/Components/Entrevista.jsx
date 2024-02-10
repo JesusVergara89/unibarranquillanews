@@ -8,6 +8,16 @@ const Entrevista = () => {
   const dataTitle = 'ENTREVISTAS Y PERFILES'
   const dataDescription = 'Conoce a fondo a los líderes, académicos y personalidades que forman parte de nuestra ciudad, universidad y pais. Descubre sus historias, experiencias y contribuciones a la educación superior.'
 
+  useEffect(() => {
+    scrollToTop()
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
   return (
     <article className="engineering_section">
       <CardNoticia datataToShare={entrevista} currentURL={currentURL} dataTitle={dataTitle} dataDescription={dataDescription} />

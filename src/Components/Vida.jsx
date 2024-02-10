@@ -10,6 +10,16 @@ const Vida = () => {
 
   const dataTitle = 'VIDA ESTUDIANTIL'
   const dataDescription = 'Explora la experiencia estudiantil en Unibarranquilla. Desde consejos prácticos hasta perfiles de estudiantes destacados, te ofrecemos una visión completa de la vida en el campus.'
+  useEffect(() => {
+    scrollToTop()
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
   return (
     <article className="engineering_section">
       <CardNoticia datataToShare={vidas} currentURL={currentURL} dataTitle={dataTitle} dataDescription={dataDescription} />
