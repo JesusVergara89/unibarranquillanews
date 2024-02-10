@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import useEntrevista from '../Hooks/useEntrevista';
 import CardNoticia from './CardNoticia';
 

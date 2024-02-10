@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useEventos from '../Hooks/useEventos'
 import CardNoticia from './CardNoticia'
 

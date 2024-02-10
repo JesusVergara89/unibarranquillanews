@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useVida from '../Hooks/useVida'
 import Loading from './Loading'
 import CardNoticia from './CardNoticia'

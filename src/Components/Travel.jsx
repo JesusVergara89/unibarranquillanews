@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useCulture from '../Hooks/UseCulture'
 import CardNoticia from './CardNoticia'
 

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useResearch from '../Hooks/useResearch';
-import Loading from './Loading';
 import CardNoticia from './CardNoticia';
 
 /**

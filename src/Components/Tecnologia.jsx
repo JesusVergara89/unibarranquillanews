@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useTecnologia from '../Hooks/useTecnologia';
 import CardNoticia from './CardNoticia';
 
