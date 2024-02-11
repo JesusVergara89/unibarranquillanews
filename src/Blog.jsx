@@ -26,25 +26,25 @@ function Blog() {
         <Route path='/'
           element={<Presentations />}
         />
-        <Route path='/ENGINEERING'
+        <Route path='/ACTUALIDAD'
           element={<Engineering />}
         />
-        <Route path='/TRAVEL'
+        <Route path='/CULTURA'
           element={<Travel />}
         />
-        <Route path='/LITERATURE'
+        <Route path='/DEPORTES'
           element={<Literature />}
         />
-        <Route path='/EXPERIENCE'
+        <Route path='/INVESTIGACION'
           element={<Experience />}
         />
         <Route path='/ASUNTOS'
           element={<Asuntox />}
         />
-        <Route path='/VIDA'
+        <Route path='/VIDAU'
           element={<Vida />}
         />
-        <Route path='/EVENTO'
+        <Route path='/EVENTOS'
           element={<Eventos />}
         />
         <Route path='/ENTREVISTA'

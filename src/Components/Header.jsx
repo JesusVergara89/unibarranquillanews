@@ -38,13 +38,13 @@ const Header = () => {
       <div className="menu">
         {/* Navigation buttons */}
         <button onClick={scrollToTop} ><Link to='/'>HOME</Link></button>
-        <button><Link to='/ENGINEERING'>ENGINEERING</Link></button>
-        <button><Link to='/TRAVEL'>TRAVEL</Link></button>
-        <button><Link to='/EXPERIENCE'>EXPERIENCE</Link></button>
-        <button><Link to='/LITERATURE'>LITERATURE</Link></button>
+        <button><Link to='/ACTUALIDAD'>ENGINEERING</Link></button>
+        <button><Link to='/CULTURA'>TRAVEL</Link></button>
+        <button><Link to='/INVESTIGACION'>EXPERIENCE</Link></button>
+        <button><Link to='/DEPORTES'>LITERATURE</Link></button>
         <button><Link to='/ASUNTOS'>ASUNTOS</Link></button>
-        <button><Link to='/VIDA'>VIDA</Link></button>
-        <button><Link to='/EVENTO'>EVENTO</Link></button>
+        <button><Link to='/VIDAU'>VIDA</Link></button>
+        <button><Link to='/EVENTOS'>EVENTO</Link></button>
         <button><Link to='/ENTREVISTA'>ENTREVISTA</Link></button>
         <button><Link to='/OPENPOSSITIONS'>WORKS</Link></button>
         <button><Link to='/TECNOLOGIA'>TECNOLOGIA</Link></button>    
