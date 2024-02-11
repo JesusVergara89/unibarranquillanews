@@ -6,7 +6,7 @@ import CardNoticia from './CardNoticia'
 const Vida = () => {
 
   const vidas = useVida()
-  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/VIDA'
+  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/VIDAU'
 
   const dataTitle = 'VIDA ESTUDIANTIL'
   const dataDescription = 'Explora la experiencia estudiantil en Unibarranquilla. Desde consejos prácticos hasta perfiles de estudiantes destacados, te ofrecemos una visión completa de la vida en el campus.'

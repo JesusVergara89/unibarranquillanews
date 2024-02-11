@@ -11,7 +11,7 @@ const Literature = () => {
   // Fetch sports data
   const sports = useSport();
   // Current URL of the component
-  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/LITERATURE';
+  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/DEPORTES';
 
   const dataTitle = 'DEPORTES'
   const dataDescription = 'Permanece actualizado sobre los logros y desempeños de nuestros equipos deportivos, tanto a nivel nacional como internacional. Mantente informado sobre eventos deportivos emocionantes, entrevistas con destacados atletas y análisis de campeonatos universitarios y de alto nivel. Sumérgete en el mundo del deporte donde la pasión y la excelencia se entrelazan en cada competición, desde lo local hasta lo global.'
