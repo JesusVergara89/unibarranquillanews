@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useOpen from '../Hooks/useOpen'
 import Loading from './Loading'
 import '../Styles/Workus.css'
 
 const Workus = () => {
     const opens = useOpen()
-    console.log(opens)
+    useEffect(() => {
+        scrollToTop()
+    }, [])
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
     return (
         <article className='work'>
             <div className="visualization-div-header"></div>
