@@ -340,3 +340,22 @@ a{
   background-color: var(--color_7);
   cursor: not-allowed;
 }
+
+.navigate-home {
+  width: 100px;
+  height: 30px;
+  background-color: var(--color_4);
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.navigate-home:hover {
+  background-color: var(--color_7);
+}
