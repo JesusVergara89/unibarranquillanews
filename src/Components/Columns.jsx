@@ -26,25 +26,25 @@ const Columns = () => {
     return (
         <div className="container">
             <button className='outside-btn' onClick={() => navigateEngi('/ENGINEERING')}  >
-                <img onClick={() => navigateEngi('/ENGINEERING')} src="https://photo-data-base.netlify.app/assets/people.e4fef31b.jpg" />
+                <img onClick={() => navigateEngi('/ACTUALIDAD')} src="https://photo-data-base.netlify.app/assets/people.e4fef31b.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Actualidad</h3>
             </button>
 
             <button id='outside-btn' onClick={() => navigateTravel('/TRAVEL')}  >
-                <img onClick={() => navigateTravel('/TRAVEL')} src="https://photo-data-base.netlify.app/assets/arte.a47a54ae.jpg" />
+                <img onClick={() => navigateTravel('/CULTURA')} src="https://photo-data-base.netlify.app/assets/arte.a47a54ae.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Cultura y Arte</h3>
             </button>
 
             <button className='outside-btn' onClick={() => navigateLiterature('/LITERATURE')} >
-                <img onClick={() => navigateLiterature('/LITERATURE')} src="https://photo-data-base.netlify.app/assets/deporte.01eed798.jpg" />
+                <img onClick={() => navigateLiterature('/DEPORTES')} src="https://photo-data-base.netlify.app/assets/deporte.01eed798.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Deportes</h3>
             </button>
 
             <button className='outside-btn' onClick={() => navigateExperience('/EXPERIENCE')} >
-                <img onClick={() => navigateExperience('/EXPERIENCE')} src="https://photo-data-base.netlify.app/assets/microscope.39879e23.jpg" />
+                <img onClick={() => navigateExperience('/INVESTIGACION')} src="https://photo-data-base.netlify.app/assets/microscope.39879e23.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Investigación y Desarrollo</h3>
             </button>
@@ -56,13 +56,13 @@ const Columns = () => {
             </button>
 
             <button className='outside-btn' onClick={() => navigateVida('/VIDA')} >
-                <img onClick={() => navigateVida('/VIDA')} src="https://photo-data-base.netlify.app/assets/estudiantes.1638c5fc.jpg" />
+                <img onClick={() => navigateVida('/VIDAU')} src="https://photo-data-base.netlify.app/assets/estudiantes.1638c5fc.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Vida Estudiantil</h3>
             </button>
 
             <button className='outside-btn' onClick={() => navigateEvento('/EVENTO')} >
-                <img onClick={() => navigateEvento('/EVENTO')} src="https://photo-data-base.netlify.app/assets/evento.99182bf6.jpg" />
+                <img onClick={() => navigateEvento('/EVENTOS')} src="https://photo-data-base.netlify.app/assets/evento.99182bf6.jpg" />
                 <h2 >Ver más</h2>
                 <h3>Eventos y Actividades</h3>
             </button>
