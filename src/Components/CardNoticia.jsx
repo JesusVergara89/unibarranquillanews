@@ -39,12 +39,12 @@ const CardNoticia = ({datataToShare, currentURL, dataTitle, dataDescription}) =>
                             <img className='img-actualidad' src={news.Pic} alt="" />
                             <h4 className="Card-actualidad-Editor">{`By ${news.Editor}`}</h4>
 
-                            <p className="Card-actualidad-body">
+                            <div className="Card-actualidad-body">
                                 {/* Split body content by newline and display */}
                                 {news.Body.split('\n').map((line, index) => (
                                     <p key={index}>{line}</p>
                                 ))}
-                            </p>
+                            </div>
                             <h5 className="Card-actualidad-Date">{news.Date}</h5>
                             {/* Button to view full article */}
                             <button className="Card-link"> <a href={news.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
