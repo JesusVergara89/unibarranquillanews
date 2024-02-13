@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
-import Header from './Components/Header'
-=======
-import React from 'react'
->>>>>>> DeveloperCarr
 import Presentations from './Components/Presentations'
 import { Route, Routes } from 'react-router-dom'
 import Engineering from './Components/Engineering'
@@ -17,16 +12,13 @@ import Entrevista from './Components/Entrevista'
 import Workus from './Components/Workus'
 import Tecnologia from './Components/Tecnologia'
 import NotFound from './Components/NotFound'
-<<<<<<< HEAD
 import Longin from './Components/Longin'
 import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
 import useAccess from './Hooks/useAcces'
 import RoutesProtecteds from './Components/RoutesProtecteds'
-=======
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
 
->>>>>>> DeveloperCarr
 
 
 function Blog() {
@@ -78,15 +70,12 @@ function Blog() {
           element={<Tecnologia />}
         />
         <Route path="*" element={<NotFound />} />
-<<<<<<< HEAD
 
         <Route path='/LOGIN' element={<Longin access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
 
         <Route element={<RoutesProtecteds IsLogged={IsLogged} />}>
           <Route path='/COLLABORATORS' element={<CompanyCollaboratorAccess />} />
         </Route>
-=======
->>>>>>> DeveloperCarr
       </Routes>
 
     </div>

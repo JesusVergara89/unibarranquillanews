@@ -85,89 +85,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-  text-align: center;
-  padding-top: 5px;
-  padding-right: 1px;
-  overflow: hidden;
-  padding-left: 1%;
-  transform: scale(0.5);
-}
-
-.menu {
-  width: 60px;
-  height: auto;
-  text-align: center;
-  margin-right: 30px;
-  padding: 0.1rem;
-  color: var(--color_1);
-  background-color: var(--color_7);
-}
-
-.menu button:nth-child(2) {
-  display: none;
-}
-
-.menu button:nth-child(3) {
-  display: none;
-}
-
-.menu button:nth-child(4) {
-  display: none;
-}
-
-.menu button:nth-child(5) {
-  display: none;
-}
-
-.menu button:nth-child(6) {
-  display: none;
-}
-
-.menu button:nth-child(7) {
-  display: none;
-}
-
-.menu button:nth-child(8) {
-  display: none;
-}
-
-.menu button:nth-child(9) {
-  display: none;
-}
-
-.menu button:nth-child(10) {
-  display: none;
-}
-
-.menu button:nth-child(11) {
-  display: none;
-}
-
-.menu button:nth-child(12) {
-  display: none;
-}
-
-.menu button:nth-child(13) {
-  display: none;
-}
-
-.Header button {
-  all: unset;
-  width: 50px;
-  height: auto;
-}
-
-.Header button:hover {
-  cursor: pointer;
-  text-shadow: 4px 4px 16px var(--color_15);
-  transform: scale(1.1);
-}
-
-@media (width < 650px) {
-  .name_background {
-    display: none;
-=======
   border: none;
   color: black;
   background: transparent;
@@ -181,7 +98,6 @@
     border-radius: 5px;
     transition: all 0.5s;
     transform-origin: left;
->>>>>>> DeveloperCarr
   }
 }
 .Menu_active.on {

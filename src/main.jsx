@@ -2,12 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Blog from './Blog.jsx'
 import './index.css'
-<<<<<<< HEAD
 import store from './store';
 import { Provider } from 'react-redux'
-=======
 import { HashRouter } from 'react-router-dom'
->>>>>>> DeveloperCarr
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
