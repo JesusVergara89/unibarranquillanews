@@ -14,7 +14,6 @@ const CardNoticia = ({datataToShare, currentURL, dataTitle, dataDescription}) =>
     };
     return (
         <article className="engineering_section">
-            <div className="visualization-div-header"></div>
             <h2 className="title-actualidad">{dataTitle}</h2>
             <p className='description-actualidad'>
                 {dataDescription}

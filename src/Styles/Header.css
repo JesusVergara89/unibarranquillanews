@@ -1,43 +1,91 @@
 :root {
-  --color_1: #FFFFFF;
+  --color_1: #ffffff;
   --color_2: #006400;
-  --color_3: #ADD8E6;
-  --color_4: #8B0000;
-  --color_5: #001F3F;
+  --color_3: #add8e6;
+  --color_4: #8b0000;
+  --color_5: #001f3f;
   --color_6: #333333;
   --color_7: #000000;
 }
-
-.Header {
+.Main_header {
   width: 100%;
-  height: 70px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   top: 0;
   position: fixed;
   z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
-
-.Header span {
-  all: unset;
-}
-
-.Header a {
-  all: unset;
-}
-
-.Header h1 {
-  font-size: 1.5rem;
-  color: var(--color_1);
-}
-
-.name_background {
-  width: 240px;
-  height: 30px;
+.Logo {
+  width: 70%;
+  padding: 15px;
   display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Logo h1 {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.option {
+  width: 45%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1.5rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(7px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 300;
+  transition: all 0.3s ease-in-out;
+}
+.option.off {
+  transform: translateX(100%);
+}
+.option.on {
+  transform: translateX(0%);
+}
+.Close {
+  width: 55%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 300;
+}
+.Close.off {
+  transform: translateX(-100%);
+}
+.Close.on {
+  transform: translateX(0%);
+}
+
+.enlace {
+  cursor: pointer;
+}
+
+.Menu_active {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   text-align: center;
   padding-top: 5px;
   padding-right: 1px;
@@ -119,88 +167,75 @@
 @media (width < 650px) {
   .name_background {
     display: none;
+=======
+  border: none;
+  color: black;
+  background: transparent;
+  gap: 0.4rem;
+  margin-right: 15px;
+  border-radius: 5px;
+  div {
+    background-color: black;
+    height: 2px !important;
+    width: 100%;
+    border-radius: 5px;
+    transition: all 0.5s;
+    transform-origin: left;
+>>>>>>> DeveloperCarr
   }
-
-  .menu {
-    width: 60px;
-    height: auto;
+}
+.Menu_active.on {
+  div {
+    background-color: #8b0000;
+  }
+  div:first-child {
+    transform: translate(4px, -4px) rotate(45deg);
+  }
+  div:nth-child(2) {
+    opacity: 0;
+  }
+  div:last-child {
+    transform: translate(4px, 4px) rotate(-45deg);
+  }
+}
+@media (width<=630px) {
+  .enlace {
     text-align: center;
-    margin-left: 30px;
-    padding: 0.1rem;
-    color: var(--color_1);
-    background-color: var(--color_7);
-  }
-
-  .Header button {
-    all: unset;
-    width: 50px;
-    height: auto;
   }
 }
-
-.name_background h1 {
-  margin: 0;
-}
-
-@keyframes fadeInInfinite {
-  0% {
-    opacity: 0;
+@media (width<=370px) {
+  .Menu_active {
+    width: 25px;
+    height: 25px;
   }
-
-  50% {
-    opacity: 1;
+  .Menu_active.on {
+    div:first-child {
+      transform: translate(5px, 0) rotate(45deg);
+    }
+    div:nth-child(2) {
+      opacity: 0;
+    }
+    div:last-child {
+      transform: translate(5px, 0) rotate(-45deg);
+    }
   }
-
-  100% {
-    opacity: 0;
+}
+@media (400px<=width<=570px) {
+  .option {
+    width: 60%;
+    row-gap: 1.2rem;
+  }
+  .Close {
+    width: 40%;
+  }
+}
+@media (width<400px) {
+  .option {
+    width: 80%;
+    row-gap: 0.8rem;
+  }
+  .Close {
+    width: 20%;
   }
 }
 
-/* Aplicar animación a cada letra con retraso */
-.L1 h1 {
-  animation: fadeInInfinite 11s ease-in-out 0s infinite;
-}
-
-.L2 h1 {
-  animation: fadeInInfinite 11s ease-in-out 1s infinite;
-}
-
-.L3 h1 {
-  animation: fadeInInfinite 11s ease-in-out 2s infinite;
-}
-
-.L4 h1 {
-  animation: fadeInInfinite 11s ease-in-out 3s infinite;
-}
-
-.L5 h1 {
-  animation: fadeInInfinite 11s ease-in-out 4s infinite;
-}
-
-.L6 h1 {
-  animation: fadeInInfinite 11s ease-in-out 5s infinite;
-}
-
-.L7 h1 {
-  animation: fadeInInfinite 11s ease-in-out 6s infinite;
-}
-
-.L8 h1 {
-  animation: fadeInInfinite 11s ease-in-out 7s infinite;
-}
-
-.L9 h1 {
-  animation: fadeInInfinite 11s ease-in-out 8s infinite;
-}
-
-.L10 h1 {
-  animation: fadeInInfinite 11s ease-in-out 9s infinite;
-}
-
-.L11 h1 {
-  animation: fadeInInfinite 11s ease-in-out 10s infinite;
-}
-
-.L12 h1 {
-  animation: fadeInInfinite 11s ease-in-out 11s infinite;
-}

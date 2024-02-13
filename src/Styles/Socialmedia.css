@@ -1,13 +1,12 @@
 :root {
-  --color_1: #FFFFFF;
+  --color_1: #ffffff;
   --color_2: #006400;
-  --color_3: #ADD8E6;
-  --color_4: #8B0000;
-  --color_5: #001F3F;
+  --color_3: #add8e6;
+  --color_4: #8b0000;
+  --color_5: #001f3f;
   --color_6: #333333;
   --color_7: #000000;
 }
-
 
 footer {
   width: 100%;
@@ -34,9 +33,22 @@ footer {
 .footer-inter .bx {
   font-size: 28px;
   color: var(--color_7);
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
+.footer-inter svg {
+  width: 23px;
+  height: 23px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: stroke 0.3s ease;
+}
 
-.footer-inter .bx:hover {
-  color: var(--color_4);
+@media (hover: hover) {
+  .footer-inter .bx:hover {
+    color: var(--color_4);
+  }
+  .footer-inter > a:hover:nth-child(3) svg {
+    stroke: var(--color_4);
+  }
 }

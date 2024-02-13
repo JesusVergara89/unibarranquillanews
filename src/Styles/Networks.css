@@ -32,9 +32,15 @@
     color: var(--color_4);
     text-decoration-line: underline;
   }
-
-  .images-reserves a:hover{
-    cursor: pointer;
+  @media (hover: hover) {
+    .images-reserves a:hover{
+      cursor: pointer;
+    }
+    .work-with-us:hover {
+      cursor: pointer;
+      background-color:  var(--color_7);
+      color: var(--color_1);
+    }
   }
 
   .contact-powerby {
@@ -87,10 +93,5 @@
     border-radius: 3px;
     transition: background-color 0.3s ease, color 0.3s ease; 
   }
-  
-  .work-with-us:hover {
-    cursor: pointer;
-    background-color:  var(--color_7);
-    color: var(--color_1);
-  }
+
   

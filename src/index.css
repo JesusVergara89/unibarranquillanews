@@ -3,6 +3,7 @@
   font-weight: normal;
   font-style: normal;
   width: 100%;
+  line-height: 1.5;
 }
 
 :root {
@@ -93,16 +94,7 @@ a{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 70px;
-}
-
-.visualization-div-header {
-  width: 100%;
-  height: 60px;
-  background-color: var(--color_1);
-  position: fixed;
-  top: 0;
-  background: linear-gradient(to right, var(--color_7), var(--color_1));
+  margin-top: 60px;
 }
 
 .title-actualidad {
@@ -200,13 +192,6 @@ a{
   margin-bottom: 10px;
   transition: transform 0.3s ease;
 }
-
-.Card-link:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-  background-color: var(--color_4);
-}
-
 .Card-social {
   width: 100%;
   height: auto;
@@ -244,16 +229,6 @@ a{
   font-size: 24px;
   color: var(--color_1);
 }
-
-.Card-social-btn button:hover{
-  background-color: var(--color_1);
-  color: var(--color_7);
-}
-.Card-social-btn .bx:hover {
-  font-size: 24px;
-  color: var(--color_7);
-}
-
 
 @media (max-width: 650px) {
   .visualization-div-header {
@@ -356,6 +331,22 @@ a{
   transition: background-color 0.3s ease-in-out;
 }
 
-.navigate-home:hover {
-  background-color: var(--color_7);
+@media (hover:hover) {
+  .Card-link:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: var(--color_4);
+  }
+  .Card-social-btn .bx:hover {
+    font-size: 24px;
+    color: var(--color_7);
+  }
+  .Card-social-btn button:hover{
+    background-color: var(--color_1);
+    color: var(--color_7);
+  }
+  .navigate-home:hover {
+    background-color: var(--color_7);
+  }
+
 }

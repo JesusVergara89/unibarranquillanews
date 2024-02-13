@@ -13,13 +13,14 @@ const Carrusel = ({ data }) => {
                 <Swiper
                     modules={[Navigation, Pagination]}
                     loop={true}
-                    speed={500}
+                    longSwipesMs={450}
                     slidesPerView={1}
                     navigation
                     pagination={{
                         el: ".pagination",
                         clickable: true,
                     }}
+                    longSwipesRatio={0.2}
                     breakpoints={{
                         600: {
                             slidesPerView: 2,

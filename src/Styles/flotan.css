@@ -1,0 +1,38 @@
+.Flotante {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  z-index: 200;
+  border: 1px solid black;
+  box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.Flotante .bx {
+  font-size: 40px;
+}
+.Flotante:hover {
+  cursor: pointer;
+}
+@media (300px<=width<=450px) {
+  .Flotante{
+    width: 35px;
+    height: 35px;
+  }
+  .Flotante .bx {
+    font-size: 35px;
+  }
+}
+@media (width<300px) {
+  .Flotante{
+    width: 25px;
+    height: 25px;
+  }
+  .Flotante .bx {
+    font-size: 25px;
+  }
+}
