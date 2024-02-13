@@ -32,9 +32,6 @@ const Header = () => {
             name: "ENTREVISTA"
         },
         {
-            name: "ENTREVISTA"
-        },
-        {
             name: "TECNOLOGIA"
         },
         {
