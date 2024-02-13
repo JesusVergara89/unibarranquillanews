@@ -6,6 +6,7 @@
   --color_5: #001f3f;
   --color_6: #333333;
 }
+
 .Main_header {
   width: 100%;
   height: auto;
@@ -20,6 +21,7 @@
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+
 .Logo {
   width: 70%;
   padding: 15px;
@@ -34,6 +36,7 @@
   letter-spacing: 2px;
   font-weight: bold;
 }
+
 .option {
   width: 45%;
   height: 100vh;
@@ -52,12 +55,15 @@
   z-index: 300;
   transition: all 0.3s ease-in-out;
 }
+
 .option.off {
   transform: translateX(100%);
 }
+
 .option.on {
   transform: translateX(0%);
 }
+
 .Close {
   width: 55%;
   height: 100vh;
@@ -69,11 +75,13 @@
 .Close.off {
   transform: translateX(-100%);
 }
+
 .Close.on {
   transform: translateX(0%);
 }
 
 .enlace {
+  font-size: 0.8rem;
   cursor: pointer;
 }
 
@@ -90,6 +98,7 @@
   gap: 0.4rem;
   margin-right: 15px;
   border-radius: 5px;
+
   div {
     background-color: black;
     height: 2px !important;
@@ -99,58 +108,74 @@
     transform-origin: left;
   }
 }
+
+.Menu_active:hover{
+  cursor: pointer;
+}
+
 .Menu_active.on {
   div {
     background-color: #8b0000;
   }
+
   div:first-child {
     transform: translate(4px, -4px) rotate(45deg);
   }
+
   div:nth-child(2) {
     opacity: 0;
   }
+
   div:last-child {
     transform: translate(4px, 4px) rotate(-45deg);
   }
 }
+
 @media (width<=630px) {
   .enlace {
     text-align: center;
   }
 }
+
 @media (width<=370px) {
   .Menu_active {
     width: 25px;
     height: 25px;
   }
+
   .Menu_active.on {
     div:first-child {
       transform: translate(5px, 0) rotate(45deg);
     }
+
     div:nth-child(2) {
       opacity: 0;
     }
+
     div:last-child {
       transform: translate(5px, 0) rotate(-45deg);
     }
   }
 }
+
 @media (400px<=width<=570px) {
   .option {
     width: 60%;
     row-gap: 1.2rem;
   }
+
   .Close {
     width: 40%;
   }
 }
+
 @media (width<400px) {
   .option {
     width: 80%;
     row-gap: 0.8rem;
   }
+
   .Close {
     width: 20%;
   }
 }
-

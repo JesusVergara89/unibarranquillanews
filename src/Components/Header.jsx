@@ -3,6 +3,9 @@ import '../Styles/header.css'
 import { Link } from 'react-router-dom'
 const Header = () => {
     const [Menu, setMenu] = useState(false)
+    const closeMenu = () => {
+        setMenu(false)
+    }
     const menuLoad = () => { setMenu(!Menu) }
     return (
         <>
@@ -17,15 +20,16 @@ const Header = () => {
                 </button>
             </header>
             <div className={Menu ? 'option on' : 'option off'}>
-                <Link className='enlace' to='/ACTUALIDAD'>Actualidad </Link>
-                <Link className='enlace' to='/ASUNTOS'> Mi vida universitaria, mi ciudad </Link>
-                <Link className='enlace' to='/CULTURA'> Cultura y Arte</Link>
-                <Link className='enlace' to='/VIDAU'> Vida Estudiantil</Link>
-                <Link className='enlace' to='/DEPORTES'> Deportes</Link>
-                <Link className='enlace' to='/EVENTOS'> Evento y Actividades</Link>
-                <Link className='enlace' to='/INVESTIGACION'> Investigación y Desarrollo</Link>
-                <Link className='enlace' to='/ENTREVISTA'> Entrevista y perfiles </Link>
-                <Link className='enlace' to='/TECNOLOGIA'> Tecnología</Link>
+                <Link onClick={closeMenu} className='enlace' to='/ACTUALIDAD'>Actualidad </Link>
+                <Link onClick={closeMenu} className='enlace' to='/ASUNTOS'> Mi vida universitaria, mi ciudad </Link>
+                <Link onClick={closeMenu} className='enlace' to='/CULTURA'> Cultura y Arte</Link>
+                <Link onClick={closeMenu} className='enlace' to='/VIDAU'> Vida Estudiantil</Link>
+                <Link onClick={closeMenu} className='enlace' to='/DEPORTES'> Deportes</Link>
+                <Link onClick={closeMenu} className='enlace' to='/EVENTOS'> Evento y Actividades</Link>
+                <Link onClick={closeMenu} className='enlace' to='/INVESTIGACION'> Investigación y Desarrollo</Link>
+                <Link onClick={closeMenu} className='enlace' to='/ENTREVISTA'> Entrevista y perfiles </Link>
+                <Link onClick={closeMenu} className='enlace' to='/TECNOLOGIA'> Tecnología</Link>
+                <Link onClick={closeMenu} className='enlace' to='/LOGIN'> Login</Link>
             </div>
             <div onClick={menuLoad} className={Menu ? 'Close on' : 'Close off'} />
         </>
