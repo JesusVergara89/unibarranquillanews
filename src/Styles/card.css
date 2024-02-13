@@ -19,9 +19,14 @@
   border: 0.01rem solid var(--color_4);
 }
 
-.recent-news-card:hover {
-  cursor: pointer;
-  box-shadow: 0px 0px 10px var(--color_4);
+@media (hover: hover) {
+  .recent-news-card:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px var(--color_4);
+  }
+  .recen-btn:hover {
+    background-color: var(--color_5);
+  }
 }
 
 .recent-news-title {
@@ -51,10 +56,6 @@
 
 .recen-btn a {
   font-size: 1.1rem;
-}
-
-.recen-btn:hover {
-  background-color: var(--color_5);
 }
 
 @media (200px <=width < 600px) {

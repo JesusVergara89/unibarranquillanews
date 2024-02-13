@@ -191,13 +191,6 @@ a{
   margin-bottom: 10px;
   transition: transform 0.3s ease;
 }
-
-.Card-link:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-  background-color: var(--color_4);
-}
-
 .Card-social {
   width: 100%;
   height: auto;
@@ -235,16 +228,6 @@ a{
   font-size: 24px;
   color: var(--color_1);
 }
-
-.Card-social-btn button:hover{
-  background-color: var(--color_1);
-  color: var(--color_7);
-}
-.Card-social-btn .bx:hover {
-  font-size: 24px;
-  color: var(--color_7);
-}
-
 
 @media (max-width: 650px) {
   .visualization-div-header {
@@ -347,6 +330,22 @@ a{
   transition: background-color 0.3s ease-in-out;
 }
 
-.navigate-home:hover {
-  background-color: var(--color_7);
+@media (hover:hover) {
+  .Card-link:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: var(--color_4);
+  }
+  .Card-social-btn .bx:hover {
+    font-size: 24px;
+    color: var(--color_7);
+  }
+  .Card-social-btn button:hover{
+    background-color: var(--color_1);
+    color: var(--color_7);
+  }
+  .navigate-home:hover {
+    background-color: var(--color_7);
+  }
+
 }
