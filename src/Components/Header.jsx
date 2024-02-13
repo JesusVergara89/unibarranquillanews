@@ -47,7 +47,9 @@ const Header = () => {
         <button><Link to='/EVENTOS'>EVENTO</Link></button>
         <button><Link to='/ENTREVISTA'>ENTREVISTA</Link></button>
         <button><Link to='/OPENPOSSITIONS'>WORKS</Link></button>
-        <button><Link to='/TECNOLOGIA'>TECNOLOGIA</Link></button>    
+        <button><Link to='/TECNOLOGIA'>TECNOLOGIA</Link></button> 
+        <button><Link to='/LOGIN'>LOGIN</Link></button>
+        <button><Link to='/COLLABORATORS'>COLLABORATORS</Link></button>        
       </div> 
     </header>
   );

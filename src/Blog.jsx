@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './Components/Header'
 import Presentations from './Components/Presentations'
 import { Route, Routes } from 'react-router-dom'
@@ -13,10 +13,21 @@ import Entrevista from './Components/Entrevista'
 import Workus from './Components/Workus'
 import Tecnologia from './Components/Tecnologia'
 import NotFound from './Components/NotFound'
-
+import Longin from './Components/Longin'
+import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
+import useAccess from './Hooks/useAcces'
+import ProtectedRoutes from './Components/ProtectedRoutes.JSX'
 
 
 function Blog() {
+
+  const [IsLogged, setIsLogged] = useState(false)
+
+  const access = useAccess()
+
+  useEffect(() => {
+    console.log("IsLogged changed:", IsLogged);
+  }, [IsLogged]);
   return (
     <div className='Blog'>
 
@@ -54,9 +65,15 @@ function Blog() {
           element={<Workus />}
         />
         <Route path='/TECNOLOGIA'
-          element={<Tecnologia/>}
+          element={<Tecnologia />}
         />
-         <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
+
+        <Route path='/LOGIN' element={<Longin access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
+
+        <Route element={<ProtectedRoutes IsLogged={IsLogged} />}>
+          <Route path='/COLLABORATORS' element={<CompanyCollaboratorAccess />} />
+        </Route>
       </Routes>
 
     </div>

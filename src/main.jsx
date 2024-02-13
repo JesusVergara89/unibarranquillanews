@@ -6,8 +6,6 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <HashRouter>
-  <React.StrictMode>
     <Blog />
-  </React.StrictMode>,
   </HashRouter>
 )
