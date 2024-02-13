@@ -39,7 +39,7 @@ const Login = ({ access, IsLogged, setIsLogged }) => {
                 <form onSubmit={handleSubmit(submit)} >
                     <h3>Ingrese su usuario y contraseña</h3>
                     <input placeholder='Email' {...register("email")} />
-                    <input placeholder='Password' {...register("password")} />
+                    <input type="password" placeholder='Password' {...register("password")} />
                     <button type='submit'>Login</button>
                 </form>
             )}
