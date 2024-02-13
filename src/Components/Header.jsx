@@ -6,12 +6,47 @@ const Header = () => {
     const closeMenu = () => {
         setMenu(false)
     }
+    const arrayOfHeader = [
+        {
+            name: "ACTUALIDAD"
+        },
+        {
+            name: "ASUNTOS"
+        },
+        {
+            name: "CULTURA"
+        },
+        {
+            name: "VIDAU"
+        },
+        {
+            name: "DEPORTES"
+        },
+        {
+            name: "EVENTOS"
+        },
+        {
+            name: "INVESTIGACION"
+        },
+        {
+            name: "ENTREVISTA"
+        },
+        {
+            name: "ENTREVISTA"
+        },
+        {
+            name: "TECNOLOGIA"
+        },
+        {
+            name: "LOGIN"
+        },
+    ]
     const menuLoad = () => { setMenu(!Menu) }
     return (
         <>
             <header className='Main_header'>
-                <Link className='Logo' to='/'>
-                    <h1>UNIBARRANQUILLA</h1>
+                <Link onClick={menuLoad} className='Logo' to='/'>
+                    <h1 onClick={menuLoad} >UNIBARRANQUILLA</h1>
                 </Link>
                 <button onClick={menuLoad} className={Menu ? 'Menu_active on' : 'Menu_active'}>
                     <div></div>
@@ -20,16 +55,9 @@ const Header = () => {
                 </button>
             </header>
             <div className={Menu ? 'option on' : 'option off'}>
-                <Link onClick={closeMenu} className='enlace' to='/ACTUALIDAD'>Actualidad </Link>
-                <Link onClick={closeMenu} className='enlace' to='/ASUNTOS'> Mi vida universitaria, mi ciudad </Link>
-                <Link onClick={closeMenu} className='enlace' to='/CULTURA'> Cultura y Arte</Link>
-                <Link onClick={closeMenu} className='enlace' to='/VIDAU'> Vida Estudiantil</Link>
-                <Link onClick={closeMenu} className='enlace' to='/DEPORTES'> Deportes</Link>
-                <Link onClick={closeMenu} className='enlace' to='/EVENTOS'> Evento y Actividades</Link>
-                <Link onClick={closeMenu} className='enlace' to='/INVESTIGACION'> Investigación y Desarrollo</Link>
-                <Link onClick={closeMenu} className='enlace' to='/ENTREVISTA'> Entrevista y perfiles </Link>
-                <Link onClick={closeMenu} className='enlace' to='/TECNOLOGIA'> Tecnología</Link>
-                <Link onClick={closeMenu} className='enlace' to='/LOGIN'> Login</Link>
+                {arrayOfHeader.map((unit, i) => (
+                    <Link key={i} onClick={closeMenu} className='enlace' to={`/${unit.name}`}>{unit.name}</Link>
+                ))}
             </div>
             <div onClick={menuLoad} className={Menu ? 'Close on' : 'Close off'} />
         </>

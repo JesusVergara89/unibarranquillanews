@@ -38,7 +38,7 @@
 }
 
 .option {
-  width: 45%;
+  width: 35%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -54,6 +54,7 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   z-index: 300;
   transition: all 0.3s ease-in-out;
+  padding-top: 30px;
 }
 
 .option.off {
@@ -81,7 +82,7 @@
 }
 
 .enlace {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   cursor: pointer;
 }
 
