@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from './Components/Header'
 import Presentations from './Components/Presentations'
 import { Route, Routes } from 'react-router-dom'
 import Engineering from './Components/Engineering'
@@ -13,15 +12,16 @@ import Entrevista from './Components/Entrevista'
 import Workus from './Components/Workus'
 import Tecnologia from './Components/Tecnologia'
 import NotFound from './Components/NotFound'
+import Header from './Components/Header'
+import Flotan from './Components/Flotan'
 
 
 
 function Blog() {
   return (
     <div className='Blog'>
-
       <Header />
-
+      <Flotan/>
       <Routes>
         <Route path='/'
           element={<Presentations />}
@@ -54,9 +54,9 @@ function Blog() {
           element={<Workus />}
         />
         <Route path='/TECNOLOGIA'
-          element={<Tecnologia/>}
+          element={<Tecnologia />}
         />
-         <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
     </div>
