@@ -45,8 +45,8 @@ const Header = () => {
     return (
         <>
             <header className='Main_header'>
-                <Link onClick={menuLoad} className='Logo' to='/'>
-                    <h1 onClick={menuLoad} >UNIBARRANQUILLA</h1>
+                <Link onClick={closeMenu} className='Logo' to='/'>
+                    <h1 onClick={closeMenu} >UNIBARRANQUILLA</h1>
                 </Link>
                 <button onClick={menuLoad} className={Menu ? 'Menu_active on' : 'Menu_active'}>
                     <div></div>
