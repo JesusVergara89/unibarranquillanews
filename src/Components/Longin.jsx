@@ -1,9 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import CompanyCollaboratorAccess from './CompanyCollaboratorAccess';
-import '../Styles/Login.css'
+import '../Styles/Login.css';
+import { useDispatch } from 'react-redux';
+import { setEmailValue } from '../store/slices/email.slice';
+import { setPassWordValue } from '../store/slices/password.slice';
 
 const Login = ({ access, IsLogged, setIsLogged }) => {
+    const dispatch = useDispatch();
+
     const objectReset = {
         email: '',
         password: ''
@@ -17,29 +22,27 @@ const Login = ({ access, IsLogged, setIsLogged }) => {
 
         // Si se encuentra un usuario que coincida, setIsLogged se establece en true
         if (user) {
+            dispatch(setEmailValue(user.Name)); // Guardar el nombre
+            dispatch(setPassWordValue(user.LastName)); // Guardar el apellido
             setIsLogged(true);
-            console.log("it works")
         }
+
         // Reiniciar los valores del formulario
         reset(objectReset);
     };
 
     return (
         <article className="protect-route">
-            {IsLogged ?
-
+            {IsLogged ? (
                 <CompanyCollaboratorAccess setIsLogged={setIsLogged} />
-
-                :
-
+            ) : (
                 <form onSubmit={handleSubmit(submit)} >
                     <h3>Ingrese su usuario y contraseña</h3>
                     <input placeholder='Email' {...register("email")} />
                     <input placeholder='Password' {...register("password")} />
                     <button type='submit'>Login</button>
                 </form>
-
-            }
+            )}
         </article>
     );
 };

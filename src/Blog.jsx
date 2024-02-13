@@ -26,7 +26,7 @@ function Blog() {
   const access = useAccess()
 
   useEffect(() => {
-    console.log("IsLogged changed:", IsLogged);
+    console.log("xxxxxxxxxtyxxxxxxxxxtxyyyyyyy");
   }, [IsLogged]);
   return (
     <div className='Blog'>
