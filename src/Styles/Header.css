@@ -58,12 +58,25 @@
   z-index: 300;
   transition: all 0.3s ease-in-out;
 }
+.option.off {
+  transform: translateX(100%);
+}
+.option.on {
+  transform: translateX(0%);
+}
 .Close{
   width: 55%;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 300;
+}
+.Close.off {
+  transform: translateX(-100%);
+}
+.Close.on {
+  transform: translateX(0%);
 }
 .enlace:hover {
   cursor: pointer;
@@ -79,12 +92,6 @@
 .enlace .bx {
   font-size: 30px;
   width: 30px;
-}
-.option.off {
-  transform: translateX(100%);
-}
-.option.on {
-  transform: translateX(0%);
 }
 .Logo:hover {
   cursor: pointer;

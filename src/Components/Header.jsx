@@ -30,7 +30,7 @@ const Header = () => {
                 <Link className='enlace' to='/ENTREVISTA'><i className='bx bx-briefcase-alt-2' /> Entrevista y perfiles </Link>
                 <Link className='enlace' to='/TECNOLOGIA'><i className='bx bx-rocket' /> Tecnología</Link>
             </div>
-            <div onClick={menuLoad} className='Close' />
+            <div onClick={menuLoad} className={Menu ?'Close on':'Close off'} />
         </>
     )
 }
