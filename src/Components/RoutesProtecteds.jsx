@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router'
 
-const ProtectedRoutes = ({ IsLogged }) => {
+const RoutesProtecteds = ({ IsLogged }) => {
     if (IsLogged) {
         return <Outlet />
     } else {
@@ -8,4 +8,4 @@ const ProtectedRoutes = ({ IsLogged }) => {
     }
 }
 
-export default ProtectedRoutes
+export default RoutesProtecteds

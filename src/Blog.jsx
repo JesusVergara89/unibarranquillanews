@@ -16,7 +16,7 @@ import NotFound from './Components/NotFound'
 import Longin from './Components/Longin'
 import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
 import useAccess from './Hooks/useAcces'
-import ProtectedRoutes from './Components/ProtectedRoutes.JSX'
+import RoutesProtecteds from './Components/RoutesProtecteds'
 
 
 function Blog() {
@@ -72,7 +72,7 @@ function Blog() {
 
         <Route path='/LOGIN' element={<Longin access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
 
-        <Route element={<ProtectedRoutes IsLogged={IsLogged} />}>
+        <Route element={<RoutesProtecteds IsLogged={IsLogged} />}>
           <Route path='/COLLABORATORS' element={<CompanyCollaboratorAccess />} />
         </Route>
       </Routes>
