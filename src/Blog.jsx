@@ -26,8 +26,9 @@ function Blog() {
   const access = useAccess()
 
   useEffect(() => {
-    console.log("xxxxxxxxxtyxxxxxxxxxtxyyyyyyy");
+    console.log("wxyz");
   }, [IsLogged]);
+
   return (
     <div className='Blog'>
 
