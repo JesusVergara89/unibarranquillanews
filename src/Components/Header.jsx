@@ -18,9 +18,9 @@ const Header = () => {
             </header>
             <div className={Menu ? 'option on' : 'option off'}>
                 <Link className='enlace' to='/ACTUALIDAD'>Actualidad </Link>
-                <Link className='enlace' to='/OPENPOSSITIONS'> Mi vida universitaria, mi ciudad </Link>
+                <Link className='enlace' to='/ASUNTOS'> Mi vida universitaria, mi ciudad </Link>
                 <Link className='enlace' to='/CULTURA'> Cultura y Arte</Link>
-                <Link className='enlace' to='/VIDA'> Vida Estudiantil</Link>
+                <Link className='enlace' to='/VIDAU'> Vida Estudiantil</Link>
                 <Link className='enlace' to='/DEPORTES'> Deportes</Link>
                 <Link className='enlace' to='/EVENTOS'> Evento y Actividades</Link>
                 <Link className='enlace' to='/INVESTIGACION'> Investigación y Desarrollo</Link>
