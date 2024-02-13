@@ -20,16 +20,17 @@ const Header = () => {
                 </button>
             </header>
             <div className={Menu ? 'option on' : 'option off'}>
-                <Link className='enlace' to='/ACTUALIDAD'><i className='bx bx-alarm-add'/>Actualidad </Link>
-                <Link className='enlace' to='/OPENPOSSITIONS'><i className='bx bx-conversation'/> Mi vida universitaria, mi ciudad </Link>
-                <Link className='enlace' to='/CULTURA'><i className='bx bx-palette'/> Cultura y Arte</Link>
-                <Link className='enlace' to='/VIDAU'><i className='bx bx-user'/> Vida Estudiantil</Link>
-                <Link className='enlace' to='/DEPORTES'><i className='bx bx-football'/> Deportes</Link>
-                <Link className='enlace' to='/EVENTOS'><i className='bx bx-calendar-event'/> Evento y Actividades</Link>
-                <Link className='enlace' to='/INVESTIGACION'><i className='bx bx-test-tube'/> Investigación y Desarrollo</Link>
-                <Link className='enlace' to='/ENTREVISTA'><i className='bx bx-briefcase-alt-2'/> Entrevista y perfiles </Link>
-                <Link className='enlace' to='/TECNOLOGIA'><i className='bx bx-rocket'/> Tecnología</Link>
+                <Link className='enlace' to='/ACTUALIDAD'><i className='bx bx-alarm-add' />Actualidad </Link>
+                <Link className='enlace' to='/OPENPOSSITIONS'><i className='bx bx-conversation' /> Mi vida universitaria, mi ciudad </Link>
+                <Link className='enlace' to='/CULTURA'><i className='bx bx-palette' /> Cultura y Arte</Link>
+                <Link className='enlace' to='/VIDAU'><i className='bx bx-user' /> Vida Estudiantil</Link>
+                <Link className='enlace' to='/DEPORTES'><i className='bx bx-football' /> Deportes</Link>
+                <Link className='enlace' to='/EVENTOS'><i className='bx bx-calendar-event' /> Evento y Actividades</Link>
+                <Link className='enlace' to='/INVESTIGACION'><i className='bx bx-test-tube' /> Investigación y Desarrollo</Link>
+                <Link className='enlace' to='/ENTREVISTA'><i className='bx bx-briefcase-alt-2' /> Entrevista y perfiles </Link>
+                <Link className='enlace' to='/TECNOLOGIA'><i className='bx bx-rocket' /> Tecnología</Link>
             </div>
+            <div onClick={menuLoad} className='Close' />
         </>
     )
 }

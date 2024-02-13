@@ -58,6 +58,13 @@
   z-index: 300;
   transition: all 0.3s ease-in-out;
 }
+.Close{
+  width: 55%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 .enlace:hover {
   cursor: pointer;
 }
@@ -124,11 +131,17 @@
     width: 60%;
     row-gap: 1.2rem;
   }
+  .Close{
+    width: 40%;
+  }
 }
 @media (width<400px) {
   .option{
     width: 80%;
     row-gap: .8rem;
+  }
+  .Close{
+    width: 20%;
   }
   
 }
