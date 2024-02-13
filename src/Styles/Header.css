@@ -27,18 +27,13 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  gap: 10px;
+  cursor: pointer;
 }
-.Logo img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
+
 .Logo h1 {
   font-size: 0.8rem;
-  font-family: "Protest Guerrilla", sans-serif;
-  letter-spacing: 4px;
-  font-weight: normal;
+  letter-spacing: 2px;
+  font-weight: bold;
 }
 .option {
   width: 45%;
@@ -51,9 +46,9 @@
   position: fixed;
   top: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(7px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   z-index: 300;
   transition: all 0.3s ease-in-out;
@@ -64,7 +59,7 @@
 .option.on {
   transform: translateX(0%);
 }
-.Close{
+.Close {
   width: 55%;
   height: 100vh;
   position: fixed;
@@ -78,83 +73,85 @@
 .Close.on {
   transform: translateX(0%);
 }
-.enlace:hover {
-  cursor: pointer;
-}
+
 .enlace {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-.enlace .bx {
-  font-size: 30px;
-  width: 30px;
-}
-.Logo:hover {
   cursor: pointer;
 }
+
 .Menu_active {
   width: 35px;
   height: 35px;
-  border-radius: 50%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border: none;
-  background-color: #ffffff;
   color: black;
+  background: transparent;
+  gap: 0.4rem;
   margin-right: 15px;
-  .bx {
-    font-size: 35px;
+  border-radius: 5px;
+  div {
+    background-color: black;
+    height: 2px !important;
+    width: 100%;
+    border-radius: 5px;
+    transition: all 0.5s;
+    transform-origin: left;
   }
 }
 .Menu_active.on {
-  background-color: #8b0000;
-  color: white;
+  div {
+    background-color: #8b0000;
+  }
+  div:first-child {
+    transform: translate(4px, -4px) rotate(45deg);
+  }
+  div:nth-child(2) {
+    opacity: 0;
+  }
+  div:last-child {
+    transform: translate(4px, 4px) rotate(-45deg);
+  }
 }
 @media (width<=630px) {
   .enlace {
     text-align: center;
-  }
-  .enlace .bx {
-    font-size: 21px;
-    width: 21px;
   }
 }
 @media (width<=370px) {
   .Menu_active {
     width: 25px;
     height: 25px;
-    .bx {
-      font-size: 25px;
+  }
+  .Menu_active.on {
+    div:first-child {
+      transform: translate(5px, 0) rotate(45deg);
+    }
+    div:nth-child(2) {
+      opacity: 0;
+    }
+    div:last-child {
+      transform: translate(5px, 0) rotate(-45deg);
     }
   }
 }
-@media (400px<=width<=570px){
+@media (400px<=width<=570px) {
   .option {
     width: 60%;
     row-gap: 1.2rem;
   }
-  .Close{
+  .Close {
     width: 40%;
   }
 }
 @media (width<400px) {
-  .option{
+  .option {
     width: 80%;
-    row-gap: .8rem;
+    row-gap: 0.8rem;
   }
-  .Close{
+  .Close {
     width: 20%;
   }
-  
 }
-@media (width<=450px) {
-  .Logo img {
-    width: 30px;
-    height: 30px;
-  }
-}
+
