@@ -20,11 +20,11 @@ const CompanyCollaboratorAccess = ({ setIsLogged }) => {
       </div>
 
       <div className="main_collaborators-articles">
-        <div className="main_collaborators-articles-article">
-          <Article />
-        </div>
         <div className="main_collaborators-articles-form">
           <ArticleForm />
+        </div>
+        <div className="main_collaborators-articles-article">
+          <Article />
         </div>
       </div>
     </article>

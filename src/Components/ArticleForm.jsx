@@ -1,92 +1,91 @@
-import React, { useState } from 'react'
-import '../Styles/ArticleForm.css'
-import { Timestamp, addDoc, collection } from 'firebase/firestore'
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
-import { db, storage } from '../firebaseconfig'
-import { toast } from 'react-toastify'
+import React, { useEffect, useState } from 'react';
+import '../Styles/ArticleForm.css';
+import { Timestamp, addDoc, collection } from 'firebase/firestore';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { db, storage } from '../firebaseconfig';
+import { toast } from 'react-toastify';
 
 const ArticleForm = () => {
 
-    const [progress, setProgress] = useState(0)
-
+    const [cleanForm, setCleanForm] = useState(false)
+    const [progress, setProgress] = useState(0);
     const [formData, setFormData] = useState({
         title: '',
         description: '',
         image: '',
         createdAt: Timestamp.now().toDate()
-    })
+    });
+
+    useEffect(()=>{
+        console.log('form cleaned')
+    },[cleanForm])
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
-    }
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     const handleImageChange = (e) => {
-        setFormData({ ...formData, image: e.target.files[0] })
-    }
+        setFormData({ ...formData, image: e.target.files[0] });
+    };
 
     const handlePublish = () => {
         if (!formData.title || !formData.description || !formData.image) {
-            alert('please fill all the fields')
+            alert('please fill all the fields');
             return;
         }
-        const storageRef = ref(storage, `/images/${Date.now()}${formData.image.name}`)
-        const uploadImage = uploadBytesResumable(storageRef, formData.image)
-        uploadImage.on("state_changed", (snapshot) => {
-            const progressPercent = Math.round(
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            );
-            setProgress(progressPercent)
-        },
-            (err) => {
-                console.log(err)
+
+        const storageRef = ref(storage, `/images/${Date.now()}${formData.image.name}`);
+        const uploadImage = uploadBytesResumable(storageRef, formData.image);
+
+        uploadImage.on(
+            'state_changed',
+            (snapshot) => {
+                const progressPercent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                setProgress(progressPercent);
+            },
+            (error) => {
+                console.log(error);
             },
             () => {
+                // Limpiar el formulario después de que la imagen se haya cargado correctamente
                 setFormData({
                     title: '',
                     description: '',
                     image: '',
-
                 });
-                getDownloadURL(uploadImage.snapshot.ref)
-                    .then((url) => {
-                        const articleRef = collection(db, "Articles")
-                        addDoc(articleRef, {
-                            title: formData.title,
-                            description: formData.description,
-                            imageUrl: url,
-                            createdAt: Timestamp.now().toDate()
-                        })
-                            .then(() => {
-                                toast("Articles added succesfully", { type: "success" })
-                                setProgress(0)
-                            })
-                            .catch(() => {
-                                toast("Error adding articles", { type: "error" })
-                            })
-                    })
-            }
-        )
 
-    }
+                // Obtener la URL de descarga de la imagen
+                getDownloadURL(uploadImage.snapshot.ref).then((url) => {
+                    // Agregar el artículo a la base de datos
+                    const articleRef = collection(db, 'Articles');
+                    addDoc(articleRef, {
+                        title: formData.title,
+                        description: formData.description,
+                        imageUrl: url,
+                        createdAt: Timestamp.now().toDate()
+                    })
+                        .then(() => {
+                            toast('Article added successfully', { type: 'success' });
+                            setProgress(0);
+                            setCleanForm(!cleanForm)
+                        })
+                        .catch(() => {
+                            toast('Error adding article', { type: 'error' });
+                        });
+                });
+            }
+        );
+    };
 
     return (
-        <form className="form-articles">
+        <div className="form-articles">
             <h2 className="form-article-create">CREATE ARTICLE</h2>
             {/* title */}
-            <label htmlFor="">Title</label>
-            <input type="text" name='title' className='form-article-input' value={formData.title}
-                onChange={(e) => handleChange(e)}
-            />
+            <input placeholder="title" type="text" name="title" className="form-article-input" value={formData.title} onChange={(e) => handleChange(e)} />
             {/* Description */}
-            <label htmlFor="">Description</label>
-            <textarea name="description" className='form-article-textarea' value={formData.description}
-                onChange={(e) => handleChange(e)}
-            />
+            <textarea placeholder="description" name="description" className="form-article-textarea" value={formData.description} onChange={(e) => handleChange(e)} />
             {/*Image */}
-            <label htmlFor="">Image</label>
-            <input type="file" name="image" accept='image/*' className='form-article-image'
-                onChange={(e) => handleImageChange(e)}
-            />
+            <input placeholder="image" type="file" name="image" accept="image/*" className="form-article-image" onChange={(e) => handleImageChange(e)} />
 
             {progress === 0 ? null : (
                 <div className="form-article-progress">
@@ -96,10 +95,11 @@ const ArticleForm = () => {
                 </div>
             )}
 
+            <button className="form-article-tbn" onClick={handlePublish}>
+                Publish
+            </button>
+        </div>
+    );
+};
 
-            <button className="form-article-tbn" onClick={handlePublish}>Publish</button>
-        </form>
-    )
-}
-
-export default ArticleForm
+export default ArticleForm;

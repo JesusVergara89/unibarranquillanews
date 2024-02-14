@@ -9,8 +9,12 @@
 }
 
 .main-card-article {
-    width: 280px;
-    height: 280px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -19,11 +23,10 @@
     height: 280px;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: var(--color_1);
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 5px var(--color_7);
     margin: 20px;
-    overflow: hidden;
 }
 
 .card-image {

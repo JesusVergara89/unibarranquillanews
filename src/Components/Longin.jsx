@@ -37,7 +37,7 @@ const Login = ({ access, IsLogged, setIsLogged }) => {
                 <CompanyCollaboratorAccess setIsLogged={setIsLogged} />
             ) : (
                 <form className='form-login' onSubmit={handleSubmit(submit)} >
-                    <h3>Ingrese su usuario y contraseña</h3>
+                    <h3>Credenciales</h3>
                     <input className='form-input' placeholder='Email' {...register("email")} />
                     <input className='form-input' type="password" placeholder='Password' {...register("password")} />
                     <button className='protect-route-btn' type='submit'>Login</button>

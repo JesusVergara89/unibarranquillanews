@@ -10,70 +10,83 @@
 
 .form-articles {
     width: 70%;
-    height: 80%;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    border: 1px solid var(--color_6);
+    border: 1px solid var(--color_7);
     border-radius: 8px;
     gap: 10px;
 }
 
 .form-article-create {
-    font-size: 1.5em;
+    font-size: 0.8em;
     text-align: center;
     color: var(--color_7);
     font-size: bold;
 }
 
-.form-articles label {
-    font-size: 1.2rem;
-    margin-left: 15%;
+.form-article-input{
+    width: 90%;
+    height: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
 }
 
-.form-article-input,
-.form-article-image {
-    width: 90%;
-    padding: 5px;
+.form-article-image  {
+    width: auto;
+    height: auto;
     border: 1px solid #ccc;
+}
+
+@media (width<=400px){
+    .form-article-image  {
+        width: 90%;
+        height: auto;
+        border: 1px solid #ccc;
+    } 
 }
  
  .form-article-textarea {
     width: 90%;
-    height: 45%;
-    padding: 5px;
+    height: 60%;
     border: 1px solid #ccc;
+    text-align: center;
  }
+
 .form-article-progress {
-    width: 100%;
-    height: 20px;
+    height: 60px;
     background-color: #f0f0f0;
     border-radius: 10px;
     overflow: hidden;
 }
 
 .form-article-progress-inside {
-    height: 100%;
-    background-color: #007bff;
+    height: 60px;
+    background-color: var(--color_4);
     text-align: center;
     line-height: 20px;
     color: #fff;
 }
 
 .form-article-tbn {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
+    width: 100px;
+    height: 30px;
+    background-color: var(--color_4);
     border: none;
-    border-radius: 5px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
     cursor: pointer;
+    text-align: center;
     transition: background-color 0.3s ease;
 }
 
 .form-article-tbn:hover {
-    background-color: #0056b3;
+    background-color: var(--color_7);
 }
 

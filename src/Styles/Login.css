@@ -16,33 +16,55 @@
     align-items: center;
 }
 
-.protect-route .form-login {
-    width: 40%;
-    height: 200px;
+.form-login {
+    max-width: 300px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.protect-route .form-input {
-    width: 80%;
-    height: 20px;
+.form-login h3 {
     text-align: center;
-    border: 0.01rem solid black;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
 }
 
-.protect-route .protect-route-btn {
-    width: 100px;
-    height: 30px;
+.form-input {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    outline: none;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    border-color: var(--color_7);
+}
+
+.protect-route-btn {
+    width: 100%;
+    padding: 10px;
     background-color: var(--color_4);
     border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
     cursor: pointer;
-    text-align: center;
+    transition: background-color 0.3s;
 }
+
+.protect-route-btn:hover {
+    background-color: #0056b3;
+}
+
+
