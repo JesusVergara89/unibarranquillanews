@@ -70,8 +70,8 @@ const ArticleForm = () => {
     }
 
     return (
-        <div className="form-articles">
-            <h2 className="form-article-create">Create article</h2>
+        <form className="form-articles">
+            <h2 className="form-article-create">CREATE ARTICLE</h2>
             {/* title */}
             <label htmlFor="">Title</label>
             <input type="text" name='title' className='form-article-input' value={formData.title}
@@ -98,7 +98,7 @@ const ArticleForm = () => {
 
 
             <button className="form-article-tbn" onClick={handlePublish}>Publish</button>
-        </div>
+        </form>
     )
 }
 

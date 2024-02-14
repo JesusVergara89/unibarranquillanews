@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../Styles/CompanyCollaboratorAccess.css'
+import '../Styles/Article.css'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebaseconfig'
 
@@ -14,11 +14,10 @@ const Article = () => {
                 ...doc.data(),
             }))
             setArticles(articles)
-            console.log(articles)
         })
     }, [])
     return (
-        <div className='main'>
+        <div className='main-card-article'>
             {
                 articles.length === 0 ? (
                     <p>Not articles found</p>
@@ -30,8 +29,8 @@ const Article = () => {
                                 <div className="card-content">
                                     <h2 className="card-title">{article.title}</h2>
                                     <p className="card-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</p>
-                                    <button className="card-like">Like</button>
                                     <p className="card-description">{article.description}</p>
+                                    <button className="card-like"><i className='bx bx-like'></i></button>
                                 </div>
                             </div>
                         ))

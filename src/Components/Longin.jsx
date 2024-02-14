@@ -36,11 +36,11 @@ const Login = ({ access, IsLogged, setIsLogged }) => {
             {IsLogged ? (
                 <CompanyCollaboratorAccess setIsLogged={setIsLogged} />
             ) : (
-                <form onSubmit={handleSubmit(submit)} >
+                <form className='form-login' onSubmit={handleSubmit(submit)} >
                     <h3>Ingrese su usuario y contraseña</h3>
-                    <input placeholder='Email' {...register("email")} />
-                    <input type="password" placeholder='Password' {...register("password")} />
-                    <button type='submit'>Login</button>
+                    <input className='form-input' placeholder='Email' {...register("email")} />
+                    <input className='form-input' type="password" placeholder='Password' {...register("password")} />
+                    <button className='protect-route-btn' type='submit'>Login</button>
                 </form>
             )}
         </article>

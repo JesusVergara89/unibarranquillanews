@@ -16,7 +16,7 @@ const CompanyCollaboratorAccess = ({ setIsLogged }) => {
     <article className="main_collaborators">
       <div className="main_collaborators-welcome-close-sesion">
         <h3>{`Welcome ${name} ${lastName}`}</h3>
-        <button onClick={closeSesion} >cerrar sesión</button>
+        <button className='main_collaborators-btn' onClick={closeSesion} >cerrar sesión</button>
       </div>
 
       <div className="main_collaborators-articles">

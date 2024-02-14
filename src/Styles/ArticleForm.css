@@ -1,27 +1,51 @@
+:root {
+    --color_1: #ffffff;
+    --color_2: #006400;
+    --color_3: #add8e6;
+    --color_4: #8b0000;
+    --color_5: #001f3f;
+    --color_6: #333333;
+    --color_7: #000000;
+}
+
 .form-articles {
-    width: 200px;
-    height: 300px;
+    width: 70%;
+    height: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    border: 1px solid #ccc;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--color_6);
+    border-radius: 8px;
+    gap: 10px;
 }
 
 .form-article-create {
     font-size: 1.5em;
-    margin-bottom: 10px;
+    text-align: center;
+    color: var(--color_7);
+    font-size: bold;
+}
+
+.form-articles label {
+    font-size: 1.2rem;
+    margin-left: 15%;
 }
 
 .form-article-input,
-.form-article-textarea,
 .form-article-image {
-    width: calc(100% - 40px);
+    width: 90%;
     padding: 5px;
-    margin-bottom: 10px;
     border: 1px solid #ccc;
 }
-
+ 
+ .form-article-textarea {
+    width: 90%;
+    height: 45%;
+    padding: 5px;
+    border: 1px solid #ccc;
+ }
 .form-article-progress {
     width: 100%;
     height: 20px;
@@ -52,3 +76,4 @@
 .form-article-tbn:hover {
     background-color: #0056b3;
 }
+

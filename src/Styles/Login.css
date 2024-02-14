@@ -16,7 +16,7 @@
     align-items: center;
 }
 
-.protect-route form {
+.protect-route .form-login {
     width: 40%;
     height: 200px;
     display: flex;
@@ -26,14 +26,14 @@
     gap: 10px;
 }
 
-.protect-route input {
+.protect-route .form-input {
     width: 80%;
     height: 20px;
     text-align: center;
     border: 0.01rem solid black;
 }
 
-.protect-route button {
+.protect-route .protect-route-btn {
     width: 100px;
     height: 30px;
     background-color: var(--color_4);
