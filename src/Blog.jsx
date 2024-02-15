@@ -18,6 +18,10 @@ import useAccess from './Hooks/useAcces'
 import RoutesProtecteds from './Components/RoutesProtecteds'
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
+import { useDispatch } from 'react-redux'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { setArticlesValue } from './store/slices/articles.slice'
+import { db } from './firebaseconfig'
 
 
 
@@ -27,9 +31,21 @@ function Blog() {
 
   const access = useAccess()
 
+  const dispatch = useDispatch();
+
+  const [articles, setArticles] = useState([{}])
   useEffect(() => {
-    console.log("wxyz");
-  }, [IsLogged]);
+      const articleRef = collection(db, "Articles")
+      const q = query(articleRef, orderBy("createdAt", "desc"))
+      onSnapshot(q, (snapshot) => {
+          const articles = snapshot.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+          }))
+          setArticles(articles)
+      })
+      dispatch(setArticlesValue(articles));
+  }, [])
 
   return (
     <div className='Blog'>

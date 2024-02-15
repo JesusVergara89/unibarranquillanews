@@ -5,12 +5,15 @@ import Aboutblog from '../Components/Aboutblog'
 import Socialmedia from '../Components/Socialmedia'
 import Networks from '../Components/Networks'
 import Recent from './Recent'
+import FlashArticles from './FlashArticles'
+
 const Presentations = () => {
 
   //const [windowWidt, setWindowWidt] = useState((window.innerWidth))
   //window.onresize = function () {
   //  setWindowWidt((window.innerWidth))
   //}
+
   return (
     <article className='main_page'>
       <div className='Video'>
@@ -23,7 +26,9 @@ const Presentations = () => {
 
       <Aboutblog />
 
-      <Recent/>
+      <Recent />
+
+      <FlashArticles/>
 
       <Columns />
 

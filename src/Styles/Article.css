@@ -27,6 +27,7 @@
     border-radius: 10px;
     box-shadow: 0 2px 5px var(--color_7);
     margin: 20px;
+    overflow: hidden;
 }
 
 .card-image {
@@ -45,11 +46,14 @@
 .card-content-information{
     position: absolute;
     bottom: 0;
-    width: 95%;
+    left: -5px;
+    width: 100%;
     height: auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border-top: 0.01rem solid var(--color_7);
+    background-color: var(--color_4);
 }
 .card-title {
     width: 95%;
@@ -61,17 +65,16 @@
 
 .card-date {
     width: 50%;
-    color: var(--color_7);
-    font-size: 0.6rem;
-    font-weight: bold;
+    color: var(--color_1);
+    font-size: 0.8rem;
     text-align: center;
 }
 
 .card-like {
     all: unset;
     cursor: pointer;
-    bottom: 0px;
     right: 40px;
+    color: var(--color_1);
 }
 
 .card-like .bx {

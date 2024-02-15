@@ -38,7 +38,7 @@ const Recent = () => {
                 <Loading />
             )}
             <h4>
-                Nuestras secciones
+                Artículos Flash 
             </h4>
         </article>
     );
