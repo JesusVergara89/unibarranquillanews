@@ -57,17 +57,25 @@
  }
 
 .form-article-progress {
-    height: 60px;
-    background-color: #f0f0f0;
+    width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
     overflow: hidden;
+    text-align: center;
 }
 
 .form-article-progress-inside {
-    height: 60px;
-    background-color: var(--color_4);
+    width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
     text-align: center;
-    line-height: 20px;
+    background-color: var(--color_4);
     color: #fff;
 }
 
