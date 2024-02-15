@@ -20,7 +20,7 @@
 
 .article-card {
     width: 280px;
-    height: 280px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     background-color: var(--color_1);
@@ -42,23 +42,34 @@
     position: relative;
 }
 
+.card-content-information{
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 .card-title {
-    margin: 0;
+    width: 95%;
     color: var(--color_7);
     font-size: 0.8rem;
     font-weight: bold;
+    text-align: center;
 }
 
 .card-date {
+    width: 50%;
     color: var(--color_7);
     font-size: 0.6rem;
     font-weight: bold;
+    text-align: center;
 }
 
 .card-like {
     all: unset;
     cursor: pointer;
-    position: absolute;
     bottom: 0px;
     right: 40px;
 }
@@ -69,12 +80,16 @@
 }
 
 .card-description {
+    all: unset;
     width: 95%;
-    height: 80px;
+    height: 100px;
     color: var(--color_7);
     line-height: 1.5;
     font-size: 0.8rem;
-    border-bottom: 0.01rem solid var(--color_7);
     overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
 }
+
