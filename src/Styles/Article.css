@@ -80,7 +80,7 @@
 }
 
 .card-description {
-    all: unset;
+    margin: 0;
     width: 95%;
     height: 100px;
     color: var(--color_7);
@@ -91,5 +91,9 @@
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
+}
+
+.card-description p {
+    all: unset;
 }
 

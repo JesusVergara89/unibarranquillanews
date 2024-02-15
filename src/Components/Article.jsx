@@ -28,7 +28,12 @@ const Article = () => {
                                 <img src={article.imageUrl} alt="Foto" className="card-image" />
                                 <div className="card-content">
                                     <h2 className="card-title">{article.title}</h2>
-                                    <p className="card-description">{article.description}</p>
+                                    <div className="card-description">
+                                        {/* Split body content by newline and display */}
+                                        { article.description &&  article.description.split('\n').map((line, index) => (
+                                            <p key={index}>{line}</p>
+                                        ))}
+                                    </div>
                                     <div className="card-content-information">
                                         <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h2>
                                         <button className="card-like"><i className='bx bx-like'></i></button>
