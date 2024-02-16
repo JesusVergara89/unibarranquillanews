@@ -17,7 +17,7 @@ const Article = ({IsLogged}) => {
             setArticles(articles)
         })
     }, [])
-    console.log(IsLogged)
+    
     return (
         <div className='main-card-article'>
             {

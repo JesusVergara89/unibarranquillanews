@@ -4,8 +4,12 @@ import { Timestamp, addDoc, collection } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { db, storage } from '../firebaseconfig';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 const ArticleForm = () => {
+
+    const name = useSelector(state => state.emailSlice)
+    const lastName = useSelector(state => state.passwordSlice)
 
     const [cleanForm, setCleanForm] = useState(false)
     const [progress, setProgress] = useState(0);
@@ -30,7 +34,7 @@ const ArticleForm = () => {
     };
 
     const handlePublish = () => {
-        if (!formData.title || !formData.description || !formData.image || !formData.autor) {
+        if (!formData.title || !formData.description || !formData.image) {
             alert('please fill all the fields');
             return;
         }
@@ -63,7 +67,7 @@ const ArticleForm = () => {
                     addDoc(articleRef, {
                         title: formData.title,
                         description: formData.description,
-                        autor: formData.autor,
+                        autor: `${name} ${lastName}`,
                         imageUrl: url,
                         createdAt: Timestamp.now().toDate()
                     })
@@ -88,7 +92,7 @@ const ArticleForm = () => {
             {/* Description */}
             <textarea placeholder="description" name="description" className="form-article-textarea" value={formData.description} onChange={(e) => handleChange(e)} />
             {/*Author */}
-            <textarea placeholder="autor" name="autor" className="form-article-autor" value={formData.autor} onChange={(e) => handleChange(e)} />
+            {/*<textarea placeholder="autor" name="autor" className="form-article-autor" value={formData.autor} onChange={(e) => handleChange(e)} />*/}
             {/*Image */}
             <input placeholder="image" type="file" name="image" accept="image/*" className="form-article-image" onChange={(e) => handleImageChange(e)} />
 
