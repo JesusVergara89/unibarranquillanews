@@ -36,6 +36,10 @@
     object-fit: cover;
 }
 
+.card-image:hover{    
+    cursor: pointer;
+}
+
 .card-content {
     width: 100%;
     height: 100%;
@@ -50,7 +54,7 @@
     width: 100%;
     height: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     border-top: 0.01rem solid var(--color_7);
     background-color: var(--color_4);

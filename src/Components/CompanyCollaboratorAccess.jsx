@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import Article from './Article'
 import ArticleForm from './ArticleForm'
 
-const CompanyCollaboratorAccess = ({ setIsLogged }) => {
+const CompanyCollaboratorAccess = ({ IsLogged, setIsLogged }) => {
 
   const name = useSelector(state => state.emailSlice)
   const lastName = useSelector(state => state.passwordSlice)
@@ -24,7 +24,7 @@ const CompanyCollaboratorAccess = ({ setIsLogged }) => {
           <ArticleForm />
         </div>
         <div className="main_collaborators-articles-article">
-          <Article />
+          <Article IsLogged={IsLogged} />
         </div>
       </div>
     </article>

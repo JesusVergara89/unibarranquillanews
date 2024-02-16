@@ -18,10 +18,11 @@ import useAccess from './Hooks/useAcces'
 import RoutesProtecteds from './Components/RoutesProtecteds'
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { setArticlesValue } from './store/slices/articles.slice'
 import { db } from './firebaseconfig'
+import ArticleForRead from './Components/ArticleForRead'
 
 
 
@@ -29,28 +30,30 @@ function Blog() {
 
   const [IsLogged, setIsLogged] = useState(false)
 
+  const [reloadPage, setReloadPage] = useState(false)
+
   const access = useAccess()
 
   const dispatch = useDispatch();
 
   const [articles, setArticles] = useState([{}])
   useEffect(() => {
-      const articleRef = collection(db, "Articles")
-      const q = query(articleRef, orderBy("createdAt", "desc"))
-      onSnapshot(q, (snapshot) => {
-          const articles = snapshot.docs.map((doc) => ({
-              id: doc.id,
-              ...doc.data(),
-          }))
-          setArticles(articles)
-      })
-      dispatch(setArticlesValue(articles));
-  }, [])
+    const articleRef = collection(db, "Articles")
+    const q = query(articleRef, orderBy("createdAt", "desc"))
+    onSnapshot(q, (snapshot) => {
+      const articles = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      setArticles(articles)
+    })
+    dispatch(setArticlesValue(articles));
+  }, [reloadPage])
 
   return (
     <div className='Blog'>
-      <Header />
-      <Flotan/>
+      <Header reloadPage={reloadPage} setReloadPage={setReloadPage} />
+      <Flotan />
       <Routes>
         <Route path='/'
           element={<Presentations />}
@@ -85,12 +88,19 @@ function Blog() {
         <Route path='/TECNOLOGIA'
           element={<Tecnologia />}
         />
+
+        <Route path='/ARTICLE/:id'
+          element={<ArticleForRead />}
+        />
         <Route path="*" element={<NotFound />} />
 
         <Route path='/LOGIN' element={<Longin access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
 
         <Route element={<RoutesProtecteds IsLogged={IsLogged} />}>
-          <Route path='/COLLABORATORS' element={<CompanyCollaboratorAccess />} />
+          <Route
+            path='/COLLABORATORS'
+            element={<CompanyCollaboratorAccess />}
+          />
         </Route>
       </Routes>
 

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import '../Styles/Article.css'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebaseconfig'
+import { Link } from 'react-router-dom'
 
-const Article = () => {
+const Article = ({IsLogged}) => {
     const [articles, setArticles] = useState([{}])
     useEffect(() => {
         const articleRef = collection(db, "Articles")
@@ -16,6 +17,7 @@ const Article = () => {
             setArticles(articles)
         })
     }, [])
+    console.log(IsLogged)
     return (
         <div className='main-card-article'>
             {
@@ -23,20 +25,21 @@ const Article = () => {
                     <p>Not articles found</p>
                 ) :
                     (
-                        articles.map((article, i) => (
-                            <div key={i} className="article-card card">
-                                <img src={article.imageUrl} alt="Foto" className="card-image" />
+                        articles.map(({ id, imageUrl, title, description, autor, createdAt }) => (
+                            <div key={imageUrl} className="article-card card">
+                                <Link to={IsLogged ? '' : `/ARTICLE/${id}`}>
+                                    <img src={imageUrl} alt="Foto" className="card-image" />
+                                </Link>
                                 <div className="card-content">
-                                    <h2 className="card-title">{article.title}</h2>
+                                    <h2 className="card-title">{title}</h2>
                                     <div className="card-description">
                                         {/* Split body content by newline and display */}
-                                        { article.description &&  article.description.split('\n').map((line, index) => (
+                                        {description && description.split('\n').map((line, index) => (
                                             <p key={index}>{line}</p>
                                         ))}
                                     </div>
                                     <div className="card-content-information">
-                                        <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h2>
-                                        <button className="card-like"><i className='bx bx-like'></i></button>
+                                        <h2 className="card-date">{createdAt ? createdAt.toDate().toDateString() : ''}</h2>
                                     </div>
                                 </div>
                             </div>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import '../Styles/header.css'
 import { Link } from 'react-router-dom'
-const Header = () => {
+const Header = ({reloadPage,setReloadPage}) => {
     const [Menu, setMenu] = useState(false)
     const closeMenu = () => {
         setMenu(false)
+        setReloadPage(!reloadPage)
     }
     const arrayOfHeader = [
         {

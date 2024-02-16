@@ -34,7 +34,7 @@ const Login = ({ access, IsLogged, setIsLogged }) => {
     return (
         <article className="protect-route">
             {IsLogged ? (
-                <CompanyCollaboratorAccess setIsLogged={setIsLogged} />
+                <CompanyCollaboratorAccess IsLogged={IsLogged} setIsLogged={setIsLogged} />
             ) : (
                 <form className='form-login' onSubmit={handleSubmit(submit)} >
                     <h3>Credenciales</h3>

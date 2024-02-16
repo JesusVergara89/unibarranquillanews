@@ -12,6 +12,7 @@ const ArticleForm = () => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
+        autor: '',
         image: '',
         createdAt: Timestamp.now().toDate()
     });
@@ -29,7 +30,7 @@ const ArticleForm = () => {
     };
 
     const handlePublish = () => {
-        if (!formData.title || !formData.description || !formData.image) {
+        if (!formData.title || !formData.description || !formData.image || !formData.autor) {
             alert('please fill all the fields');
             return;
         }
@@ -51,6 +52,7 @@ const ArticleForm = () => {
                 setFormData({
                     title: '',
                     description: '',
+                    autor: '',
                     image: '',
                 });
 
@@ -61,6 +63,7 @@ const ArticleForm = () => {
                     addDoc(articleRef, {
                         title: formData.title,
                         description: formData.description,
+                        autor: formData.autor,
                         imageUrl: url,
                         createdAt: Timestamp.now().toDate()
                     })
@@ -84,6 +87,8 @@ const ArticleForm = () => {
             <input placeholder="title" type="text" name="title" className="form-article-input" value={formData.title} onChange={(e) => handleChange(e)} />
             {/* Description */}
             <textarea placeholder="description" name="description" className="form-article-textarea" value={formData.description} onChange={(e) => handleChange(e)} />
+            {/*Author */}
+            <textarea placeholder="autor" name="autor" className="form-article-autor" value={formData.autor} onChange={(e) => handleChange(e)} />
             {/*Image */}
             <input placeholder="image" type="file" name="image" accept="image/*" className="form-article-image" onChange={(e) => handleImageChange(e)} />
 
