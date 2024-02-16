@@ -48,7 +48,7 @@ function Blog() {
       setArticles(articles)
     })
     dispatch(setArticlesValue(articles));
-  }, [reloadPage,access])
+  }, [reloadPage])
 
   console.log(articles)
 
@@ -58,7 +58,7 @@ function Blog() {
       <Flotan />
       <Routes>
         <Route path='/'
-          element={<Presentations />}
+          element={<Presentations access={access} />}
         />
         <Route path='/ACTUALIDAD'
           element={<Engineering />}

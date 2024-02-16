@@ -4,13 +4,13 @@ import Article from './Article'
 import Loading from './Loading'
 import '../Styles/FlashArticles.css'
 
-const FlashArticles = () => {
+const FlashArticles = ({access}) => {
     const data = useSelector(state => state.articlesSlice)
     return (
         <article className="Flash-articles">
             {data ? (
                 <div className="Recent-news-container">
-                    <Article />
+                    {access ? <Article /> : <Loading/> }
                     <h3>Nuestras secciones</h3>
                 </div>
             ) : (
