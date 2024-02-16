@@ -52,7 +52,12 @@ function Blog() {
 
   const articlesSucces = useSelector(state => state.articlesSlice)
 
-  console.log(articles)
+  function miFuncion() {
+    setReloadPage(!reloadPage)
+  }
+
+  setTimeout(miFuncion, 5000);
+
 
   return (
     <div className='Blog'>
