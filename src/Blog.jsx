@@ -48,7 +48,9 @@ function Blog() {
       setArticles(articles)
     })
     dispatch(setArticlesValue(articles));
-  }, [reloadPage])
+  }, [reloadPage,access])
+
+  console.log(articles)
 
   return (
     <div className='Blog'>
