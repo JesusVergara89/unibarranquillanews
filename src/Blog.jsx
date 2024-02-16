@@ -48,7 +48,9 @@ function Blog() {
       setArticles(articles)
     })
     dispatch(setArticlesValue(articles));
-  }, [reloadPage])
+  }, [reloadPage, access])
+
+  const articlesSucces = useSelector(state => state.articlesSlice)
 
   console.log(articles)
 
@@ -58,7 +60,7 @@ function Blog() {
       <Flotan />
       <Routes>
         <Route path='/'
-          element={<Presentations access={access} />}
+          element={<Presentations access={articlesSucces} />}
         />
         <Route path='/ACTUALIDAD'
           element={<Engineering />}
