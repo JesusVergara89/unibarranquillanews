@@ -28,7 +28,7 @@ const Presentations = ({access}) => {
 
       <Recent />
 
-      <FlashArticles access={access}/>
+      <FlashArticles access={access} />
 
       <Columns />
 

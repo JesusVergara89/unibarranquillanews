@@ -50,8 +50,6 @@ function Blog() {
     dispatch(setArticlesValue(articles));
   }, [reloadPage, access])
 
-  const articlesSucces = useSelector(state => state.articlesSlice)
-
   function miFuncion() {
     setReloadPage(!reloadPage)
   }
@@ -65,7 +63,7 @@ function Blog() {
       <Flotan />
       <Routes>
         <Route path='/'
-          element={<Presentations access={articlesSucces} />}
+          element={<Presentations access={access} />}
         />
         <Route path='/ACTUALIDAD'
           element={<Engineering />}
