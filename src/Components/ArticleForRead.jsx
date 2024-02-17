@@ -51,7 +51,7 @@ const ArticleForRead = () => {
     };
 
     const compartirEnTwitter = () => {
-        window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentURL)}&text=${encodeURIComponent(article.title)}&via=@unibanewspaper`, '_blank');
+        window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentURL)}&text=${encodeURIComponent(article.title)}&via=unibanewspaper`, '_blank');
     };
 
     const compartirEnLinkedIn = () => {
