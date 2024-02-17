@@ -17,10 +17,10 @@
   gap: 25px;
 }
 
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.swiper-pagination {
+  position: static;
+  margin-left: 47%;
+  margin-top: 25px;
 }
 
 .swiper-button-prev,

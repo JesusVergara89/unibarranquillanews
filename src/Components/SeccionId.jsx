@@ -31,8 +31,8 @@ const SeccionId = () => {
                             </div>
                         </article>
                         <div className={Menucom ? 'Menu-compartir on' : 'Menu-compartir off'}>
-                            <i className='bx bxl-facebook-circle'>Publicaciones</i>
-                            <i className='bx bxl-facebook-circle'>Chat</i>
+                            < i className='bx bxl-facebook-circle' />Publicaciones
+                            <i className='bx bxl-facebook-circle' />Chat
                         </div>
                     </>
                 ) : <Loading />
