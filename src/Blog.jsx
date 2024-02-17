@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, lazy, useEffect, useState } from 'react'
 import Presentations from './Components/Presentations'
 import { Route, Routes } from 'react-router-dom'
-import Engineering from './Components/Engineering'
+/*import Engineering from './Components/Engineering'
 import Travel from './Components/Travel'
 import Literature from './Components/Literature'
 import Experience from './Components/Experience'
@@ -11,6 +11,7 @@ import Eventos from './Components/Eventos'
 import Entrevista from './Components/Entrevista'
 import Workus from './Components/Workus'
 import Tecnologia from './Components/Tecnologia'
+*/
 import NotFound from './Components/NotFound'
 import Longin from './Components/Longin'
 import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
@@ -22,9 +23,13 @@ import { useDispatch } from 'react-redux'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { setArticlesValue } from './store/slices/articles.slice'
 import { db } from './firebaseconfig'
+/*import Seccion from './Components/Seccion'
+import SeccionId from './Components/SeccionId'
+*/
+import Loading from './Components/Loading'
 
-
-
+const Seccion = lazy(() => import("./Components/Seccion"))
+const SeccionId = lazy(() => import("./Components/SeccionId"))
 function Blog() {
 
   const [IsLogged, setIsLogged] = useState(false)
@@ -35,27 +40,42 @@ function Blog() {
 
   const [articles, setArticles] = useState([{}])
   useEffect(() => {
-      const articleRef = collection(db, "Articles")
-      const q = query(articleRef, orderBy("createdAt", "desc"))
-      onSnapshot(q, (snapshot) => {
-          const articles = snapshot.docs.map((doc) => ({
-              id: doc.id,
-              ...doc.data(),
-          }))
-          setArticles(articles)
-      })
-      dispatch(setArticlesValue(articles));
+    const articleRef = collection(db, "Articles")
+    const q = query(articleRef, orderBy("createdAt", "desc"))
+    onSnapshot(q, (snapshot) => {
+      const articles = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      setArticles(articles)
+    })
+    dispatch(setArticlesValue(articles));
   }, [])
-
   return (
     <div className='Blog'>
       <Header />
-      <Flotan/>
+      <Flotan />
       <Routes>
         <Route path='/'
           element={<Presentations />}
         />
-        <Route path='/ACTUALIDAD'
+        <Route path='/:Seccion'
+          element={
+            <Suspense fallback={<Loading />}>
+              <Seccion />
+            </Suspense>
+          }
+        />
+        <Route path='/:Seccion/:Id'
+          element={
+            <Suspense fallback={<Loading />}>
+              <SeccionId />
+            </Suspense>
+          }
+        />
+
+        {/*
+          <Route path='/ACTUALIDAD'
           element={<Engineering />}
         />
         <Route path='/CULTURA'
@@ -84,7 +104,7 @@ function Blog() {
         />
         <Route path='/TECNOLOGIA'
           element={<Tecnologia />}
-        />
+  />*/}
         <Route path="*" element={<NotFound />} />
 
         <Route path='/LOGIN' element={<Longin access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
