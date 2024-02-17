@@ -82,7 +82,7 @@
     align-items: center;
 }
 
-.Complet-news-link-btn{
+.Complet-news-link-btn {
     width: 100px;
     height: 30px;
     background-color: var(--color_4);
@@ -97,7 +97,7 @@
     transition: background-color 0.3s ease;
 }
 
-.Complet-news-link-btn:hover{
+.Complet-news-link-btn:hover {
     background-color: var(--color_7);
 }
 
@@ -125,13 +125,25 @@
 
 .Complete-news-share-btns .bx {
     font: 1rem;
+    transition: background-color 0.3s ease;
 }
 
 .Complete-news-share-btns svg {
     display: flex;
-    width: 1rem; 
-    height: 1rem; 
+    width: 1rem;
+    height: 1rem;
+    transition: background-color 0.3s ease;
 }
+
+.Complete-news-share-btns .bx:hover {
+    cursor: pointer;
+}
+
+.Complete-news-share-btns svg:hover{
+    cursor: pointer;
+}
+
+
 
 
 @media (width < 410px) {
