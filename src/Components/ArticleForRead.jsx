@@ -47,16 +47,17 @@ const ArticleForRead = () => {
     };
 
     const compartirEnFacebook = () => {
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentURL)}`, '_blank');
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentURL)}&title=${encodeURIComponent(article.title)}&picture=${encodeURIComponent(article.imageUrl)}`, '_blank');
     };
 
     const compartirEnTwitter = () => {
-        window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentURL)}`, '_blank');
+        window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentURL)}&text=${encodeURIComponent(article.title)}&via=@unibanewspaper`, '_blank');
     };
 
     const compartirEnLinkedIn = () => {
-        window.open(`https://www.linkedin.com/shareArticle?url=${encodeURIComponent(currentURL)}`, '_blank');
+        window.open(`https://www.linkedin.com/shareArticle?url=${encodeURIComponent(currentURL)}&title=${encodeURIComponent(article.title)}&summary=&source=`, '_blank');
     };
+
 
     return (
         <div>
