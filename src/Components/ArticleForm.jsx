@@ -16,6 +16,7 @@ const ArticleForm = () => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
+        link: '',
         autor: '',
         image: '',
         createdAt: Timestamp.now().toDate()
@@ -56,6 +57,7 @@ const ArticleForm = () => {
                 setFormData({
                     title: '',
                     description: '',
+                    link: '',
                     autor: '',
                     image: '',
                 });
@@ -67,6 +69,7 @@ const ArticleForm = () => {
                     addDoc(articleRef, {
                         title: formData.title,
                         description: formData.description,
+                        link: formData.link,
                         autor: `${name} ${lastName}`,
                         imageUrl: url,
                         createdAt: Timestamp.now().toDate()
@@ -91,8 +94,8 @@ const ArticleForm = () => {
             <input placeholder="title" type="text" name="title" className="form-article-input" value={formData.title} onChange={(e) => handleChange(e)} />
             {/* Description */}
             <textarea placeholder="description" name="description" className="form-article-textarea" value={formData.description} onChange={(e) => handleChange(e)} />
-            {/*Author */}
-            {/*<textarea placeholder="autor" name="autor" className="form-article-autor" value={formData.autor} onChange={(e) => handleChange(e)} />*/}
+            {/*External Link */}
+            <input placeholder="link" name="link" className="form-article-link" value={formData.link} onChange={(e) => handleChange(e)} />
             {/*Image */}
             <input placeholder="image" type="file" name="image" accept="image/*" className="form-article-image" onChange={(e) => handleImageChange(e)} />
 

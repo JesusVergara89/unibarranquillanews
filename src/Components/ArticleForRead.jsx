@@ -53,6 +53,9 @@ const ArticleForRead = () => {
                     <h3 className="Complete-news-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h3>
                     <h3>{article.autor ? `By ${article.autor}` : ''}</h3>
                 </div>
+                <div className="Complete-news-link">
+                    <button className="Complet-news-link-btn"><a href={article.link} target="_blank" rel="noopener noreferrer">Link</a></button>
+                </div>
             </div>
         </article>
     )
