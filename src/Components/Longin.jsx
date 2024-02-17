@@ -43,7 +43,7 @@ const Login = ({ access, IsLogged, setIsLogged }) => {
                 <form className='form-login' onSubmit={handleSubmit(submit)} >
                     <h3>Credenciales</h3>
                     <input className='form-input' placeholder='Email' {...register("email")} />
-                    <input autocomplete="password"  className='form-input' type="password" placeholder='Password' {...register("password")} />
+                    <input autoComplete="password"  className='form-input' type="password" placeholder='Password' {...register("password")} />
                     <button className='protect-route-btn' type='submit'>Login</button>
                 </form>
             )}
