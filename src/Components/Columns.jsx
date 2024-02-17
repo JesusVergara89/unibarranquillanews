@@ -78,13 +78,13 @@ const Columns = () => {
             </button>
 
             <button className='outside-btn' onClick={() => navigateEntrevista('/ENTREVISTA')} >
-                <img  onClick={() => navigateEntrevista('/ENTREVISTA')} src={entrevista} />
+                <img onClick={() => navigateEntrevista('/ENTREVISTA')} src={entrevista} />
                 <h2 >Ver más</h2>
                 <h3>Entrevistas y Perfiles</h3>
             </button>
 
             <button className='outside-btn' onClick={() => navigateTecnologia('/TECNOLOGIA')} >
-                <img  onClick={() => navigateEntrevista('/TECNOLOGIA')} src={tecnologia} />
+                <img onClick={() => navigateEntrevista('/TECNOLOGIA')} src={tecnologia} />
                 <h2 >Ver más</h2>
                 <h3>Tecnología</h3>
             </button>
