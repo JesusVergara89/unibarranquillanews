@@ -47,15 +47,7 @@ function Blog() {
       }))
       setArticles(articles)
     })
-    dispatch(setArticlesValue(articles));
   }, [reloadPage, access])
-
-  function miFuncion() {
-    setReloadPage(!reloadPage)
-  }
-
-  setTimeout(miFuncion, 5000);
-
 
   return (
     <div className='Blog'>
