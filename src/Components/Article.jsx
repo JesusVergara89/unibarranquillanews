@@ -37,7 +37,7 @@ const Article = ({ IsLogged }) => {
             speed:640,
         }
     }
-    console.log(articles)
+    
     function Navi(e) {
         navigate(`/ARTICLE/${e}`)
     }
