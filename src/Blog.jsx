@@ -19,20 +19,19 @@ import useAccess from './Hooks/useAcces'
 import RoutesProtecteds from './Components/RoutesProtecteds'
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { setArticlesValue } from './store/slices/articles.slice'
 import { db } from './firebaseconfig'
-/*import Seccion from './Components/Seccion'
-import SeccionId from './Components/SeccionId'
-*/
-import Loading from './Components/Loading'
+import ArticleForRead from './Components/ArticleForRead'
 
 const Seccion = lazy(() => import("./Components/Seccion"))
 const SeccionId = lazy(() => import("./Components/SeccionId"))
 function Blog() {
 
   const [IsLogged, setIsLogged] = useState(false)
+
+  const [reloadPage, setReloadPage] = useState(false)
 
   const access = useAccess()
 
@@ -49,32 +48,16 @@ function Blog() {
       }))
       setArticles(articles)
     })
-    dispatch(setArticlesValue(articles));
-  }, [])
+  }, [reloadPage, access])
+
   return (
     <div className='Blog'>
-      <Header />
+      <Header reloadPage={reloadPage} setReloadPage={setReloadPage} />
       <Flotan />
       <Routes>
         <Route path='/'
-          element={<Presentations />}
+          element={<Presentations access={access} />}
         />
-        <Route path='/:Seccion'
-          element={
-            <Suspense fallback={<Loading />}>
-              <Seccion />
-            </Suspense>
-          }
-        />
-        <Route path='/:Seccion/:Id'
-          element={
-            <Suspense fallback={<Loading />}>
-              <SeccionId />
-            </Suspense>
-          }
-        />
-
-        {/*
           <Route path='/ACTUALIDAD'
           element={<Engineering />}
         />
@@ -104,13 +87,20 @@ function Blog() {
         />
         <Route path='/TECNOLOGIA'
           element={<Tecnologia />}
-  />*/}
+        />
+
+        <Route path='/ARTICLE/:id'
+          element={<ArticleForRead />}
+        />
         <Route path="*" element={<NotFound />} />
 
         <Route path='/LOGIN' element={<Longin access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
 
         <Route element={<RoutesProtecteds IsLogged={IsLogged} />}>
-          <Route path='/COLLABORATORS' element={<CompanyCollaboratorAccess />} />
+          <Route
+            path='/COLLABORATORS'
+            element={<CompanyCollaboratorAccess />}
+          />
         </Route>
       </Routes>
 

@@ -7,7 +7,7 @@ import Networks from '../Components/Networks'
 import Recent from './Recent'
 import FlashArticles from './FlashArticles'
 
-const Presentations = () => {
+const Presentations = ({access}) => {
 
   //const [windowWidt, setWindowWidt] = useState((window.innerWidth))
   //window.onresize = function () {
@@ -28,7 +28,7 @@ const Presentations = () => {
 
       <Recent />
 
-      <FlashArticles/>
+      <FlashArticles access={access} />
 
       <Columns />
 

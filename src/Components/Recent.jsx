@@ -38,12 +38,12 @@ const Recent = () => {
         },
         880: {
             slidesPerView: 3,
-            slidesPerGroup: 3,
+            slidesPerGroup: 2,
             speed: 720,
         },
         1200: {
             slidesPerView: 4,
-            slidesPerGroup: 4,
+            slidesPerGroup: 3,
             speed: 850,
         },
     }

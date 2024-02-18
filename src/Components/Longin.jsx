@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import CompanyCollaboratorAccess from './CompanyCollaboratorAccess';
 import '../Styles/Login.css';
@@ -7,6 +7,9 @@ import { setEmailValue } from '../store/slices/email.slice';
 import { setPassWordValue } from '../store/slices/password.slice';
 
 const Login = ({ access, IsLogged, setIsLogged }) => {
+
+    const [usedata, setUsedata] = useState()
+
     const dispatch = useDispatch();
 
     const objectReset = {
@@ -26,6 +29,7 @@ const Login = ({ access, IsLogged, setIsLogged }) => {
             dispatch(setPassWordValue(user.LastName)); // Guardar el apellido
             setIsLogged(true);
         }
+        setUsedata(user)
 
         // Reiniciar los valores del formulario
         reset(objectReset);
@@ -34,12 +38,12 @@ const Login = ({ access, IsLogged, setIsLogged }) => {
     return (
         <article className="protect-route">
             {IsLogged ? (
-                <CompanyCollaboratorAccess setIsLogged={setIsLogged} />
+                <CompanyCollaboratorAccess  usedata={usedata} IsLogged={IsLogged} setIsLogged={setIsLogged} />
             ) : (
                 <form className='form-login' onSubmit={handleSubmit(submit)} >
                     <h3>Credenciales</h3>
                     <input className='form-input' placeholder='Email' {...register("email")} />
-                    <input className='form-input' type="password" placeholder='Password' {...register("password")} />
+                    <input autoComplete="password"  className='form-input' type="password" placeholder='Password' {...register("password")} />
                     <button className='protect-route-btn' type='submit'>Login</button>
                 </form>
             )}

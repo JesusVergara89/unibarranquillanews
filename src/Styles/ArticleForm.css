@@ -28,33 +28,40 @@
     font-size: bold;
 }
 
-.form-article-input{
+.form-article-input {
     width: 90%;
     height: 20px;
     border: 1px solid #ccc;
     text-align: center;
 }
 
-.form-article-image  {
+.form-article-link {
+    width: 90%;
+    height: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.form-article-image {
     width: auto;
     height: auto;
     border: 1px solid #ccc;
 }
 
-@media (width<=400px){
-    .form-article-image  {
+@media (width<=400px) {
+    .form-article-image {
         width: 90%;
         height: auto;
         border: 1px solid #ccc;
-    } 
+    }
 }
- 
- .form-article-textarea {
+
+.form-article-textarea {
     width: 90%;
     height: 60%;
     border: 1px solid #ccc;
     text-align: center;
- }
+}
 
 .form-article-progress {
     width: 90%;
@@ -97,4 +104,3 @@
 .form-article-tbn:hover {
     background-color: var(--color_7);
 }
-

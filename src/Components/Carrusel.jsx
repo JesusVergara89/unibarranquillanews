@@ -12,7 +12,6 @@ const Carrusel = ({ children, breakpoints }) => {
                     modules={[Navigation, Pagination]}
                     loop={true}
                     slidesPerView={1}
-                    grabCursor={true}
                     lazy={true}
                     navigation
                     pagination={{

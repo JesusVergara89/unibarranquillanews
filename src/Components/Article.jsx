@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import '../Styles/Article.css'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebaseconfig'
+import { useNavigate } from 'react-router-dom'
 import Carrusel from './Carrusel'
 import { SwiperSlide } from "swiper/react";
 
-const Article = () => {
+const Article = ({ IsLogged }) => {
+    const navigate = useNavigate()
     const [articles, setArticles] = useState([{}])
     useEffect(() => {
         const articleRef = collection(db, "Articles")
@@ -20,11 +22,24 @@ const Article = () => {
     }, [])
 
     let breakpoints = {
+        600: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+        },
         890: {
             slidesPerView: 2,
             slidesPerGroup: 2,
-            speed: 500,
+            speed: 700,
         },
+        1100: {
+            slidesPerView: 3,
+            slidesPerGroup: 1,
+            speed:640,
+        }
+    }
+    console.log(articles)
+    function Navi(e) {
+        navigate(`/ARTICLE/${e}`)
     }
     return (
         <div className='main-card-article'>
@@ -32,31 +47,29 @@ const Article = () => {
                 articles.length === 0 ? (
                     <p>Not articles found</p>
                 ) :
-                    <Carrusel breakpoints={breakpoints}>
-                        {
-                            articles.map((article, i) =>
-                                <SwiperSlide key={article.imageUrl}>
-                                    <div className="article-card card">
-                                        <img src={article.imageUrl} alt="Foto" className="card-image" />
-                                        <div className="card-content">
-                                            <h2 className="card-title">{article.title}</h2>
-                                            <div className="card-description">
-                                                {/* Split body content by newline and display */}
-                                                {article.description && article.description.split('\n').map((line, index) => (
-                                                    <p key={index}>{line}</p>
-                                                ))}
-                                            </div>
-                                            <div className="card-content-information">
-                                                <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h2>
-                                                <button className="card-like"><i className='bx bx-like'></i></button>
-                                            </div>
+                    (<Carrusel breakpoints={breakpoints}>
+                        {articles.map(({ id, imageUrl, title, description, autor, createdAt }) => (
+                            <SwiperSlide key={id}>
+                                <div className="article-card card">
+                                    <img onClick={() => Navi(id)} src={imageUrl} alt="Foto" className="card-image" />
+                                    <div className="card-content">
+                                        <h2 className="card-title">{title}</h2>
+                                        <div className="card-description">
+                                            {/* Split body content by newline and display */}
+                                            {description && description.split('\n').map((line, index) => (
+                                                <p key={index}>{line}</p>
+                                            ))}
+                                        </div>
+                                        <div className="card-content-information">
+                                            <h2 className="card-date">{createdAt ? createdAt.toDate().toDateString() : ''}</h2>
                                         </div>
                                     </div>
-                                </SwiperSlide>
-                            )
-                        }
+                                </div>
+                            </SwiperSlide>
+                        ))}
                     </Carrusel>
 
+                    )
             }
         </div>
     )
