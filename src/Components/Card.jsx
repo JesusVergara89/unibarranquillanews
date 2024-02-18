@@ -15,7 +15,7 @@ const Card = ({ unit }) => {
                 <p className='recent-body'>{unit.Body.slice(0, 130) + " ..."}</p>
             </div>
             <button onClick={() => openUrl(unit.interLink)} className="recen-btn">
-                <a href={unit.interLink} target="_blank" rel="noopener noreferrer">ver</a>
+                <a href={unit.interLink} rel="noopener noreferrer">ver</a>
             </button>
         </div>
     )
