@@ -15,7 +15,7 @@ const ChangePassword = ({ usedata, functionOpen }) => {
     };
 
     const onSubmit = data => {
-        const passwordRegex = /^[a-zA-Z].{5,}$/; // Expresión regular para validar que la contraseña comience con una letra y tenga al menos 6 caracteres en total
+        const passwordRegex = /^[a-zA-Z].{5,}$/; 
         if (data._Password === data.Password && passwordRegex.test(data.Password)) {
             let obj = {
                 Id: usedata.Id,
