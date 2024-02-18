@@ -33,7 +33,7 @@ const Recent = () => {
     let breakpoints = {
         200: {
             slidesPerView: 1,
-            slidesPerGroup: 1,
+            slidesPerGroup: 2,
         },
         890: {
             slidesPerView: 2,
