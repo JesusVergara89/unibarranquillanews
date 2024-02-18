@@ -22,7 +22,7 @@ const Article = ({ IsLogged }) => {
     }, [])
 
     let breakpoints = {
-        600: {
+        200: {
             slidesPerView: 1,
             slidesPerGroup: 1,
         },

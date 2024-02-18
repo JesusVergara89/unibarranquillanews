@@ -31,21 +31,20 @@ const Recent = () => {
         }
     }, [actualidad, asuntos, entrevista, eventos, researchs, culture, sports, vidas, tecnologias]);
     let breakpoints = {
-        600: {
+        200: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+        },
+        890: {
             slidesPerView: 2,
             slidesPerGroup: 2,
-            speed: 500,
+            speed: 700,
         },
-        880: {
+        1100: {
             slidesPerView: 3,
-            slidesPerGroup: 2,
-            speed: 720,
-        },
-        1200: {
-            slidesPerView: 4,
-            slidesPerGroup: 3,
-            speed: 850,
-        },
+            slidesPerGroup: 1,
+            speed:640,
+        }
     }
     return (
         <article className="Recent-news" >

@@ -103,12 +103,7 @@
   all: unset;
 }
 
-@media (width<500px) {
-    .article-card {
-        width: 230px;
-        height: auto;
-      }
-      
+@media (width<500px) {      
       .card-image {
         height: 85px;
       }
@@ -126,4 +121,34 @@
       .card-description p {
         all: unset;
       }
+}
+
+@media (350px < width < 600px) {
+  .article-card {
+    width: 280px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color_1);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px var(--color_7);
+    margin: 20px;
+    overflow: hidden;
+    transform: scale(0.9);
+  }
+}
+
+@media (width <= 349px) {
+  .article-card {
+    width: 280px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color_1);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px var(--color_7);
+    margin: 20px;
+    overflow: hidden;
+    transform: scale(0.7);
+  }
 }

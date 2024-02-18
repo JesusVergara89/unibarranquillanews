@@ -11,7 +11,7 @@ const Carrusel = ({ children, breakpoints }) => {
                 <Swiper
                     modules={[Navigation, Pagination]}
                     loop={true}
-                    slidesPerView={1}
+                    slidesPerView={2}
                     lazy={true}
                     navigation
                     pagination={{
