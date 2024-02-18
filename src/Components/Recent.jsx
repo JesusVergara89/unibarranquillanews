@@ -31,24 +31,18 @@ const Recent = () => {
         }
     }, [actualidad, asuntos, entrevista, eventos, researchs, culture, sports, vidas, tecnologias]);
     let breakpoints = {
-        200: {
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-        },
         890: {
             slidesPerView: 2,
-            slidesPerGroup: 2,
             speed: 700,
         },
         1100: {
             slidesPerView: 3,
-            slidesPerGroup: 1,
             speed:640,
         }
     }
     return (
         <article className="Recent-news" >
-            <h2>Artículos más recientes</h2>
+            <h2 className='Title-reciente'>Artículos más recientes</h2>
             {data ? (
                 <Carrusel breakpoints={breakpoints}>
                     {data?.map((user) => (
@@ -61,7 +55,7 @@ const Recent = () => {
                 <Loading />
             )
             }
-            <h4>
+            <h4 className='Title-flash'>
                 Artículos Flash
             </h4>
         </article >
