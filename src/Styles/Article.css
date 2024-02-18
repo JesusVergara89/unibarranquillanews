@@ -27,13 +27,14 @@
   background-color: var(--color_1);
   border-radius: 8px;
   overflow: hidden;
+  row-gap: 12px;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }
 
 .card-image {
   width: 100%;
-  height: 110px;
+  height: 45%;
   object-fit: cover;
 }
 .card-content {
@@ -92,25 +93,7 @@
   all: unset;
 }
 
-@media (width<500px) {
-  .card-image {
-    height: 85px;
-  }
 
-  .card-content {
-    width: 100%;
-    height: 210px;
-    padding: 5px;
-  }
-
-  .card-description {
-    font-size: 0.7rem;
-  }
-
-  .card-description p {
-    all: unset;
-  }
-}
 @media (hover: hover) {
   .article-card:hover {
     cursor: pointer;

@@ -50,7 +50,7 @@ const Article = ({ IsLogged }) => {
                                         <h2 className="card-title">{title}</h2>
                                         <div className="card-description">
                                             {/* Split body content by newline and display */}
-                                            <p>{description?.slice(0, 150) + " ..."}</p>
+                                            <p>{description?.slice(0, 110) + " ..."}</p>
                                         </div>
                                         <div className="card-content-information">
                                             <h2 className="card-date">{createdAt ? createdAt.toDate().toDateString() : ''}</h2>
