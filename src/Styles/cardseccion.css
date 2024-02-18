@@ -1,0 +1,157 @@
+.section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+  margin-top: 60px;
+}
+.section-Header {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 25px;
+}
+.title {
+  font-size: 2rem;
+  color: var(--color_7);
+}
+.description {
+  width: 60%;
+  color: var(--color_7);
+}
+.section-cards {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2.3rem;
+  padding: 0.3rem;
+  margin-bottom: 60px;
+}
+.card {
+  width: 350px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem;
+  color: var(--color_7);
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.31);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  border-radius: 8px;
+}
+.section-imagen {
+  width: 100%;
+  height: 200px;
+}
+.section-imagen > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.section-text {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: start;
+  padding: 0.3rem;
+}
+.section-text > h2 {
+  font-weight: 550;
+}
+.section-text > p {
+  font-size: 14px;
+}
+@media (hover: hover) {
+  .card:hover {
+    transform: scale(1.1);
+  }
+}
+@media (360px<=width<=650px) {
+  .title {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .description {
+    width: 75%;
+  }
+}
+@media (360px<=width<=600px) {
+  .section-cards {
+    width: 100%;
+    gap: 1.5rem;
+  }
+  .card {
+    width: 230px;
+    border-radius: 3px;
+  }
+  .section-imagen {
+    width: 100%;
+    height: 150px;
+  }
+  .section-imagen > img {
+    border-radius: 3px;
+  }
+  .section-text {
+    width: 85%;
+    height: auto;
+  }
+}
+@media (width<=360px) {
+  .section-cards {
+    width: 100%;
+    gap: 0.7rem;
+  }
+  .card {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .section-imagen {
+    width: 25%;
+    height: 80px;
+  }
+  .section-imagen > img {
+    border-radius: 3px;
+  }
+  .section-text {
+    width: 65%;
+    height: auto;
+  }
+  .section-text > h2 {
+    font-size: 14px;
+  }
+  .section-text > p {
+    font-size: 12px;
+  }
+  .title {
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
+  .description {
+    width: 85%;
+  }
+  @media (width<=330px) {
+    .section-text > h2 {
+      font-size: 12px;
+    }
+    .section-text > p {
+      font-size: 10px;
+    }
+  }
+}

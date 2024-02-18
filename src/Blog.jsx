@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, lazy, useEffect, useState } from 'react'
 import Presentations from './Components/Presentations'
 import { Route, Routes } from 'react-router-dom'
 import Engineering from './Components/Engineering'
@@ -24,8 +24,8 @@ import { setArticlesValue } from './store/slices/articles.slice'
 import { db } from './firebaseconfig'
 import ArticleForRead from './Components/ArticleForRead'
 
-
-
+const Seccion = lazy(() => import("./Components/Seccion"))
+const SeccionId = lazy(() => import("./Components/SeccionId"))
 function Blog() {
 
   const [IsLogged, setIsLogged] = useState(false)
@@ -57,7 +57,7 @@ function Blog() {
         <Route path='/'
           element={<Presentations access={access} />}
         />
-        <Route path='/ACTUALIDAD'
+          <Route path='/ACTUALIDAD'
           element={<Engineering />}
         />
         <Route path='/CULTURA'
