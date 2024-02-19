@@ -22,22 +22,16 @@ const Article = ({ IsLogged }) => {
     }, [])
 
     let breakpoints = {
-        600: {
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-        },
         890: {
             slidesPerView: 2,
-            slidesPerGroup: 2,
             speed: 700,
         },
         1100: {
             slidesPerView: 3,
-            slidesPerGroup: 1,
-            speed:640,
+            speed: 640,
         }
     }
-    console.log(articles)
+
     function Navi(e) {
         navigate(`/ARTICLE/${e}`)
     }
@@ -50,15 +44,13 @@ const Article = ({ IsLogged }) => {
                     (<Carrusel breakpoints={breakpoints}>
                         {articles.map(({ id, imageUrl, title, description, autor, createdAt }) => (
                             <SwiperSlide key={id}>
-                                <div className="article-card card">
-                                    <img onClick={() => Navi(id)} src={imageUrl} alt="Foto" className="card-image" />
+                                <div onClick={() => Navi(id)} className="article-card">
+                                    <img src={imageUrl} alt="Foto" className="card-image" />
                                     <div className="card-content">
                                         <h2 className="card-title">{title}</h2>
                                         <div className="card-description">
                                             {/* Split body content by newline and display */}
-                                            {description && description.split('\n').map((line, index) => (
-                                                <p key={index}>{line}</p>
-                                            ))}
+                                            <p>{description?.slice(0, 110) + " ..."}</p>
                                         </div>
                                         <div className="card-content-information">
                                             <h2 className="card-date">{createdAt ? createdAt.toDate().toDateString() : ''}</h2>

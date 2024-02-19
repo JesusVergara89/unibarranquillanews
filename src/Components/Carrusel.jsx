@@ -24,8 +24,6 @@ const Carrusel = ({ children, breakpoints }) => {
                 </Swiper>
             </div>
         </div>
-
-
     );
 };
 
