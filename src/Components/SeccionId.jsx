@@ -3,15 +3,16 @@ import useSeccion from '../Hooks/useSeccion'
 import Loading from './Loading'
 import '../Styles/seccionId.css'
 import moment from 'moment/moment'
+import NotFound from './NotFound'
 
 const SeccionId = () => {
-    let update = useSeccion()
+    const { update, status } = useSeccion()
     const [Menucom, setMenucom] = useState(false)
     return (
-        <section className='Main-Seccion-id'>
+        <>
             {
-                update ? (
-                    <>
+                status === 'failed' ? <NotFound /> : update ? (
+                    <section className='Main-Seccion-id'>
                         <article className='Main-id'>
                             <div className='Cuerpo'>
                                 <h2 className="Title-id">{update[0].Title}</h2>
@@ -23,21 +24,28 @@ const SeccionId = () => {
                                     ))}
                                 </div>
                             </div>
-                            <div onClick={() => setMenucom(!Menucom)} className='Compartir'>
+                            <div onClick={() => setMenucom(true)} className='Compartir'>
                                 <button>
                                     <i className='bx bx-share'></i>
                                     <p>Compartir</p>
                                 </button>
                             </div>
                         </article>
-                        <div className={Menucom ? 'Menu-compartir on' : 'Menu-compartir off'}>
-                            < i className='bx bxl-facebook-circle' />Publicaciones
-                            <i className='bx bxl-facebook-circle' />Chat
-                        </div>
-                    </>
+                        <article className={Menucom ? 'Menu-compartir on' : 'Menu-compartir off'}>
+                            <header className='Compartir-header'>
+                                <h2>Compartir</h2>
+                                <i onClick={() => setMenucom(false)} className='bx bx-x'></i>
+                            </header>
+                            <section className='Boxicon-carusel'>
+                                < i className='bx bxl-facebook' />
+                                <p>Publicación</p>
+                            </section>
+                        </article>
+                        <article onClick={() => setMenucom(false)} className={Menucom ? 'Close-Menu on' : 'Close-Menu off'} />
+                    </section>
                 ) : <Loading />
             }
-        </section>
+        </>
     )
 }
 

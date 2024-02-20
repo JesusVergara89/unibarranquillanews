@@ -1,12 +1,14 @@
 import React from 'react'
 import "../Styles/card.css"
+import { useNavigate } from 'react-router-dom'
 
 const Card = ({ unit }) => {
-    const openUrl = (url) => {
-        window.open(url, '_blank');
-    };
+    const navigate = useNavigate()
+    function Navi(e) {
+        navigate(`/${e.Seccion}/${e.Id}`)
+    }
     return (
-        <div onClick={() => openUrl(unit.interLink)} className="recent-news-card">
+        <div key={unit.Pic} onClick={() => Navi(unit)} className="recent-news-card">
             <div className='Photo-cards'>
                 <img src={unit.Pic} loading="lazy" className="recent-news-img" />
             </div>
@@ -14,8 +16,8 @@ const Card = ({ unit }) => {
                 <h3 className="recent-news-title">{unit.Title.slice(0, 90) + " ..."}</h3>
                 <p className='recent-body'>{unit.Body.slice(0, 130) + " ..."}</p>
             </div>
-            <button onClick={() => openUrl(unit.interLink)} className="recen-btn">
-                <a href={unit.interLink} rel="noopener noreferrer">ver</a>
+            <button className="recen-btn">
+                ver
             </button>
         </div>
     )

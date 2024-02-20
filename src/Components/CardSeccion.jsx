@@ -3,7 +3,8 @@ import Loading from './Loading'
 import '../Styles/cardseccion.css'
 import moment from 'moment';
 import { useNavigate, useParams } from 'react-router-dom';
-const CardSeccion = ({ datataToShare, dataTitle, dataDescription }) => {
+import NotFound from './NotFound';
+const CardSeccion = ({ datataToShare, dataStatus, dataTitle, dataDescription }) => {
     const navigate = useNavigate()
     let { Seccion } = useParams()
     function Record(e) {
@@ -20,13 +21,13 @@ const CardSeccion = ({ datataToShare, dataTitle, dataDescription }) => {
     }
 
     return (
-        <article className="section">
-            <section className='section-Header'>
-                <h2 className="title">{dataTitle}</h2>
-                <p className='description'>{dataDescription}</p>
-            </section>
-            {
-                datataToShare ? (
+        <>
+            {dataStatus === 'failed' ? <NotFound /> : datataToShare ? (
+                <article className="section">
+                    <section className='section-Header'>
+                        <h2 className="title">{dataTitle}</h2>
+                        <p className='description'>{dataDescription}</p>
+                    </section>
                     <section className='section-cards'>
                         {datataToShare.map((user, key) => (
                             <div onClick={() => Navi(user.Id)} className='card' key={key}>
@@ -45,13 +46,13 @@ const CardSeccion = ({ datataToShare, dataTitle, dataDescription }) => {
                         )
                         )}
                     </section>
+                </article>
+            )
+                : < Loading />
 
-                )
-                    : (< Loading />)
 
             }
-
-        </article>
+        </>
     )
 }
 

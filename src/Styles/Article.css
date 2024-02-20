@@ -27,6 +27,7 @@
   background-color: var(--color_1);
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
   row-gap: 12px;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
@@ -44,7 +45,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
   row-gap: 5px;
 }
 

@@ -53,10 +53,9 @@ const Seccion = () => {
             dataDescription: '¡Bienvenido a la sección de Tecnología! Aquí, te mantenemos al día con las últimas novedades en gadgets, innovaciones y avances tecnológicos. Desde smartphones hasta inteligencia artificial, exploramos cómo la tecnología está moldeando nuestro futuro.'
         }
     ]
-    let update = useSeccion()
+    const { update, status } = useSeccion()
     let { Seccion } = useParams()
     const [search, setSearch] = useState()
-
     useEffect(() => {
         scrollToTop()
         ayOfBody.filter(Title => Title.URL === Seccion).map(user => setSearch(user)
@@ -72,7 +71,7 @@ const Seccion = () => {
     };
     return (
         <article className='section-main'>
-            <CardSeccion datataToShare={update} dataTitle={search?.dataTitle} dataDescription={search?.dataDescription} />
+            <CardSeccion datataToShare={update} dataStatus={status} dataTitle={search?.dataTitle} dataDescription={search?.dataDescription} />
         </article>
     )
 }

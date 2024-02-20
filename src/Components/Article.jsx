@@ -44,7 +44,7 @@ const Article = ({ IsLogged }) => {
                     (<Carrusel breakpoints={breakpoints}>
                         {articles.map(({ id, imageUrl, title, description, autor, createdAt }) => (
                             <SwiperSlide key={id}>
-                                <div onClick={() => Navi(id)} className="article-card">
+                                <div key={id} onClick={() => Navi(id)} className="article-card">
                                     <img src={imageUrl} alt="Foto" className="card-image" />
                                     <div className="card-content">
                                         <h2 className="card-title">{title}</h2>
@@ -52,9 +52,9 @@ const Article = ({ IsLogged }) => {
                                             {/* Split body content by newline and display */}
                                             <p>{description?.slice(0, 110) + " ..."}</p>
                                         </div>
-                                        <div className="card-content-information">
-                                            <h2 className="card-date">{createdAt ? createdAt.toDate().toDateString() : ''}</h2>
-                                        </div>
+                                    </div>
+                                    <div className="card-content-information">
+                                        <h2 className="card-date">{createdAt ? createdAt.toDate().toDateString() : ''}</h2>
                                     </div>
                                 </div>
                             </SwiperSlide>
