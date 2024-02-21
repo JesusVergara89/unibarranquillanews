@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Loading from './Loading';
 
-const CardNoticia = ({datataToShare, currentURL, dataTitle, dataDescription}) => {
+const CardNoticia = ({ datataToShare, currentURL, dataTitle, dataDescription }) => {
     const [paginaActual, setPaginaActual] = useState(1);
-    const elementosPorPagina = 3; 
+    const elementosPorPagina = 3;
 
 
     const indiceInicio = (paginaActual - 1) * elementosPorPagina;
@@ -12,6 +12,7 @@ const CardNoticia = ({datataToShare, currentURL, dataTitle, dataDescription}) =>
     const cambiarPagina = (nuevaPagina) => {
         setPaginaActual(nuevaPagina);
     };
+
     return (
         <article className="engineering_section">
             <h2 className="title-actualidad">{dataTitle}</h2>
@@ -34,7 +35,7 @@ const CardNoticia = ({datataToShare, currentURL, dataTitle, dataDescription}) =>
                     {datataToShare.slice(indiceInicio, indiceFinal).map((news, i) => (
                         <div className="Card-actualidad" key={i}>
                             <div className="news-number">{`News #${indiceInicio + i + 1}`}</div>
-                            <h3 className="Card-actualidad-title">{news.Title}</h3>
+                            <h3 className="Card-actualidad-title"> {news.Title.toLowerCase().replace(/\b\w/g, char => char.toUpperCase())}</h3>
                             <img className='img-actualidad' src={news.Pic} alt="" />
                             <h4 className="Card-actualidad-Editor">{`By ${news.Editor}`}</h4>
 
@@ -44,7 +45,7 @@ const CardNoticia = ({datataToShare, currentURL, dataTitle, dataDescription}) =>
                                     <p key={index}>{line}</p>
                                 ))}
                             </div>
-                            <h5 className="Card-actualidad-Date">{news.Date}</h5>
+                           {/*<h5 className="Card-actualidad-Date">{news.Date}</h5>*/}
                             {/* Button to view full article */}
                             <button className="Card-link"> <a href={news.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                             {/* Social sharing options */}
