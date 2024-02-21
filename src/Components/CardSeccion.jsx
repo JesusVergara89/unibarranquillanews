@@ -19,6 +19,7 @@ const CardSeccion = ({ datataToShare, dataTitle, dataDescription }) => {
         navigate(`/${Seccion}/${e}`)
     }
 
+
     return (
         <article className="section">
             <section className='section-Header'>

@@ -13,6 +13,14 @@ const CardNoticia = ({ datataToShare, currentURL, dataTitle, dataDescription }) 
         setPaginaActual(nuevaPagina);
     };
 
+    const FromUpperToLowerCase = (texto) => {
+        let oraciones = texto.split('. ');
+        oraciones = oraciones.map((oracion) => {
+            return oracion.charAt(0).toUpperCase() + oracion.slice(1).toLowerCase();
+        });
+        return oraciones.join('. ');
+    };
+
     return (
         <article className="engineering_section">
             <h2 className="title-actualidad">{dataTitle}</h2>
@@ -35,7 +43,7 @@ const CardNoticia = ({ datataToShare, currentURL, dataTitle, dataDescription }) 
                     {datataToShare.slice(indiceInicio, indiceFinal).map((news, i) => (
                         <div className="Card-actualidad" key={i}>
                             <div className="news-number">{`News #${indiceInicio + i + 1}`}</div>
-                            <h3 className="Card-actualidad-title"> {news.Title.toLowerCase().replace(/\b\w/g, char => char.toUpperCase())}</h3>
+                            <h3 className="Card-actualidad-title">{FromUpperToLowerCase(news.Title)}</h3>
                             <img className='img-actualidad' src={news.Pic} alt="" />
                             <h4 className="Card-actualidad-Editor">{`By ${news.Editor}`}</h4>
 
@@ -45,7 +53,7 @@ const CardNoticia = ({ datataToShare, currentURL, dataTitle, dataDescription }) 
                                     <p key={index}>{line}</p>
                                 ))}
                             </div>
-                           {/*<h5 className="Card-actualidad-Date">{news.Date}</h5>*/}
+                            <h5 className="Card-actualidad-Date">{news.Date}</h5>
                             {/* Button to view full article */}
                             <button className="Card-link"> <a href={news.Link} target="_blank" rel="noopener noreferrer">Ver más</a> </button>
                             {/* Social sharing options */}
