@@ -4,7 +4,8 @@ import '../Styles/cardseccion.css'
 import moment from 'moment';
 import { useNavigate, useParams } from 'react-router-dom';
 import NotFound from './NotFound';
-const CardSeccion = ({ datataToShare, dataStatus, dataTitle, dataDescription }) => {
+import { Helmet } from "react-helmet";
+const CardSeccion = ({ datataToShare, dataStatus, dataTitle, dataDescription, URL }) => {
     const navigate = useNavigate()
     let { Seccion } = useParams()
     function Record(e) {
@@ -24,6 +25,25 @@ const CardSeccion = ({ datataToShare, dataStatus, dataTitle, dataDescription }) 
         <>
             {dataStatus === 'failed' ? <NotFound /> : datataToShare ? (
                 <article className="section">
+                    <Helmet>
+                        <title>{dataTitle} | NEWSPAPER</title>
+                        <meta name="description" content={dataDescription} />
+                        <meta property="og:title" content={`${dataTitle} | NEWSPAPER`} />
+                        <meta property="og:description" content={dataDescription} />
+                        <meta property="og:site_name" content="Unibarranquilla Newspaper" />
+                        <meta property="og:image" content={URL} />
+                        <meta property="og:image:url" content={URL} />
+                        <meta property="og:imagen:width" content="200" />
+                        <meta property="og:imagen:height" content="200" />
+                        <meta property="og:type" content="article" />
+                        <meta property="og:url" content={`https://unibarranquilla-newspaper.netlify.app/${Seccion}`} />
+                        <meta property="twitter:card" content="summary_large_image" />
+                        <meta property="twitter:site" content="@Unibarranquilla Newspaper" />
+                        <meta property="twitter:title" content={`${dataTitle} | NEWSPAPER`} />
+                        <meta property="twitter:description" content={dataDescription} />
+                        <meta property="twitter:image" content={URL} />
+                    </Helmet>
+
                     <section className='section-Header'>
                         <h2 className="title">{dataTitle}</h2>
                         <p className='description'>{dataDescription}</p>
@@ -48,7 +68,10 @@ const CardSeccion = ({ datataToShare, dataStatus, dataTitle, dataDescription }) 
                     </section>
                 </article>
             )
-                : < Loading />
+                : <Helmet>
+                    <title>Cargando...</title>
+                    < Loading />
+                </Helmet>
 
 
             }
