@@ -35,6 +35,7 @@ const Article = ({ IsLogged }) => {
     function Navi(e) {
         navigate(`/ARTICLE/${e}`)
     }
+
     return (
         <div className='main-card-article'>
             {
