@@ -52,3 +52,9 @@
   display: flex;
   justify-content: center;
 }
+@media (width<=840px) {
+  .swiper-button-next,.swiper-button-prev{
+    display: none;
+  }
+  
+}

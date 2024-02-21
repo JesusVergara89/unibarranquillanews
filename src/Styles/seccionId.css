@@ -71,48 +71,76 @@
   font-size: 16px;
 }
 .Menu-compartir {
-  width: 350px;
-  height: 350px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  /*justify-content: center;*/
-  align-items: center;
-  row-gap: 18px;
-  border-radius: 20px;
+  width: 100%;
+  height: auto;
   position: fixed;
+  display: flex;
+  justify-content: center;
   left: 0;
   bottom: 170px;
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
   transition: transform 0.5s ease-in-out;
   z-index: 100;
 }
 .Menu-compartir.off {
-  transform: translateX(-190%);
+  transform: translateX(-100%);
 }
 .Menu-compartir.on {
-  transform: translateX(90%);
+  transform: translateX(0%);
 }
-.Boxicon-carusel {
-  width: 80px;
+.Container-compartir {
+  width: 480px;
   height: auto;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  border: 1px solid black;
+  align-items: center;
+  row-gap: 18px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
-.Boxicon-carusel > .bx {
-  font-size: 40px;
+.Boxicon-carusel {
+  width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: auto;
 }
-
-.Boxicon-carusel > p {
+.Boxicon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.Boxicon > .bx {
+  width: 50px;
+  height: 50px;
+  font-size: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  border-radius: 50%;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+.Boxicon > svg {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+.Boxicon > p {
   text-align: center;
-  font-size: 13px;
+  font-size: 15px;
   margin: 0;
 }
 .Compartir-header {
@@ -147,4 +175,60 @@
 }
 .Close-Menu.off {
   display: none;
+}
+@media (600px<=width<=960px) {
+  .Cuerpo {
+    width: 75%;
+  }
+  .Title-id {
+    font-size: 21px;
+  }
+  .img-id {
+    height: 300px;
+  }
+  .body-id {
+    font-size: 16px;
+  }
+  .Compartir {
+    width: 75%;
+  }
+}
+@media (width<=600px) {
+  .Menu-compartir {
+    bottom: 0;
+  }
+  .Menu-compartir.off {
+    transform: translateX(0%);
+    transform: translateY(100%);
+  }
+  .Menu-compartir.on {
+    transform: translateY(0%);
+  }
+  .Container-compartir {
+    width: 75%;
+    border-radius: 12%;
+  }
+  .Cuerpo {
+    width: 85%;
+  }
+  .Title-id {
+    font-size: 20px;
+  }
+  .img-id {
+    height: 250px;
+  }
+  .body-id {
+    font-size: 15px;
+  }
+  .Compartir {
+    width: 85%;
+  }
+  @media (width<=400) {
+    .Title-id {
+      font-size: 18px;
+    }
+    .img-id {
+      height: 200px;
+    }
+  }
 }

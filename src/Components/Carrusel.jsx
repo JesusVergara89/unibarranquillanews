@@ -13,8 +13,9 @@ const Carrusel = ({ children, breakpoints }) => {
                     loop={true}
                     slidesPerView={1}
                     navigation
+                    simulateTouch={false}
                     pagination={{
-                        dynamicBullets: true,
+                        dynamicBullets: true
                     }}
                     longSwipesRatio={0.2}
                     breakpoints={breakpoints}
@@ -22,7 +23,7 @@ const Carrusel = ({ children, breakpoints }) => {
                     {children}
                 </Swiper>
             </div>
-        </div>
+        </div >
     );
 };
 
