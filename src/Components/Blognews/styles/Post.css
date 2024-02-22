@@ -8,14 +8,12 @@
     --color_7: #000000;
 }
 
-.Container-post {
-    position: absolute;
-    top: 70px;
+.post-article {
     width: 100%;
     height: auto;
-    display: grid;
-    grid-template-columns: 60% 40%;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: #add8e6;
+    background-color: bisque;
 }

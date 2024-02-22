@@ -1,8 +1,11 @@
 import React from 'react'
+import '../styles/Formpost.css'
 
 const Formpost = () => {
   return (
-    <div>Formpost</div>
+   <article className="Form-post">
+    hello
+   </article>
   )
 }
 

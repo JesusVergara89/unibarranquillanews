@@ -1,0 +1,59 @@
+:root {
+    --color_1: #ffffff;
+    --color_2: #006400;
+    --color_3: #add8e6;
+    --color_4: #8b0000;
+    --color_5: #001f3f;
+    --color_6: #333333;
+    --color_7: #000000;
+}
+
+.post-content {
+    width: 200px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.post-content-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.post-content-description {
+    font-size: 0.8rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.post-content-img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.post-content-date-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-content-date,
+.post-content-author {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.post-content-author:before {
+    content: "By ";
+    font-weight: bold;
+}
