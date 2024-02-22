@@ -104,3 +104,6 @@ a {
   text-align: center;
   transition: background-color 0.3s ease-in-out;
 }
+.Toastify__close-button {
+  width: 20px;
+}

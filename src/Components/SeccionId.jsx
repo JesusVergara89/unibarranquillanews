@@ -37,16 +37,23 @@ const SeccionId = () => {
     const [Menucom, setMenucom] = useState(false)
     let currentpageUrl = `https://unibarranquilla-newspaper.netlify.app/${Seccion}/${Id}`;
     let breakpoints = {
-        470: {
+        900: {
             slidesPerView: 3,
             pagination: {
                 clickable: true
             }
         },
+        470: {
+            slidesPerView: 3,
+            pagination: {
+                clickable: false
+            }
+        },
         200: {
             slidesPerView: 2,
+            speed: 300,
             pagination: {
-                clickable: true
+                clickable: false
             }
         },
     }
