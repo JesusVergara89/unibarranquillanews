@@ -25,6 +25,13 @@ const SeccionId = () => {
             transition: Bounce,
         });
     }
+    const FromUpperToLowerCase = (texto) => {
+        let oraciones = texto.split('. ');
+        oraciones = oraciones.map((oracion) => {
+            return oracion.charAt(0).toUpperCase() + oracion.slice(1).toLowerCase();
+        });
+        return oraciones.join('. ');
+    };
     const { update, status } = useSeccion()
     let { Seccion, Id } = useParams()
     const [Menucom, setMenucom] = useState(false)
@@ -68,7 +75,7 @@ const SeccionId = () => {
                         </Helmet>
                         <article className='Main-id'>
                             <div className='Cuerpo'>
-                                <h2 className="Title-id">{update[0].Title}</h2>
+                                <h2 className="Title-id">{FromUpperToLowerCase(update[0].Title)}</h2>
                                 <img className='img-id' src={update[0].Pic} alt="" />
                                 <h3 className="Informacion">{moment(update[0].Date).format("MMM D YYYY")} <br /> {`Por: ${update[0].Editor}`}</h3>
                                 <div className="body-id">

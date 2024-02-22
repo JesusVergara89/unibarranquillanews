@@ -24,14 +24,12 @@ const Article = ({ IsLogged }) => {
     let breakpoints = {
         700: {
             slidesPerView: 2,
-            speed: 700,
             pagination: {
                 clickable: false
             }
         },
         1100: {
             slidesPerView: 3,
-            speed: 640,
             pagination: {
                 clickable: true
             }
