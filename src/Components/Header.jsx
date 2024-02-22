@@ -38,6 +38,9 @@ const Header = ({reloadPage,setReloadPage}) => {
         {
             name: "LOGIN"
         },
+        {
+            name: "BLOG"
+        }
     ]
     const menuLoad = () => { setMenu(!Menu) }
     return (

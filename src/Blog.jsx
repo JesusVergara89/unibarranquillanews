@@ -18,14 +18,14 @@ import useAccess from './Hooks/useAcces'
 import RoutesProtecteds from './Components/RoutesProtecteds'
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
-import { useDispatch, useSelector } from 'react-redux'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import { setArticlesValue } from './store/slices/articles.slice'
 import { db } from './firebaseconfig'
 import ArticleForRead from './Components/ArticleForRead'
+import Containerpost from './Components/Blognews/component/Containerpost'
 
 const Seccion = lazy(() => import("./Components/Seccion"))
 const SeccionId = lazy(() => import("./Components/SeccionId"))
+
 function Blog() {
 
   const [IsLogged, setIsLogged] = useState(false)
@@ -33,8 +33,6 @@ function Blog() {
   const [reloadPage, setReloadPage] = useState(false)
 
   const access = useAccess()
-
-  const dispatch = useDispatch();
 
   const [articles, setArticles] = useState([{}])
   useEffect(() => {
@@ -86,6 +84,9 @@ function Blog() {
         />
         <Route path='/TECNOLOGIA'
           element={<Tecnologia />}
+        />
+        <Route path='/BLOG'
+          element={<Containerpost/>}
         />
 
         <Route path='/ARTICLE/:id'
