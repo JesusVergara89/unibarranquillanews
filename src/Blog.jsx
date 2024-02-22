@@ -16,7 +16,7 @@ import Loading from './Components/Loading'
 
 const Seccion = lazy(() => import("./Components/Seccion"))
 const SeccionId = lazy(() => import("./Components/SeccionId"))
-const Workus = lazy(() => import("./Components/Workus"))
+const Workus = lazy(() => import("./Components/Work"))
 function Blog() {
 
   const [IsLogged, setIsLogged] = useState(false)

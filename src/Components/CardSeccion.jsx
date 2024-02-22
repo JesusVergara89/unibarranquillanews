@@ -68,10 +68,12 @@ const CardSeccion = ({ datataToShare, dataStatus, dataTitle, dataDescription, UR
                     </section>
                 </article>
             )
-                : <Helmet>
-                    <title>Cargando...</title>
+                : <>
+                    <Helmet>
+                        <title>Cargando...</title>
+                    </Helmet>
                     < Loading />
-                </Helmet>
+                </>
 
 
             }
