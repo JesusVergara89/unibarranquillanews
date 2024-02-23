@@ -39,7 +39,7 @@ const Header = ({reloadPage,setReloadPage}) => {
             name: "LOGIN"
         },
         {
-            name: "BLOG-TEST"
+            name: "BLOG"
         }
     ]
     const menuLoad = () => { setMenu(!Menu) }

@@ -11,9 +11,18 @@
 .Form-post-container {
     width: 30%;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 50px;
     left: 30px;
+    gap: 30px;
+}
+
+.Form-post-container-user {
+    font-weight: bold;
 }
 
 .Form-post {

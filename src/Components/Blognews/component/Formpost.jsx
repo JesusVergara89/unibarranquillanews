@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react'
 import '../styles/Formpost.css'
 import { Timestamp, addDoc, collection } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { db1, storage1 } from '../../../firebaseconfig';
+import { auth, db1, storage1 } from '../../../firebaseconfig';
 import { toast } from 'react-toastify';
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { signOut } from 'firebase/auth';
 
-const Formpost = () => {
+const Formpost = ({outToFormPost}) => {
+
+  const [user] = useAuthState(auth)
+
   const [cleanForm, setCleanForm] = useState(false)
   const [progress, setProgress] = useState(0);
   const [formData, setFormData] = useState({
@@ -75,8 +80,16 @@ const Formpost = () => {
       }
     );
   };
+
   return (
     <article className="Form-post-container">
+      <button className="Form-post-save" onClick={()=>{signOut(auth); outToFormPost(); }}>Sing out</button>
+      <h2 className='Form-post-container-user' >
+        { user && (
+           <h3> Welcome {user.displayName || user.email} </h3>
+        )
+        }
+      </h2>
       <div className="Form-post">
         <h3 className="Form-post-title">Create post</h3>
         <input placeholder='title' type="text" name="title" className="Form-post-title" value={formData.title} onChange={(e) => handleChange(e)} />

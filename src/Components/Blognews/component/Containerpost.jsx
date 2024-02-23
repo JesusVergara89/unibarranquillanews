@@ -5,14 +5,16 @@ import '../styles/Containerpost.css'
 import Register from './Register'
 
 const Containerpost = () => {
-  const [enterregister, setEnterregister] = useState(false)
+  const [enterregister, setEnterregister] = useState(true)
+  const enterToFormPost = () => setEnterregister(true)
+  const outToFormPost = () => setEnterregister(false)
   return (
     <article className="Container-post">
       {
         enterregister ?
-          <Formpost />
+          <Formpost outToFormPost={outToFormPost} />
           :
-          <Register />
+          <Register enterToFormPost={enterToFormPost} />
       }
       <Post />
     </article>
