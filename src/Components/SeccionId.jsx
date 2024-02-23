@@ -16,7 +16,7 @@ const SeccionId = () => {
     const { update, status } = useSeccion()
     let { Seccion, Id } = useParams()
     const [Menucom, setMenucom] = useState(false)
-    let currentpageUrl = `https://unibarranquilla-newspaper.netlify.app/${Seccion}/${Id}`;
+    let currentpageUrl = `https://unibarranquilla-newspaper.netlify.app/#/${Seccion}/${Id}`;
     const notify = () => {
         setMenucom(false)
         toast.success("Link copiado con éxito", {

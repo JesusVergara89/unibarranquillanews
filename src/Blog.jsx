@@ -47,9 +47,6 @@ function Blog() {
         <Route path='/'
           element={<Presentations access={access} update={update} />}
         />
-        <Route path='/:Seccion'
-          element={<Ruta />}
-        />
         <Route path='/:Seccion/pages/:Pagina'
           element={
             <Suspense fallback={<Loading />}>

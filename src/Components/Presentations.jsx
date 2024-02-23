@@ -22,7 +22,7 @@ const Presentations = ({ access, update }) => {
         <meta property="og:imagen:width" content="200" />
         <meta property="og:imagen:height" content="200" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://unibarranquilla-newspaper.netlify.app" />
+        <meta property="og:url" content="https://unibarranquilla-newspaper.netlify.app/#" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:site" content="@Unibarranquilla Newspaper" />
         <meta property="twitter:title" content="Plataforma digital independiente de noticias de la Universidad de Barranquilla" />

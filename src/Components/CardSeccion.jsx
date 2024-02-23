@@ -35,7 +35,7 @@ const CardSeccion = ({ datataToShare, dataStatus, dataTitle, dataDescription, UR
                                 <meta property="og:imagen:width" content="200" />
                                 <meta property="og:imagen:height" content="200" />
                                 <meta property="og:type" content="article" />
-                                <meta property="og:url" content={`https://unibarranquilla-newspaper.netlify.app/${Seccion}/pages/${Pagina}`} />
+                                <meta property="og:url" content={`https://unibarranquilla-newspaper.netlify.app/#/${Seccion}/pages/${Pagina}`} />
                                 <meta property="twitter:card" content="summary_large_image" />
                                 <meta property="twitter:site" content="@Unibarranquilla Newspaper" />
                                 <meta property="twitter:title" content={`${dataTitle} | NEWSPAPER`} />
