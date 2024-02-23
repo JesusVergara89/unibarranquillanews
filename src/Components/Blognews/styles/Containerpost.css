@@ -16,12 +16,21 @@
     align-items: center;
     margin-top: 100px;
     gap: 30px;
+    margin-bottom: 100px;
+}
+
+.Container-post-div {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .Containes-post-rules-of-the-house{
+    text-align: center;
     font-weight: bold;
 }
 
 .Container-post-rules {
- width: 60%;
+ width: 100%;
 }

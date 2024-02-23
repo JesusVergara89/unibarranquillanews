@@ -29,7 +29,7 @@ const Usersingin = ({createOrSignIn,enterToFormPost}) => {
                     onChange={(e) => { setEmail(e.target.value) }}
                 />
                 <input
-                    type="text"
+                    type='password'
                     className='form-register-password'
                     placeholder='Password'
                     onChange={(e) => { setPassword(e.target.value) }}

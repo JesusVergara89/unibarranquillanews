@@ -10,17 +10,28 @@ const Containerpost = () => {
   const outToFormPost = () => setEnterregister(false)
   return (
     <article className="Container-post">
-      <h2 className="Containes-post-rules-of-the-house">
-        Bienvenido al blog de unibarranquilla news
-      </h2>
-      <h3 className='Container-post-rules'>En este blog, no existen reglas estrictas que limiten tu expresión; eres libre de comunicarte como prefieras. La censura no tiene cabida aquí, y tu libertad de expresión es plenamente respetada. Para participar en las conversaciones, simplemente necesitas haber iniciado sesión. Además, puedes interactuar con otros usuarios comentando en sus publicaciones, expresando tu aprecio con likes y compartiendo contenido relevante. Esta plataforma se basa en el principio fundamental de la libertad de expresión y la participación activa de la comunidad.</h3>
+      {enterregister ?
+        ''
+        :
+        <div className='Container-post-div'>
+          <h2 className="Containes-post-rules-of-the-house">
+            Bienvenido al blog de unibarranquilla news
+          </h2>
+          <h3 className='Container-post-rules'>En este blog no existen reglas estrictas que limiten tu expresión; eres libre de comunicarte como prefieras. La censura no tiene cabida aquí, y tu libertad de expresión es plenamente respetada. Para participar en las conversaciones, simplemente necesitas haber iniciado sesión. Además, puedes interactuar con otros usuarios comentando en sus publicaciones, expresando tu aprecio con likes y compartiendo contenido relevante. Esta plataforma se basa en el principio fundamental de la libertad de expresión y la participación activa de la comunidad.</h3>
+        </div>
+      }
       {
         enterregister ?
           <Formpost outToFormPost={outToFormPost} />
           :
           <Singin enterToFormPost={enterToFormPost} />
       }
-      <Post />
+      {enterregister ?
+        <Post />
+        :
+        ''
+      }
+
     </article>
   )
 }
