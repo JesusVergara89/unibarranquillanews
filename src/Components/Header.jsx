@@ -9,31 +9,31 @@ const Header = ({ reloadPage, setReloadPage }) => {
     }
     const arrayOfHeader = [
         {
-            name: "ACTUALIDAD"
+            name: "ACTUALIDAD/pages/1"
         },
         {
-            name: "ASUNTOS"
+            name: "ASUNTOS/pages/1"
         },
         {
-            name: "CULTURA"
+            name: "CULTURA/pages/1"
         },
         {
-            name: "VIDAU"
+            name: "VIDAU/pages/1"
         },
         {
-            name: "DEPORTES"
+            name: "DEPORTES/pages/1"
         },
         {
-            name: "EVENTOS"
+            name: "EVENTOS/pages/1"
         },
         {
-            name: "INVESTIGACION"
+            name: "INVESTIGACION/pages/1"
         },
         {
-            name: "ENTREVISTA"
+            name: "ENTREVISTA/pages/1"
         },
         {
-            name: "TECNOLOGIA"
+            name: "TECNOLOGIA/pages/1"
         },
         {
             name: "LOGIN"
@@ -57,7 +57,7 @@ const Header = ({ reloadPage, setReloadPage }) => {
             </header>
             <div className={Menu ? 'option on' : 'option off'}>
                 {arrayOfHeader.map((unit, i) => (
-                    <Link key={i} onClick={closeMenu} className='enlace' to={`/${unit.name}/pages/1`}>{unit.name}</Link>
+                    <Link key={i} onClick={closeMenu} className='enlace' to={`/${unit.name}`}>{unit.name}</Link>
                 ))}
             </div>
             <div onClick={menuLoad} className={Menu ? 'Close on' : 'Close off'} />
