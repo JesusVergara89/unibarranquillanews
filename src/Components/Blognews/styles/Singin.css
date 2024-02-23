@@ -1,0 +1,17 @@
+:root {
+    --color_1: #ffffff;
+    --color_2: #006400;
+    --color_3: #add8e6;
+    --color_4: #8b0000;
+    --color_5: #001f3f;
+    --color_6: #333333;
+    --color_7: #000000;
+}
+
+.singin {
+    width: 30%;
+    height: auto;
+    position: absolute;
+    top: 50px;
+    left: 60px;
+}

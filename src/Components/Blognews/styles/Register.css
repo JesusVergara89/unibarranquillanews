@@ -9,10 +9,15 @@
 }
 
 .form-register-main {
-    width: 30%;
+    width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
     position: absolute;
-    top: 50px;
+    top: 10px;
     left: 60px;
 }
 
@@ -50,7 +55,6 @@
     background-color: var(--color_4);
     color: var(--color_1);
     border: none;
-    border-radius: 5px;
 }
 
 .form-register-btn:hover {

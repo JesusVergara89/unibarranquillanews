@@ -3,9 +3,10 @@ import Post from './Post'
 import Formpost from './Formpost'
 import '../styles/Containerpost.css'
 import Register from './Register'
+import Singin from './Singin'
 
 const Containerpost = () => {
-  const [enterregister, setEnterregister] = useState(true)
+  const [enterregister, setEnterregister] = useState(false)
   const enterToFormPost = () => setEnterregister(true)
   const outToFormPost = () => setEnterregister(false)
   return (
@@ -14,7 +15,7 @@ const Containerpost = () => {
         enterregister ?
           <Formpost outToFormPost={outToFormPost} />
           :
-          <Register enterToFormPost={enterToFormPost} />
+          <Singin enterToFormPost={enterToFormPost} />
       }
       <Post />
     </article>

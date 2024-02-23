@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../../../firebaseconfig'
 import { toast } from 'react-toastify'
 
-const Register = ({ enterToFormPost }) => {
+const Register = ({ createOrSignIn, enterToFormPost }) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -44,6 +44,9 @@ const Register = ({ enterToFormPost }) => {
                 />
                 <button onClick={handleSingUp} className="form-register-btn">Register</button>
             </div>
+            <h3>Si tienes una cuenta accede</h3>
+            <h3>Sign in</h3>
+            <button onClick={createOrSignIn} className="form-register-btn">Sing in</button>
         </article>
     )
 }
