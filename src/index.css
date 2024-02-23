@@ -59,35 +59,43 @@ a {
 }
 
 .pagination-controls {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  gap: 20px;
+}
+.Button-pagi > .bx {
+  font-size: 28px;
 }
 
-.pagination-controls button {
-  width: 100px;
-  height: 30px;
-  background-color: var(--color_4);
-  border: none;
-  color: white;
+.Button-pagi {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  border: 1px solid var(--color_6);
+  color: var(--color_4);
   cursor: pointer;
-  text-align: center;
+  border-radius: 10%;
+  font-size: 16px;
 }
-
-.current-page {
-  width: 150px;
-  height: 30px;
-  text-align: center;
+.Button-pagi.on {
+  border: none;
+  background-color: var(--color_4);
+  color: var(--color_1);
 }
-
-.pagination-controls button:disabled {
-  background-color: var(--color_7);
-  cursor: not-allowed;
+@media (width<=650px) {
+  .Button-pagi > .bx {
+    font-size: 23px;
+  }
+  .Button-pagi {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .navigate-home {

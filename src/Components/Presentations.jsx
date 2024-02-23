@@ -8,7 +8,7 @@ import Recent from './Recent'
 import FlashArticles from './FlashArticles'
 import { Helmet } from "react-helmet";
 
-const Presentations = ({ access }) => {
+const Presentations = ({ access, update }) => {
   return (
     <article className='main_page'>
       <Helmet>
@@ -40,7 +40,7 @@ const Presentations = ({ access }) => {
 
       <Aboutblog />
 
-      <Recent />
+      <Recent update={update} />
 
       <FlashArticles access={access} />
 

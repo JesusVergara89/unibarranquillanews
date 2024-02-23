@@ -11,7 +11,7 @@
 .recent-news-card {
   width: 280px;
   height: 300px;
-  background-color: #ffffff;
+  background-color: var(--color_1);
   border-radius: 8px;
   padding-bottom: 35px;
   display: flex;

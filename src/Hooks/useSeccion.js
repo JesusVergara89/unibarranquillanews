@@ -4,27 +4,32 @@ import axios from 'axios'
 const useSeccion = () => {
     const [update, setUpdate] = useState()
     const [status, setstatus] = useState()
-    let { Seccion = '', Id = '' } = useParams()
+    const [search, setsearch] = useState()
+    const [Npages, setNpages] = useState()
+    let { Seccion = '', Id = '', Pagina } = useParams()
+    let space = Seccion.replace("-", " ")
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     };
+
     useEffect(() => {
-        const URL = `https://script.google.com/macros/s/AKfycbw_WKm1FrAp1bwqftoWFBStAwiqVBszbA4ypbTMyk0hiAP2fLigdQWwVwvSmrWvOTGN/exec?seccion=${Seccion}&id=${Id}`
+        const URL = `https://script.google.com/macros/s/AKfycbw_WKm1FrAp1bwqftoWFBStAwiqVBszbA4ypbTMyk0hiAP2fLigdQWwVwvSmrWvOTGN/exec?seccion=${space}&id=${Id}&pages=${Pagina}`
         setUpdate(undefined)
-        setstatus(undefined)
         scrollToTop()
         axios.get(URL)
             .then(({ data }) => {
+                setNpages(data.numeropages)
                 setUpdate(data.data)
                 setstatus(data.status)
+                setsearch(data.descripcion[0])
             })
             .catch(err => console.log(err))
-    }, [Seccion, Id])
+    }, [Seccion, Id, Pagina])
 
-    return { update, status }
+    return { update, status, search, Npages, setsearch, setNpages }
 }
 
 export default useSeccion

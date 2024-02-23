@@ -13,20 +13,19 @@ import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from './firebaseconfig'
 import ArticleForRead from './Components/ArticleForRead'
 import Loading from './Components/Loading'
-
-const Seccion = lazy(() => import("./Components/Seccion"))
+import Ruta from './Components/Ruta'
+import useSeccion from './Hooks/useSeccion'
+import moment from 'moment';
+const SeccionA = lazy(() => import("./Components/Seccion"))
 const SeccionId = lazy(() => import("./Components/SeccionId"))
 const Workus = lazy(() => import("./Components/Work"))
 function Blog() {
-
   const [IsLogged, setIsLogged] = useState(false)
 
   const [reloadPage, setReloadPage] = useState(false)
-
   const access = useAccess()
-
   const dispatch = useDispatch();
-
+  const { update, status } = useSeccion()
   const [articles, setArticles] = useState([{}])
   useEffect(() => {
     const articleRef = collection(db, "Articles")
@@ -39,19 +38,21 @@ function Blog() {
       setArticles(articles)
     })
   }, [reloadPage, access])
-
   return (
     <div className='Blog'>
       <Header reloadPage={reloadPage} setReloadPage={setReloadPage} />
       <Flotan />
       <Routes>
         <Route path='/'
-          element={<Presentations access={access} />}
+          element={<Presentations access={access} update={update} />}
         />
         <Route path='/:Seccion'
+          element={<Ruta />}
+        />
+        <Route path='/:Seccion/pages/:Pagina'
           element={
             <Suspense fallback={<Loading />}>
-              <Seccion />
+              <SeccionA />
             </Suspense>
           }
         />
@@ -83,7 +84,6 @@ function Blog() {
           />
         </Route>
       </Routes>
-
     </div>
   )
 }

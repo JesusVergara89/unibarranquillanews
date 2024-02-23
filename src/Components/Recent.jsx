@@ -3,9 +3,7 @@ import '../Styles/Recen.css';
 import Carrusel from './Carrusel';
 import Card from './Card';
 import { SwiperSlide } from "swiper/react";
-import useSeccion from '../Hooks/useSeccion';
-const Recent = () => {
-    let { update } = useSeccion()
+const Recent = ({ update }) => {
     let breakpoints = {
         700: {
             slidesPerView: 2,
@@ -20,6 +18,7 @@ const Recent = () => {
             }
         },
     }
+
     return (
         <article className="Recent-news" >
             <h2 className='Title-reciente'>Artículos más recientes</h2>

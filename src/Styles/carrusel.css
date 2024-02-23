@@ -36,7 +36,7 @@
 }
 
 .swiper-pagination-bullet {
-  background-color: black;
+  background-color: var(--color_7);
   height: 10px;
   width: 10px;
   opacity: 0.5;

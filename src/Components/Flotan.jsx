@@ -1,7 +1,7 @@
 import React from 'react'
 import '../Styles/flotan.css'
 
-const Flotan = () => {
+const Flotan = ({ state }) => {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -9,7 +9,7 @@ const Flotan = () => {
         });
     };
     return (
-        <div onClick={scrollToTop} className='Flotante'>
+        <div onClick={scrollToTop} className={state ? 'Flotante on' : 'Flotante'}>
             <i className='bx bx-chevron-up'></i>
         </div>
     )
