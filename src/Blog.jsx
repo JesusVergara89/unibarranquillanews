@@ -14,7 +14,8 @@ import ArticleForRead from './Components/ArticleForRead'
 import Loading from './Components/Loading'
 import Ruta from './Components/Ruta'
 import useSeccion from './Hooks/useSeccion'
-import moment from 'moment';import Containerpost from './Components/Blognews/component/Containerpost'
+import moment from 'moment';
+import Containerpost from './Components/Blognews/component/Containerpost'
 
 const SeccionA = lazy(() => import("./Components/Seccion"))
 const SeccionId = lazy(() => import("./Components/SeccionId"))
