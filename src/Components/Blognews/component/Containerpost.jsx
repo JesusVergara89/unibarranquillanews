@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Post from './Post'
 import Formpost from './Formpost'
 import '../styles/Containerpost.css'
+import Register from './Register'
 
 const Containerpost = () => {
+  const [enterregister, setEnterregister] = useState(false)
   return (
     <article className="Container-post">
-        <Formpost/>
-        <Post/>
+      {
+        enterregister ?
+          <Formpost />
+          :
+          <Register />
+      }
+      <Post />
     </article>
   )
 }
