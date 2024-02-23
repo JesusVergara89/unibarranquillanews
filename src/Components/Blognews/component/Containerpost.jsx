@@ -6,8 +6,8 @@ import '../styles/Containerpost.css'
 const Containerpost = () => {
   return (
     <article className="Container-post">
-        <Post/>
         <Formpost/>
+        <Post/>
     </article>
   )
 }

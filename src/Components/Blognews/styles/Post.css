@@ -9,11 +9,15 @@
 }
 
 .post-article {
-    width: 100%;
+    width: 70%;
     height: auto;
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: bisque;
+    gap: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }

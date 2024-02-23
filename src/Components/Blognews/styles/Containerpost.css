@@ -13,9 +13,7 @@
     top: 70px;
     width: 100%;
     height: auto;
-    display: grid;
-    grid-template-columns: 60% 40%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #add8e6;
 }

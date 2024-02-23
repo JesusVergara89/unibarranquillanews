@@ -9,51 +9,58 @@
 }
 
 .post-content {
-    width: 200px;
-    height: 320px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    border: 1px solid #dddfe2;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 16px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    width: 450px;
+    height: 300px;
+    border: 1px solid var(--color_4);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.post-content-div-1 {
+    flex: 40%;
+}
+
+.post-content-div-2 {
+    flex: 60%;
+}
+
+.post-content-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .post-content-title {
     font-size: 1rem;
+    margin-bottom: 10px;
+    margin-left: 10px;
     font-weight: bold;
-    margin-bottom: 4px;
 }
 
 .post-content-description {
-    font-size: 0.8rem;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.post-content-img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 8px;
+    width: 90%;
+    height: 70%;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 10px;    
+    overflow: hidden;
+    font-size: 0.9rem;
 }
 
 .post-content-date-author {
+    width: 90%;
     display: flex;
+    height: auto;
     justify-content: space-between;
     align-items: center;
+    margin-left: 10px;
 }
 
 .post-content-date,
 .post-content-author {
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.post-content-author:before {
-    content: "By ";
+    text-align: center;
+    font-size: 0.7rem;
     font-weight: bold;
+    color: var(--color_7);
 }

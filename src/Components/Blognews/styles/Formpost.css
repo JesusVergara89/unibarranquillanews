@@ -8,8 +8,84 @@
     --color_7: #000000;
 }
 
+.Form-post-container {
+    width: 30%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 30px;
+}
+
 .Form-post {
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(125, 125, 125);
+    width: 300px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color_1);
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid var(--color_4);
+}
+
+.Form-post-title {
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Form-post input[type="text"],
+.Form-post textarea,
+.Form-post input[type="file"] {
+    width: 85%;
+    padding: 5%;
+    margin-bottom: 10px;
+    border: 1px solid var(--color_7);
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.Form-post textarea {
+    resize: vertical;
+}
+
+.Form-post-progress {
+    width: 90%;
+    padding: 1%;
+    background-color: var(--color_1);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.Form-post-progress-bar {
+    background-color: var(--color_4);
+    width: 50%;
+    height: 20px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 20px;
+    color: var(--color_1);
+}
+
+.Form-post input[type="file"] {
+    border: none;
+    background-color: transparent;
+}
+
+.Form-post input[type="file"]:focus {
+    outline: none;
+}
+
+.Form-post-save {
+    width: 100px;
+    padding: 10px 20px;
+    background-color: var(--color_4);
+    color: white;
+    border: none;
+}
+
+.Form-post-save:hover {
+    cursor: pointer;
 }

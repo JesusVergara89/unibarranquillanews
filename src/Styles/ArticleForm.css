@@ -61,6 +61,7 @@
     height: 60%;
     border: 1px solid #ccc;
     text-align: center;
+    resize: vertical;
 }
 
 .form-article-progress {
