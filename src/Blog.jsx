@@ -26,7 +26,6 @@ function Blog() {
 
   const [reloadPage, setReloadPage] = useState(false)
   const access = useAccess()
-  const dispatch = useDispatch();
   const { update, status } = useSeccion()
   const [articles, setArticles] = useState([{}])
   useEffect(() => {
