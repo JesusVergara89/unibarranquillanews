@@ -11,7 +11,7 @@
 .post-content {
     display: flex;
     width: 450px;
-    height: 300px;
+    height: 320px;
     border: 1px solid var(--color_4);
     border-radius: 5px;
     overflow: hidden;
@@ -23,6 +23,8 @@
 
 .post-content-div-2 {
     flex: 60%;
+    padding-left: 10px;
+    position: relative;
 }
 
 .post-content-img {
@@ -32,18 +34,16 @@
 }
 
 .post-content-title {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 10px;
-    margin-left: 10px;
     font-weight: bold;
 }
 
 .post-content-description {
     width: 90%;
-    height: 70%;
+    height: auto;
     margin-bottom: 10px;
-    margin-left: 10px;
-    margin-top: 10px;    
+    margin-top: 10px;
     overflow: hidden;
     font-size: 0.9rem;
 }
@@ -52,15 +52,48 @@
     width: 90%;
     display: flex;
     height: auto;
-    justify-content: space-between;
     align-items: center;
-    margin-left: 10px;
+    position: absolute;
+    bottom: 20px;
 }
 
-.post-content-date,
+.post-content-date {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: var(--color_7);
+    position: absolute;
+    left: -70px;
+    bottom: 8px;
+}
+
 .post-content-author {
     text-align: center;
     font-size: 0.7rem;
     font-weight: bold;
     color: var(--color_7);
+    position: absolute;
+    right: -100px;
+    bottom: 8px;
+}
+
+.post-content-likes {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    position: absolute;
+    bottom: 0;
+}
+
+.post-content-likes .bx {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.post-content-likes .bx:hover {
+    cursor: pointer;
 }

@@ -16,11 +16,15 @@ const Cardpost = ({ article }) => {
         <img src={article.imageUrl} alt="" className="post-content-img" />
       </div>
       <div className="post-content-div-2">
-        <h3 className='post-content-title'>{article.title}</h3>
-        <div className="post-content-description">{truncateText(article.description, 330)}</div>
+        <h3 className='post-content-title'>{truncateText(article.title, 40)}</h3>
+        <div className="post-content-description">{truncateText(article.description, 300)}</div>
         <div className="post-content-date-author">
           <div className="post-content-date">{article.createdAt.toDate().toDateString()}</div>
           <div className="post-content-author">author</div>
+        </div>
+        <div className="post-content-likes">
+          <i className='bx bx-comment' ></i>
+          <i className='bx bx-like'></i>
         </div>
       </div>
     </div>
