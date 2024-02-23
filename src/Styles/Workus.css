@@ -8,8 +8,7 @@
     --color_7: #000000;
   }
 
-  .work 
-  {
+  .work {
     width: 100%;
     height: 100%;
     display: flex;
@@ -32,6 +31,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
+    margin-bottom: 60px;
   }
 
   .openposition {
@@ -43,7 +43,7 @@
     margin-top: 50px;
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
-    border-bottom: 3px solid var(--color_7);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
   }
 
   .openposition h3 {
@@ -54,13 +54,12 @@
   .open-dates {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 1.5rem;
-    background-color: var(--color_4);
     padding: 0.5rem;
   }
 
   .open-dates h4{
-    color: var(--color_1);
+    color: var(--color_4);
+    font-size: 18px;
   }

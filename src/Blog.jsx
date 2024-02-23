@@ -1,16 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react'
 import Presentations from './Components/Presentations'
 import { Route, Routes } from 'react-router-dom'
-import Engineering from './Components/Engineering'
-import Travel from './Components/Travel'
-import Literature from './Components/Literature'
-import Experience from './Components/Experience'
-import Asuntox from './Components/Asuntox'
-import Vida from './Components/Vida'
-import Eventos from './Components/Eventos'
-import Entrevista from './Components/Entrevista'
-import Workus from './Components/Workus'
-import Tecnologia from './Components/Tecnologia'
 import NotFound from './Components/NotFound'
 import Longin from './Components/Longin'
 import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
@@ -21,19 +11,22 @@ import Flotan from './Components/Flotan'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from './firebaseconfig'
 import ArticleForRead from './Components/ArticleForRead'
-import Containerpost from './Components/Blognews/component/Containerpost'
+import Loading from './Components/Loading'
+import Ruta from './Components/Ruta'
+import useSeccion from './Hooks/useSeccion'
+import moment from 'moment';import Containerpost from './Components/Blognews/component/Containerpost'
 
-const Seccion = lazy(() => import("./Components/Seccion"))
+const SeccionA = lazy(() => import("./Components/Seccion"))
 const SeccionId = lazy(() => import("./Components/SeccionId"))
+const Workus = lazy(() => import("./Components/Work"))
 
 function Blog() {
-
   const [IsLogged, setIsLogged] = useState(false)
 
   const [reloadPage, setReloadPage] = useState(false)
-
   const access = useAccess()
-
+  const dispatch = useDispatch();
+  const { update, status } = useSeccion()
   const [articles, setArticles] = useState([{}])
   useEffect(() => {
     const articleRef = collection(db, "Articles")
@@ -46,49 +39,41 @@ function Blog() {
       setArticles(articles)
     })
   }, [reloadPage, access])
-
   return (
     <div className='Blog'>
       <Header reloadPage={reloadPage} setReloadPage={setReloadPage} />
       <Flotan />
       <Routes>
         <Route path='/'
-          element={<Presentations access={access} />}
+          element={<Presentations access={access} update={update} />}
         />
-          <Route path='/ACTUALIDAD'
-          element={<Engineering />}
+        <Route path='/:Seccion'
+          element={<Ruta />}
         />
-        <Route path='/CULTURA'
-          element={<Travel />}
+        <Route path='/:Seccion/pages/:Pagina'
+          element={
+            <Suspense fallback={<Loading />}>
+              <SeccionA />
+            </Suspense>
+          }
         />
-        <Route path='/DEPORTES'
-          element={<Literature />}
-        />
-        <Route path='/INVESTIGACION'
-          element={<Experience />}
-        />
-        <Route path='/ASUNTOS'
-          element={<Asuntox />}
-        />
-        <Route path='/VIDAU'
-          element={<Vida />}
-        />
-        <Route path='/EVENTOS'
-          element={<Eventos />}
-        />
-        <Route path='/ENTREVISTA'
-          element={<Entrevista />}
+        <Route path='/:Seccion/:Id'
+          element={
+            <Suspense fallback={<Loading />}>
+              <SeccionId />
+            </Suspense>
+          }
         />
         <Route path='/OPENPOSSITIONS'
-          element={<Workus />}
-        />
-        <Route path='/TECNOLOGIA'
-          element={<Tecnologia />}
+          element={
+            <Suspense fallback={<Loading />}>
+              <Workus />
+            </Suspense>
+          }
         />
         <Route path='/BLOG'
           element={<Containerpost/>}
         />
-
         <Route path='/ARTICLE/:id'
           element={<ArticleForRead />}
         />
@@ -103,7 +88,6 @@ function Blog() {
           />
         </Route>
       </Routes>
-
     </div>
   )
 }

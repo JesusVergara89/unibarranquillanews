@@ -49,35 +49,6 @@ a {
   align-items: center;
 }
 
-.img-actualidad {
-  display: block;
-  width: 50%;
-  height: auto;
-  margin-bottom: 20px;
-  margin-left: -40%;
-}
-
-.news-number {
-  width: 70px;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  font-size: 14px;
-  font-weight: bold;
-  border-bottom: 0.1rem solid var(--color_7);
-  margin-bottom: 20px;
-}
-
-.Card-actualidad-title {
-  width: 90%;
-  height: 20%;
-  text-align: left;
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
 .loading-container {
   width: 100%;
   height: 35vh;
@@ -87,241 +58,44 @@ a {
   align-items: center;
 }
 
-.engineering_section {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 60px;
-}
-.section-main {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 60px;
-}
-.title-actualidad {
-  font-size: 2rem;
-  color: var(--color_7);
-}
-
-.description-actualidad {
-  width: 60%;
-  color: var(--color_7);
-  margin-bottom: 60px;
-}
-
-.body-actualidad {
-  width: 90%;
-  height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.8rem;
-  padding: 0.3rem;
-}
-
-.Card-actualidad {
-  width: 90%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color_1);
-  padding: 0.4rem;
-  border-radius: 4px;
-  color: var(--color_7);
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.news-number {
-  width: 70px;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  font-size: 14px;
-  font-weight: bold;
-  border-bottom: 0.1rem solid var(--color_7);
-  margin-bottom: 20px;
-}
-
-.Card-actualidad-Editor {
-  width: 100%;
-  height: 15%;
-  text-align: center;
-  text-align: left;
-  padding: 0.5rem;
-  margin-left: 10%;
-  font-weight: bold;
-}
-
-.Card-actualidad-body {
-  width: 90%;
-  height: 50%;
-  margin-bottom: 20px;
-  border-bottom: 0.1rem solid var(--color_7);
-  vertical-align: baseline;
-}
-
-.Card-actualidad-Date {
-  width: 100%;
-  height: 15%;
-  text-align: center;
-  text-align: right;
-  padding: 0.5rem;
-  margin-right: 20%;
-  font-weight: bold;
-  font-size: 0.8rem;
-}
-
-.Card-link a {
-  all: unset;
-}
-
-.Card-link {
-  width: 70px;
-  height: auto;
-  text-align: center;
-  all: unset;
-  background-color: var(--color_7);
-  color: var(--color_1);
-  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
-  border-radius: 3px;
-  margin-bottom: 10px;
-  transition: transform 0.3s ease;
-}
-.Card-social {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color_4);
-  border-radius: 5px;
-  color: var(--color_1);
-  gap: 10%;
-}
-
-.Card-social-btn {
-  width: 10%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.Card-social-btn button {
-  width: 24px;
-  border: none;
-  background: unset;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-  border-radius: 3px;
-  transition: background-color 0.3s ease;
-}
-
-.Card-social-btn .bx {
-  font-size: 24px;
-  color: var(--color_1);
-}
-
-@media (max-width: 650px) {
-  .visualization-div-header {
-    background: linear-gradient(to right, var(--color_1), var(--color_7));
-  }
-
-  .title-actualidad {
-    font-size: 1rem;
-    color: var(--color_7);
-  }
-
-  .description-actualidad {
-    width: 75%;
-    color: var(--color_7);
-    margin-bottom: 50px;
-  }
-
-  .Card-actualidad-Editor {
-    width: 100%;
-    height: 15%;
-    text-align: center;
-    text-align: left;
-    padding: 0.5rem;
-    margin-left: 10%;
-    font-weight: bold;
-  }
-
-  .body-actualidad {
-    width: 90%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 0.8rem;
-    padding: 0.3rem;
-  }
-
-  .Card-actualidad {
-    width: 95%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color_1);
-    padding: 0.4rem;
-    border-radius: 4px;
-    color: var(--color_7);
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 0;
-  }
-}
-
 .pagination-controls {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  gap: 20px;
+}
+.Button-pagi > .bx {
+  font-size: 28px;
 }
 
-.pagination-controls button {
-  width: 100px;
-  height: 30px;
-  background-color: var(--color_4);
-  border: none;
-  color: white;
+.Button-pagi {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  border: 1px solid var(--color_6);
+  color: var(--color_4);
   cursor: pointer;
-  text-align: center;
+  border-radius: 10%;
+  font-size: 16px;
 }
-
-.current-page {
-  width: 150px;
-  height: 30px;
-  text-align: center;
+.Button-pagi.on {
+  border: none;
+  background-color: var(--color_4);
+  color: var(--color_1);
 }
-
-.pagination-controls button:disabled {
-  background-color: var(--color_7);
-  cursor: not-allowed;
+@media (width<=650px) {
+  .Button-pagi > .bx {
+    font-size: 23px;
+  }
+  .Button-pagi {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .navigate-home {
@@ -338,22 +112,6 @@ a {
   text-align: center;
   transition: background-color 0.3s ease-in-out;
 }
-
-@media (hover: hover) {
-  .Card-link:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-    background-color: var(--color_4);
-  }
-  .Card-social-btn .bx:hover {
-    font-size: 24px;
-    color: var(--color_7);
-  }
-  .Card-social-btn button:hover {
-    background-color: var(--color_1);
-    color: var(--color_7);
-  }
-  .navigate-home:hover {
-    background-color: var(--color_7);
-  }
+.Toastify__close-button {
+  width: 20px;
 }

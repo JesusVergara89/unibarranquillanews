@@ -1,7 +1,6 @@
 import React from 'react';
 import '../Styles/Networks.css'; // Importing styles for the Networks component
-import { useNavigate } from 'react-router-dom'; // Importing useNavigate hook from react-router-dom
-
+import { Link } from 'react-router-dom'; // Importing useNavigate hook from react-router-dom
 /**
  * Component representing network information and contact details.
  * Provides information about image sources, contact details, and attribution.
@@ -10,8 +9,6 @@ import { useNavigate } from 'react-router-dom'; // Importing useNavigate hook fr
  */
 const Networks = () => {
   // Hook for navigation
-  const navigateOpen = useNavigate();
-
   return (
     <article className='Networks'>
       {/* Paragraph about image sources */}
@@ -38,9 +35,9 @@ const Networks = () => {
       </p>
 
       {/* Button to navigate to job openings */}
-      <button className="work-with-us" onClick={() => navigateOpen('/OPENPOSSITIONS')} >
+      <Link className="work-with-us" to={'/OPENPOSSITIONS'} >
         TRABAJOS
-      </button>
+      </Link>
     </article>
   );
 }

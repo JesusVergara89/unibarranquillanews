@@ -3,16 +3,33 @@ import { useEffect, useState } from "react"
 import axios from 'axios'
 const useSeccion = () => {
     const [update, setUpdate] = useState()
-    let { Seccion, Id='' } = useParams()
-    useEffect(() => {
-        const URL = `https://script.google.com/macros/s/AKfycbzIUzLBhQd10QyiKsJhME0k5tIHV_-Ill_lKXawzMT5ff_z2Qc7yosqLxo5S3fczzkq/exec?seccion=${Seccion}&id=${Id}`
-        setUpdate(undefined)
-        axios.get(URL)
-            .then(({ data }) => setUpdate(data.data))
-            .catch(err => console.log(err))
-    }, [Seccion, Id])
+    const [status, setstatus] = useState()
+    const [search, setsearch] = useState()
+    const [Npages, setNpages] = useState()
+    let { Seccion = '', Id = '', Pagina } = useParams()
+    let space = Seccion.replace("-", " ")
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
 
-    return update
+    useEffect(() => {
+        const URL = `https://script.google.com/macros/s/AKfycbw_WKm1FrAp1bwqftoWFBStAwiqVBszbA4ypbTMyk0hiAP2fLigdQWwVwvSmrWvOTGN/exec?seccion=${space}&id=${Id}&pages=${Pagina}`
+        setUpdate(undefined)
+        scrollToTop()
+        axios.get(URL)
+            .then(({ data }) => {
+                setNpages(data.numeropages)
+                setUpdate(data.data)
+                setstatus(data.status)
+                setsearch(data.descripcion[0])
+            })
+            .catch(err => console.log(err))
+    }, [Seccion, Id, Pagina])
+
+    return { update, status, search, Npages, setsearch, setNpages }
 }
 
 export default useSeccion
