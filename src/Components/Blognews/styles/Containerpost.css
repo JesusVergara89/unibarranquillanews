@@ -9,11 +9,19 @@
 }
 
 .Container-post {
-    position: absolute;
-    top: 70px;
     width: 100%;
-    height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
+    gap: 30px;
+}
+
+.Containes-post-rules-of-the-house{
+    font-weight: bold;
+}
+
+.Container-post-rules {
+ width: 60%;
 }

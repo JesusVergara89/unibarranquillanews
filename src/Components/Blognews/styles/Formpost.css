@@ -9,15 +9,12 @@
 }
 
 .Form-post-container {
-    width: 30%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 50px;
-    left: 70px;
     gap: 10px;
 }
 

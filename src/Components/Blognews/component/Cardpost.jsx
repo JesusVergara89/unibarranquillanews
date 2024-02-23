@@ -16,7 +16,7 @@ const Cardpost = ({ article }) => {
         <img src={article.imageUrl} alt="" className="post-content-img" />
       </div>
       <div className="post-content-div-2">
-        <h3 className='post-content-title'>{truncateText(article.title, 40)}</h3>
+        <h3 className='post-content-title'>{truncateText(article.title, 35)}</h3>
         <div className="post-content-description">{truncateText(article.description, 300)}</div>
         <div className="post-content-date-author">
           <div className="post-content-date">{article.createdAt.toDate().toDateString()}</div>
