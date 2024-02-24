@@ -1,4 +1,4 @@
-import { arrayUnion, doc, onSnapshot, updateDoc } from 'firebase/firestore'
+import { arrayRemove, arrayUnion, doc, onSnapshot, updateDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { auth, db1 } from '../../../firebaseconfig'
 import '../styles/Comments.css'
@@ -38,7 +38,11 @@ const Comments = ({ id }) => {
   }
 
   const handledeletecoment = (comment) => {
-    console.log(comment)
+    updateDoc(commentRef, {
+      comments: arrayRemove(comment)
+    })
+      .then((e) => { console.log(e) })
+      .catch((e) => { console.log(e) })
   }
 
   return (
@@ -61,7 +65,7 @@ const Comments = ({ id }) => {
                     (
                       <i className="fa fa-times"
                         style={{ cursor: "pointer" }}
-                        onClick={() => handledeletecoment(comment)}
+                        onClick={() => handledeletecoment({commentId, user, comment, userName, createdAt})}
                       ></i>
                     )
                   }
@@ -78,7 +82,7 @@ const Comments = ({ id }) => {
           currentlyLoggedinUser &&
           (
             <textarea
-             placeholder='Presiona enter para comentar'
+              placeholder='Presiona enter para comentar'
               type='text'
               className='create-comment'
               value={comment}

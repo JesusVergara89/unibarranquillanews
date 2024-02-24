@@ -17,6 +17,7 @@ const Cardpost = ({ article }) => {
       return text;
     }
   }
+  console.log(article)
   return (
     <div className="post-content">
       <div className="post-content-div-1">
@@ -25,7 +26,7 @@ const Cardpost = ({ article }) => {
         </Link>
       </div>
       <div className="post-content-div-2">
-        <h3 className='post-content-title'>{truncateText(article.title, 35)}</h3>
+        <h3 className='post-content-title'>{truncateText(article.title, 30)}</h3>
         <div className="post-content-description">{truncateText(article.description, 350)}</div>
 
         <div className="post-content-date">{article.createdAt.toDate().toDateString()}</div>
@@ -37,11 +38,24 @@ const Cardpost = ({ article }) => {
         }
 
         <div className="post-interact">
-          <Deletecompo id={article.id} imageUrl={article.imageUrl} />
 
-          {
-            user && (<Likecompo id={article.id} likes={article.likes} />)
-          }
+          <div className="post-interact-div">
+            <Deletecompo id={article.id} imageUrl={article.imageUrl} />
+          </div>
+
+
+          <div className="post-interact-div">
+            <i className='bx bx-message-dots' ></i>
+            <div>{article.comments.length}</div>
+          </div>
+
+          <div className="post-interact-div">
+            {
+              user && (<Likecompo id={article.id} likes={article.likes} />)
+            }
+            <div>{article.likes.length}</div>
+          </div>
+
         </div>
       </div>
     </div>

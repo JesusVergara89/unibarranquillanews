@@ -19,7 +19,7 @@ const Deletecompo = ({ id, imageUrl }) => {
     }
     return (
         <button onClick={handleDelete} className="delete-card">
-            <i className='bx bxs-x-square'></i>
+            <i className='bx bx-trash-alt'></i>
         </button>
     )
 }

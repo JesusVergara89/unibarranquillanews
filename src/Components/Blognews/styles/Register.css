@@ -58,3 +58,17 @@
     cursor: pointer;
     background-color: var(--color_7);
 }
+
+@media ( width < 350px ){
+    .form-register-form {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid var(--color_4);
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+}
