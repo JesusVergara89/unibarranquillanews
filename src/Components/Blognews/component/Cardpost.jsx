@@ -1,7 +1,13 @@
 import React from 'react'
 import '../styles/Cardpost.css'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../../../firebaseconfig'
+import Likecompo from './Likecompo'
+import Deletecompo from './Deletecompo'
 
 const Cardpost = ({ article }) => {
+
+  const [user] = useAuthState(auth)
 
   const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {
@@ -18,13 +24,23 @@ const Cardpost = ({ article }) => {
       <div className="post-content-div-2">
         <h3 className='post-content-title'>{truncateText(article.title, 35)}</h3>
         <div className="post-content-description">{truncateText(article.description, 350)}</div>
-       
-          <div className="post-content-date">{article.createdAt.toDate().toDateString()}</div>
-          <div className="post-content-author">author</div>
-       
+
+        <div className="post-content-date">{article.createdAt.toDate().toDateString()}</div>
+        {article.createBy &&
+          (<div className="post-content-author">
+            <h3>{`By ${article.createBy}`}</h3>
+          </div>
+          )
+        }
+
+        <Deletecompo id={article.id} imageUrl={article.imageUrl} />
+
         <div className="post-content-likes">
-          <i className='bx bx-comment' ></i>
-          <i className='bx bx-like'></i>
+
+          {
+            user && (<Likecompo id={article.id} likes={article.likes} />)
+          }
+
         </div>
       </div>
     </div>
