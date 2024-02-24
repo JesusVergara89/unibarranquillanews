@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import '../Styles/cardseccion.css'
-import moment from 'moment';
 import { Link, useParams } from 'react-router-dom';
 import NotFound from './NotFound';
 import { Helmet } from "react-helmet";
 import Buttonpages from './Buttonpages';
 import Cardloading from './Cardloading';
 import Skeleton from 'react-loading-skeleton';
+import dayjs from 'dayjs';
+import 'dayjs/locale/es'
 const CardSeccion = ({ datataToShare, dataStatus, dataTitle, dataDescription, URL, Npages }) => {
     let { Seccion, Pagina } = useParams()
     function Record(e) {
@@ -18,6 +19,7 @@ const CardSeccion = ({ datataToShare, dataStatus, dataTitle, dataDescription, UR
         }
         return result
     }
+    dayjs.locale('es')
     return (
         <>
             {dataStatus === 'failed' ? <NotFound /> : (
@@ -66,7 +68,7 @@ const CardSeccion = ({ datataToShare, dataStatus, dataTitle, dataDescription, UR
                                         </div>
                                         <div className='section-text'>
                                             <p>
-                                                {user.Editor}, {moment(user.Date).format("MMM D YYYY")}
+                                                {user.Editor}, {dayjs(user.Date).format("D MMM, YYYY")}
                                             </p>
                                             <h2>
                                                 {Record(user.Title)}

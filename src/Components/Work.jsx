@@ -3,7 +3,8 @@ import { Helmet } from 'react-helmet'
 import '../Styles/Workus.css'
 import Loading from './Loading'
 import axios from 'axios'
-import moment from 'moment';
+import dayjs from 'dayjs';
+import 'dayjs/locale/es'
 const Work = () => {
     const URLS = "OPENPOSSITIONS"
     const [datawork, setdatawork] = useState()
@@ -26,7 +27,7 @@ const Work = () => {
             behavior: 'smooth'
         });
     };
-    console.log(datawork)
+    dayjs.locale('es')
     return (
         <article className='work'>
             <Helmet>
@@ -60,7 +61,7 @@ const Work = () => {
                                 ))}
                             </h5>
                             <div className="open-dates">
-                                <h4>{`Fecha: ${moment(open.Von).format("D MMM, YYYY")} - ${moment(open.Bis).format("D MMM, YYYY")}`}</h4>
+                                <h4>{`Fecha: ${dayjs(open.Von).format("D MMM, YYYY")} - ${dayjs(open.Bis).format("D MMM, YYYY")}`}</h4>
                             </div>
                         </div>
                     ))}

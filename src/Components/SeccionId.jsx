@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import useSeccion from '../Hooks/useSeccion'
 import '../Styles/seccionId.css'
-import moment from 'moment/moment'
 import NotFound from './NotFound'
 import { FacebookShareButton, LinkedinShareButton, TelegramShareButton, WhatsappShareButton, TwitterShareButton } from "react-share";
 import { Helmet } from 'react-helmet'
@@ -12,6 +11,8 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Bounce, toast } from 'react-toastify';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import dayjs from 'dayjs';
+import 'dayjs/locale/es'
 const SeccionId = () => {
     const { update, status } = useSeccion()
     let { Seccion, Id } = useParams()
@@ -38,6 +39,7 @@ const SeccionId = () => {
         });
         return oraciones.join('. ');
     };
+    dayjs.locale('es')
     let breakpoints = {
         900: {
             slidesPerView: 3,
@@ -60,7 +62,6 @@ const SeccionId = () => {
         },
     }
     let Autor = update?.[0].Editor.replace(" ", "-")
-
     return (
         <>
             {
@@ -89,7 +90,7 @@ const SeccionId = () => {
                                 <div className='Cuerpo'>
                                     <h2 className="Title-id">{FromUpperToLowerCase(update[0].Title)}</h2>
                                     <img className='img-id' src={update[0].Pic} alt="" />
-                                    <Link to={`/${Autor}`} className="Informacion">{moment(update[0].Date).format("MMM D YYYY")} <br /> {`Por: ${update[0].Editor}`}</Link>
+                                    <Link to={`/${Autor}`} className="Informacion">{dayjs(update[0].Date).format("D MMM, YYYY")} <br /> {`Por: ${update[0].Editor}`}</Link>
                                     <div className="body-id">
                                         {update[0].Body.split('\n').map((line, index) => (
                                             <p key={index}>{line}</p>
