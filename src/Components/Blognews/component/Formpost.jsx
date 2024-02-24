@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { signOut } from 'firebase/auth';
 
-const Formpost = ({outToFormPost}) => {
+const Formpost = ({ outToFormPost }) => {
 
   const [user] = useAuthState(auth)
 
@@ -66,7 +66,11 @@ const Formpost = ({outToFormPost}) => {
             title: formData.title,
             description: formData.description,
             imageUrl: url,
-            createdAt: Timestamp.now().toDate()
+            createdAt: Timestamp.now().toDate(),
+            createBy: user.displayName,
+            userId: user.uid,
+            likes: [],
+            comments: []
           })
             .then(() => {
               toast('Article added successfully', { type: 'success' });
@@ -83,10 +87,10 @@ const Formpost = ({outToFormPost}) => {
 
   return (
     <article className="Form-post-container">
-      <button className="Form-post-save" onClick={()=>{signOut(auth); outToFormPost(); }}>Sing out</button>
+      <button className="Form-post-save" onClick={() => { signOut(auth); outToFormPost(); }}>Sing out</button>
       <h2 className='Form-post-container-user' >
-        { user && (
-           <h3> Welcome {user.displayName || user.email} </h3>
+        {user && (
+          <h3> Welcome {user.displayName || user.email} </h3>
         )
         }
       </h2>

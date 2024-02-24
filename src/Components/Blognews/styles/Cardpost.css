@@ -63,13 +63,19 @@
 }
 
 .post-content-author {
-    text-align: center;
-    font-size: 0.7rem;
-    font-weight: bold;
-    color: var(--color_7);
+    width: auto;
+    height: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: var(--color_4);
     position: absolute;
-    top: -230px;
-    right: -180px;
+    top: -240px;
+    right: 30px;
+}
+
+.post-content-author h3{
+    text-align: center;
+    color: var(--color_1);
 }
 
 .post-content-likes {
@@ -89,4 +95,15 @@
 
 .post-content-likes .bx:hover {
     cursor: pointer;
+}
+
+.delete-card {
+    all: unset;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+
+.delete-card .bx {
+    font-size: 1.5rem;
 }
