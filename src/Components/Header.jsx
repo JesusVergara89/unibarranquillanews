@@ -9,31 +9,31 @@ const Header = ({ reloadPage, setReloadPage }) => {
     }
     const arrayOfHeader = [
         {
-            name: "ACTUALIDAD/pages/1"
+            name: "ACTUALIDAD"
         },
         {
-            name: "ASUNTOS/pages/1"
+            name: "ASUNTOS"
         },
         {
-            name: "CULTURA/pages/1"
+            name: "CULTURA"
         },
         {
-            name: "VIDAU/pages/1"
+            name: "VIDAU"
         },
         {
-            name: "DEPORTES/pages/1"
+            name: "DEPORTES"
         },
         {
-            name: "EVENTOS/pages/1"
+            name: "EVENTOS"
         },
         {
-            name: "INVESTIGACION/pages/1"
+            name: "INVESTIGACION"
         },
         {
-            name: "ENTREVISTA/pages/1"
+            name: "ENTREVISTA"
         },
         {
-            name: "TECNOLOGIA/pages/1"
+            name: "TECNOLOGIA"
         },
         {
             name: "LOGIN"
