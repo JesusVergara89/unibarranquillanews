@@ -7,6 +7,7 @@
   gap: 30px;
   position: relative;
 }
+
 .Main-id {
   width: 100%;
   height: auto;
@@ -18,6 +19,7 @@
   margin-top: 100px;
   margin-bottom: 80px;
 }
+
 .Cuerpo {
   width: 60%;
   height: auto;
@@ -27,17 +29,20 @@
   align-items: center;
   row-gap: 25px;
 }
+
 .Title-id {
   text-align: center;
   font-weight: bold;
   font-size: 22px;
 }
+
 .img-id {
   width: 100%;
   height: 400px;
   object-fit: cover;
   border-radius: 6px;
 }
+
 .Informacion {
   text-align: start;
   font-weight: 600;
@@ -46,17 +51,20 @@
   justify-content: flex-start;
   cursor: pointer;
 }
+
 .body-id {
   text-align: start;
   font-size: 18px;
 }
+
 .Compartir {
   width: 60%;
   display: flex;
   justify-content: start;
   align-items: center;
 }
-.Compartir > button {
+
+.Compartir>button {
   width: 120px;
   height: 45px;
   display: flex;
@@ -72,6 +80,7 @@
   font-size: 16px;
   text-decoration: none;
 }
+
 .Fuente {
   width: 100px;
   height: 45px;
@@ -87,6 +96,7 @@
   font-size: 16px;
   text-decoration: none;
 }
+
 .Menu-compartir {
   width: 100%;
   height: auto;
@@ -98,12 +108,15 @@
   transition: transform 0.5s ease-in-out;
   z-index: 100;
 }
+
 .Menu-compartir.off {
   transform: translateX(-100%);
 }
+
 .Menu-compartir.on {
   transform: translateX(0%);
 }
+
 .Container-compartir {
   width: 480px;
   height: auto;
@@ -118,6 +131,7 @@
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+
 .Boxicon-carusel {
   width: 100%;
   display: flex;
@@ -125,6 +139,7 @@
   align-items: center;
   height: auto;
 }
+
 .Boxicon {
   width: 80px;
   height: 80px;
@@ -134,7 +149,8 @@
   align-items: center;
   cursor: pointer;
 }
-.Boxicon > .bx {
+
+.Boxicon>.bx {
   width: 50px;
   height: 50px;
   font-size: 45px;
@@ -144,21 +160,25 @@
   align-content: center;
   transition: background-color 0.3s ease;
 }
-.Boxicon > svg {
+
+.Boxicon>svg {
   display: flex;
   width: 43px;
   height: 43px;
   transition: stroke 0.3s ease;
 }
-.Boxicon > p {
+
+.Boxicon>p {
   text-align: center;
   font-size: 15px;
   margin: 0;
 }
+
 .swiper-button-prev,
 .swiper-button-next {
   top: var(--swiper-navigation-top-offset, 40%);
 }
+
 .Compartir-header {
   width: 100%;
   height: auto;
@@ -166,7 +186,8 @@
   justify-content: space-between;
   align-items: center;
 }
-.Compartir-header > .bx {
+
+.Compartir-header>.bx {
   width: 50px;
   height: 50px;
   font-size: 40px;
@@ -175,10 +196,12 @@
   color: var(--color_4);
   cursor: pointer;
 }
-.Compartir-header > h2 {
+
+.Compartir-header>h2 {
   font-size: 20px;
   font-weight: bold;
 }
+
 .Close-Menu {
   width: 100%;
   height: 100%;
@@ -186,73 +209,93 @@
   opacity: 0.7;
   background-color: var(--color_1);
 }
+
 .Close-Menu.on {
   display: flex;
 }
+
 .Close-Menu.off {
   display: none;
 }
+
 @media (hover: hover) {
   .Boxicon:hover .bx {
     color: var(--color_4);
   }
+
   .Boxicon:hover svg {
     stroke: var(--color_4);
   }
 }
+
 @media (600px<=width<=960px) {
   .Cuerpo {
     width: 75%;
   }
+
   .Title-id {
     font-size: 21px;
   }
+
   .img-id {
     height: 300px;
   }
+
   .body-id {
     font-size: 16px;
   }
+
   .Compartir {
     width: 75%;
   }
 }
+
 @media (width<=600px) {
   .Menu-compartir {
     bottom: 0;
   }
+
   .Menu-compartir.off {
     transform: translateX(0%);
     transform: translateY(100%);
   }
+
   .Menu-compartir.on {
     transform: translateY(0%);
   }
+
   .Container-compartir {
     width: 75%;
     border-radius: 0;
     border-top-left-radius: 2%;
     border-top-right-radius: 2%;
   }
+
   .Cuerpo {
     width: 85%;
   }
+
   .Title-id {
     font-size: 20px;
   }
+
   .img-id {
     height: 250px;
   }
+
   .body-id {
     font-size: 15px;
   }
+
   .Compartir {
     width: 85%;
   }
+
   @media (width<=400) {
     .Title-id {
       font-size: 18px;
     }
+
     .img-id {
       height: 200px;
     }
