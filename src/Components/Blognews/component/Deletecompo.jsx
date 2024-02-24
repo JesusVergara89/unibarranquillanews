@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 import { deleteObject, ref } from 'firebase/storage'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
-const Deletecompo = ({ id, imageUrl }) => {
+const Deletecompo = ({user, id, imageUrl }) => {
 
     const [currentlyLoggedinUser] = useAuthState(auth)
 
@@ -25,7 +25,7 @@ const Deletecompo = ({ id, imageUrl }) => {
     return (
         <button onClick={handleDelete} className="delete-card">
             {
-                id === currentlyLoggedinUser.uid &&
+                user === currentlyLoggedinUser.uid &&
                 (
                     <i className='bx bx-trash-alt'></i>
                 )
