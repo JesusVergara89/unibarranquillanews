@@ -17,7 +17,7 @@ const Cardpost = ({ article }) => {
       return text;
     }
   }
-  console.log(article)
+  console.log('hello')
   return (
     <div className="post-content">
       <div className="post-content-div-1">
@@ -42,7 +42,6 @@ const Cardpost = ({ article }) => {
           <div className="post-interact-div">
             <Deletecompo id={article.id} imageUrl={article.imageUrl} />
           </div>
-
 
           <div className="post-interact-div">
             <i className='bx bx-message-dots' ></i>

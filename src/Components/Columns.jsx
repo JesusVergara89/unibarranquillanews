@@ -38,7 +38,6 @@ const Columns = () => {
                 </button>
             </Link>
             <Link to={'/INVESTIGACION'}>
-
                 <button className='outside-btn' >
                     <img src={investigación} />
                     <h2 >Ver más</h2>
@@ -76,8 +75,6 @@ const Columns = () => {
                 </button>
             </Link>
             <Link>
-
-
                 <button className='outside-btn' onClick={() => navigateTecnologia('/TECNOLOGIA')} >
                     <img onClick={() => navigateEntrevista('/TECNOLOGIA')} src={tecnologia} />
                     <h2 >Ver más</h2>

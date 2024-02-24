@@ -1,10 +1,14 @@
 import { deleteDoc, doc } from 'firebase/firestore'
 import React from 'react'
-import { db1, storage } from '../../../firebaseconfig'
+import { auth, db1, storage } from '../../../firebaseconfig'
 import { toast } from 'react-toastify'
 import { deleteObject, ref } from 'firebase/storage'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 const Deletecompo = ({ id, imageUrl }) => {
+
+    const [currentlyLoggedinUser] = useAuthState(auth)
+
     const handleDelete = async () => {
         if (window.confirm("You´re going to delete this.")) {
             try {
@@ -17,9 +21,15 @@ const Deletecompo = ({ id, imageUrl }) => {
             }
         }
     }
+
     return (
         <button onClick={handleDelete} className="delete-card">
-            <i className='bx bx-trash-alt'></i>
+            {
+                id === currentlyLoggedinUser.uid &&
+                (
+                    <i className='bx bx-trash-alt'></i>
+                )
+            }
         </button>
     )
 }
