@@ -33,14 +33,12 @@ const Cardpost = ({ article }) => {
           )
         }
 
-        <Deletecompo id={article.id} imageUrl={article.imageUrl} />
-
-        <div className="post-content-likes">
+        <div className="post-interact">
+          <Deletecompo id={article.id} imageUrl={article.imageUrl} />
 
           {
             user && (<Likecompo id={article.id} likes={article.likes} />)
           }
-
         </div>
       </div>
     </div>
