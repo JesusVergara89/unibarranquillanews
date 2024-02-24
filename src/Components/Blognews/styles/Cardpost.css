@@ -96,6 +96,7 @@
 
 .delete-card {
     all: unset;
+    display: flex;
 }
 
 .delete-card .bx {
@@ -104,6 +105,13 @@
 
 .delete-card .bx:hover {
     cursor: pointer;
+}
+
+.like-component {
+    width: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .like-component > i{
