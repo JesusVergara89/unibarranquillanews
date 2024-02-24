@@ -2,25 +2,24 @@ import React, { Suspense, lazy, useEffect, useState } from 'react'
 import Presentations from './Components/Presentations'
 import { Route, Routes } from 'react-router-dom'
 import NotFound from './Components/NotFound'
-import Longin from './Components/Longin'
-import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
 import useAccess from './Hooks/useAcces'
 import RoutesProtecteds from './Components/RoutesProtecteds'
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from './firebaseconfig'
-import ArticleForRead from './Components/ArticleForRead'
 import Loading from './Components/Loading'
 import Ruta from './Components/Ruta'
 import useSeccion from './Hooks/useSeccion'
-import moment from 'moment';
-import Containerpost from './Components/Blognews/component/Containerpost'
-import Blogarticle from './Components/Blognews/component/Blogarticle'
 
 const SeccionA = lazy(() => import("./Components/Seccion"))
 const SeccionId = lazy(() => import("./Components/SeccionId"))
 const Workus = lazy(() => import("./Components/Work"))
+const Containerpost = lazy(() => import("./Components/Blognews/component/Containerpost"))
+const Blogarticle = lazy(() => import("./Components/Blognews/component/Blogarticle"))
+const ArticleForRead = lazy(() => import("./Components/ArticleForRead"))
+const CompanyCollaboratorAccess = lazy(() => import("./Components/CompanyCollaboratorAccess"))
+const Longin = lazy(() => import("./Components/Longin"))
 
 function Blog() {
   const [IsLogged, setIsLogged] = useState(false)
@@ -73,22 +72,42 @@ function Blog() {
           }
         />
         <Route path='/BLOG'
-          element={<Containerpost />}
+          element={
+            <Suspense fallback={<Loading />}>
+              <Containerpost />
+            </Suspense>
+          }
         />
         <Route path='/BLOGARTICLE/:id'
-          element={<Blogarticle/>}
+          element={
+            <Suspense fallback={<Loading />}>
+              <Blogarticle />
+            </Suspense>
+          }
         />
         <Route path='/ARTICLE/:id'
-          element={<ArticleForRead />}
+          element={
+            <Suspense fallback={<Loading />}>
+              <ArticleForRead />
+            </Suspense>
+          }
         />
         <Route path="*" element={<NotFound />} />
 
-        <Route path='/LOGIN' element={<Longin access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
+        <Route path='/LOGIN' element={
+          <Suspense fallback={<Loading />}>
+            <Longin access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />
+          </Suspense>
+        } />
 
         <Route element={<RoutesProtecteds IsLogged={IsLogged} />}>
           <Route
             path='/COLLABORATORS'
-            element={<CompanyCollaboratorAccess />}
+            element={
+              <Suspense fallback={<Loading />}>
+                <CompanyCollaboratorAccess />
+              </Suspense>
+            }
           />
         </Route>
       </Routes>
