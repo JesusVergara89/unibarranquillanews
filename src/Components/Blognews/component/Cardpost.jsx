@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../../firebaseconfig'
 import Likecompo from './Likecompo'
 import Deletecompo from './Deletecompo'
+import { Link } from 'react-router-dom'
 
 const Cardpost = ({ article }) => {
 
@@ -19,7 +20,9 @@ const Cardpost = ({ article }) => {
   return (
     <div className="post-content">
       <div className="post-content-div-1">
-        <img src={article.imageUrl} alt="" className="post-content-img" />
+        <Link to={`/BLOGARTICLE/${article.id}`}>
+          <img src={article.imageUrl} alt="" className="post-content-img" />
+        </Link>
       </div>
       <div className="post-content-div-2">
         <h3 className='post-content-title'>{truncateText(article.title, 35)}</h3>

@@ -16,6 +16,7 @@ import Ruta from './Components/Ruta'
 import useSeccion from './Hooks/useSeccion'
 import moment from 'moment';
 import Containerpost from './Components/Blognews/component/Containerpost'
+import Blogarticle from './Components/Blognews/component/Blogarticle'
 
 const SeccionA = lazy(() => import("./Components/Seccion"))
 const SeccionId = lazy(() => import("./Components/SeccionId"))
@@ -73,6 +74,9 @@ function Blog() {
         />
         <Route path='/BLOG'
           element={<Containerpost />}
+        />
+        <Route path='/BLOGARTICLE/:id'
+          element={<Blogarticle/>}
         />
         <Route path='/ARTICLE/:id'
           element={<ArticleForRead />}
