@@ -3,7 +3,7 @@ import useSeccion from '../Hooks/useSeccion'
 import '../Styles/seccionId.css'
 import moment from 'moment/moment'
 import NotFound from './NotFound'
-import { FacebookShareButton, InstapaperShareButton, LinkedinShareButton, TelegramShareButton, WhatsappShareButton, TwitterShareButton } from "react-share";
+import { FacebookShareButton, LinkedinShareButton, TelegramShareButton, WhatsappShareButton, TwitterShareButton } from "react-share";
 import { Helmet } from 'react-helmet'
 import { Link, useParams } from 'react-router-dom'
 import Carrusel from './Carrusel'
@@ -60,6 +60,7 @@ const SeccionId = () => {
         },
     }
     let Autor = update?.[0].Editor.replace(" ", "-")
+
     return (
         <>
             {
@@ -111,7 +112,7 @@ const SeccionId = () => {
                                         {<Skeleton height={'100vh'} />}
                                     </div>
                                 </div>
-                                <Skeleton width={128} height={40} style={{marginLeft:'43%'}} />
+                                <Skeleton width={128} height={40} style={{ marginLeft: '43%' }} />
                                 <div className='Compartir'>
                                     {<Skeleton width={'25%'} height={40} />}
                                 </div>
@@ -135,12 +136,6 @@ const SeccionId = () => {
                                             <FacebookShareButton className='Boxicon' url={currentpageUrl} hashtag='#Unibarranquilla'>
                                                 < i onClick={() => setMenucom(false)} className='bx bxl-facebook' />
                                             </FacebookShareButton>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <InstapaperShareButton className='Boxicon' url={currentpageUrl} hashtag='#Unibarranquilla'>
-                                                <i onClick={() => setMenucom(false)} className='bx bxl-instagram' />
-
-                                            </InstapaperShareButton>
                                         </SwiperSlide>
                                         <SwiperSlide>
                                             <LinkedinShareButton className='Boxicon' url={currentpageUrl} hashtag='#Unibarranquilla'>
