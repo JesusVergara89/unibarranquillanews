@@ -34,10 +34,10 @@ const Likecompo = ({ id, likes }) => {
     return (
         <div className="like-component">
             <i className={`fa fa-heart${!likes?.includes(user.uid) ? "-o" : " "} fa-lg `}
-                style={{ cursor: "pointer", color: likes?.includes(user.uid) ? "red" : null }}
+                style={{ cursor: "pointer", color: likes?.includes(user.uid) ? "red" : null, padding: 0, margin: 0 }}
                 onClick={handleLikes}
             />
-            
+
         </div>
     )
 }
