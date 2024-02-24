@@ -30,13 +30,9 @@
     "react-router-dom": "^6.21.2",
     "react-share": "^5.1.0",
     "react-toastify": "^10.0.4",
-<<<<<<< HEAD
     "slick-carousel": "^1.8.1",
     "swiper": "^11.0.6",
     "uuid": "^9.0.1"
-=======
-    "swiper": "^11.0.6"
->>>>>>> c215c3bc8998eb21c7554ee00e150cb82d0330a8
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
