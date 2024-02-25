@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useSeccion from '../Hooks/useSeccion'
 import '../Styles/seccionId.css'
 import NotFound from './NotFound'
@@ -11,11 +11,9 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Bounce, toast } from 'react-toastify';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import dayjs from 'dayjs';
-import 'dayjs/locale/es'
 
 const SeccionId = () => {
-    dayjs.locale('es')
+
     const { update, status } = useSeccion()
     let { Seccion, Id } = useParams()
     const [Menucom, setMenucom] = useState(false)
@@ -70,6 +68,15 @@ const SeccionId = () => {
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;
     }
+    const formatDate = (dateStr) => {
+        const months = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+        const dateParts = dateStr.split('-');
+        const day = parseInt(dateParts[1], 10);
+        const monthIndex = parseInt(dateParts[0], 10) - 1;
+        const year = dateParts[2];
+        const month = months[monthIndex];
+        return `${month} ${day}, ${year}`;
+    };
     return (
         <>
             {
@@ -98,14 +105,14 @@ const SeccionId = () => {
                                 <div className='Cuerpo'>
                                     <h2 className="Title-id">{FromUpperToLowerCase(update[0].Title)}</h2>
                                     <img className='img-id' src={update[0].Pic} alt="" />
-                                    <Link to={`/${Autor}`} className="Informacion">{dayjs(update[0].Date).format("D MMM, YYYY")} <br /> {`Por: ${update[0].Editor}`}</Link>
+                                    <Link to={`/${Autor}`} className="Informacion">{update && formatDate(update[0].Date)} <br /> {`Por: ${update[0].Editor}`}</Link>
                                     <div className="body-id">
                                         {update[0].Body.split('\n').map((line, index) => (
                                             <p key={index}>{line}</p>
                                         ))}
                                     </div>
                                     <h5 className="Time-to-read">
-                                       { `${TimeReading(update[0].Body)} min. read`}
+                                        {`${TimeReading(update[0].Body)} min. read`}
                                     </h5>
                                 </div>
                                 <a className='Fuente' href={update[0].Link} target="_blank"> Ver mas</a>
