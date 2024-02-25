@@ -115,3 +115,19 @@ a {
 .Toastify__close-button {
   width: 20px;
 }
+
+.login-hiden {
+  width: 100%;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.login-hiden .bx{
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 7px;
+}

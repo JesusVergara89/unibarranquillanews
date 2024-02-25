@@ -4,10 +4,11 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebaseconfig'
 import { toast } from 'react-toastify'
 
-const Usersingin = ({createOrSignIn,enterToFormPost}) => {
+const Usersingin = ({ createOrSignIn, enterToFormPost }) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [show, setShow] = useState(false)
 
     const handleLogin = async () => {
         try {
@@ -17,6 +18,8 @@ const Usersingin = ({createOrSignIn,enterToFormPost}) => {
             toast(error.code, { type: "error" })
         }
     }
+
+    const showPassword = () => setShow(!show)
 
     return (
         <article className="form-register-main">
@@ -29,11 +32,14 @@ const Usersingin = ({createOrSignIn,enterToFormPost}) => {
                     onChange={(e) => { setEmail(e.target.value) }}
                 />
                 <input
-                    type='password'
+                    type={show ? "text" : "password"}
                     className='form-register-password'
                     placeholder='Password'
                     onChange={(e) => { setPassword(e.target.value) }}
                 />
+                <div onClick={showPassword} className="login-hiden">
+                    {show ? <i class='bx bx-hide'></i> : <i class='bx bx-show'></i>}
+                </div>
                 <button onClick={handleLogin} className="form-register-btn">Login</button>
             </div>
             <h3>Si no tienes una cuenta creala</h3>

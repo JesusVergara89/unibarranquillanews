@@ -9,6 +9,7 @@ const Register = ({ createOrSignIn, enterToFormPost }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
+    const [show, setShow] = useState(false)
 
     const handleSingUp = async () => {
         try {
@@ -16,9 +17,11 @@ const Register = ({ createOrSignIn, enterToFormPost }) => {
             updateProfile(auth.currentUser, { displayName: name })
             enterToFormPost()
         } catch (error) {
-          toast(error.code, {type: "error"})
+            toast(error.code, { type: "error" })
         }
     }
+
+    const showPassword = () => setShow(!show)
 
     return (
         <article className="form-register-main">
@@ -37,11 +40,14 @@ const Register = ({ createOrSignIn, enterToFormPost }) => {
                     onChange={(e) => { setEmail(e.target.value) }}
                 />
                 <input
-                    type="text"
+                    type={show ? "text" : "password"}
                     className='form-register-password'
                     placeholder='Password'
                     onChange={(e) => { setPassword(e.target.value) }}
                 />
+                <div onClick={showPassword} className="login-hiden">
+                    {show ? <i class='bx bx-hide'></i> : <i class='bx bx-show'></i>}
+                </div>
                 <button onClick={handleSingUp} className="form-register-btn">Register</button>
             </div>
             <h3>Si tienes una cuenta accede</h3>
