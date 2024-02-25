@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react'
 import '../Styles/Theblog.css'
 import { collection, onSnapshot, orderBy, query } from '@firebase/firestore'
 import { db1 } from '../firebaseconfig'
+import Postcomment from './Postcomment'
+import { useNavigate } from 'react-router'
 
 const Theblog = () => {
 
     const [articles, setArticles] = useState([{}])
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         const articleRef = collection(db1, "Articles")
@@ -22,12 +26,25 @@ const Theblog = () => {
         return () => unsubscribe()
     }, [])
 
-    console.log(articles)
+    function handleClick() {
+        navigate('/BLOG');
+    }
 
     return (
         <article className="Container-blog">
 
+            <button onClick={handleClick} className="to-the-blog">
+                Blog
+            </button>
 
+          {
+            articles && 
+            (
+                articles.map((article, i)=>(
+                    <Postcomment key={i} article={article}/>
+                ))
+            )
+          }
 
         </article>
     )
