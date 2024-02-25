@@ -58,6 +58,12 @@ const ArticleForRead = () => {
         window.open(`https://www.linkedin.com/shareArticle?url=${encodeURIComponent(currentURL)}&title=${encodeURIComponent(article.title)}&summary=&source=`, '_blank');
     };
 
+    const TimeReading = (text, wordsPerMinutes = 200) => {
+        const words = text.trim().split(/\s+/).length;
+        const timeToReadPerMinutes = words / wordsPerMinutes;
+        const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
+        return RoundedTimeRead;
+    }
 
     return (
         <div>
@@ -75,6 +81,9 @@ const ArticleForRead = () => {
                                     <p key={index}>{line}</p>
                                 ))}
                             </div>
+                            <h5 className="Time-to-read">
+                                {`${article.description && TimeReading(article.description)} min. read`}
+                            </h5>
                         </div>
                         <div className="Complete-news-information">
                             <h3 className="Complete-news-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h3>
