@@ -47,6 +47,22 @@ const Comments = ({ id }) => {
 
   return (
     <article className="comment-section">
+      <div className="Comments-make">
+        {
+          currentlyLoggedinUser &&
+          (
+            <textarea
+              placeholder='Presiona enter para comentar'
+              type='text'
+              className='create-comment'
+              value={comment}
+              onChange={(e) => { setComment(e.target.value) }}
+              onKeyUp={(e) => { handleChangeComment(e) }}
+            />
+          )
+        }
+      </div>
+
       <div className="Comments-div">
         {comments !== null &&
           comments.map(
@@ -65,7 +81,7 @@ const Comments = ({ id }) => {
                     (
                       <i className="fa fa-times"
                         style={{ cursor: "pointer" }}
-                        onClick={() => handledeletecoment({commentId, user, comment, userName, createdAt})}
+                        onClick={() => handledeletecoment({ commentId, user, comment, userName, createdAt })}
                       ></i>
                     )
                   }
@@ -76,23 +92,6 @@ const Comments = ({ id }) => {
 
         }
       </div>
-
-      <div className="Comments-make">
-        {
-          currentlyLoggedinUser &&
-          (
-            <textarea
-              placeholder='Presiona enter para comentar'
-              type='text'
-              className='create-comment'
-              value={comment}
-              onChange={(e) => { setComment(e.target.value) }}
-              onKeyUp={(e) => { handleChangeComment(e) }}
-            />
-          )
-        }
-      </div>
-
     </article>
   )
 }
