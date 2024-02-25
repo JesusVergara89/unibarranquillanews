@@ -64,6 +64,12 @@ const SeccionId = () => {
         },
     }
     let Autor = update?.[0].Editor.replace(" ", "-")
+    const TimeReading = (text, wordsPerMinutes = 200) => {
+        const words = text.trim().split(/\s+/).length;
+        const timeToReadPerMinutes = words / wordsPerMinutes;
+        const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
+        return RoundedTimeRead;
+    }
     return (
         <>
             {
@@ -98,6 +104,9 @@ const SeccionId = () => {
                                             <p key={index}>{line}</p>
                                         ))}
                                     </div>
+                                    <h5 className="Time-to-read">
+                                       { `${TimeReading(update[0].Body)} min. read`}
+                                    </h5>
                                 </div>
                                 <a className='Fuente' href={update[0].Link} target="_blank"> Ver mas</a>
                                 <div onClick={() => setMenucom(true)} className='Compartir'>

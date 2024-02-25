@@ -1,3 +1,13 @@
+:root {
+  --color_1: #ffffff;
+  --color_2: #006400;
+  --color_3: #add8e6;
+  --color_4: #8b0000;
+  --color_5: #001f3f;
+  --color_6: #333333;
+  --color_7: #000000;
+}
+
 .Main-Seccion-id {
   width: 100%;
   height: auto;
@@ -28,12 +38,14 @@
   justify-content: center;
   align-items: center;
   row-gap: 25px;
+  position: relative;
 }
 
 .Title-id {
-  text-align: center;
+  text-align: justify;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 1.2rem;
+  color: var(--color_7);
 }
 
 .img-id {
@@ -54,7 +66,18 @@
 
 .body-id {
   text-align: start;
-  font-size: 18px;
+  font-size: 1rem;
+  color: var(--color_6);
+}
+
+.Time-to-read {
+  color: var(--color_1);
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  background-color: var(--color_4);
 }
 
 .Compartir {
