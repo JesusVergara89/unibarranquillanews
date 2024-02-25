@@ -126,6 +126,10 @@ a {
   position: relative;
 }
 
+.login-hiden:hover {
+  cursor: pointer;
+}
+
 .login-hiden .bx{
   font-size: 1.5rem;
   position: absolute;
