@@ -10,6 +10,7 @@ import vidau from '../Images/estudiantes.jpg'
 import evento from '../Images/evento.jpg'
 import entrevista from '../Images/entrevista.jpg'
 import tecnologia from '../Images/tech.jpg'
+import blogmain from '../Images/blogmain.jpg'
 
 
 const Columns = () => {
@@ -46,9 +47,9 @@ const Columns = () => {
             </Link>
             <Link to={'/READBLOG'}>
                 <button className='outside-btn' >
-                    <img src={investigación} />
+                    <img src={blogmain} />
                     <h2 >Ver más</h2>
-                    <h3>Investigación y Desarrollo</h3>
+                    <h3>Unibarranquilla blog</h3>
                 </button>
             </Link>
             <Link to={'/ASUNTOS'}>
