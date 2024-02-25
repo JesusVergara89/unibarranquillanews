@@ -11,6 +11,7 @@ import { db } from './firebaseconfig'
 import Loading from './Components/Loading'
 import Ruta from './Components/Ruta'
 import useSeccion from './Hooks/useSeccion'
+import Theblog from './Components/Theblog'
 
 const SeccionA = lazy(() => import("./Components/Seccion"))
 const SeccionId = lazy(() => import("./Components/SeccionId"))
@@ -85,6 +86,13 @@ function Blog() {
             </Suspense>
           }
         />
+        <Route path='/READBLOG'
+          element={
+            <Suspense fallback={<Loading />}>
+              <Theblog/>
+            </Suspense>
+          }
+        />
         <Route path='/ARTICLE/:id'
           element={
             <Suspense fallback={<Loading />}>
@@ -92,6 +100,7 @@ function Blog() {
             </Suspense>
           }
         />
+
         <Route path="*" element={<NotFound />} />
 
         <Route path='/LOGIN' element={

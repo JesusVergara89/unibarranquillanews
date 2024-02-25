@@ -44,6 +44,13 @@ const Columns = () => {
                     <h3>Investigación y Desarrollo</h3>
                 </button>
             </Link>
+            <Link to={'/READBLOG'}>
+                <button className='outside-btn' >
+                    <img src={investigación} />
+                    <h2 >Ver más</h2>
+                    <h3>Investigación y Desarrollo</h3>
+                </button>
+            </Link>
             <Link to={'/ASUNTOS'}>
                 <button className='outside-btn' >
                     <img src={asuntos} />
