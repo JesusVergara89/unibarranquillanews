@@ -18,6 +18,17 @@ const Blogarticle = () => {
         })
     }, [])
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    };
+
+    useEffect(() => {
+        scrollToTop()
+    }, [])
+
     return (
         <article className="blog-article">
             <div className="blog-article-upper-section">

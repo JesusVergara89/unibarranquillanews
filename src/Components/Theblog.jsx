@@ -30,6 +30,17 @@ const Theblog = () => {
         navigate('/BLOG');
     }
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    };
+
+    useEffect(() => {
+        scrollToTop()
+    }, [])
+
     return (
         <article className="Container-blog">
 
