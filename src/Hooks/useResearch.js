@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 const useResearch = () => {
     const [research, setResearch] = useState()
     useEffect(() => {
-        const URL = 'https://script.google.com/macros/s/AKfycbwjHX0W0ZoPbRLwfGB56Y25ttt7loJTlTOwsrzrDzAYDd8gaRoKBTgFyBeqzCsOUId99g/exec?action=data'
+        const URL = 'https://script.google.com/macros/s/AKfycbwv_JdN4JRfUoacRDyT3ylJOnWkUvfypqJw9CZeoK1Nz1Il-aSPnOmQIUds1FlhMWM0Ug/exec?action=data'
         axios.get(URL)
             .then(({ data }) => setResearch(data))
             .catch(err => console.log(err))

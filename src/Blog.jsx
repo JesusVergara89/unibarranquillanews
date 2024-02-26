@@ -24,6 +24,7 @@ import ArticleForRead from './Components/ArticleForRead'
 import Containerpost from './Components/Blognews/component/Containerpost'
 import Blogarticle from '../src/Components/Blognews/component/Blogarticle'
 import Theblog from './Components/Theblog'
+import Maintenance from './Components/Maintenance'
 
 const Seccion = lazy(() => import("./Components/Seccion"))
 const SeccionId = lazy(() => import("./Components/SeccionId"))
@@ -52,6 +53,7 @@ function Blog() {
   return (
     <div className='Blog'>
       <Header reloadPage={reloadPage} setReloadPage={setReloadPage} />
+      <Maintenance/>
       <Flotan />
       <Routes>
         <Route path='/'
