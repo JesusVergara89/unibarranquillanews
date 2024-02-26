@@ -1,0 +1,38 @@
+:root {
+    --color_1: #ffffff;
+    --color_2: #006400;
+    --color_3: #add8e6;
+    --color_4: #8b0000;
+    --color_5: #001f3f;
+    --color_6: #333333;
+    --color_7: #000000;
+}
+
+.Container-blog {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    margin-bottom: 100px;
+    gap: 10px;
+}
+
+.to-the-blog {
+    width: 100px;
+    padding: 5px;
+    background-color: var(--color_4);
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.to-the-blog:hover {
+    background-color: var(--color_7);
+}
+

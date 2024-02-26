@@ -22,6 +22,8 @@ import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from './firebaseconfig'
 import ArticleForRead from './Components/ArticleForRead'
 import Containerpost from './Components/Blognews/component/Containerpost'
+import Blogarticle from '../src/Components/Blognews/component/Blogarticle'
+import Theblog from './Components/Theblog'
 
 const Seccion = lazy(() => import("./Components/Seccion"))
 const SeccionId = lazy(() => import("./Components/SeccionId"))
@@ -55,7 +57,7 @@ function Blog() {
         <Route path='/'
           element={<Presentations access={access} />}
         />
-          <Route path='/ACTUALIDAD'
+        <Route path='/ACTUALIDAD'
           element={<Engineering />}
         />
         <Route path='/CULTURA'
@@ -86,11 +88,16 @@ function Blog() {
           element={<Tecnologia />}
         />
         <Route path='/BLOG'
-          element={<Containerpost/>}
+          element={<Containerpost />}
         />
-
+        <Route path='/BLOGARTICLE/:id'
+          element={<Blogarticle />}
+        />
         <Route path='/ARTICLE/:id'
           element={<ArticleForRead />}
+        />
+         <Route path='/READBLOG'
+          element={<Theblog />}
         />
         <Route path="*" element={<NotFound />} />
 

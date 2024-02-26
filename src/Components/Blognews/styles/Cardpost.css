@@ -11,7 +11,7 @@
 .post-content {
     display: flex;
     flex-direction: column;
-    width: 450px;
+    width: 400px;
     height: 500px;
     border: 1px solid var(--color_4);
     border-radius: 5px;
@@ -39,10 +39,15 @@
     object-fit: cover;
 }
 
+.post-content-img:hover {
+    cursor: pointer;
+    box-shadow: 0px 5px 10px var(--color_4);
+}
+
 .post-content-title {
     font-size: 0.9rem;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-top: -25px;
     font-weight: bold;
 }
 
@@ -53,40 +58,125 @@
     margin-top: 10px;
     overflow: hidden;
     font-size: 0.8rem;
+    color: var(--color_6);
 }
 
 .post-content-date {
-    text-align: center;
-    font-size: 0.7rem;
-    font-weight: bold;
-    color: var(--color_7);
+    width: auto;
+    height: auto;
+    position: absolute;
+    bottom: 15px;
+    right: 30px;
 }
 
 .post-content-author {
-    text-align: center;
-    font-size: 0.7rem;
-    font-weight: bold;
-    color: var(--color_7);
+    width: auto;
+    height: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: var(--color_4);
     position: absolute;
-    top: -230px;
-    right: -180px;
+    top: -13px;
+    right: 30px;
 }
 
-.post-content-likes {
-    width: 100%;
-    height: 20px;
+.post-content-author h3 {
+    text-align: center;
+    color: var(--color_1);
+}
+
+.post-interact {
+    width: 50%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5px;
+    gap: 30px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
 }
 
-.post-content-likes .bx {
-    text-align: center;
-    font-size: 0.9rem;
-    font-weight: bold;
+.post-interact-div {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
 
-.post-content-likes .bx:hover {
+.post-interact-div div {
+    width: 1.8rem;
+    height: 1.8rem;
+    display: flex;
+}
+
+.delete-card {
+    all: unset;
+    display: flex;
+}
+
+.post-interact-div, .delete-card .bx {
+    font-size: 1.1rem;
+}
+
+.delete-card .bx:hover {
     cursor: pointer;
+}
+
+.like-component {
+    width: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.like-component>i {
+    font-size: 1.1rem;
+}
+
+@media (365px <=width < 470px) {
+    .post-content {
+        display: flex;
+        flex-direction: column;
+        width: 350px;
+        height: 500px;
+        border: 1px solid var(--color_4);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+}
+
+@media (width < 365px) {
+    .post-content {
+        display: flex;
+        flex-direction: column;
+        width: 260px;
+        height: 500px;
+        border: 1px solid var(--color_4);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .post-interact {
+        width: 50%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        position: absolute;
+        bottom: 10px;
+        left: 5px;
+    }
+
+    .post-content-date {
+        width: auto;
+        height: auto;
+        position: absolute;
+        bottom: 15px;
+        right: 30px;
+        font-size: 0.7rem;
+    }
 }

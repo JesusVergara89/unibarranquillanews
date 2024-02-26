@@ -1,0 +1,106 @@
+:root {
+    --color_1: #ffffff;
+    --color_2: #006400;
+    --color_3: #add8e6;
+    --color_4: #8b0000;
+    --color_5: #001f3f;
+    --color_6: #333333;
+    --color_7: #000000;
+}
+
+.comment-section {
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    margin-top: 10px;
+    gap: 20px;
+}
+
+.Comments-div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-card {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--color_4);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.display-comment {
+    width: 95%;
+    height: auto;
+    padding: 0.3rem;
+    border: 1px solid var(--color_4);
+    color: var(--color_6);
+}
+
+.comment-user-information {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 0.1rem;
+}
+
+.comment-user.green {
+    width: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    background-color: rgb(0, 65, 0);
+    color: var(--color_1);
+}
+
+.comment-user.red {
+    width: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    background-color: rgb(106, 0, 0);
+    color: var(--color_1);
+}
+
+.comment-date {
+    width: auto;
+    color: var(--color_7);
+}
+
+.delete-btn{
+    width: auto;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+}
+
+.Comments-make {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-comment {
+    width: 92%;
+    height: 70px;
+    resize: vertical;
+    padding: 0.2rem;
+}
+
+
+

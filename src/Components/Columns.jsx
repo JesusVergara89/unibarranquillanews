@@ -10,6 +10,7 @@ import vidau from '../Images/estudiantes.jpg'
 import evento from '../Images/evento.jpg'
 import entrevista from '../Images/entrevista.jpg'
 import tecnologia from '../Images/tech.jpg'
+import blogmain from '../Images/blogmain.jpg'
 
 
 const Columns = () => {
@@ -32,6 +33,8 @@ const Columns = () => {
     const navigateEntrevista = useNavigate()
 
     const navigateTecnologia = useNavigate()
+
+    const navigateReadBlog = useNavigate()
 
     return (
         <div className="container">
@@ -58,6 +61,14 @@ const Columns = () => {
                 <h2 >Ver más</h2>
                 <h3>Investigación y Desarrollo</h3>
             </button>
+
+
+            <button className='outside-btn' onClick={() => navigateReadBlog('/READBLOG')} >
+                <img src={blogmain} />
+                <h2 >Ver más</h2>
+                <h3>Unibarranquilla blog</h3>
+            </button>
+
 
             <button className='outside-btn' onClick={() => navigateAsuntos('/ASUNTOS')} >
                 <img onClick={() => navigateAsuntos('/ASUNTOS')} src={asuntos} />
