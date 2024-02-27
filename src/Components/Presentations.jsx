@@ -6,6 +6,7 @@ import Socialmedia from '../Components/Socialmedia'
 import Networks from '../Components/Networks'
 import Recent from './Recent'
 import FlashArticles from './FlashArticles'
+import Extensivearticles from './Extensivearticles'
 
 const Presentations = ({access}) => {
 
@@ -26,9 +27,9 @@ const Presentations = ({access}) => {
 
       <Aboutblog />
 
-      <Recent />
+      {/*<Recent />*/}
 
-      <FlashArticles access={access} />
+      <FlashArticles />
 
       <Columns />
 

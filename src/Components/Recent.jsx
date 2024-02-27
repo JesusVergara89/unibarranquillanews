@@ -4,11 +4,10 @@ import '../Styles/Recen.css';
 import Carrusel from './Carrusel';
 import Card from './Card';
 import { SwiperSlide } from "swiper/react";
-import useRecents from '../Hooks/useRecents';
 
 const Recent = () => {
-    const [data, setData] = useState(null);
-    const recent = useRecents()
+    const [data, setData] = useState([{}]);
+    
     useEffect(()=>{
         setData(recent)
     },[])

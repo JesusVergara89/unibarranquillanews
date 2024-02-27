@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { db8 } from '../firebaseconfig'
+import { db3 } from '../firebaseconfig'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import Cardnewyorktimes from './Cardnewyorktimes'
 
-/**
- * Functional component representing the Events and Activities section of the blog.
- * It showcases upcoming events, conferences, seminars, and social activities that enrich university life.
- */
-const Eventos = ({access}) => {
+const Culture = ({ access }) => {
 
-  // Current URL of the page
-  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/EVENTOS'
+  const currentURL = 'https://unibarranquilla-newspaper.netlify.app/#/CULTURA'
 
-  const dataTitle = 'EVENTOS'
-  const dataDescription = 'Entérate de los eventos próximos, conferencias, seminarios y actividades sociales que enriquecen nuestra vida universitaria y de la ciudad. No te pierdas ninguna oportunidad de participar y ser parte activa de la comunidad.'
+  const dataTitle = 'CULTURA Y ARTE'
+  const dataDescription = 'Explora la escena cultural y artística en Unibarranquilla. Reseñas de eventos, entrevistas con artistas locales y destacados, así como la cobertura de actividades culturales organizadas por la universidad.'
 
   useEffect(() => {
     scrollToTop()
@@ -27,7 +22,7 @@ const Eventos = ({access}) => {
   };
   const [articles, setArticles] = useState([{}])
   useEffect(() => {
-    const articleRef = collection(db8, "Articles")
+    const articleRef = collection(db3, "Articles")
     const q = query(articleRef, orderBy("createdAt", "desc"))
     onSnapshot(q, (snapshot) => {
       const articles = snapshot.docs.map((doc) => ({
@@ -47,7 +42,7 @@ const Eventos = ({access}) => {
       <div className="wrapp-section">
         {
           articles?.map((article, i) => (
-            <Cardnewyorktimes key={i} article={article} database={'db8'} access={access} currentURL={currentURL} />
+            <Cardnewyorktimes key={i} article={article} database={'db3'} access={access} currentURL={currentURL} />
           ))
         }
       </div>
@@ -55,4 +50,4 @@ const Eventos = ({access}) => {
   )
 }
 
-export default Eventos
+export default Culture

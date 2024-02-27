@@ -1,10 +1,6 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Presentations from './Components/Presentations'
 import { Route, Routes } from 'react-router-dom'
-import Engineering from './Components/Engineering'
-import Travel from './Components/Travel'
-import Literature from './Components/Literature'
-import Experience from './Components/Experience'
 import Asuntox from './Components/Asuntox'
 import Vida from './Components/Vida'
 import Eventos from './Components/Eventos'
@@ -14,20 +10,20 @@ import Tecnologia from './Components/Tecnologia'
 import NotFound from './Components/NotFound'
 import Longin from './Components/Longin'
 import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
-import useAccess from './Hooks/useAcces'
 import RoutesProtecteds from './Components/RoutesProtecteds'
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import { db } from './firebaseconfig'
 import ArticleForRead from './Components/ArticleForRead'
 import Containerpost from './Components/Blognews/component/Containerpost'
 import Blogarticle from '../src/Components/Blognews/component/Blogarticle'
 import Theblog from './Components/Theblog'
-import Maintenance from './Components/Maintenance'
+import useAccess from './Hooks/useAcces'
+import Culture from './Components/Culture'
+import Actualidad from './Components/Actualidad'
+import Deportes from './Components/Deportes'
+import Investigacion from './Components/Investigacion'
+import Singlearticle from './Components/Singlearticle'
 
-const Seccion = lazy(() => import("./Components/Seccion"))
-const SeccionId = lazy(() => import("./Components/SeccionId"))
 
 function Blog() {
 
@@ -36,64 +32,53 @@ function Blog() {
   const [reloadPage, setReloadPage] = useState(false)
 
   const access = useAccess()
-
-  const [articles, setArticles] = useState([{}])
-  useEffect(() => {
-    const articleRef = collection(db, "Articles")
-    const q = query(articleRef, orderBy("createdAt", "desc"))
-    onSnapshot(q, (snapshot) => {
-      const articles = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }))
-      setArticles(articles)
-    })
-  }, [reloadPage, access])
-
+   
   return (
     <div className='Blog'>
       <Header reloadPage={reloadPage} setReloadPage={setReloadPage} />
-      <Maintenance/>
       <Flotan />
       <Routes>
         <Route path='/'
-          element={<Presentations access={access} />}
+          element={<Presentations  />}
         />
         <Route path='/ACTUALIDAD'
-          element={<Engineering />}
+          element={<Actualidad access={access}  />}
         />
         <Route path='/CULTURA'
-          element={<Travel />}
+          element={<Culture access={access} />}
         />
         <Route path='/DEPORTES'
-          element={<Literature />}
+          element={<Deportes access={access} />}
         />
         <Route path='/INVESTIGACION'
-          element={<Experience />}
+          element={<Investigacion access={access}  />}
         />
         <Route path='/ASUNTOS'
-          element={<Asuntox />}
+          element={<Asuntox access={access}  />}
         />
         <Route path='/VIDAU'
-          element={<Vida />}
+          element={<Vida access={access} />}
         />
         <Route path='/EVENTOS'
-          element={<Eventos />}
+          element={<Eventos access={access} />}
         />
         <Route path='/ENTREVISTA'
-          element={<Entrevista />}
+          element={<Entrevista access={access} />}
         />
         <Route path='/OPENPOSSITIONS'
           element={<Workus />}
         />
         <Route path='/TECNOLOGIA'
-          element={<Tecnologia />}
+          element={<Tecnologia access={access} />}
         />
         <Route path='/BLOG'
           element={<Containerpost />}
         />
         <Route path='/BLOGARTICLE/:id'
           element={<Blogarticle />}
+        />
+        <Route path='/SINGLEARTICLE/:data/:id'
+          element={<Singlearticle access={access} />}
         />
         <Route path='/ARTICLE/:id'
           element={<ArticleForRead />}
@@ -103,12 +88,12 @@ function Blog() {
         />
         <Route path="*" element={<NotFound />} />
 
-        <Route path='/LOGIN' element={<Longin access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
+        <Route path='/LOGIN' element={<Longin access={access}  IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
 
         <Route element={<RoutesProtecteds IsLogged={IsLogged} />}>
           <Route
             path='/COLLABORATORS'
-            element={<CompanyCollaboratorAccess />}
+            element={<CompanyCollaboratorAccess access={access}  IsLogged={IsLogged} setIsLogged={setIsLogged} />}
           />
         </Route>
       </Routes>
