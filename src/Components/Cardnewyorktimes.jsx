@@ -1,28 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import '../Styles/Cardnewyorktimes.css'
-import man from '../Images/man.png'
-import woman from '../Images/woman.png'
+import Jesus from '../Images/Jesus.jpg'
+import Brian from '../Images/Brian.jpg'
+import Gilberto from '../Images/Gilberto.jpg'
+import Aleja from '../Images/Aleja.jpg'
 import { Link } from 'react-router-dom'
 import Loading from './Loading'
 
 const Cardnewyorktimes = ({ article, database, access, currentURL, dataTitle, dataDescription }) => {
     const [avatar, setAvatar] = useState(null)
-    const functionAvatar = () => {
-        if (access && access.length > 0) {
-            access.forEach(item => {
-                const autor = item.Name;
-                if (autor === 'Jesus' || autor === 'Brian' || autor === 'Gilberto') {
-                    setAvatar(man);
-                } else if (autor === 'Alejandra') {
-                    setAvatar(woman);
-                }
-            });
-        }
-    }
 
     useEffect(() => {
         functionAvatar();
     }, [access]);
+    let functionAvatar = () => {
+        if (access && access.length > 0) {
+            const autor = access.find(item => {
+                return item.Name === 'Jesus' ||
+                    item.Name === 'Alejandra' ||
+                    item.Name === 'Gilberto' ||
+                    item.Name === 'Brian';
+            });
+            if (autor) {
+                switch (autor.Name) {
+                    case 'Jesus':
+                        setAvatar(Jesus);
+                        break;
+                    case 'Alejandra':
+                        setAvatar(Aleja);
+                        break;
+                    case 'Gilberto':
+                        setAvatar(Gilberto);
+                        break;
+                    case 'Brian':
+                        setAvatar(Brian);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
 
     const TimeReading = (text, wordsPerMinutes = 200) => {
         const words = text.trim().split(/\s+/).length;
@@ -32,8 +50,8 @@ const Cardnewyorktimes = ({ article, database, access, currentURL, dataTitle, da
     }
 
     return (
-            <>
-            { article.description ?
+        <>
+            {article.description ?
                 <Link to={`/SINGLEARTICLE/${database}/${article.id}`}>
                     <article className="card-newyork">
                         <div className="newyork-title">

@@ -3,8 +3,10 @@ import '../Styles/Singlearticle.css'
 import { useParams } from 'react-router-dom'
 import { db10, db2, db3, db4, db5, db6, db7, db8, db9 } from '../firebaseconfig'
 import { doc, onSnapshot } from 'firebase/firestore'
-import man from '../Images/man.png'
-import woman from '../Images/woman.png'
+import Jesus from '../Images/Jesus.jpg'
+import Gilberto from '../Images/Gilberto.jpg'
+import Brian from '../Images/Brian.jpg'
+import Alejandra from '../Images/Aleja.jpg'
 
 
 const Singlearticle = ({ access }) => {
@@ -54,16 +56,32 @@ const Singlearticle = ({ access }) => {
     const [article, setArticle] = useState(null)
 
     const [avatar, setAvatar] = useState(null)
-    const functionAvatar = () => {
+    let functionAvatar = () => {
         if (access && access.length > 0) {
-            access.forEach(item => {
-                const autor = item.Name;
-                if (autor === 'Jesus' || autor === 'Brian' || autor === 'Gilberto') {
-                    setAvatar(man);
-                } else if (autor === 'Alejandra') {
-                    setAvatar(woman);
-                }
+            const autor = access.find(item => {
+                return item.Name === 'Jesus' ||
+                    item.Name === 'Alejandra' ||
+                    item.Name === 'Gilberto' ||
+                    item.Name === 'Brian';
             });
+            if (autor) {
+                switch (autor.Name) {
+                    case 'Jesus':
+                        setAvatar(Jesus);
+                        break;
+                    case 'Alejandra':
+                        setAvatar(Alejandra);
+                        break;
+                    case 'Gilberto':
+                        setAvatar(Gilberto);
+                        break;
+                    case 'Brian':
+                        setAvatar(Brian);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 
