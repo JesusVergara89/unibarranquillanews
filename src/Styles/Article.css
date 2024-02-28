@@ -42,7 +42,7 @@
 
 .card-image {
   width: 90%;
-  height: 45%;
+  height: 150px;
   object-fit: cover;
 }
 
