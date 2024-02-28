@@ -59,6 +59,11 @@ const ArticleForRead = () => {
     };
 
 
+    const formatDescription = (description) => {
+        const regex = /@(\w+)/g;
+        return description.replace(regex, '<span style="font-weight: bold;">@$1</span>');
+    }
+
     return (
         <div>
             {article ? (
@@ -70,9 +75,8 @@ const ArticleForRead = () => {
                         <div className="Complete-news-content">
                             <h2 className="Complete-news-title">{article.title}</h2>
                             <div className="Complete-news-description">
-                                {/* Split body content by newline and display */}
                                 {article.description && article.description.split('\n').map((line, index) => (
-                                    <p key={index}>{line}</p>
+                                    <p key={index} dangerouslySetInnerHTML={{ __html: formatDescription(line) }} />
                                 ))}
                             </div>
                         </div>
