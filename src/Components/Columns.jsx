@@ -93,15 +93,11 @@ const Columns = () => {
                     <h2 >Ver más</h2>
                     <h3>Entrevistas y Perfiles</h3>
                 </button>
-            </Link>
-            <Link>
                 <button className='outside-btn' onClick={() => navigateTecnologia('/TECNOLOGIA')} >
                     <img onClick={() => navigateEntrevista('/TECNOLOGIA')} src={tecnologia} />
                     <h2 >Ver más</h2>
                     <h3>Tecnología</h3>
                 </button>
-            </Link>
-
         </div >
     )
 }
