@@ -39,7 +39,7 @@ function Blog() {
       <Flotan />
       <Routes>
         <Route path='/'
-          element={<Presentations  />}
+          element={<Presentations  access={access} />}
         />
         <Route path='/ACTUALIDAD'
           element={<Actualidad access={access}  />}
