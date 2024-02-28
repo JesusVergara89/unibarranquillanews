@@ -60,8 +60,10 @@ const ArticleForRead = () => {
 
 
     const formatDescription = (description) => {
-        const regex = /@(\w+)/g;
-        return description.replace(regex, '<span style="font-weight: bold;">@$1</span>');
+       {/*const regex = /@(\w+)/g;
+    return description.replace(regex, '<span style="font-weight: bold;">@$1</span>');*/}
+        const regex = /(@\S+)/g;
+        return description.replace(regex, '<span style="font-weight: bold;">$1</span>');
     }
 
     return (
