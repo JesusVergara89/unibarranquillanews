@@ -67,13 +67,29 @@ const Singlearticle = ({ access }) => {
         }
     }
 
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
     useEffect(() => {
         const docRef = doc(functionReturn(), "Articles", id)
         onSnapshot(docRef, (snapshot) => {
             setArticle({ ...snapshot.data(), id: snapshot.id })
         })
+        scrollToTop()
         functionAvatar();
     }, [access])
+
+    const TimeReading = (text, wordsPerMinutes = 200) => {
+        const words = text.trim().split(/\s+/).length;
+        const timeToReadPerMinutes = words / wordsPerMinutes;
+        const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
+        return RoundedTimeRead;
+    }
 
     return (
         <article className="singles-article">
@@ -102,6 +118,8 @@ const Singlearticle = ({ access }) => {
                         {article.description && article.description.split('\n').map((line, index) => (
                             <p key={index}>{line}</p>
                         ))}
+
+                        <h4>{`${TimeReading(article.description)} min. read`}</h4>
                     </div>
 
 
