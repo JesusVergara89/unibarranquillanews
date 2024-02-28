@@ -1,9 +1,16 @@
+import React, { useEffect, useState } from 'react';
 import Loading from './Loading';
 import '../Styles/Recen.css';
 import Carrusel from './Carrusel';
 import Card from './Card';
 import { SwiperSlide } from "swiper/react";
-const Recent = ({ update }) => {
+
+const Recent = () => {
+    const [data, setData] = useState([{}]);
+    
+    useEffect(()=>{
+        setData(recent)
+    },[])
     let breakpoints = {
         700: {
             slidesPerView: 2,

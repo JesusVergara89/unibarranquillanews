@@ -1,0 +1,37 @@
+:root {
+    --color_1: #FFFFFF;
+    --color_2: #006400;
+    --color_3: #ADD8E6;
+    --color_4: #8B0000;
+    --color_5: #001F3F;
+    --color_6: #333333;
+    --color_7: #000000;
+  }
+
+.maintenance {
+    width: 100%;
+    height: 1800vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color_1);
+    position: absolute;
+    top: 0px;
+    z-index: 10000000;
+}
+
+.maintenance h1 {
+    width: 80%;
+    position: absolute;
+    top: 40vh;
+    font-size: 2rem;
+    text-align: center;
+}
+.maintenance h2 {
+    width: 80%;
+    position: absolute;
+    top: 70vh;
+    font-size: 1rem;
+    text-align: center;
+}

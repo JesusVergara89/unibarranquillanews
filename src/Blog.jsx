@@ -1,97 +1,82 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Presentations from './Components/Presentations'
 import { Route, Routes } from 'react-router-dom'
+import Asuntox from './Components/Asuntox'
+import Vida from './Components/Vida'
+import Eventos from './Components/Eventos'
+import Entrevista from './Components/Entrevista'
+import Workus from './Components/Workus'
+import Tecnologia from './Components/Tecnologia'
 import NotFound from './Components/NotFound'
-import useAccess from './Hooks/useAcces'
+import Longin from './Components/Longin'
+import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
 import RoutesProtecteds from './Components/RoutesProtecteds'
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import { db } from './firebaseconfig'
-import Loading from './Components/Loading'
-import Ruta from './Components/Ruta'
-import useSeccion from './Hooks/useSeccion'
+import ArticleForRead from './Components/ArticleForRead'
+import Containerpost from './Components/Blognews/component/Containerpost'
+import Blogarticle from '../src/Components/Blognews/component/Blogarticle'
 import Theblog from './Components/Theblog'
+import useAccess from './Hooks/useAcces'
+import Culture from './Components/Culture'
+import Actualidad from './Components/Actualidad'
+import Deportes from './Components/Deportes'
+import Investigacion from './Components/Investigacion'
+import Singlearticle from './Components/Singlearticle'
 
-const SeccionA = lazy(() => import("./Components/Seccion"))
-const SeccionId = lazy(() => import("./Components/SeccionId"))
-const Workus = lazy(() => import("./Components/Work"))
-const Containerpost = lazy(() => import("./Components/Blognews/component/Containerpost"))
-const Blogarticle = lazy(() => import("./Components/Blognews/component/Blogarticle"))
-const ArticleForRead = lazy(() => import("./Components/ArticleForRead"))
-const CompanyCollaboratorAccess = lazy(() => import("./Components/CompanyCollaboratorAccess"))
-const Longin = lazy(() => import("./Components/Longin"))
 
 function Blog() {
   const [IsLogged, setIsLogged] = useState(false)
 
   const [reloadPage, setReloadPage] = useState(false)
   const access = useAccess()
-  const { update, status } = useSeccion()
-  const [articles, setArticles] = useState([{}])
-  useEffect(() => {
-    const articleRef = collection(db, "Articles")
-    const q = query(articleRef, orderBy("createdAt", "desc"))
-    onSnapshot(q, (snapshot) => {
-      const articles = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }))
-      setArticles(articles)
-    })
-  }, [reloadPage, access])
+   
   return (
     <div className='Blog'>
       <Header reloadPage={reloadPage} setReloadPage={setReloadPage} />
       <Flotan />
       <Routes>
         <Route path='/'
-          element={<Presentations access={access} update={update} />}
+          element={<Presentations  />}
         />
-        <Route path='/:Seccion'
-          element={<Ruta />}
+        <Route path='/ACTUALIDAD'
+          element={<Actualidad access={access}  />}
         />
-        <Route path='/:Seccion/pages/:Pagina'
-          element={
-            <Suspense fallback={<Loading />}>
-              <SeccionA />
-            </Suspense>
-          }
+        <Route path='/CULTURA'
+          element={<Culture access={access} />}
         />
-        <Route path='/:Seccion/:Id'
-          element={
-            <Suspense fallback={<Loading />}>
-              <SeccionId />
-            </Suspense>
-          }
+        <Route path='/DEPORTES'
+          element={<Deportes access={access} />}
+        />
+        <Route path='/INVESTIGACION'
+          element={<Investigacion access={access}  />}
+        />
+        <Route path='/ASUNTOS'
+          element={<Asuntox access={access}  />}
+        />
+        <Route path='/VIDAU'
+          element={<Vida access={access} />}
+        />
+        <Route path='/EVENTOS'
+          element={<Eventos access={access} />}
+        />
+        <Route path='/ENTREVISTA'
+          element={<Entrevista access={access} />}
         />
         <Route path='/OPENPOSSITIONS'
-          element={
-            <Suspense fallback={<Loading />}>
-              <Workus />
-            </Suspense>
-          }
+          element={<Workus />}
+        />
+        <Route path='/TECNOLOGIA'
+          element={<Tecnologia access={access} />}
         />
         <Route path='/BLOG'
-          element={
-            <Suspense fallback={<Loading />}>
-              <Containerpost />
-            </Suspense>
-          }
+          element={<Containerpost />}
         />
         <Route path='/BLOGARTICLE/:id'
-          element={
-            <Suspense fallback={<Loading />}>
-              <Blogarticle />
-            </Suspense>
-          }
+          element={<Blogarticle />}
         />
-        <Route path='/READBLOG'
-          element={
-            <Suspense fallback={<Loading />}>
-              <Theblog/>
-            </Suspense>
-          }
+        <Route path='/SINGLEARTICLE/:data/:id'
+          element={<Singlearticle access={access} />}
         />
         <Route path='/ARTICLE/:id'
           element={
@@ -100,23 +85,17 @@ function Blog() {
             </Suspense>
           }
         />
-
+         <Route path='/READBLOG'
+          element={<Theblog />}
+        />
         <Route path="*" element={<NotFound />} />
 
-        <Route path='/LOGIN' element={
-          <Suspense fallback={<Loading />}>
-            <Longin access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />
-          </Suspense>
-        } />
+        <Route path='/LOGIN' element={<Longin access={access}  IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
 
         <Route element={<RoutesProtecteds IsLogged={IsLogged} />}>
           <Route
             path='/COLLABORATORS'
-            element={
-              <Suspense fallback={<Loading />}>
-                <CompanyCollaboratorAccess />
-              </Suspense>
-            }
+            element={<CompanyCollaboratorAccess access={access}  IsLogged={IsLogged} setIsLogged={setIsLogged} />}
           />
         </Route>
       </Routes>

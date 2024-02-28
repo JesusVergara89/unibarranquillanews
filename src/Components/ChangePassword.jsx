@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import '../Styles/ChangePassword.css';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-const ChangePassword = ({ usedata, functionOpen }) => {
+const ChangePassword = ({ access, functionOpen }) => {
 
     const navigate = useNavigate()
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
@@ -18,11 +18,11 @@ const ChangePassword = ({ usedata, functionOpen }) => {
         const passwordRegex = /^[a-zA-Z].{5,}$/; 
         if (data._Password === data.Password && passwordRegex.test(data.Password)) {
             let obj = {
-                Id: usedata.Id,
-                Email: usedata.Email,
+                Id: access.Id,
+                Email: access.Email,
                 Password: data.Password,
-                Name: usedata.Name,
-                LastName: usedata.LastName
+                Name: access.Name,
+                LastName: access.LastName
             };
             setNewpass(obj);
             reset(objReset);

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import CompanyCollaboratorAccess from './CompanyCollaboratorAccess';
 import '../Styles/Login.css';
 import { useDispatch } from 'react-redux';
 import { setEmailValue } from '../store/slices/email.slice';
 import { setPassWordValue } from '../store/slices/password.slice';
+import Createdarticles from './Createdarticles';
 
 const Login = ({ access, IsLogged, setIsLogged }) => {
 
@@ -22,18 +22,13 @@ const Login = ({ access, IsLogged, setIsLogged }) => {
     const { register, handleSubmit, reset } = useForm();
 
     const submit = ({ email, password }) => {
-        // Buscar en el array 'access' un objeto que coincida tanto en el correo electrónico como en la contraseña
         const user = access.find(user => user.Email === email && user.Password === password);
-
-        // Si se encuentra un usuario que coincida, setIsLogged se establece en true
         if (user) {
-            dispatch(setEmailValue(user.Name)); // Guardar el nombre
-            dispatch(setPassWordValue(user.LastName)); // Guardar el apellido
+            dispatch(setEmailValue(user.Name)); 
+            dispatch(setPassWordValue(user.LastName)); 
             setIsLogged(true);
         }
         setUsedata(user)
-
-        // Reiniciar los valores del formulario
         reset(objectReset);
     };
 
@@ -42,7 +37,7 @@ const Login = ({ access, IsLogged, setIsLogged }) => {
     return (
         <article className="protect-route">
             {IsLogged ? (
-                <CompanyCollaboratorAccess usedata={usedata} IsLogged={IsLogged} setIsLogged={setIsLogged} />
+                <Createdarticles access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />
             ) : (
                 <form className='form-login' onSubmit={handleSubmit(submit)} >
                     <h3>Credenciales</h3>
@@ -50,7 +45,7 @@ const Login = ({ access, IsLogged, setIsLogged }) => {
                 
                         <input autoComplete="password" className='form-input' type={show ? "text" : "password"} placeholder='Password' {...register("password")} />
                         <div onClick={showPassword} className="login-hiden">
-                            {show ? <i class='bx bx-hide'></i> : <i class='bx bx-show'></i>}
+                            {show ? <i className='bx bx-hide'></i> : <i className='bx bx-show'></i>}
                         </div>
                    
                     <button className='protect-route-btn' type='submit'>Login</button>

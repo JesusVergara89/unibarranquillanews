@@ -38,7 +38,7 @@ const Usersingin = ({ createOrSignIn, enterToFormPost }) => {
                     onChange={(e) => { setPassword(e.target.value) }}
                 />
                 <div onClick={showPassword} className="login-hiden">
-                    {show ? <i class='bx bx-hide'></i> : <i class='bx bx-show'></i>}
+                    {show ? <i className='bx bx-hide'></i> : <i className='bx bx-show'></i>}
                 </div>
                 <button onClick={handleLogin} className="form-register-btn">Login</button>
             </div>

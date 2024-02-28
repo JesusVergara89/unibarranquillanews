@@ -6,7 +6,7 @@ import Socialmedia from '../Components/Socialmedia'
 import Networks from '../Components/Networks'
 import Recent from './Recent'
 import FlashArticles from './FlashArticles'
-import { Helmet } from "react-helmet";
+import Extensivearticles from './Extensivearticles'
 
 const Presentations = ({ access, update }) => {
   return (
@@ -40,9 +40,9 @@ const Presentations = ({ access, update }) => {
 
       <Aboutblog />
 
-      <Recent update={update} />
+      {/*<Recent />*/}
 
-      <FlashArticles access={access} />
+      <FlashArticles />
 
       <Columns />
 

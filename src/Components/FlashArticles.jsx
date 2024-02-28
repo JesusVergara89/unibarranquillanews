@@ -4,7 +4,7 @@ import Article from './Article'
 import Loading from './Loading'
 import '../Styles/FlashArticles.css'
 
-const FlashArticles = ({ access, referent }) => {
+const FlashArticles = ({access = true}) => {
     const data = useSelector(state => state.articlesSlice)
     return (
         <article ref={referent} className="Flash-articles">

@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import '../Styles/Article.css'
+import '../../Styles/Article.css'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import { db } from '../firebaseconfig'
 import { Link } from 'react-router-dom'
-import Carrusel from './Carrusel'
-import { SwiperSlide } from "swiper/react";
+import Carrusel from '../Carrusel';
+import { SwiperSlide } from 'swiper/react';
 
-const Article = ({ IsLogged }) => {
-
+const Articlesgeneral = ({ IsLogged, database }) => {
     const [articles, setArticles] = useState([{}])
     useEffect(() => {
-        const articleRef = collection(db, "Articles")
+        const articleRef = collection(database, "Articles")
         const q = query(articleRef, orderBy("createdAt", "desc"))
         onSnapshot(q, (snapshot) => {
             const articles = snapshot.docs.map((doc) => ({
@@ -22,11 +20,9 @@ const Article = ({ IsLogged }) => {
     }, [])
 
     let breakpoints = {
-        700: {
+        890: {
             slidesPerView: 2,
-            pagination: {
-                clickable: false
-            }
+            speed: 700,
         },
         1100: {
             slidesPerView: 3,
@@ -49,7 +45,7 @@ const Article = ({ IsLogged }) => {
                                         <img src={article.imageUrl} alt="Foto" className="card-image" />
 
                                         <div className="card-content">
-                                            <h2 className="card-title">{article.title}</h2>
+                                            <h2 className="card-title">{article.title?.slice(0, 45) + " ..."}</h2>
                                             <div className="card-description">
                                                 {/* Split body content by newline and display */}
                                                 <p>{article.description?.slice(0, 110) + " ..."}</p>
@@ -70,4 +66,4 @@ const Article = ({ IsLogged }) => {
     )
 }
 
-export default Article
+export default Articlesgeneral

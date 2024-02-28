@@ -48,14 +48,14 @@ const Theblog = () => {
                 Blog
             </button>
 
-          {
-            articles && 
-            (
-                articles.map((article, i)=>(
-                    <Postcomment key={i} article={article}/>
-                ))
-            )
-          }
+            {
+                articles &&
+                (
+                    articles.map((article, i) => (
+                        <Postcomment key={i} article={article} />
+                    ))
+                )
+            }
 
         </article>
     )

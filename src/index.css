@@ -63,11 +63,33 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  gap: 20px;
+  margin-top: 60px;
+  margin-bottom: 70px;
+  gap: 30px;
 }
-.Button-pagi > .bx {
-  font-size: 28px;
+
+.wrapp-section {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.section-main {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+.title-actualidad {
+  font-size: 2rem;
+  color: var(--color_7);
 }
 
 .Button-pagi {
@@ -112,8 +134,24 @@ a {
   text-align: center;
   transition: background-color 0.3s ease-in-out;
 }
-.Toastify__close-button {
-  width: 20px;
+
+@media (hover: hover) {
+  .Card-link:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: var(--color_4);
+  }
+  .Card-social-btn .bx:hover {
+    font-size: 24px;
+    color: var(--color_7);
+  }
+  .Card-social-btn button:hover {
+    background-color: var(--color_1);
+    color: var(--color_7);
+  }
+  .navigate-home:hover {
+    background-color: var(--color_7);
+  }
 }
 
 .login-hiden {
