@@ -12,45 +12,17 @@ const Singlearticle = ({ access }) => {
     const { id, data } = useParams()
 
     const arrayOfDataBase = [db2, db3, db4, db5, db6, db7, db8, db9, db10];
-
+    const arrayGuia = ['db2', 'db3', 'db4', 'db5', 'db6', 'db7', 'db8', 'db9', 'db10']
     const functionReturn = () => {
-        if (data === "db2") {
-            return arrayOfDataBase[0]
-        } else {
-            if (data === "db3") {
-                return arrayOfDataBase[1]
-            } else {
-                if (data === "db4") {
-                    return arrayOfDataBase[2]
-                } else {
-                    if (data === "db5") {
-                        return arrayOfDataBase[3]
-                    } else {
-                        if (data === "db6") {
-                            return arrayOfDataBase[4]
-                        } else {
-                            if (data === "db7") {
-                                return arrayOfDataBase[5]
-                            } else {
-                                if (data === "db8") {
-                                    return arrayOfDataBase[6]
-                                } else {
-                                    if (data === "db9") {
-                                        return arrayOfDataBase[7]
-                                    } else {
-                                        if (data === "db10") {
-                                            return arrayOfDataBase[8]
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+        let dato
+        arrayGuia.map((user, index) => {
+            if (user === data) {
+                dato = arrayOfDataBase[index]
             }
-        }
+        })
+        return dato
     }
-
+    
     const [article, setArticle] = useState(null)
 
     const [avatar, setAvatar] = useState(null)
@@ -67,19 +39,19 @@ const Singlearticle = ({ access }) => {
         }
     }
 
-    useEffect(() => {
-        const docRef = doc(functionReturn(), "Articles", id)
-        onSnapshot(docRef, (snapshot) => {
-            setArticle({ ...snapshot.data(), id: snapshot.id })
-        })
-        functionAvatar();
-    }, [access])
+    {
+        useEffect(() => {
+            const docRef = doc(functionReturn(), "Articles", id)
+            onSnapshot(docRef, (snapshot) => {
+                setArticle({ ...snapshot.data(), id: snapshot.id })
+            })
+            functionAvatar();
+        }, [access])
+    }
 
     return (
         <article className="singles-article">
             {article &&
-
-
                 <div className="single-card">
 
                     <h1>{article.title}</h1>

@@ -23,6 +23,7 @@ import Actualidad from './Components/Actualidad'
 import Deportes from './Components/Deportes'
 import Investigacion from './Components/Investigacion'
 import Singlearticle from './Components/Singlearticle'
+import Seccion from './Components/Seccion'
 
 
 function Blog() {
@@ -32,17 +33,20 @@ function Blog() {
   const [reloadPage, setReloadPage] = useState(false)
 
   const access = useAccess()
-   
+
   return (
     <div className='Blog'>
       <Header reloadPage={reloadPage} setReloadPage={setReloadPage} />
       <Flotan />
       <Routes>
         <Route path='/'
-          element={<Presentations  />}
+          element={<Presentations />}
         />
-        <Route path='/ACTUALIDAD'
-          element={<Actualidad access={access}  />}
+        <Route path='/:name'
+          element={<Seccion access={access} />}
+        />
+        {/*<Route path='/ACTUALIDAD'
+          element={<Actualidad access={access} />}
         />
         <Route path='/CULTURA'
           element={<Culture access={access} />}
@@ -51,10 +55,10 @@ function Blog() {
           element={<Deportes access={access} />}
         />
         <Route path='/INVESTIGACION'
-          element={<Investigacion access={access}  />}
+          element={<Investigacion access={access} />}
         />
         <Route path='/ASUNTOS'
-          element={<Asuntox access={access}  />}
+          element={<Asuntox access={access} />}
         />
         <Route path='/VIDAU'
           element={<Vida access={access} />}
@@ -64,7 +68,7 @@ function Blog() {
         />
         <Route path='/ENTREVISTA'
           element={<Entrevista access={access} />}
-        />
+  />*/}
         <Route path='/OPENPOSSITIONS'
           element={<Workus />}
         />
@@ -83,17 +87,17 @@ function Blog() {
         <Route path='/ARTICLE/:id'
           element={<ArticleForRead />}
         />
-         <Route path='/READBLOG'
+        <Route path='/READBLOG'
           element={<Theblog />}
         />
         <Route path="*" element={<NotFound />} />
 
-        <Route path='/LOGIN' element={<Longin access={access}  IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
+        <Route path='/LOGIN' element={<Longin access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
 
         <Route element={<RoutesProtecteds IsLogged={IsLogged} />}>
           <Route
             path='/COLLABORATORS'
-            element={<CompanyCollaboratorAccess access={access}  IsLogged={IsLogged} setIsLogged={setIsLogged} />}
+            element={<CompanyCollaboratorAccess access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />}
           />
         </Route>
       </Routes>
