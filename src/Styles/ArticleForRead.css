@@ -20,12 +20,13 @@
 }
 
 .Complete-news-container {
-    width: 90%;
+    width: 450px;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    pad: 5px;
 }
 
 .Complete-news-container-img {
@@ -36,13 +37,9 @@
 }
 
 .Complete-news-image {
-    width: auto;
+    width: 100%;
     height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
 }
-
 
 .Complete-news-content {
     width: 100%;
@@ -53,25 +50,35 @@
 }
 
 .Complete-news-title {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 20px;
+    color: var(--color_7);
+    font-family: nyt-cheltenham, georgia, 'times new roman', times, serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    text-align: left;
 }
 
 .Complete-news-description {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    color: var(--color_6);
 }
 
 .Complete-news-information {
     width: 100%;
     height: auto;
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .Complete-news-information h3 {
-    font: 1rem;
-    font-weight: bold;
+    font: 0.9rem;
+    text-align: center;
+    color: var(--color_6);
 }
 
 .Complete-news-link {
@@ -139,19 +146,61 @@
     cursor: pointer;
 }
 
-.Complete-news-share-btns svg:hover{
+.Complete-news-share-btns svg:hover {
     cursor: pointer;
+}
+
+.Complete-news-container h4 {
+    color: var(--color_5);
+    text-align: left;
 }
 
 
 
+@media (315px <=width < 430px) {
+    .Complete-news-container {
+        width: 350px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        pad: 5px;
+    }
 
-@media (width < 410px) {
     .Complete-news-information {
         width: 100%;
         height: auto;
         display: flex;
-        flex-direction: column;
         gap: 20px;
+    }
+    .Complete-news-information h3 {
+        font: 0.85rem;
+        text-align: center;
+        color: var(--color_6);
+    }
+}
+
+@media (width < 315px) {
+    .Complete-news-container {
+        width: 260px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        pad: 5px;
+    }
+
+    .Complete-news-information {
+        width: 100%;
+        height: auto;
+        display: flex;
+        gap: 20px;
+    }
+    .Complete-news-information h3 {
+        font: 0.6rem;
+        text-align: center;
+        color: var(--color_6);
     }
 }
