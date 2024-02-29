@@ -82,7 +82,7 @@ const ArticleForRead = () => {
                         <div className="Complete-news-content">
                             <h2 className="Complete-news-title">{article.title}</h2>
                             <div className="Complete-news-information">
-                                <h3 className="Complete-news-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h3>
+                                <h3>{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h3>
                                 <h3>{article.autor ? `By ${article.autor}` : ''}</h3>
                             </div>
                             <div className="Complete-news-description">

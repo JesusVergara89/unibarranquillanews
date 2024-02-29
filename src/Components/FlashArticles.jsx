@@ -4,19 +4,17 @@ import Article from './Article'
 import Loading from './Loading'
 import '../Styles/FlashArticles.css'
 
-const FlashArticles = ({ access }) => {
+const FlashArticles = ({IsLogged}) => {
 
     return (
         <article className="Flash-articles">
-            {access ? (
+        
                 <div className="Recent-news-container">
                     <h3>Articulos flash</h3>
-                    <Article />
+                    <Article IsLogged={IsLogged} />
                     <h3>Nuestras secciones</h3>
                 </div>
-            ) : (
-                <Loading />
-            )}
+           
         </article>
     )
 }
