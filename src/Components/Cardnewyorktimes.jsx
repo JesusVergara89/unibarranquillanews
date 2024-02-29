@@ -52,7 +52,7 @@ const Cardnewyorktimes = ({ article, database, access, currentURL, dataTitle, da
     return (
         <>
             {article.description ?
-                <Link to={`/SINGLEARTICLE/${database}/${article.id}`}>
+                <Link to={`/${database}/${article.id}`}>
                     <article className="card-newyork">
                         <div className="newyork-title">
                             {article.title.slice(0, 50) + " ..."}

@@ -10,11 +10,11 @@
 
 .singles-article {
     width: 100%;
-    width: auto;
     display: flex;
     justify-content: center;
     position: absolute;
     top: 50px;
+    overflow-x: hidden;
 }
 
 .single-card {

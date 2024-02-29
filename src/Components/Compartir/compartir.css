@@ -1,0 +1,221 @@
+:root {
+  --color_1: #ffffff;
+  --color_2: #006400;
+  --color_3: #add8e6;
+  --color_4: #8b0000;
+  --color_5: #001f3f;
+  --color_6: #333333;
+  --color_7: #000000;
+}
+.main-compartir{
+width: 100%;
+height: auto;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 20px;
+margin-top: 70px;
+}
+.Compartir {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.Compartir > button {
+  width: 120px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background-color: var(--color_4);
+  color: var(--color_1);
+  gap: 2px;
+  padding: 5px 12px;
+  border-radius: 2px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.Fuente {
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background-color: var(--color_4);
+  color: var(--color_1);
+  padding: 5px;
+  border-radius: 2px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.Menu-compartir {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  bottom: 170px;
+  transition: transform 0.5s ease-in-out;
+  z-index: 100;
+}
+
+.Menu-compartir.off {
+  transform: translateX(-100%);
+}
+
+.Menu-compartir.on {
+  transform: translateX(0%);
+}
+
+.Container-compartir {
+  width: 480px;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 18px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.Boxicon-carusel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.Boxicon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Boxicon > .bx {
+  width: 50px;
+  height: 50px;
+  font-size: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.Boxicon > svg {
+  display: flex;
+  width: 43px;
+  height: 43px;
+  transition: stroke 0.3s ease;
+}
+
+.Boxicon > p {
+  text-align: center;
+  font-size: 15px;
+  margin: 0;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  top: var(--swiper-navigation-top-offset, 40%);
+}
+
+.Compartir-header {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Compartir-header > .bx {
+  width: 50px;
+  height: 50px;
+  font-size: 40px;
+  display: flex;
+  justify-content: flex-end;
+  color: var(--color_4);
+  cursor: pointer;
+}
+
+.Compartir-header > h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.Close-Menu {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.7;
+  background-color: var(--color_1);
+  top: 0;
+}
+
+.Close-Menu.on {
+  display: flex;
+}
+
+.Close-Menu.off {
+  display: none;
+}
+
+@media (hover: hover) {
+  .Boxicon:hover .bx {
+    color: var(--color_4);
+  }
+
+  .Boxicon:hover svg {
+    stroke: var(--color_4);
+  }
+}
+
+@media (600px<=width<=960px) {
+  .Compartir {
+    width: 75%;
+  }
+}
+
+@media (width<=600px) {
+  .Menu-compartir {
+    bottom: 0;
+  }
+
+  .Menu-compartir.off {
+    transform: translateX(0%);
+    transform: translateY(100%);
+  }
+
+  .Menu-compartir.on {
+    transform: translateY(0%);
+  }
+
+  .Container-compartir {
+    width: 75%;
+    border-radius: 0;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
+  }
+  .Compartir {
+    width: 85%;
+  }
+}

@@ -9,6 +9,7 @@ import Jesus from '../Images/Jesus.jpg'
 import Gilberto from '../Images/Gilberto.jpg'
 import Brian from '../Images/Brian.jpg'
 import Alejandra from '../Images/Aleja.jpg'
+import Compartir from './Compartir/Compartir'
 
 
 const Singlearticle = ({ access }) => {
@@ -57,26 +58,29 @@ const Singlearticle = ({ access }) => {
             }
         }
     }
-
-    {
-        useEffect(() => {
-            setArticle(undefined)
-            let validar = functionReturn()
-            if (validar) {
-                const docRef = doc(functionReturn(), "Articles", id)
-                getDoc(docRef)
-                    .then((resp) => {
-                        resp.exists() ?
-                            setArticle({ ...resp.data(), id: resp.id })
-                            : setArticle('failed')
-                    })
-                functionAvatar();
-            } else {
-                setArticle('failed')
-            }
-        }, [access])
-    }
-    console.log(article)
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+    useEffect(() => {
+        scrollToTop()
+        setArticle(undefined)
+        let validar = functionReturn()
+        if (validar) {
+            const docRef = doc(validar, "Articles", id)
+            getDoc(docRef)
+                .then((resp) => {
+                    resp.exists() ?
+                        setArticle({ ...resp.data(), id: resp.id })
+                        : setArticle('failed')
+                })
+            functionAvatar();
+        } else {
+            setArticle('failed')
+        }
+    }, [access])
 
     const TimeReading = (text, wordsPerMinutes = 200) => {
         const words = text.trim().split(/\s+/).length;
@@ -110,6 +114,7 @@ const Singlearticle = ({ access }) => {
                             ))}
                             <h4>{`${TimeReading(article.description)} min. read`}</h4>
                         </div>
+                        <Compartir/>
                     </div>
                 </article >
                 : <Page_skeleton />
