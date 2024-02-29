@@ -59,6 +59,18 @@ const ArticleForRead = () => {
     };
 
 
+    const formatDescription = (description) => {
+        const regex = /(@\S+)/g;
+        return description.replace(regex, '<span style="font-weight: bold;">$1</span>');
+    }
+
+    const TimeReading = (text, wordsPerMinutes = 200) => {
+        const words = text.trim().split(/\s+/).length;
+        const timeToReadPerMinutes = words / wordsPerMinutes;
+        const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
+        return RoundedTimeRead;
+    }
+
     return (
         <div>
             {article ? (
@@ -69,17 +81,18 @@ const ArticleForRead = () => {
                         </div>
                         <div className="Complete-news-content">
                             <h2 className="Complete-news-title">{article.title}</h2>
+                            <div className="Complete-news-information">
+                                <h3 className="Complete-news-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h3>
+                                <h3>{article.autor ? `By ${article.autor}` : ''}</h3>
+                            </div>
                             <div className="Complete-news-description">
-                                {/* Split body content by newline and display */}
                                 {article.description && article.description.split('\n').map((line, index) => (
-                                    <p key={index}>{line}</p>
+                                    <p key={index} dangerouslySetInnerHTML={{ __html: formatDescription(line) }} />
                                 ))}
                             </div>
+                            <h4>{`${TimeReading(article.description)} min. read`}</h4>
                         </div>
-                        <div className="Complete-news-information">
-                            <h3 className="Complete-news-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h3>
-                            <h3>{article.autor ? `By ${article.autor}` : ''}</h3>
-                        </div>
+                        
                         <div className="Complete-news-link">
                             <button className="Complet-news-link-btn"><a href={article.link} target="_blank" rel="noopener noreferrer">Link</a></button>
                         </div>

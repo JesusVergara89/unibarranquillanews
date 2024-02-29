@@ -32,6 +32,13 @@ const Article = ({ IsLogged }) => {
         }
     }
 
+    const TimeReading = (text, wordsPerMinutes = 200) => {
+        const words = text.trim().split(/\s+/).length;
+        const timeToReadPerMinutes = words / wordsPerMinutes;
+        const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
+        return RoundedTimeRead;
+    }
+
     return (
         <div className='main-card-article'>
             {
@@ -46,16 +53,16 @@ const Article = ({ IsLogged }) => {
 
                                         <img src={article.imageUrl} alt="Foto" className="card-image" />
 
-                                        <div className="card-content">
-                                            <h2 className="card-title">{article.title}</h2>
-                                            <div className="card-description">
-                                                {/* Split body content by newline and display */}
-                                                <p>{article.description?.slice(0, 110) + " ..."}</p>
-                                            </div>
-                                            <div className="card-content-information">
-                                                <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h2>
-                                            </div>
+                                        <h2 className="card-title">{article.title?.slice(0, 100) + " ..."}</h2>
+                                        <div className="card-description">
+                                            {/* Split body content by newline and display */}
+                                            <p>{article.description?.slice(0, 140) + " ..."}</p>
                                         </div>
+                                        <h4>{article && article.description && `${TimeReading(article.description)} min. read`}</h4>
+                                        <div className="card-content-information">
+                                            <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h2>
+                                        </div>
+
                                     </div>
                                 </Link>
                             </SwiperSlide>
