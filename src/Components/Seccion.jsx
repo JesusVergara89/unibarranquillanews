@@ -151,7 +151,7 @@ const Seccion = () => {
                             setPage={setPage}
                             Page={Page}
                         />
-                        : <Skeleton width={'20%'} height={35} style={{ marginLeft: '35%' }} />
+                        : <Skeleton width={'30%'} height={50} style={{ marginLeft: '35%' }} />
                     }
                     <div className="wrapp-section">
                         {articles ?
@@ -172,7 +172,7 @@ const Seccion = () => {
                             setPage={setPage}
                             Page={Page}
                         />
-                        : <Skeleton width={'20%'} height={35} style={{ marginLeft: '35%' }} />
+                        : <Skeleton width={'30%'} height={50} style={{ marginLeft: '35%' }} />
                     }
                 </article>
             }
