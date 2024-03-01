@@ -10,13 +10,13 @@ import Gilberto from '../Images/Gilberto.jpg'
 import Brian from '../Images/Brian.jpg'
 import Alejandra from '../Images/Aleja.jpg'
 import Compartir from './Compartir/Compartir'
-import { Accescontext } from './Context/AccesContext'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { Acesscontext } from './Context/Acesscontext'
 
 
 const Singlearticle = () => {
-    const { access } = useContext(Accescontext)
+    const { access } = useContext(Acesscontext)
 
     const { name, id } = useParams()
 

@@ -3,10 +3,10 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import '../Styles/ChangePassword.css';
 import {useNavigate } from 'react-router-dom';
-import { Accescontext } from './Context/AccesContext';
+import { Acesscontext } from './Context/Acesscontext';
 
 const ChangePassword = ({ functionOpen }) => {
-    const{access}=useContext(Accescontext)
+    const{access}=useContext(Acesscontext)
     const navigate = useNavigate()
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const [newpass, setNewpass] = useState();

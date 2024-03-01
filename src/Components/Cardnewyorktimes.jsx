@@ -6,11 +6,11 @@ import Gilberto from '../Images/Gilberto.jpg'
 import Aleja from '../Images/Aleja.jpg'
 import { Link } from 'react-router-dom'
 import Loading from './Loading'
-import { Accescontext } from './Context/AccesContext'
+import { Acesscontext } from './Context/Acesscontext'
 
 const Cardnewyorktimes = ({ article, database }) => {
     const [avatar, setAvatar] = useState(null)
-    const{access}=useContext(Accescontext)
+    const{access}=useContext(Acesscontext)
 
     useEffect(() => {
         functionAvatar();

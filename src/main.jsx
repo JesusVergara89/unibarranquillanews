@@ -8,16 +8,16 @@ import { HashRouter } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify';
 import 'font-awesome/css/font-awesome.css'
-import StatAlacces from './Components/Context/Statelacces.jsx';
+import StatelAcess from './Components/Context/StatelAcess.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <HashRouter>
-    <StatAlacces>
+    <StatelAcess>
       <Provider store={store}>
         <Blog />
         <ToastContainer />
       </Provider>
-    </StatAlacces>
+    </StatelAcess>
   </HashRouter>
 
 )

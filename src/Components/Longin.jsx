@@ -5,10 +5,10 @@ import { useDispatch } from 'react-redux';
 import { setEmailValue } from '../store/slices/email.slice';
 import { setPassWordValue } from '../store/slices/password.slice';
 import Createdarticles from './Createdarticles';
-import { Accescontext } from './Context/AccesContext';
+import { Acesscontext } from './Context/Acesscontext';
 
 const Login = ({IsLogged, setIsLogged }) => {
-    const{access}=useContext(Accescontext)
+    const{access}=useContext(Acesscontext)
 
     const [show, setShow] = useState(false)
 
