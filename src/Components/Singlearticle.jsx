@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../Styles/Singlearticle.css'
 import { useParams } from 'react-router-dom'
-import { db10, db2, db3, db4, db5, db6, db7, db8, db9 } from '../firebaseconfig'
+import { db10, db2, db3, db4, db5, db6, db7, db8, db9, db } from '../firebaseconfig'
 import { doc, getDoc } from 'firebase/firestore'
 import NotFound from './NotFound'
 import Page_skeleton from './Loading-skeleton/Page_skeleton'
@@ -11,15 +11,17 @@ import Brian from '../Images/Brian.jpg'
 import Alejandra from '../Images/Aleja.jpg'
 import Compartir from './Compartir/Compartir'
 import { Accescontext } from './Context/AccesContext'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const Singlearticle = () => {
-    const{access}=useContext(Accescontext)
+    const { access } = useContext(Accescontext)
 
     const { name, id } = useParams()
 
-    const arrayOfDataBase = [db2, db3, db4, db5, db6, db7, db8, db9, db10];
-    const arrayGuia = ['ACTUALIDAD', 'CULTURA', 'DEPORTES', 'INVESTIGACION', 'ASUNTOS', 'VIDAU', 'EVENTOS', 'ENTREVISTA', 'TECNOLOGIA']
+    const arrayOfDataBase = [db, db2, db3, db4, db5, db6, db7, db8, db9, db10];
+    const arrayGuia = ['ARTICLE', 'ACTUALIDAD', 'CULTURA', 'DEPORTES', 'INVESTIGACION', 'ASUNTOS', 'VIDAU', 'EVENTOS', 'ENTREVISTA', 'TECNOLOGIA']
     const functionReturn = () => {
         let dato
         arrayGuia.map((user, index) => {
@@ -78,11 +80,15 @@ const Singlearticle = () => {
                         setArticle({ ...resp.data(), id: resp.id })
                         : setArticle('failed')
                 })
-            functionAvatar();
         } else {
             setArticle('failed')
         }
-    }, [name,id])
+    }, [name, id])
+    useEffect(() => {
+        functionAvatar();
+    }, [access])
+    console.log(access)
+
 
     const TimeReading = (text, wordsPerMinutes = 200) => {
         const words = text.trim().split(/\s+/).length;
@@ -90,7 +96,6 @@ const Singlearticle = () => {
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;
     }
-
     return (
         <>
             {article === 'failed' ? <NotFound /> : article ?
@@ -101,7 +106,7 @@ const Singlearticle = () => {
                         <div className="single-out">
                             <div className="img-autor">
                                 <div className="img1-autor">
-                                    <img src={avatar} alt="" />
+                                    {avatar ? <img src={avatar} alt="" /> : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: 70 }} />}
                                 </div>
                                 <div className="div-autor">
                                     <h2>{article.autor}</h2>
@@ -116,7 +121,10 @@ const Singlearticle = () => {
                             ))}
                             <h4>{`${TimeReading(article.description)} min. read`}</h4>
                         </div>
-                        <Compartir/>
+                        <div className='main-compartir'>
+                            <a className='Fuente' href={article.link} target="_blank"> Ver mas</a>
+                        </div>
+                        <Compartir />
                     </div>
                 </article >
                 : <Page_skeleton />

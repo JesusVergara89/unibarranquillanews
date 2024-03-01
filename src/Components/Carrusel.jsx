@@ -12,10 +12,10 @@ const Carrusel = ({ children, breakpoints }) => {
                     modules={[Navigation, Pagination]}
                     loop={true}
                     slidesPerView={1}
-                    lazy={true}
                     navigation
+                    simulateTouch={false}
                     pagination={{
-                        dynamicBullets: true,
+                        dynamicBullets: true
                     }}
                     longSwipesRatio={0.2}
                     breakpoints={breakpoints}

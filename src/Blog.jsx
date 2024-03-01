@@ -8,7 +8,6 @@ import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
 import RoutesProtecteds from './Components/RoutesProtecteds'
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
-import ArticleForRead from './Components/ArticleForRead'
 import Containerpost from './Components/Blognews/component/Containerpost'
 import Blogarticle from '../src/Components/Blognews/component/Blogarticle'
 import Theblog from './Components/Theblog'
@@ -28,10 +27,10 @@ function Blog() {
       <Flotan />
       <Routes>
         <Route path='/'
-          element={<Presentations  IsLogged={IsLogged}/>}
+          element={<Presentations IsLogged={IsLogged} />}
         />
         <Route path='/:name'
-          element={<Seccion/>}
+          element={<Seccion />}
         />
         <Route path='/:name/:id'
           element={<Singlearticle />}
@@ -44,9 +43,6 @@ function Blog() {
         />
         <Route path='/BLOGARTICLE/:id'
           element={<Blogarticle />}
-        />
-        <Route path='/ARTICLE/:id'
-          element={<ArticleForRead />}
         />
         <Route path='/READBLOG'
           element={<Theblog />}

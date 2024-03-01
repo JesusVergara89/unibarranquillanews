@@ -5,13 +5,20 @@ import Aboutblog from '../Components/Aboutblog'
 import Socialmedia from '../Components/Socialmedia'
 import Networks from '../Components/Networks'
 import FlashArticles from './FlashArticles'
+import { useEffect } from 'react'
 
-const Presentations = ({IsLogged}) => {
+const Presentations = ({ IsLogged }) => {
 
-  //const [windowWidt, setWindowWidt] = useState((window.innerWidth))
-  //window.onresize = function () {
-  //  setWindowWidt((window.innerWidth))
-  //}
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+  useEffect(() => {
+    scrollToTop()
+  }, [])
+
 
   return (
     <article className='main_page'>

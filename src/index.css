@@ -327,11 +327,9 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   background-color: var(--color_4);
   color: var(--color_1);
   border-radius: 10%;
-  font-size: 16px;
   cursor: not-allowed;
   opacity: 0.4;
   border: none;
@@ -341,13 +339,12 @@ a {
   height: 35px;
   display: flex;
   justify-content: center;
-  align-items: center;
   text-align: center;
   border: 1px solid var(--color_6);
   color: var(--color_4);
   border-radius: 10%;
-  font-size: 16px;
   background-color: var(--color_1);
+  font-size: 20px;
 }
 .Button-pagi.on {
   border: none;
@@ -360,9 +357,15 @@ a {
   .Button-pagi > .bx {
     font-size: 23px;
   }
-  .Button-pagi,.Button-pagi-Current {
+  .Button-pagi {
     width: 30px;
     height: 30px;
+  }
+  .Button-pagi-Current{
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    align-items: center;
   }
 }
 

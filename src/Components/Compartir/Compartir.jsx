@@ -48,14 +48,11 @@ const Compartir = ({ Link }) => {
     }
     return (
         <>
-            <div className='main-compartir'>
-                <a className='Fuente' href={Link} target="_blank"> Ver mas</a>
-                <div onClick={() => setMenucom(true)} className='Compartir'>
-                    <button>
-                        <i className='bx bx-share'></i>
-                        <p>Compartir</p>
-                    </button>
-                </div>
+            <div onClick={() => setMenucom(true)} className='Compartir'>
+                <button>
+                    <i className='bx bx-share'></i>
+                    <p>Compartir</p>
+                </button>
             </div>
             <article className={Menucom ? 'Menu-compartir on' : 'Menu-compartir off'}>
                 <div className='Container-compartir'>

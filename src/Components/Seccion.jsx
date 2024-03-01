@@ -139,7 +139,8 @@ const Seccion = () => {
                             setOrden={setOrden}
                             setReverse={setReverse}
                         />
-                        : <Skeleton width={180} height={40} style={{ marginLeft: '43%' }} />}
+                        : <Skeleton width={'30%'} height={35} style={{marginLeft:'35%'}} />
+                    }
                     <div className="wrapp-section">
                         {articles ?
                             articles.map((article, i) => (

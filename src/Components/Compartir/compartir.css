@@ -9,19 +9,18 @@
 }
 .main-compartir{
 width: 100%;
-height: auto;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-gap: 20px;
-margin-top: 70px;
+margin-top: 25px;
 }
 .Compartir {
   width: 100%;
   display: flex;
   justify-content: start;
   align-items: center;
+  margin-top: 25px;
 }
 
 .Compartir > button {
@@ -212,8 +211,8 @@ margin-top: 70px;
   .Container-compartir {
     width: 75%;
     border-radius: 0;
-    border-top-left-radius: 2%;
-    border-top-right-radius: 2%;
+    border-top-left-radius: 4%;
+    border-top-right-radius: 4%;
   }
   .Compartir {
     width: 85%;
