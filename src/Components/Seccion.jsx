@@ -83,6 +83,7 @@ const Seccion = () => {
     const [Totalpages, setTotalpages] = useState()
     const [Orden, setOrden] = useState("desc")
     const [Reverse, setReverse] = useState(false)
+    const [Page, setPage] = useState(1)
 
     useEffect(() => {
         setArticles(undefined)
@@ -113,6 +114,7 @@ const Seccion = () => {
     }, [name, Start])
     useEffect(() => {
         setArticles(undefined)
+        setTotalpages(undefined)
         let validar = functionReturn()
         if (validar) {
             const articleRef = collection(validar, "Articles")
@@ -128,8 +130,16 @@ const Seccion = () => {
         <>
             {articles === 'failed' ? <NotFound /> :
                 <article className="engineering_section">
-                    <h2 className="title-actualidad">{Descripcion[0].dataTitle || <Skeleton width={'80vh'} height={40} style={{ marginTop: 60 }} />}</h2>
-                    <p className='description-actualidad'>{Descripcion[0].dataDescription || <Skeleton height={100} />}</p>
+                    <h2 className="title-actualidad">{
+                        Descripcion[0] ?
+                            Descripcion[0].dataTitle
+                            : <Skeleton width={'80vh'} height={40} style={{ marginTop: 60 }} />
+                    }</h2>
+                    <p className='description-actualidad'>{
+                        Descripcion[0] ?
+                            Descripcion[0].dataDescription
+                            : <Skeleton height={100} />
+                    }</p>
                     {Totalpages ?
                         <Botonera
                             Totalpages={Totalpages}
@@ -138,8 +148,10 @@ const Seccion = () => {
                             Firstdoc={Firstdoc}
                             setOrden={setOrden}
                             setReverse={setReverse}
+                            setPage={setPage}
+                            Page={Page}
                         />
-                        : <Skeleton width={'30%'} height={35} style={{marginLeft:'35%'}} />
+                        : <Skeleton width={'20%'} height={35} style={{ marginLeft: '35%' }} />
                     }
                     <div className="wrapp-section">
                         {articles ?
@@ -149,6 +161,19 @@ const Seccion = () => {
                             : <Card_skeleton />
                         }
                     </div>
+                    {Totalpages ?
+                        <Botonera
+                            Totalpages={Totalpages}
+                            setStart={setStart}
+                            Lasdoc={Lasdoc}
+                            Firstdoc={Firstdoc}
+                            setOrden={setOrden}
+                            setReverse={setReverse}
+                            setPage={setPage}
+                            Page={Page}
+                        />
+                        : <Skeleton width={'20%'} height={35} style={{ marginLeft: '35%' }} />
+                    }
                 </article>
             }
         </>

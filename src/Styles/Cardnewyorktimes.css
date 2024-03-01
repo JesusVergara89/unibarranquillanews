@@ -36,6 +36,7 @@
     align-items: center;
     font-size: 1rem;
     font-weight: bold;
+    text-transform: capitalize;
 }
 
 .newyork-img {

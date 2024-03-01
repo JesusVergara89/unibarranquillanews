@@ -87,9 +87,7 @@ const Singlearticle = () => {
     useEffect(() => {
         functionAvatar();
     }, [access])
-    console.log(access)
-
-
+    
     const TimeReading = (text, wordsPerMinutes = 200) => {
         const words = text.trim().split(/\s+/).length;
         const timeToReadPerMinutes = words / wordsPerMinutes;

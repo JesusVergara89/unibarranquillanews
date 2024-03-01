@@ -47,10 +47,6 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
-}
-.Toastify__close-button--light {
-  width: 20px;
 }
 
 .img-actualidad {
@@ -98,7 +94,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 100px;
   margin-bottom: 70px;
   gap: 30px;
 }
@@ -308,67 +304,6 @@ a {
     margin: 0;
   }
 }
-
-.pagination-controls {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  gap: 20px;
-}
-.Button-pagi > .bx {
-  font-size: 28px;
-}
-
-.Button-pagi {
-  width: 35px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color_4);
-  color: var(--color_1);
-  border-radius: 10%;
-  cursor: not-allowed;
-  opacity: 0.4;
-  border: none;
-}
-.Button-pagi-Current {
-  width: 35px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  border: 1px solid var(--color_6);
-  color: var(--color_4);
-  border-radius: 10%;
-  background-color: var(--color_1);
-  font-size: 20px;
-}
-.Button-pagi.on {
-  border: none;
-  background-color: var(--color_4);
-  color: var(--color_1);
-  cursor: pointer;
-  opacity: 1;
-}
-@media (width<=650px) {
-  .Button-pagi > .bx {
-    font-size: 23px;
-  }
-  .Button-pagi {
-    width: 30px;
-    height: 30px;
-  }
-  .Button-pagi-Current{
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
-    align-items: center;
-  }
-}
-
 .navigate-home {
   width: 100px;
   height: 30px;
@@ -417,8 +352,55 @@ a {
   cursor: pointer;
 }
 
-.login-hiden .bx {
+.login-hiden .bx{
   font-size: 1.5rem;
   position: absolute;
   bottom: 7px;
+}
+.Toastify__close-button--light {
+  width: 20px;
+}
+.pagination-controls {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.Button-pagi > .bx {
+  font-size: 50px;
+}
+
+.Button-pagi {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: var(--color_4);
+  cursor: not-allowed;
+  opacity: 0.4;
+  border: none;
+}
+.Button-pagi-Current {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  color: var(--color_4);
+  background-color: transparent;
+  font-size: 20px;
+}
+.Button-pagi.on {
+  cursor: pointer;
+  opacity: 1;
+}
+@media (width<=650px) {
+  .Button-pagi-Current{
+    font-size: 18px;
+    align-items: center;
+  }
 }
