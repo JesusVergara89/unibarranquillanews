@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../Styles/Cardnewyorktimes.css'
 import Jesus from '../Images/Jesus.jpg'
 import Brian from '../Images/Brian.jpg'
@@ -6,9 +6,11 @@ import Gilberto from '../Images/Gilberto.jpg'
 import Aleja from '../Images/Aleja.jpg'
 import { Link } from 'react-router-dom'
 import Loading from './Loading'
+import { Accescontext } from './Context/AccesContext'
 
-const Cardnewyorktimes = ({ article, database, access, currentURL, dataTitle, dataDescription }) => {
+const Cardnewyorktimes = ({ article, database }) => {
     const [avatar, setAvatar] = useState(null)
+    const{access}=useContext(Accescontext)
 
     useEffect(() => {
         functionAvatar();

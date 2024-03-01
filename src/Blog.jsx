@@ -12,7 +12,6 @@ import ArticleForRead from './Components/ArticleForRead'
 import Containerpost from './Components/Blognews/component/Containerpost'
 import Blogarticle from '../src/Components/Blognews/component/Blogarticle'
 import Theblog from './Components/Theblog'
-import useAccess from './Hooks/useAcces'
 import Singlearticle from './Components/Singlearticle'
 import Seccion from './Components/Seccion'
 
@@ -23,21 +22,19 @@ function Blog() {
 
   const [reloadPage, setReloadPage] = useState(false)
 
-  const access = useAccess()
-
   return (
     <div className='Blog'>
       <Header reloadPage={reloadPage} setReloadPage={setReloadPage} />
       <Flotan />
       <Routes>
         <Route path='/'
-          element={<Presentations  access={access} />}
+          element={<Presentations  />}
         />
         <Route path='/:name'
-          element={<Seccion access={access} />}
+          element={<Seccion/>}
         />
         <Route path='/:name/:id'
-          element={<Singlearticle access={access} />}
+          element={<Singlearticle />}
         />
         <Route path='/OPENPOSSITIONS'
           element={<Workus />}
@@ -56,12 +53,12 @@ function Blog() {
         />
         <Route path="*" element={<NotFound />} />
 
-        <Route path='/LOGIN' element={<Longin access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
+        <Route path='/LOGIN' element={<Longin IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
 
         <Route element={<RoutesProtecteds IsLogged={IsLogged} />}>
           <Route
             path='/COLLABORATORS'
-            element={<CompanyCollaboratorAccess access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />}
+            element={<CompanyCollaboratorAccess IsLogged={IsLogged} setIsLogged={setIsLogged} />}
           />
         </Route>
       </Routes>

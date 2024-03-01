@@ -17,7 +17,7 @@ const Componentform = (
         , eventos
         , entrevistas
         , tecnologia
-        , access, IsLogged, setIsLogged,
+        , IsLogged, setIsLogged,
         off
     }
 ) => {

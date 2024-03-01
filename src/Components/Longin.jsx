@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import '../Styles/Login.css';
 import { useDispatch } from 'react-redux';
 import { setEmailValue } from '../store/slices/email.slice';
 import { setPassWordValue } from '../store/slices/password.slice';
 import Createdarticles from './Createdarticles';
+import { Accescontext } from './Context/AccesContext';
 
-const Login = ({ access, IsLogged, setIsLogged }) => {
+const Login = ({IsLogged, setIsLogged }) => {
+    const{access}=useContext(Accescontext)
 
     const [show, setShow] = useState(false)
 
@@ -37,7 +39,7 @@ const Login = ({ access, IsLogged, setIsLogged }) => {
     return (
         <article className="protect-route">
             {IsLogged ? (
-                <Createdarticles access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />
+                <Createdarticles IsLogged={IsLogged} setIsLogged={setIsLogged} />
             ) : (
                 <form className='form-login' onSubmit={handleSubmit(submit)} >
                     <h3>Credenciales</h3>

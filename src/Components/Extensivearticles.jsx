@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import '../Styles/Extensivearticles.css';
 import Componentform from './Formcreated/Componentform';
 
-const Extensivearticles = ({ access, IsLogged, setIsLogged }) => {
+const Extensivearticles = ({IsLogged, setIsLogged }) => {
     const [off, setOff] = useState(true);
     const [actualidad, setActualidad] = useState(false);
     const [cultura, setCultura] = useState(false);
@@ -61,7 +61,6 @@ const Extensivearticles = ({ access, IsLogged, setIsLogged }) => {
 
              off={off}
 
-             access={access}
              IsLogged={IsLogged}
              setIsLogged={setIsLogged}
              />

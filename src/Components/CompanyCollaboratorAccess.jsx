@@ -5,7 +5,7 @@ import Article from './Article'
 import ArticleForm from './ArticleForm'
 import ChangePassword from './ChangePassword'
 
-const CompanyCollaboratorAccess = ({ access, IsLogged, setIsLogged }) => {
+const CompanyCollaboratorAccess = ({ IsLogged, setIsLogged }) => {
 
   const [getin, setGetin] = useState(false)
 
@@ -28,7 +28,7 @@ const CompanyCollaboratorAccess = ({ access, IsLogged, setIsLogged }) => {
       </div>
 
       {getin ?
-        <ChangePassword access={access} functionOpen={functionOpen} />
+        <ChangePassword functionOpen={functionOpen} />
         :
         <div className="main_collaborators-articles">
           <button className='btn-change-pass' onClick={functionOpen}>Cambiar password</button>

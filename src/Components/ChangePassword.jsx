@@ -1,11 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import '../Styles/ChangePassword.css';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
+import { Accescontext } from './Context/AccesContext';
 
-const ChangePassword = ({ access, functionOpen }) => {
-
+const ChangePassword = ({ functionOpen }) => {
+    const{access}=useContext(Accescontext)
     const navigate = useNavigate()
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const [newpass, setNewpass] = useState();

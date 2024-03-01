@@ -8,7 +8,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import NotFound from './NotFound';
 
-const Seccion = ({ access }) => {
+const Seccion = () => {
     const { name } = useParams()
     const arrayOfDataBase = [db2, db3, db4, db5, db6, db7, db8, db9, db10];
     const arrayGuia = ['ACTUALIDAD', 'CULTURA', 'DEPORTES', 'INVESTIGACION', 'ASUNTOS', 'VIDAU', 'EVENTOS', 'ENTREVISTA', 'TECNOLOGIA']
@@ -103,7 +103,7 @@ const Seccion = ({ access }) => {
                     <p className='description-actualidad'>{Descripcion[0].dataDescription}</p>
                     <div className="wrapp-section">
                         {articles.map((article, i) => (
-                            <Cardnewyorktimes key={i} database={name} article={article} access={access} />
+                            <Cardnewyorktimes key={i} database={name} article={article}/>
                         ))}
 
                     </div>

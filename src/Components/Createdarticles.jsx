@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, {useState } from 'react'
 import Extensivearticles from './Extensivearticles'
 import CompanyCollaboratorAccess from './CompanyCollaboratorAccess'
 import '../Styles/Createdarticles.css'
 
-const Createdarticles = ({ access, IsLogged, setIsLogged }) => {
+const Createdarticles = ({IsLogged, setIsLogged }) => {
   const [off, setOff] = useState(true)
   const [flash, setFlash] = useState(false)
   const [extent, setExtent] = useState(false)
@@ -34,13 +34,13 @@ const Createdarticles = ({ access, IsLogged, setIsLogged }) => {
 
       <div className="create-articles-option">
         {flash ?
-          <CompanyCollaboratorAccess access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />
+          <CompanyCollaboratorAccess IsLogged={IsLogged} setIsLogged={setIsLogged} />
           :
           ''
         }
 
         {extent ?
-          <Extensivearticles access={access} IsLogged={IsLogged} setIsLogged={setIsLogged} />
+          <Extensivearticles IsLogged={IsLogged} setIsLogged={setIsLogged} />
           :
           ''
         }

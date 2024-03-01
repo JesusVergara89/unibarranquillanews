@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../Styles/Singlearticle.css'
 import { useParams } from 'react-router-dom'
 import { db10, db2, db3, db4, db5, db6, db7, db8, db9 } from '../firebaseconfig'
@@ -10,9 +10,11 @@ import Gilberto from '../Images/Gilberto.jpg'
 import Brian from '../Images/Brian.jpg'
 import Alejandra from '../Images/Aleja.jpg'
 import Compartir from './Compartir/Compartir'
+import { Accescontext } from './Context/AccesContext'
 
 
-const Singlearticle = ({ access }) => {
+const Singlearticle = () => {
+    const{access}=useContext(Accescontext)
 
     const { name, id } = useParams()
 
@@ -80,7 +82,7 @@ const Singlearticle = ({ access }) => {
         } else {
             setArticle('failed')
         }
-    }, [access])
+    }, [name,id])
 
     const TimeReading = (text, wordsPerMinutes = 200) => {
         const words = text.trim().split(/\s+/).length;
