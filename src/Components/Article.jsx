@@ -5,6 +5,7 @@ import { db } from '../firebaseconfig'
 import { Link } from 'react-router-dom'
 import Carrusel from './Carrusel'
 import { SwiperSlide } from "swiper/react";
+import Loading from './Loading'
 
 const Article = ({ IsLogged }) => {
 
@@ -42,9 +43,7 @@ const Article = ({ IsLogged }) => {
     return (
         <div className='main-card-article'>
             {
-                articles.length === 0 ? (
-                    <p>Not articles found</p>
-                ) :
+                articles[0].description ? (
                     (<Carrusel breakpoints={breakpoints}>
                         {articles.map((article, i) => (
                             <SwiperSlide key={i}>
@@ -68,8 +67,9 @@ const Article = ({ IsLogged }) => {
                             </SwiperSlide>
                         ))}
                     </Carrusel>
-
                     )
+                ) :
+                    (<Loading />)
             }
         </div>
     )

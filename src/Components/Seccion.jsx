@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { db10, db2, db3, db4, db5, db6, db7, db8, db9 } from '../firebaseconfig'
 import Cardnewyorktimes from './Cardnewyorktimes';
-import { collection, getDocs, orderBy, query, limit } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query, limit, startAfter, getCountFromServer } from 'firebase/firestore';
 import Card_skeleton from './Loading-skeleton/Card_skeleton';
 import { useParams } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import NotFound from './NotFound';
+import Botonera from './Botonera';
 
 const Seccion = () => {
     const { name } = useParams()
@@ -76,20 +77,48 @@ const Seccion = () => {
         });
     };
     const [articles, setArticles] = useState()
+    const [Lasdoc, setLasdoc] = useState()
+    const [Firstdoc, setFirstdoc] = useState()
+    const [Start, setStart] = useState({})
+    const [Totalpages, setTotalpages] = useState()
+    const [Orden, setOrden] = useState("desc")
+    const [Reverse, setReverse] = useState(false)
+
     useEffect(() => {
         setArticles(undefined)
         let validar = functionReturn()
         if (validar) {
             scrollToTop()
             const articleRef = collection(validar, "Articles")
-            const q = query(articleRef, orderBy("createdAt", "desc"), limit(10))
+            let q = query(articleRef, orderBy("createdAt", `${Orden}`), limit(10), startAfter(Start))
             getDocs(q)
                 .then((resp) => {
+                    let Result
+                    if (Reverse) {
+                        Result = resp.docs.reverse()
+                    } else {
+                        Result = resp.docs
+                    }
                     setArticles(
-                        resp.docs.map((doc) => {
+                        Result.map((doc) => {
                             return { ...doc.data(), id: doc.id }
                         })
                     )
+                    setLasdoc(Result[resp.docs.length - 1])
+                    setFirstdoc(Result[0])
+                })
+        } else {
+            setArticles('failed')
+        }
+    }, [name, Start])
+    useEffect(() => {
+        setArticles(undefined)
+        let validar = functionReturn()
+        if (validar) {
+            const articleRef = collection(validar, "Articles")
+            getCountFromServer(articleRef)
+                .then((resp) => {
+                    setTotalpages(Math.ceil((resp.data().count) / 10))
                 })
         } else {
             setArticles('failed')
@@ -97,27 +126,27 @@ const Seccion = () => {
     }, [name])
     return (
         <>
-            {articles === 'failed' ? <NotFound /> : Descripcion[0] && articles ?
+            {articles === 'failed' ? <NotFound /> :
                 <article className="engineering_section">
-                    <h2 className="title-actualidad">{Descripcion[0].dataTitle}</h2>
-                    <p className='description-actualidad'>{Descripcion[0].dataDescription}</p>
+                    <h2 className="title-actualidad">{Descripcion[0].dataTitle || <Skeleton width={'80vh'} height={40} style={{ marginTop: 60 }} />}</h2>
+                    <p className='description-actualidad'>{Descripcion[0].dataDescription || <Skeleton height={100} />}</p>
+                    {Totalpages ?
+                        <Botonera
+                            Totalpages={Totalpages}
+                            setStart={setStart}
+                            Lasdoc={Lasdoc}
+                            Firstdoc={Firstdoc}
+                            setOrden={setOrden}
+                            setReverse={setReverse}
+                        />
+                        : <Skeleton width={180} height={40} style={{ marginLeft: '43%' }} />}
                     <div className="wrapp-section">
-                        {articles.map((article, i) => (
-                            <Cardnewyorktimes key={i} database={name} article={article}/>
-                        ))}
-
-                    </div>
-                </article>
-                :
-                <article className="engineering_section">
-                    <h2 className="title-actualidad">
-                        <Skeleton width={'80vh'} height={40} style={{ marginTop: 60 }} />
-                    </h2>
-                    <p className='description-actualidad'>
-                        <Skeleton height={100} />
-                    </p>
-                    <div className="wrapp-section">
-                        <Card_skeleton />
+                        {articles ?
+                            articles.map((article, i) => (
+                                <Cardnewyorktimes key={i} database={name} article={article} />
+                            ))
+                            : <Card_skeleton />
+                        }
                     </div>
                 </article>
             }

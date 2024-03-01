@@ -1,24 +1,19 @@
-import React, { useContext } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
 import Article from './Article'
 import Loading from './Loading'
 import '../Styles/FlashArticles.css'
-import { Accescontext } from './Context/AccesContext'
 
-const FlashArticles = () => {
-    const{access}=useContext(Accescontext)
+const FlashArticles = ({IsLogged}) => {
 
     return (
         <article className="Flash-articles">
-            {access ? (
+        
                 <div className="Recent-news-container">
                     <h3>Articulos flash</h3>
-                    <Article />
+                    <Article IsLogged={IsLogged} />
                     <h3>Nuestras secciones</h3>
                 </div>
-            ) : (
-                <Loading />
-            )}
+           
         </article>
     )
 }

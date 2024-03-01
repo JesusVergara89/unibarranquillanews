@@ -6,7 +6,7 @@ import Socialmedia from '../Components/Socialmedia'
 import Networks from '../Components/Networks'
 import FlashArticles from './FlashArticles'
 
-const Presentations = () => {
+const Presentations = ({IsLogged}) => {
 
   //const [windowWidt, setWindowWidt] = useState((window.innerWidth))
   //window.onresize = function () {
@@ -27,7 +27,7 @@ const Presentations = () => {
 
       {/*<Recent />*/}
 
-      <FlashArticles/>
+      <FlashArticles IsLogged={IsLogged} />
 
       <Columns />
 
