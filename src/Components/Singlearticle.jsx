@@ -87,7 +87,7 @@ const Singlearticle = () => {
     useEffect(() => {
         functionAvatar();
     }, [access])
-    
+
     const TimeReading = (text, wordsPerMinutes = 200) => {
         const words = text.trim().split(/\s+/).length;
         const timeToReadPerMinutes = words / wordsPerMinutes;
@@ -104,7 +104,9 @@ const Singlearticle = () => {
                         <div className="single-out">
                             <div className="img-autor">
                                 <div className="img1-autor">
-                                    {avatar ? <img src={avatar} alt="" /> : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: 70 }} />}
+                                    {access ?
+                                        <img src={avatar} alt="" />
+                                        : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: '33%' }} />}
                                 </div>
                                 <div className="div-autor">
                                     <h2>{article.autor}</h2>

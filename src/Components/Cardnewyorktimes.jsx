@@ -7,10 +7,12 @@ import Aleja from '../Images/Aleja.jpg'
 import { Link } from 'react-router-dom'
 import Loading from './Loading'
 import { Acesscontext } from './Context/Acesscontext'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Cardnewyorktimes = ({ article, database }) => {
     const [avatar, setAvatar] = useState(null)
-    const{access}=useContext(Acesscontext)
+    const { access } = useContext(Acesscontext)
 
     useEffect(() => {
         functionAvatar();
@@ -72,7 +74,11 @@ const Cardnewyorktimes = ({ article, database }) => {
                                     <h4>{`${TimeReading(article.description)} min. read`}</h4>
                                 </div>
                                 <div className="newyork-img-autor">
-                                    <img src={avatar} alt="" />
+                                    {access ?
+                                        <img src={avatar} alt="" />
+                                        :  <Skeleton circle={true} height={40} width={40} style={{ marginBottom: '54%', marginLeft: '27%' }} />
+
+                                    }
                                 </div>
                             </div>
                         </div>

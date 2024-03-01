@@ -130,11 +130,12 @@ const Seccion = () => {
         <>
             {articles === 'failed' ? <NotFound /> :
                 <article className="engineering_section">
-                    <h2 className="title-actualidad">{
-                        Descripcion[0] ?
+                    <h2 className="title-actualidad">
+                        {Descripcion[0] ?
                             Descripcion[0].dataTitle
                             : <Skeleton width={'80vh'} height={40} style={{ marginTop: 60 }} />
-                    }</h2>
+                        }
+                    </h2>
                     <p className='description-actualidad'>{
                         Descripcion[0] ?
                             Descripcion[0].dataDescription
@@ -151,7 +152,7 @@ const Seccion = () => {
                             setPage={setPage}
                             Page={Page}
                         />
-                        : <Skeleton width={'20%'} height={35} style={{ marginLeft: '35%' }} />
+                        : <Skeleton width={'40%'} height={50} style={{ marginLeft: '30%' }} />
                     }
                     <div className="wrapp-section">
                         {articles ?
