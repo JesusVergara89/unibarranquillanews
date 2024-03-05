@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import '../Styles/SectionNews.css'
 
 const SectionNews = ({ DataBase }) => {
-  
+
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
@@ -31,6 +31,17 @@ const SectionNews = ({ DataBase }) => {
     const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
     return RoundedTimeRead;
   }
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  };
+
+  useEffect(() => {
+    scrollToTop()
+  }, [])
+
   return (
     <article className="mini-sections">
       {

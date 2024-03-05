@@ -1,6 +1,5 @@
 import React from 'react'
 import Article from './Article'
-import Loading from './Loading'
 import '../Styles/FlashArticles.css'
 
 const FlashArticles = ({IsLogged}) => {
