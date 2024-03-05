@@ -4,9 +4,17 @@ import '../Styles/SectionNews.css'
 
 const SectionNews = ({ DataBase }) => {
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  };
+
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
+    scrollToTop()
     const articleRef = collection(DataBase, "Articles");
     const q = query(articleRef, orderBy("createdAt", "desc"), limit(2));
     onSnapshot(q, (snapshot) => {
@@ -31,16 +39,6 @@ const SectionNews = ({ DataBase }) => {
     const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
     return RoundedTimeRead;
   }
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  };
-
-  useEffect(() => {
-    scrollToTop()
-  }, [])
 
   return (
     <article className="mini-sections">
