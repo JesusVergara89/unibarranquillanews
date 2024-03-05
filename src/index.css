@@ -673,8 +673,6 @@ a {
   writing-mode: vertical-rl;
   transform: rotate(-180deg);
   color: var(--color_1);
-  background-color: #8b0000;
-  height: 100%;
 }
 
 .container-one-information span {
@@ -705,5 +703,19 @@ a {
     border: none;
     position: absolute;
     left: 10px;
+  }
+  .container-one-information h2 {
+    color: var(--color_7);
+    font-family: nyt-cheltenham, georgia, 'times new roman', times, serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 2rem;
+    text-align: center;
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+    color: var(--color_1);
+    background-color: #8b0000;
+    height: 100%;
   }
 }
