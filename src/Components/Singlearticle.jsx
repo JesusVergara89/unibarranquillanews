@@ -94,6 +94,11 @@ const Singlearticle = () => {
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;
     }
+
+    const formatDescription = (description) => {
+        const regex = /(@\S+|#\S+)/g;
+        return description.replace(regex, '<span style="font-weight: bold;">$1</span>');
+    }
     return (
         <>
             {article === 'failed' ? <NotFound /> : article ?
@@ -117,7 +122,7 @@ const Singlearticle = () => {
 
                         <div className="single-description">
                             {article.description && article.description.split('\n').map((line, index) => (
-                                <p key={index}>{line}</p>
+                                <p key={index} dangerouslySetInnerHTML={{ __html: formatDescription(line) }} />
                             ))}
                             <h4>{`${TimeReading(article.description)} min. read`}</h4>
                         </div>

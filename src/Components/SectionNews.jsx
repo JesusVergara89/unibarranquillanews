@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import '../Styles/SectionNews.css'
 
 const SectionNews = ({ DataBase }) => {
+  
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
