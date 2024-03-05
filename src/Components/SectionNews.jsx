@@ -7,7 +7,7 @@ const SectionNews = ({ DataBase }) => {
 
   useEffect(() => {
     const articleRef = collection(DataBase, "Articles");
-    const q = query(articleRef, orderBy("createdAt", "desc"), limit(3));
+    const q = query(articleRef, orderBy("createdAt", "desc"), limit(2));
     onSnapshot(q, (snapshot) => {
       const articles = snapshot.docs.map((doc) => ({
         id: doc.id,

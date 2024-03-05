@@ -118,6 +118,7 @@ a {
   align-items: center;
   margin-top: 60px;
 }
+
 .title-actualidad {
   font-size: 2rem;
   color: var(--color_7);
@@ -213,6 +214,7 @@ a {
   margin-bottom: 10px;
   transition: transform 0.3s ease;
 }
+
 .Card-social {
   width: 100%;
   height: auto;
@@ -304,6 +306,7 @@ a {
     margin: 0;
   }
 }
+
 .navigate-home {
   width: 100px;
   height: 30px;
@@ -325,14 +328,17 @@ a {
     transform: scale(1.05);
     background-color: var(--color_4);
   }
+
   .Card-social-btn .bx:hover {
     font-size: 24px;
     color: var(--color_7);
   }
+
   .Card-social-btn button:hover {
     background-color: var(--color_1);
     color: var(--color_7);
   }
+
   .navigate-home:hover {
     background-color: var(--color_7);
   }
@@ -352,14 +358,16 @@ a {
   cursor: pointer;
 }
 
-.login-hiden .bx{
+.login-hiden .bx {
   font-size: 1.5rem;
   position: absolute;
   bottom: 7px;
 }
+
 .Toastify__close-button--light {
   width: 20px;
 }
+
 .pagination-controls {
   width: 100%;
   display: flex;
@@ -367,7 +375,8 @@ a {
   align-items: center;
   margin-top: 20px;
 }
-.Button-pagi > .bx {
+
+.Button-pagi>.bx {
   font-size: 50px;
 }
 
@@ -383,6 +392,7 @@ a {
   opacity: 0.4;
   border: none;
 }
+
 .Button-pagi-Current {
   width: auto;
   height: auto;
@@ -394,13 +404,306 @@ a {
   background-color: transparent;
   font-size: 20px;
 }
+
 .Button-pagi.on {
   cursor: pointer;
   opacity: 1;
 }
+
 @media (width<=650px) {
-  .Button-pagi-Current{
+  .Button-pagi-Current {
     font-size: 18px;
     align-items: center;
+  }
+}
+
+/*this is the presentation css who is all the html who is inside the main_page className*/
+
+
+.main_page {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center
+}
+
+.Video {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.Video img {
+  width: 100%;
+  display: block;
+  left: 0;
+}
+
+.Video h1 {
+  position: absolute;
+  z-index: 10;
+  font-size: 2.8rem;
+  font-weight: bolder;
+  letter-spacing: 45px;
+  text-shadow: 2px 1px var(--color_1);
+}
+
+.Video h2 {
+  position: absolute;
+  z-index: 10;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  letter-spacing: 15px;
+  bottom: 75px;
+  color: var(--color_1);
+  text-shadow: 4px 4px 16px var(--color_3);
+}
+
+.Video h3 {
+  position: absolute;
+  z-index: 10;
+  font-size: 1rem;
+  font-weight: bolder;
+  letter-spacing: 8px;
+  bottom: 50px;
+  color: var(--color_1);
+  text-shadow: 4px 4px 16px var(--color_3);
+}
+
+.Video h4 {
+  position: absolute;
+  z-index: 10;
+  font-size: 1rem;
+  font-weight: bolder;
+  letter-spacing: 8px;
+  bottom: 25px;
+  color: var(--color_1);
+  text-shadow: 4px 4px 16px var(--color_3);
+}
+
+@media (650px <=width < 850px) {
+
+  .Video {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .Video h1 {
+    position: absolute;
+    z-index: 10;
+    font-size: 2.8rem;
+    font-weight: bolder;
+    letter-spacing: 45px;
+    text-shadow: 2px 1px var(--color_1);
+  }
+
+  .Video h2 {
+    position: absolute;
+    z-index: 10;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    letter-spacing: 15px;
+    bottom: 50px;
+    color: var(--color_1);
+    text-shadow: 4px 4px 16px var(--color_3);
+    transform: scale(0.75);
+  }
+
+  .Video h3 {
+    position: absolute;
+    z-index: 10;
+    font-size: 1rem;
+    font-weight: bolder;
+    letter-spacing: 8px;
+    bottom: 35px;
+    color: var(--color_1);
+    text-shadow: 4px 4px 16px var(--color_3);
+    transform: scale(0.75);
+  }
+
+  .Video h4 {
+    position: absolute;
+    z-index: 10;
+    font-size: 1rem;
+    font-weight: bolder;
+    letter-spacing: 8px;
+    bottom: 15px;
+    color: var(--color_1);
+    text-shadow: 4px 4px 16px var(--color_3);
+    transform: scale(0.75);
+  }
+
+}
+
+@media (width < 650px) {
+  .Video {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .Video h1 {
+    display: none;
+  }
+
+  .Video h2 {
+    position: absolute;
+    z-index: 10;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    letter-spacing: 15px;
+    bottom: 75px;
+    color: var(--color_1);
+    text-shadow: 4px 4px 16px var(--color_3);
+    transform: scale(0.65);
+  }
+
+  .Video h3 {
+    position: absolute;
+    z-index: 10;
+    font-size: 1rem;
+    font-weight: bolder;
+    letter-spacing: 8px;
+    bottom: 50px;
+    color: var(--color_1);
+    text-shadow: 4px 4px 16px var(--color_3);
+    transform: scale(0.65);
+  }
+
+  .Video h4 {
+    position: absolute;
+    z-index: 10;
+    font-size: 1rem;
+    font-weight: bolder;
+    letter-spacing: 8px;
+    bottom: 25px;
+    color: var(--color_1);
+    text-shadow: 4px 4px 16px var(--color_3);
+    transform: scale(0.65);
+  }
+
+
+}
+
+/*this is the presentation css who is all the html who is inside the className="container"*/
+
+.container {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+.inner-container {
+  width: 300px;
+  height: 400px;
+  display: flex;
+  border: 0.01rem solid var(--color_4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inner-container:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 6px var(--color_4);
+}
+
+.inner-container-one {
+  width: 40%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.inner-container-one img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container-one-information {
+  width: 80%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color_4);
+  position: absolute;
+  left: -60px;
+  border-radius: 5px;
+  padding: 10px;
+  border: 0.01rem solid var(--color_1);
+}
+
+.container-one-information h2 {
+  color: var(--color_7);
+  font-family: nyt-cheltenham, georgia, 'times new roman', times, serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  text-align: center;
+  writing-mode: vertical-rl;
+  transform: rotate(-180deg);
+  color: var(--color_1);
+  background-color: #8b0000;
+  height: 100%;
+}
+
+.container-one-information span {
+  display: inline-block;
+}
+
+.inner-container-two {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #F6F6F6;
+}
+
+@media (width <=450px) {
+  .container-one-information {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    position: absolute;
+    left: 10px;
   }
 }
