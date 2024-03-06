@@ -10,16 +10,11 @@ const Aboutblog = () => {
 
             {/* Introduction paragraph */}
             <p>
-                ¡Bienvenidos a la plataforma digital independiente de noticias de la Universidad de Barranquilla!
+                Unibarranquilla Noticias, te da la bienvenida a su plataforma digital independiente, ofreciendo información actualizada sobre la comunidad universitaria. Explora la diversidad de temas que enriquecen nuestra vida académica y mantente conectado con nosotros.
             </p>
 
             {/* Link to official university website */}
             <a href="https://www.unibarranquilla.edu.co/" target="_blank">Página oficial de la universidad</a>
-
-            {/* Description paragraph */}
-            <p>
-                En Unibarranquilla Noticias, estamos emocionados de ser tu fuente de información y actualización constante sobre todo lo que acontece en nuestra vibrante comunidad universitaria. Aquí encontrarás una variedad de temas que reflejan la diversidad de intereses y actividades que enriquecen nuestra vida académica y estudiantil. ¡Explora, descubre y mantente conectado!
-            </p>
 
         </article>
     );
