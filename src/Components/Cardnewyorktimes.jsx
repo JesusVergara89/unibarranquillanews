@@ -11,46 +11,35 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 const Cardnewyorktimes = ({ article, database }) => {
-    const [avatar, setAvatar] = useState(null)
-    const { access } = useContext(Acesscontext)
 
-    useEffect(() => {
-        functionAvatar();
-    }, [access]);
-    let functionAvatar = () => {
-        if (access && access.length > 0) {
-            const autor = access.find(item => {
-                return item.Name === 'Jesus' ||
-                    item.Name === 'Alejandra' ||
-                    item.Name === 'Gilberto' ||
-                    item.Name === 'Brian';
-            });
-            if (autor) {
-                switch (autor.Name) {
-                    case 'Jesus':
-                        setAvatar(Jesus);
-                        break;
-                    case 'Alejandra':
-                        setAvatar(Aleja);
-                        break;
-                    case 'Gilberto':
-                        setAvatar(Gilberto);
-                        break;
-                    case 'Brian':
-                        setAvatar(Brian);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-    }
+    const { access } = useContext(Acesscontext)
 
     const TimeReading = (text, wordsPerMinutes = 200) => {
         const words = text.trim().split(/\s+/).length;
         const timeToReadPerMinutes = words / wordsPerMinutes;
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;
+    }
+
+    function getLetters(input) {
+
+        input = input.toLowerCase().trim();
+
+        const keywords = {
+            'jesus vergara': 'w',
+            'alejandra leon': 'x',
+            'brian escorcia': 'y',
+            'gilberto gonzales': 'z'
+        };
+
+        for (const keyword in keywords) {
+            const regex = new RegExp(keyword.split(' ').join('\\s{1,4}'));
+            if (regex.test(input)) {
+                return keywords[keyword];
+            }
+        }
+
+        return null;
     }
 
     return (
@@ -74,11 +63,12 @@ const Cardnewyorktimes = ({ article, database }) => {
                                     <h4>{`${TimeReading(article.description)} min. read`}</h4>
                                 </div>
                                 <div className="newyork-img-autor">
-                                    {access ?
-                                        <img src={avatar} alt="" />
-                                        :  <Skeleton circle={true} height={40} width={40} style={{ marginBottom: '54%', marginLeft: '27%' }} />
-
-                                    }
+                                    {article.autor ?
+                                        <img src={getLetters(article.autor) === 'w' ? Jesus :
+                                            getLetters(article.autor) === 'x' ? Alejandra :
+                                                getLetters(article.autor) === 'z' ? Gilberto :
+                                                    getLetters(article.autor) === 'y' ? Brian : null} alt="" />
+                                        : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: '33%' }} />}
                                 </div>
                             </div>
                         </div>
