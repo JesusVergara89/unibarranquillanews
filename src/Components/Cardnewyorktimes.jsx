@@ -22,23 +22,19 @@ const Cardnewyorktimes = ({ article, database }) => {
     }
 
     function getLetters(input) {
-
         input = input.toLowerCase().trim();
-
         const keywords = {
             'jesus vergara': 'w',
             'alejandra leon': 'x',
             'brian escorcia': 'y',
             'gilberto gonzales': 'z'
         };
-
         for (const keyword in keywords) {
             const regex = new RegExp(keyword.split(' ').join('\\s{1,4}'));
             if (regex.test(input)) {
                 return keywords[keyword];
             }
         }
-
         return null;
     }
 
