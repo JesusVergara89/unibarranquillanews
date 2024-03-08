@@ -17,8 +17,6 @@ const Cardpost = ({ article }) => {
       return text;
     }
   }
-
-  console.log(user)
   
   return (
     article && (
