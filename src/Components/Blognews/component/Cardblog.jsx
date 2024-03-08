@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../../firebaseconfig'
 import Deletecompo from './Deletecompo'
 import Likecompo from './Likecompo'
+import '../styles/Cardblog.css'
 
 const Cardblog = ({ article }) => {
 
