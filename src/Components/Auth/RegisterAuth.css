@@ -1,0 +1,74 @@
+:root {
+    --color_1: #ffffff;
+    --color_2: #006400;
+    --color_3: #add8e6;
+    --color_4: #8b0000;
+    --color_5: #001f3f;
+    --color_6: #333333;
+    --color_7: #000000;
+}
+
+.form-register-main {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.form-register-form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--color_4);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-register-register {
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.form-register-name,
+.form-register-email,
+.form-register-password {
+    width: 90%;
+    padding: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-register-btn {
+    width: 100px;
+    padding: 10px;
+    background-color: var(--color_4);
+    color: var(--color_1);
+    border: none;
+}
+
+.form-register-btn:hover {
+    cursor: pointer;
+    background-color: var(--color_7);
+}
+
+@media (width < 350px) {
+    .form-register-form {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid var(--color_4);
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+}

@@ -110,6 +110,7 @@ const app1 = initializeApp(firebaseConfig2, "app2");
 
 export const storage = getStorage(app)
 export const db = getFirestore(app)
+export const auth1 = getAuth(app)
 
 export const storage1 = getStorage(app1)
 export const db1 = getFirestore(app1)
@@ -121,51 +122,60 @@ export const auth = getAuth(app1)
 const app2 = initializeApp(firebaseConfig31, "app31");
 export const storage2 = getStorage(app2)
 export const db2 = getFirestore(app2)
+export const auth2 = getAuth(app2)
 
 /////////////////////////////////////////////
 
 const app3 = initializeApp(firebaseConfig4, "app4");
 export const storage3 = getStorage(app3)
 export const db3 = getFirestore(app3)
+export const auth3 = getAuth(app3)
 
 /////////////////////////////////////////////////
 
 const app4 = initializeApp(firebaseConfig5, "app5");
 export const storage4 = getStorage(app4)
 export const db4 = getFirestore(app4)
+export const auth4 = getAuth(app4)
 
 ////////////////////////////////////////////////
 
 const app5 = initializeApp(firebaseConfig6, "app6");
 export const storage5 = getStorage(app5)
 export const db5 = getFirestore(app5)
+export const auth5 = getAuth(app5)
 
 /////////////////////////////////////////////
 
 const app6 = initializeApp(firebaseConfig7, "app7");
 export const storage6 = getStorage(app6)
 export const db6 = getFirestore(app6)
+export const auth6 = getAuth(app6)
 
 /////////////////////////////////////////////
 
 const app7 = initializeApp(firebaseConfig8, "app8");
 export const storage7 = getStorage(app7)
 export const db7 = getFirestore(app7)
+export const auth7 = getAuth(app7)
 
 ////////////////////////////////////////////
 
 const app8 = initializeApp(firebaseConfig9, "app9");
 export const storage8 = getStorage(app8)
 export const db8 = getFirestore(app8)
+export const auth8 = getAuth(app8)
 
 ////////////////////////////////////////////
 
 const app9 = initializeApp(firebaseConfig10, "app10");
 export const storage9 = getStorage(app9)
 export const db9 = getFirestore(app9)
+export const auth9 = getAuth(app9)
 
 ////////////////////////////////////////////
 
 const app10 = initializeApp(firebaseConfig11, "app11");
 export const storage10 = getStorage(app10)
 export const db10 = getFirestore(app10)
+export const auth10 = getAuth(app10)
