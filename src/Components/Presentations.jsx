@@ -6,9 +6,10 @@ import Socialmedia from '../Components/Socialmedia'
 import Networks from '../Components/Networks'
 import FlashArticles from './FlashArticles'
 import { useEffect } from 'react'
+import { db2, db3, db4, db5, db6, db7, db8, db9, db10 } from '../firebaseconfig'
 
 const Presentations = ({ IsLogged }) => {
-
+  const arrayOfDataBase = [db2, db3, db4, db5, db6, db7, db8, db9, db10];
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -17,9 +18,14 @@ const Presentations = ({ IsLogged }) => {
   };
   useEffect(() => {
     scrollToTop()
+    prueba() 
   }, [])
 
-
+  const prueba = () => {
+    arrayOfDataBase.map((user, index) => (
+      console.log('entre')
+    ))
+  }
   return (
     <article className='main_page'>
       <div className='Video'>
@@ -32,11 +38,12 @@ const Presentations = ({ IsLogged }) => {
 
       <Aboutblog />
 
-      {/*<Recent />*/}
-
       <FlashArticles IsLogged={IsLogged} />
 
-      <Columns />
+      {arrayOfDataBase.map((user, index) => (
+        <Columns user={user} index={index} />
+      ))
+      }
 
       <Networks />
 

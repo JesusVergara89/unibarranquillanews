@@ -1,6 +1,7 @@
 import React from 'react'
 import Article from './Article'
 import '../Styles/FlashArticles.css'
+import { Link } from 'react-router-dom'
 
 const FlashArticles = ({IsLogged}) => {
 
@@ -8,7 +9,7 @@ const FlashArticles = ({IsLogged}) => {
         <article className="Flash-articles">
         
                 <div className="Recent-news-container">
-                    <h3>Articulos flash</h3>
+                    <Link className='enlace-flash' to={'/FLASH'}>Articulos flash</Link>
                     <Article IsLogged={IsLogged} />
                 </div>
            

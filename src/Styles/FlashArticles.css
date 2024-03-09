@@ -1,41 +1,41 @@
 :root {
-    --color_1: #ffffff;
-    --color_2: #006400;
-    --color_3: #add8e6;
-    --color_4: #8b0000;
-    --color_5: #001f3f;
-    --color_6: #333333;
-    --color_7: #000000;
+  --color_1: #ffffff;
+  --color_2: #006400;
+  --color_3: #add8e6;
+  --color_4: #8b0000;
+  --color_5: #001f3f;
+  --color_6: #333333;
+  --color_7: #000000;
 }
 
 .Flash-articles {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin-top: 50px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 50px;
 }
 
 .Recent-news-container {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    gap: 30px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 30px;
 }
 
-.Recent-news-container h3 {
-    text-align: center;
-    padding: 0 10px;
-    border-left: 4px solid var(--color_4);
-    font-size: 21px;
-    text-transform: capitalize;
-    font-weight: bold;
-    margin-left: 40px;
-    cursor: pointer;
+.enlace-flash {
+  text-align: left;
+  padding: 0 10px;
+  border-left: 4px solid var(--color_4);
+  font-size: 21px;
+  text-transform: capitalize;
+  font-weight: bold;
+  margin-left: 40px;
+  cursor: pointer;
 }

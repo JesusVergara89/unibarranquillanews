@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../Styles/Article.css'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { collection, limit, getDocs, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebaseconfig'
 import { Link } from 'react-router-dom'
 import Carrusel from './Carrusel'
@@ -12,14 +12,15 @@ const Article = ({ IsLogged }) => {
     const [articles, setArticles] = useState([{}])
     useEffect(() => {
         const articleRef = collection(db, "Articles")
-        const q = query(articleRef, orderBy("createdAt", "desc"))
-        onSnapshot(q, (snapshot) => {
-            const articles = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }))
-            setArticles(articles)
-        })
+        const q = query(articleRef, orderBy("createdAt", "desc"), limit(5))
+        getDocs(q)
+            .then((resp) => {
+                setArticles(
+                    resp.docs.map((doc) => {
+                        return { ...doc.data(), id: doc.id }
+                    })
+                )
+            })
     }, [])
 
     let breakpoints = {
@@ -62,7 +63,7 @@ const Article = ({ IsLogged }) => {
                                         </div>
                                         <h4>{article && article.description && `${TimeReading(article.description)} min. read`}</h4>
                                         <div className="card-content-information">
-                                            <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }) : ''}</h2>
+                                            <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de',' ') : ''}</h2>
                                         </div>
 
                                     </div>
