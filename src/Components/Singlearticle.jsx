@@ -16,12 +16,13 @@ import { Acesscontext } from './Context/Acesscontext'
 
 
 const Singlearticle = () => {
+
     const { access } = useContext(Acesscontext)
 
     const { name, id } = useParams()
 
     const arrayOfDataBase = [db, db2, db3, db4, db5, db6, db7, db8, db9, db10];
-    const arrayGuia = ['ARTICLE', 'ACTUALIDAD', 'CULTURA', 'DEPORTES', 'INVESTIGACION', 'ASUNTOS', 'VIDAU', 'EVENTOS', 'ENTREVISTA', 'TECNOLOGIA']
+    const arrayGuia = ['FLASH', 'ACTUALIDAD', 'CULTURA', 'DEPORTES', 'INVESTIGACION', 'ASUNTOS', 'VIDAU', 'EVENTOS', 'ENTREVISTA', 'TECNOLOGIA']
     const functionReturn = () => {
         let dato
         arrayGuia.map((user, index) => {
@@ -33,35 +34,7 @@ const Singlearticle = () => {
     }
 
     const [article, setArticle] = useState(null)
-    const [avatar, setAvatar] = useState(null)
-    let functionAvatar = () => {
-        if (access && access.length > 0) {
-            const autor = access.find(item => {
-                return item.Name === 'Jesus' ||
-                    item.Name === 'Alejandra' ||
-                    item.Name === 'Gilberto' ||
-                    item.Name === 'Brian';
-            });
-            if (autor) {
-                switch (autor.Name) {
-                    case 'Jesus':
-                        setAvatar(Jesus);
-                        break;
-                    case 'Alejandra':
-                        setAvatar(Alejandra);
-                        break;
-                    case 'Gilberto':
-                        setAvatar(Gilberto);
-                        break;
-                    case 'Brian':
-                        setAvatar(Brian);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-    }
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -84,16 +57,36 @@ const Singlearticle = () => {
             setArticle('failed')
         }
     }, [name, id])
-    useEffect(() => {
-        functionAvatar();
-    }, [access])
-    
+
     const TimeReading = (text, wordsPerMinutes = 200) => {
         const words = text.trim().split(/\s+/).length;
         const timeToReadPerMinutes = words / wordsPerMinutes;
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;
     }
+
+    const formatDescription = (description) => {
+        const regex = /(@\S+|#\S+)/g;
+        return description.replace(regex, '<span style="font-weight: bold;">$1</span>');
+    }
+
+    function getLetters(input) {
+        input = input.toLowerCase().trim();
+        const keywords = {
+            'jesus vergara': 'w',
+            'alejandra leon': 'x',
+            'brian escorcia': 'y',
+            'gilberto gonzales': 'z'
+        };
+        for (const keyword in keywords) {
+            const regex = new RegExp(keyword.split(' ').join('\\s{1,4}'));
+            if (regex.test(input)) {
+                return keywords[keyword];
+            }
+        }
+        return null;
+    }
+    console.log()
     return (
         <>
             {article === 'failed' ? <NotFound /> : article ?
@@ -103,19 +96,20 @@ const Singlearticle = () => {
                         <img className='Photo' src={article.imageUrl} alt="" />
                         <div className="single-out">
                             <div className="img-autor">
-                                <div className="img1-autor">
-                                    {avatar ? <img src={avatar} alt="" /> : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: 70 }} />}
-                                </div>
-                                <div className="div-autor">
-                                    <h2>{article.autor}</h2>
-                                </div>
+                                {article.autor ?
+                                    <img src={getLetters(article.autor) === 'w' ? Jesus :
+                                        getLetters(article.autor) === 'x' ? Alejandra :
+                                            getLetters(article.autor) === 'z' ? Gilberto :
+                                                getLetters(article.autor) === 'y' ? Brian : null} alt="" />
+                                    : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: '33%' }} />}
+                                <h2>{article.autor}</h2>
+                                <h3>{article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ')}</h3>
                             </div>
-                            <h3>{article.createdAt.toDate().toDateString()}</h3>
                         </div>
 
                         <div className="single-description">
                             {article.description && article.description.split('\n').map((line, index) => (
-                                <p key={index}>{line}</p>
+                                <p key={index} dangerouslySetInnerHTML={{ __html: formatDescription(line) }} />
                             ))}
                             <h4>{`${TimeReading(article.description)} min. read`}</h4>
                         </div>

@@ -85,11 +85,6 @@
     box-shadow: rgba(139, 0, 0, 0.5) 0px 10px 15px;
   }
 }
-@media (350px < width < 600px) {
-  .article-card {
-    transform: scale(0.9);
-  }
-}
 
 @media (width <= 349px) {
   .article-card {

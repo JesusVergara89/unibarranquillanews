@@ -1,27 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import '../Styles/Columns.css'
 import { Link, useNavigate } from 'react-router-dom'
-import actualidad from '../Images/people.jpg'
-import cultura from '../Images/arte.jpg'
-import deportes from '../Images/deporte.jpg'
-import investigación from '../Images/microscope.jpg'
-import asuntos from '../Images/city.jpg'
-import vidau from '../Images/estudiantes.jpg'
-import evento from '../Images/evento.jpg'
-import entrevista from '../Images/entrevista.jpg'
-import tecnologia from '../Images/tech.jpg'
-import blogmain from '../Images/blogmain.jpg'
 import CarruselV2 from './CarruselV2'
 import { SwiperSlide } from 'swiper/react'
 import Button_next from './Button_next'
 import { collection, getDocs, orderBy, query, limit } from 'firebase/firestore';
 import { db2, db3, db4, db5, db6, db7, db8, db9, db10 } from '../firebaseconfig'
-import Mini_card from './Mini_card'
 
 
-const Columns = ({ user, index }) => {
+const Columns = ({ user, indext }) => {
     const [Datas, setDatas] = useState()
-    //const arrayOfDataBase = [db2, db3, db4, db5, db6, db7, db8, db9, db10];
     const ArrayDescrip = [
         {
             dataTitle: 'ACTUALIDAD',
@@ -86,16 +74,17 @@ const Columns = ({ user, index }) => {
         renderBullet: function (index, className) {
             return (
                 `<div class="${className} Seccion_imagen" >
-            <article class="Mini_cards">
+            <a href="#/${ArrayDescrip[indext].Url}/${Datas?.[index].id}" class="Mini_cards">
             <img src="${Datas?.[index].imageUrl}" alt="" />
             <section class="Informacion_news">
                 <h3>${Datas?.[index].title.slice(0, 50) + "..."}</h3>
+                <p class="description_new">${Datas?.[index].description.slice(0, 80) + "..."}</p>
                 <div class="Imformation_date">
                     <p>${Datas?.[index].createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ')}</p>
                     <p>${TimeReading(Datas?.[index].description)} min. read</p>
                 </div>
             </section>
-            </article>
+            </a>
             </div>
             `
             )
@@ -115,18 +104,18 @@ const Columns = ({ user, index }) => {
         navegar(`/${seccion}/${id}`)
     }
     return (
-        <article className="container">
+        <article className="container_column">
             <div>
-                <Link className='enlace-flash' to={`/${ArrayDescrip[index].Url}`}>{ArrayDescrip[index].dataTitle.toLowerCase()}</Link>
+                <Link className='enlace-flash' to={`/${ArrayDescrip[indext].Url}`}>{ArrayDescrip[indext].dataTitle.toLowerCase()}</Link>
             </div>
             {Datas ?
                 <CarruselV2 pagination={pagination}>
                     {Datas?.map((user, index) => (
-                        <SwiperSlide key={user.id}>
+                        <SwiperSlide key={index}>
                             <div className='Noticia-actual' key={index}>
-                                <img className='Photo-seccion' src={user.imageUrl} alt="" />
+                                <img onClick={() => nave(ArrayDescrip[indext].Url, user.id)} className='Photo-seccion' src={user.imageUrl} alt="" />
                                 <div className='Title-seccion'>
-                                    <p onClick={() => nave(ArrayDescrip[index].Url, user.id)}>{TruncaText(user.title)}</p>
+                                    <p onClick={() => nave(ArrayDescrip[indext].Url, user.id)}>{TruncaText(user.title)}</p>
                                     <p>
                                         {user.description.slice(0, 250) + "..."}
                                     </p>

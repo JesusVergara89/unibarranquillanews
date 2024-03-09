@@ -79,7 +79,6 @@ const Seccion = () => {
     const [Orden, setOrden] = useState("desc")
     const [Reverse, setReverse] = useState(false)
     const [Page, setPage] = useState(1)
-
     useEffect(() => {
         setArticles(undefined)
         let validar = functionReturn()
@@ -125,11 +124,12 @@ const Seccion = () => {
         <>
             {articles === 'failed' ? <NotFound /> :
                 <article className="engineering_section">
-                    <h2 className="title-actualidad">{
-                        Descripcion[0] ?
-                            Descripcion[0].dataTitle
-                            : <Skeleton width={'80vh'} height={40} style={{ marginTop: 60 }} />
-                    }</h2>
+                    <h2 className="title-actualidad">
+                        {Descripcion[0] ?
+                            Descripcion[0].dataTitle.toLowerCase()
+                            : ''
+                        }
+                    </h2>
                     {Totalpages ?
                         <Botonera
                             Totalpages={Totalpages}
@@ -141,10 +141,10 @@ const Seccion = () => {
                             setPage={setPage}
                             Page={Page}
                         />
-                        : <Skeleton width={'20%'} height={35} style={{ marginLeft: '35%' }} />
+                        : <Skeleton width={'40%'} height={50} style={{ marginLeft: '30%' }} />
                     }
                     <div className="wrapp-section">
-                        {articles ?
+                        {articles?
                             articles.map((article, i) => (
                                 <Cardnewyorktimes key={i} database={name} article={article} />
                             ))

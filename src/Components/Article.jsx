@@ -9,7 +9,7 @@ import Loading from './Loading'
 
 const Article = ({ IsLogged }) => {
 
-    const [articles, setArticles] = useState([{}])
+    const [articles, setArticles] = useState()
     useEffect(() => {
         const articleRef = collection(db, "Articles")
         const q = query(articleRef, orderBy("createdAt", "desc"), limit(5))
@@ -26,6 +26,7 @@ const Article = ({ IsLogged }) => {
     let breakpoints = {
         700: {
             slidesPerView: 2,
+            speed: 350,
             pagination: {
                 clickable: false
             }
@@ -34,7 +35,8 @@ const Article = ({ IsLogged }) => {
             slidesPerView: 3,
             pagination: {
                 clickable: true
-            }
+            },
+            speed: 400
         }
     }
 
@@ -44,14 +46,15 @@ const Article = ({ IsLogged }) => {
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;
     }
+    
     return (
         <div className='main-card-article'>
             {
-                articles[0].description ? (
+                articles? (
                     (<Carrusel breakpoints={breakpoints}>
                         {articles.map((article, i) => (
                             <SwiperSlide key={i}>
-                                <Link to={IsLogged ? '' : `/ARTICLE/${article.id}`}>
+                                <Link to={IsLogged ? '' : `/FLASH/${article.id}`}>
                                     <div className="article-card">
 
                                         <img src={article.imageUrl} alt="Foto" className="card-image" />
@@ -63,7 +66,7 @@ const Article = ({ IsLogged }) => {
                                         </div>
                                         <h4>{article && article.description && `${TimeReading(article.description)} min. read`}</h4>
                                         <div className="card-content-information">
-                                            <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de',' ') : ''}</h2>
+                                            <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ') : ''}</h2>
                                         </div>
 
                                     </div>

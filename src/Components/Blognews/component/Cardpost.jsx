@@ -40,7 +40,7 @@ const Cardpost = ({ article }) => {
           <div className="post-interact">
 
             <div className="post-interact-div">
-              <Deletecompo user={article.comments[0].user} id={article.id} imageUrl={article.imageUrl} />
+            <Deletecompo user={article.comments.length > 0 ? article.comments[0].user : null} id={article.id} imageUrl={article.imageUrl} />
             </div>
 
             <div className="post-interact-div">

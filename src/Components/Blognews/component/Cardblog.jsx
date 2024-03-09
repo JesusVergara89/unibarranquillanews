@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../../firebaseconfig'
 import Deletecompo from './Deletecompo'
 import Likecompo from './Likecompo'
+import '../styles/Cardblog.css'
 
 const Cardblog = ({ article }) => {
 
@@ -19,7 +20,7 @@ const Cardblog = ({ article }) => {
                 <h3 className="blog-date">{article.createdAt.toDate().toDateString()}</h3>
             </div>
             <div className="blog-interactions">
-                <Deletecompo user={article.comments[0].user} id={article.id} imageUrl={article.imageUrl} />
+                <Deletecompo user={article.comments.length > 0 ? article.comments[0].user : null} id={article.id} imageUrl={article.imageUrl} />
                 <div className="blog-like">
                     {user && (<Likecompo id={article.id} likes={article.likes} />)}
                     <h5>{article.likes.length}</h5>

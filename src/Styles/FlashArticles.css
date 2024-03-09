@@ -39,3 +39,8 @@
   margin-left: 40px;
   cursor: pointer;
 }
+@media (width<=500px) {
+  .enlace-flash {
+    margin-left: 10px;
+  }
+}

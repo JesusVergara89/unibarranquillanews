@@ -47,7 +47,7 @@ const Header = ({reloadPage,setReloadPage}) => {
         <>
             <header className='Main_header'>
                 <Link onClick={closeMenu} className='Logo' to='/'>
-                    <h1 onClick={closeMenu} >UNIBARRANQUILLA</h1>
+                    <h1 onClick={() => {closeMenu()}} >UNIBARRANQUILLA</h1>
                 </Link>
                 <button onClick={menuLoad} className={Menu ? 'Menu_active on' : 'Menu_active'}>
                     <div></div>

@@ -28,20 +28,20 @@
 .single-card h1 {
   color: var(--color_7);
   font-family: nyt-cheltenham, georgia, "times new roman", times, serif;
-  font-weight: 700;
+  font-weight: bold;
   font-style: italic;
-  font-size: 1.5rem;
-  line-height: 2.25rem;
+  font-size: 21px;
+  line-height: 1.5;
   text-align: left;
   text-transform: capitalize;
 }
 
 .Photo {
   width: 100%;
-  min-height: 100px;
+  height: 250px;
+  object-fit: cover;
   border-radius: 2px;
-  margin-top: 60px;
-  border-top: 0.01 solid var(--color_6);
+  margin-top: 50px;
 }
 
 .single-out {
@@ -58,17 +58,8 @@
   width: 100%;
   height: 80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-}
-
-.img1-autor {
-  width: 30%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
 }
 
 .div-autor {
@@ -84,23 +75,17 @@
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
-  position: absolute;
-  bottom: 10px;
 }
 
 .img-autor h2 {
   font-size: 1rem;
   color: var(--color_6);
-  text-align: center;
+  font-weight: bold;
 }
 
 .single-out h3 {
-  width: 100%;
-  text-align: center;
   font-size: 1em;
-  background-color: #bbbbbb;
-  color: var(--color_6);
-  margin: 0;
+  color: var(--color_5);
 }
 
 .single-description {
@@ -123,17 +108,17 @@
 @media (333px <=width < 430px) {
   .single-card {
     width: 300px;
-    height: auto;
-    margin-top: 50px;
-    padding: 10px;
+  }
+  .img-autor{
+    gap: 8px;
   }
 }
 
 @media (width < 333px) {
   .single-card {
     width: 250px;
-    height: auto;
-    margin-top: 50px;
-    padding: 10px;
+  }
+  .img-autor{
+    gap: 20px;
   }
 }

@@ -1,119 +1,116 @@
 :root {
-    --color_1: #ffffff;
-    --color_2: #006400;
-    --color_3: #add8e6;
-    --color_4: #8b0000;
-    --color_5: #001f3f;
-    --color_6: #333333;
-    --color_7: #000000;
+  --color_1: #ffffff;
+  --color_2: #006400;
+  --color_3: #add8e6;
+  --color_4: #8b0000;
+  --color_5: #001f3f;
+  --color_6: #333333;
+  --color_7: #000000;
 }
 
 .card-newyork {
-    width: 280px;
-    height: 470px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-top: 0.01rem solid var(--color_6);
-    border-bottom:  0.01rem solid var(--color_6);
-    background-color: var(--color_1);
-    padding: 5px;
-    transition: box-shadow 0.3s ease;
+  width: 280px;
+  height: 470px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  background-color: var(--color_1);
+  padding: 5px;
+  transition: box-shadow 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 15px;
+  cursor: pointer;
 }
 
-.card-newyork:hover {
-   cursor: pointer;
-   box-shadow: 0 5px 8px var(--color_4);
+@media (hover: hover) {
+  .card-newyork:hover {
+    box-shadow: rgba(139, 0, 0, 0.5) 0px 10px 15px;
+  }
 }
 
 .newyork-title {
-    width: 90%;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: capitalize;
+  width: 90%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
 .newyork-img {
-    width: 90%;
-    height: 180px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    object-fit: cover;
-    overflow: hidden;
+  width: 90%;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .newyork-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .newyork-information {
-    width: 90%;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 90%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.newyork-information h3{
-    width: 100%;
-    text-align: justify;
-    font-size: 0.9rem;
+.newyork-brief h3 {
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
 .newyork-brief {
-    width: 100%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 15px;
 }
-
-.newyork-description-autor {
-    width: 70%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.newyork-description-autor p {
-    all: unset;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.newyork-description-autor h4{
-    width: 100%;
-    text-align: justify;
-    font-size: 0.8rem;
-    color: var(--color_6);
-}
-
-.newyork-img-autor {
-    width: 30%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.newyork-img-autor img {
+.newyork-brief img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    position: absolute;
-    top: 35px;
+  }
+.newyork-description-autor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.newyork-description-autor p {
+  all: unset;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: normal;
+  color: var(--color_6);
+}
+
+.newyork-information h4 {
+  font-size: 0.8rem;
+  color: var(--color_5);
+}
+
+.newyork-img-autor {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
