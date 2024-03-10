@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom'
 import Carrusel from './Carrusel'
 import { SwiperSlide } from "swiper/react";
 import Loading from './Loading'
+import Article_skeleto from './Loading-skeleton/Article_skeleto'
 
 const Article = ({ IsLogged }) => {
 
-    const [articles, setArticles] = useState()
+    const [articles, setArticles] = useState([{}])
     useEffect(() => {
         const articleRef = collection(db, "Articles")
         const q = query(articleRef, orderBy("createdAt", "desc"), limit(5))
@@ -55,16 +56,16 @@ const Article = ({ IsLogged }) => {
     return (
         <div className='main-card-article'>
             {
-                articles ? (
+                articles[0].description ? (
                     (<Carrusel breakpoints={breakpoints}>
                         {articles.map((article, i) => (
                             <SwiperSlide key={i}>
-                                <Link to={IsLogged ? '' : `/FLASH/${article.id}`}>
+                                <Link to={IsLogged ? '' : `/ARTICLE/${article.id}`}>
                                     <div className="article-card">
 
                                         <img src={article.imageUrl} alt="Foto" className="card-image" />
 
-                                        <h2 className="card-title">{truncateText(article.title,120)}</h2>
+                                        <h2 className="card-title">{truncateText(article.title, 84)}</h2>
                                         <div className="card-description">
                                             {/* Split body content by newline and display */}
                                             <p>{article.description?.slice(0, 140) + " ..."}</p>
@@ -81,7 +82,7 @@ const Article = ({ IsLogged }) => {
                     </Carrusel>
                     )
                 ) :
-                    (<Loading />)
+                    <Article_skeleto />
             }
         </div>
     )

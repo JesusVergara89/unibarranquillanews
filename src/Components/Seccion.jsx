@@ -12,7 +12,7 @@ import Botonera from './Botonera';
 const Seccion = () => {
     const { name } = useParams()
     const arrayOfDataBase = [db, db2, db3, db4, db5, db6, db7, db8, db9, db10];
-    const arrayGuia = ['FLASH', 'ACTUALIDAD', 'CULTURA', 'DEPORTES', 'INVESTIGACION', 'ASUNTOS', 'VIDAU', 'EVENTOS', 'ENTREVISTA', 'TECNOLOGIA']
+    const arrayGuia = ['ARTICLE', 'ACTUALIDAD', 'CULTURA', 'DEPORTES', 'INVESTIGACION', 'ASUNTOS', 'VIDAU', 'EVENTOS', 'ENTREVISTA', 'TECNOLOGIA']
     const functionReturn = () => {
         let dato
         arrayGuia.map((user, index) => {
@@ -61,7 +61,7 @@ const Seccion = () => {
         },
         {
             dataTitle: 'ARTICULOS FLASH',
-            Url: 'FLASH'
+            Url: 'ARTICLE'
         }
     ]
     const Descripcion = ArrayDescrip.filter((index) => index.Url === name)

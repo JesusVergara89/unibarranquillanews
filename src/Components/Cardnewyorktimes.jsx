@@ -5,14 +5,9 @@ import Brian from '../Images/Brian.jpg'
 import Gilberto from '../Images/Gilberto.jpg'
 import Alejandra from '../Images/Aleja.jpg'
 import { Link } from 'react-router-dom'
-import Loading from './Loading'
-import { Acesscontext } from './Context/Acesscontext'
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 
 const Cardnewyorktimes = ({ article, database }) => {
 
-    const { access } = useContext(Acesscontext)
 
     const TimeReading = (text, wordsPerMinutes = 200) => {
         const words = text.trim().split(/\s+/).length;
@@ -51,12 +46,12 @@ const Cardnewyorktimes = ({ article, database }) => {
                         </div>
                         <div className="newyork-information">
                             <div className="newyork-brief">
-                                    {article.autor ?
-                                        <img src={getLetters(article.autor) === 'w' ? Jesus :
-                                            getLetters(article.autor) === 'x' ? Alejandra :
-                                                getLetters(article.autor) === 'z' ? Gilberto :
-                                                    getLetters(article.autor) === 'y' ? Brian : null} alt="" />
-                                        :''}
+                                {article.autor ?
+                                    <img src={getLetters(article.autor) === 'w' ? Jesus :
+                                        getLetters(article.autor) === 'x' ? Alejandra :
+                                            getLetters(article.autor) === 'z' ? Gilberto :
+                                                getLetters(article.autor) === 'y' ? Brian : null} alt="" />
+                                    : ''}
                                 <h3>{article.autor}</h3>
                                 <h4>{`${TimeReading(article.description)} min. read`}</h4>
                             </div>
@@ -70,7 +65,7 @@ const Cardnewyorktimes = ({ article, database }) => {
                     </article>
                 </Link>
                 :
-                <Loading />
+                ''
             }
         </>
     )

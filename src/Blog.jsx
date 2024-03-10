@@ -1,26 +1,29 @@
-import React, { useState } from 'react'
+import React, { Suspense, lazy, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
-import Workus from './Components/Workus'
 import NotFound from './Components/NotFound'
 import Longin from './Components/Longin'
 import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
 import RoutesProtecteds from './Components/RoutesProtecteds'
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
-import Containerpost from './Components/Blognews/component/Containerpost'
-import Blogarticle from '../src/Components/Blognews/component/Blogarticle'
-import Theblog from './Components/Theblog'
-import Singlearticle from './Components/Singlearticle'
-import Seccion from './Components/Seccion'
+
+const Singlearticle = lazy(() => import('./Components/Singlearticle'))
+const Seccion = lazy(() => import('./Components/Seccion'))
+const Workus = lazy(() => import('./Components/Workus'))
+const Containerpost = lazy(() => import('./Components/Blognews/component/Containerpost'))
+const Blogarticle = lazy(() => import('../src/Components/Blognews/component/Blogarticle'))
+const Theblog = lazy(() => import('./Components/Theblog'))
 import Aboutblog from './Components/Aboutblog'
 import FlashArticles from './Components/FlashArticles'
 import Networks from './Components/Networks'
 import Socialmedia from './Components/Socialmedia'
 import news from './Images/news.jpg'
-import SectionNews from './Components/SectionNews'
 import { db10, db2, db3, db4, db5, db6, db7, db8, db9 } from './firebaseconfig'
 import blog from './Images/blogmain.jpg'
 import Columns from './Components/Columns';
+import Pages_seccion_skeleto from './Components/Loading-skeleton/Pages_seccion_skeleto'
+import Page_skeleton from './Components/Loading-skeleton/Page_skeleton'
+import Loading from './Components/Loading'
 
 function Blog() {
 
@@ -28,24 +31,10 @@ function Blog() {
 
   const [reloadPage, setReloadPage] = useState(false)
 
-  ////////////////////////////////////////////////////
-  const navigateFunctions = [
-    useNavigate(),
-    useNavigate(),
-    useNavigate(),
-    useNavigate(),
-    useNavigate(),
-    useNavigate(),
-    useNavigate(),
-    useNavigate(),
-    useNavigate()
-  ];
 
   const arrayOfDataBase = [db2, db3, db4, db5, db6, db7, db8, db9, db10];
 
   const navigateBlog = useNavigate()
-
-  //////////////////////////////////////////
 
   return (
     <div className='Blog'>
@@ -88,22 +77,47 @@ function Blog() {
           }
         />
         <Route path='/:name'
-          element={<Seccion />}
+          element={
+            <Suspense fallback={<Pages_seccion_skeleto />}>
+              <Seccion />
+            </Suspense>
+          }
         />
         <Route path='/:name/:id'
-          element={<Singlearticle />}
+          element=
+          {
+            <Suspense fallback={<Page_skeleton />}>
+              <Singlearticle />
+            </Suspense>
+          }
         />
         <Route path='/OPENPOSSITIONS'
-          element={<Workus />}
+          element={
+            <Suspense fallback={<Loading />}>
+              <Workus />
+            </Suspense>
+          }
         />
         <Route path='/BLOG'
-          element={<Containerpost />}
+          element={
+            <Suspense fallback={<Loading />}>
+              <Containerpost />
+            </Suspense>
+          }
         />
         <Route path='/BLOGARTICLE/:id'
-          element={<Blogarticle />}
+          element={
+            <Suspense fallback={<Loading />}>
+              <Blogarticle />
+            </Suspense>
+          }
         />
         <Route path='/READBLOG'
-          element={<Theblog />}
+          element={
+            <Suspense fallback={<Loading />}>
+              <Theblog />
+            </Suspense>
+          }
         />
         <Route path="*" element={<NotFound />} />
 

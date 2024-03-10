@@ -12,17 +12,14 @@ import Alejandra from '../Images/Aleja.jpg'
 import Compartir from './Compartir/Compartir'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { Acesscontext } from './Context/Acesscontext'
 
 
 const Singlearticle = () => {
 
-    const { access } = useContext(Acesscontext)
-
     const { name, id } = useParams()
 
     const arrayOfDataBase = [db, db2, db3, db4, db5, db6, db7, db8, db9, db10];
-    const arrayGuia = ['FLASH', 'ACTUALIDAD', 'CULTURA', 'DEPORTES', 'INVESTIGACION', 'ASUNTOS', 'VIDAU', 'EVENTOS', 'ENTREVISTA', 'TECNOLOGIA']
+    const arrayGuia = ['ARTICLE', 'ACTUALIDAD', 'CULTURA', 'DEPORTES', 'INVESTIGACION', 'ASUNTOS', 'VIDAU', 'EVENTOS', 'ENTREVISTA', 'TECNOLOGIA']
     const functionReturn = () => {
         let dato
         arrayGuia.map((user, index) => {

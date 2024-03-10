@@ -6,6 +6,7 @@ import { SwiperSlide } from 'swiper/react'
 import Button_next from './Button_next'
 import { collection, getDocs, orderBy, query, limit } from 'firebase/firestore';
 import { db2, db3, db4, db5, db6, db7, db8, db9, db10 } from '../firebaseconfig'
+import Colums_skeleto from './Loading-skeleton/Colums_skeleto'
 
 
 const Columns = ({ user, indext }) => {
@@ -109,8 +110,8 @@ const Columns = ({ user, indext }) => {
             </div>
             {Datas ?
                 <CarruselV2 pagination={pagination}>
-                    {Datas?.map((user, index) => (
-                        <SwiperSlide key={index}>
+                    {Datas.map((user, index) => (
+                        <SwiperSlide key={user.id}>
                             <div className='Noticia-actual' key={index}>
                                 <img onClick={() => nave(ArrayDescrip[indext].Url, user.id)} className='Photo-seccion' src={user.imageUrl} alt="" />
                                 <div className='Title-seccion'>
@@ -124,7 +125,7 @@ const Columns = ({ user, indext }) => {
                         </SwiperSlide>
                     ))}
                 </CarruselV2>
-                : ''}
+                : <Colums_skeleto />}
         </article >
     )
 }
