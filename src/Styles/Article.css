@@ -15,8 +15,8 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  position: relative;
 }
-
 .article-card {
   width: 280px;
   height: 370px;
@@ -35,7 +35,6 @@
   width: 100%;
   height: 150px;
   object-fit: cover;
-  border-radius: .5rem;
 }
 
 .article-card h4 {
@@ -78,6 +77,8 @@
 
 .card-description p {
   all: unset;
+  color: var(--color_6);
+  opacity: .8;
 }
 
 @media (hover: hover) {

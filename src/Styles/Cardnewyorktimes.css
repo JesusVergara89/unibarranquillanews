@@ -35,7 +35,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
   text-transform: capitalize;
 }
@@ -99,6 +99,7 @@
   margin-bottom: 10px;
   font-weight: normal;
   color: var(--color_6);
+  opacity: .8;
 }
 
 .newyork-information h4 {

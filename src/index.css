@@ -417,16 +417,21 @@ a {
 
 /*this is the presentation css who is all the html who is inside the main_page className*/
 .main_page {
-  width: 100%;
+  width: 85%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 1100px;
 }
-
+@media (width<=1100px) {
+  .main_page{
+    width: 95%;
+  }
+}
 .Video {
-  width: 100%;
+  width: 100vw;
   height: 500px;
   display: flex;
   flex-direction: column;
@@ -441,6 +446,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  max-width: 1440px;
 }
 
 .Video h1 {
@@ -485,14 +491,12 @@ a {
 
 @media (650px <= width < 850px) {
   .Video {
-    width: 100%;
     height: 340px;
   }
 }
 
 @media (width < 650px) {
   .Video {
-    width: 100%;
     height: 300px;
   }
   .Video h1 {

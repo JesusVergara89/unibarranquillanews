@@ -26,7 +26,6 @@ const Article = ({ IsLogged }) => {
     let breakpoints = {
         700: {
             slidesPerView: 2,
-            speed: 350,
             pagination: {
                 clickable: false
             }
@@ -35,8 +34,7 @@ const Article = ({ IsLogged }) => {
             slidesPerView: 3,
             pagination: {
                 clickable: true
-            },
-            speed: 400
+            }
         }
     }
 
@@ -46,11 +44,18 @@ const Article = ({ IsLogged }) => {
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;
     }
-    
+    const truncateText = (text, maxLength) => {
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + "...";
+        } else {
+            return text;
+        }
+    }
+
     return (
         <div className='main-card-article'>
             {
-                articles? (
+                articles ? (
                     (<Carrusel breakpoints={breakpoints}>
                         {articles.map((article, i) => (
                             <SwiperSlide key={i}>
@@ -59,7 +64,7 @@ const Article = ({ IsLogged }) => {
 
                                         <img src={article.imageUrl} alt="Foto" className="card-image" />
 
-                                        <h2 className="card-title">{article.title}</h2>
+                                        <h2 className="card-title">{truncateText(article.title,120)}</h2>
                                         <div className="card-description">
                                             {/* Split body content by newline and display */}
                                             <p>{article.description?.slice(0, 140) + " ..."}</p>

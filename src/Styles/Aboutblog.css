@@ -21,11 +21,11 @@
   width: 50%;
   height: auto;
   text-align: start;
+  font-size: 18px;
 }
 
 .About-this-blog a {
-  width: auto;
-  all: unset;
+  width: 240px;
   height: auto;
   background-color: var(--color_4);
   padding: 0.5rem;
@@ -44,18 +44,14 @@
   .About-this-blog p {
     width: 70%;
   }
-  @media (width<600px) {
-    .About-this-blog a {
-      width: 170px;
-    }
-  }
 }
+
 @media (width<400px) {
   .About-this-blog p {
     width: 90%;
     padding: 8px;
   }
   .About-this-blog a {
-    width: 200px;
+    width: 55%;
   }
 }

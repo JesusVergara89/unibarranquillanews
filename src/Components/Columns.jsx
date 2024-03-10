@@ -77,7 +77,7 @@ const Columns = ({ user, indext }) => {
             <a href="#/${ArrayDescrip[indext].Url}/${Datas?.[index].id}" class="Mini_cards">
             <img src="${Datas?.[index].imageUrl}" alt="" />
             <section class="Informacion_news">
-                <h3>${Datas?.[index].title.slice(0, 50) + "..."}</h3>
+                <h3>${Datas?.[index].title.slice(0, 40) + "..."}</h3>
                 <p class="description_new">${Datas?.[index].description.slice(0, 80) + "..."}</p>
                 <div class="Imformation_date">
                     <p>${Datas?.[index].createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ')}</p>
@@ -90,14 +90,12 @@ const Columns = ({ user, indext }) => {
             )
         },
     };
-    const TruncaText = (e) => {
-        let result
-        if (e.length >= 80) {
-            result = e.slice(0, 80) + " ..."
+    const truncateText = (text, maxLength) => {
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + "...";
         } else {
-            result = e
+            return text;
         }
-        return result
     }
     const navegar = useNavigate()
     const nave = (seccion, id) => {
@@ -105,8 +103,9 @@ const Columns = ({ user, indext }) => {
     }
     return (
         <article className="container_column">
-            <div>
+            <div className='Vinculo'>
                 <Link className='enlace-flash' to={`/${ArrayDescrip[indext].Url}`}>{ArrayDescrip[indext].dataTitle.toLowerCase()}</Link>
+                <i onClick={() => navegar(`${ArrayDescrip[indext].Url}`)} className='bx bxs-plus-circle' ></i>
             </div>
             {Datas ?
                 <CarruselV2 pagination={pagination}>
@@ -115,7 +114,7 @@ const Columns = ({ user, indext }) => {
                             <div className='Noticia-actual' key={index}>
                                 <img onClick={() => nave(ArrayDescrip[indext].Url, user.id)} className='Photo-seccion' src={user.imageUrl} alt="" />
                                 <div className='Title-seccion'>
-                                    <p onClick={() => nave(ArrayDescrip[indext].Url, user.id)}>{TruncaText(user.title)}</p>
+                                    <Link to={`/${ArrayDescrip[indext].Url}/${user.id}`}>{truncateText(user.title, 80)}</Link>
                                     <p>
                                         {user.description.slice(0, 250) + "..."}
                                     </p>

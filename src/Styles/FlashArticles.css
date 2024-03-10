@@ -36,11 +36,11 @@
   font-size: 21px;
   text-transform: capitalize;
   font-weight: bold;
-  margin-left: 40px;
+  margin-left: 2%;
   cursor: pointer;
 }
-@media (width<=500px) {
-  .enlace-flash {
-    margin-left: 10px;
+@media (width<=400px) {
+  .enlace-flash{
+    font-size: 18px;
   }
 }

@@ -22,11 +22,9 @@ const Articlesgeneral = ({ IsLogged, database }) => {
     let breakpoints = {
         890: {
             slidesPerView: 2,
-            speed: 700,
         },
         1100: {
             slidesPerView: 3,
-            speed: 640,
         }
     }
 

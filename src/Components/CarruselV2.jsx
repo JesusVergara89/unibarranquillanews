@@ -17,7 +17,6 @@ const CarruselV2 = ({ children, pagination }) => {
                     slidesPerView={1}
                     simulateTouch={false}
                     pagination={pagination}
-                    longSwipesRatio={0.2}
                 >
                     {children}
                     <img src="" alt="" />

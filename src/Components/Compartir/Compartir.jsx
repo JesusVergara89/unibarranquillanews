@@ -40,7 +40,6 @@ const Compartir = ({ Link }) => {
         },
         200: {
             slidesPerView: 2,
-            speed: 280,
             pagination: {
                 clickable: false
             }
