@@ -14,15 +14,13 @@ const Card_skeleton = () => {
                         <Skeleton height={180} />
                     </div>
                     <div className="newyork-information">
-                        <Skeleton height={20} width={'50%'} />
                         <div className="newyork-brief">
-                            <div className="newyork-description-autor">
-                                <Skeleton height={50} style={{ marginBottom: 20 }} />
-                                <Skeleton width={'40%'} />
-                            </div>
-                            <div className="newyork-img-autor">
-                                <Skeleton circle={true} height={40} width={40} style={{ marginBottom: '54%', marginLeft: '27%' }} />
-                            </div>
+                            <Skeleton circle={true} height={40} width={40} />
+                            <Skeleton height={20} />
+                            <Skeleton height={20} />
+                        </div>
+                        <div className="newyork-description-autor">
+                            <Skeleton height={80} />
                         </div>
                     </div>
                 </article>

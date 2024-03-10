@@ -17,7 +17,7 @@ const Carrusel = ({ children, breakpoints }) => {
                     pagination={{
                         dynamicBullets: true
                     }}
-                    longSwipesRatio={0.2}
+                    longSwipesRatio={0.1}
                     breakpoints={breakpoints}
                 >
                     {children}

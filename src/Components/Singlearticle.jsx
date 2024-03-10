@@ -12,12 +12,9 @@ import Alejandra from '../Images/Aleja.jpg'
 import Compartir from './Compartir/Compartir'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { Acesscontext } from './Context/Acesscontext'
 
 
 const Singlearticle = () => {
-
-    const { access } = useContext(Acesscontext)
 
     const { name, id } = useParams()
 
@@ -96,19 +93,15 @@ const Singlearticle = () => {
                         <img className='Photo' src={article.imageUrl} alt="" />
                         <div className="single-out">
                             <div className="img-autor">
-                                <div className="img1-autor">
-                                    {article.autor ?
-                                        <img src={getLetters(article.autor) === 'w' ? Jesus :
-                                            getLetters(article.autor) === 'x' ? Alejandra :
-                                                getLetters(article.autor) === 'z' ? Gilberto :
-                                                    getLetters(article.autor) === 'y' ? Brian : null} alt="" />
-                                        : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: '33%' }} />}
-                                </div>
-                                <div className="div-autor">
-                                    <h2>{article.autor}</h2>
-                                </div>
+                                {article.autor ?
+                                    <img src={getLetters(article.autor) === 'w' ? Jesus :
+                                        getLetters(article.autor) === 'x' ? Alejandra :
+                                            getLetters(article.autor) === 'z' ? Gilberto :
+                                                getLetters(article.autor) === 'y' ? Brian : null} alt="" />
+                                    : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: '33%' }} />}
+                                <h2>{article.autor}</h2>
+                                <h3>{article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ')}</h3>
                             </div>
-                            <h3>{article.createdAt.toDate().toDateString()}</h3>
                         </div>
 
                         <div className="single-description">

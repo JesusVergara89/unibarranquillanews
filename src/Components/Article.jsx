@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import '../Styles/Article.css'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { collection, limit, getDocs, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebaseconfig'
 import { Link } from 'react-router-dom'
 import Carrusel from './Carrusel'
 import { SwiperSlide } from "swiper/react";
 import Loading from './Loading'
+import Article_skeleto from './Loading-skeleton/Article_skeleto'
 
 const Article = ({ IsLogged }) => {
 
     const [articles, setArticles] = useState([{}])
     useEffect(() => {
         const articleRef = collection(db, "Articles")
-        const q = query(articleRef, orderBy("createdAt", "desc"))
-        onSnapshot(q, (snapshot) => {
-            const articles = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }))
-            setArticles(articles)
-        })
+        const q = query(articleRef, orderBy("createdAt", "desc"), limit(5))
+        getDocs(q)
+            .then((resp) => {
+                setArticles(
+                    resp.docs.map((doc) => {
+                        return { ...doc.data(), id: doc.id }
+                    })
+                )
+            })
     }, [])
 
     let breakpoints = {
@@ -43,6 +45,13 @@ const Article = ({ IsLogged }) => {
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;
     }
+    const truncateText = (text, maxLength) => {
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + "...";
+        } else {
+            return text;
+        }
+    }
 
     return (
         <div className='main-card-article'>
@@ -56,14 +65,14 @@ const Article = ({ IsLogged }) => {
 
                                         <img src={article.imageUrl} alt="Foto" className="card-image" />
 
-                                        <h2 className="card-title">{article.title?.slice(0, 100) + " ..."}</h2>
+                                        <h2 className="card-title">{truncateText(article.title, 84)}</h2>
                                         <div className="card-description">
                                             {/* Split body content by newline and display */}
                                             <p>{article.description?.slice(0, 140) + " ..."}</p>
                                         </div>
                                         <h4>{article && article.description && `${TimeReading(article.description)} min. read`}</h4>
                                         <div className="card-content-information">
-                                            <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h2>
+                                            <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ') : ''}</h2>
                                         </div>
 
                                     </div>
@@ -73,7 +82,7 @@ const Article = ({ IsLogged }) => {
                     </Carrusel>
                     )
                 ) :
-                    (<Loading />)
+                    <Article_skeleto />
             }
         </div>
     )

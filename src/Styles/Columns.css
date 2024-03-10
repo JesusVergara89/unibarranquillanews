@@ -1,0 +1,79 @@
+:root {
+  --color_1: #ffffff;
+  --color_2: #006400;
+  --color_3: #add8e6;
+  --color_4: #8b0000;
+  --color_5: #001f3f;
+  --color_6: #333333;
+  --color_7: #000000;
+}
+.container_column {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 60px 0;
+}
+.Vinculo {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+.Vinculo .bx{
+  font-size: 27px;
+  color: var(--color_4);
+  width: auto;
+  cursor: pointer;
+}
+.Noticia-actual {
+  width: 60%;
+  height: 450px;
+  position: relative;
+  padding-left: 30px;
+  display: flex;
+}
+.Photo-seccion {
+  width: 80%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  max-width: 500px;
+}
+.Title-seccion {
+  width: 350px;
+  height: 350px;
+  background-color: #fefffa;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 5px;
+}
+.Title-seccion p {
+  margin: 0;
+  font-size: 18px;
+}
+.Title-seccion .pagination-controls {
+  justify-content: flex-end;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  margin-top: 0;
+}
+.Title-seccion a {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 21px;
+  cursor: pointer;
+}
+.Title-seccion a:hover {
+  text-decoration: underline;
+}
