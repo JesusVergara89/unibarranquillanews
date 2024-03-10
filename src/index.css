@@ -498,6 +498,7 @@ a {
 @media (width < 650px) {
   .Video {
     height: 300px;
+    width: 100%;
   }
   .Video h1 {
     transform: scale(0.65);
@@ -511,6 +512,16 @@ a {
   }
   .Video h4 {
     transform: scale(0.65);
+  }
+  @media (width<=450px) {
+    .Video {
+      width: 100vw;
+    }
+    .Video h1 {
+      transform: scale(0.5);
+      letter-spacing: 25px;
+    }
+    
   }
 }
 
