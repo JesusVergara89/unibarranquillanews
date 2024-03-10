@@ -18,6 +18,24 @@
     gap: 30px;
 }
 
+.Container-post-form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.Containes-post-rules-of-the-house-form{
+    text-align: center;
+    font-weight: bold;
+}
+
+.Container-post-rules-form {
+ width: 100%;
+ text-align: center;
+ font-weight: bold;
+}
+
 .component-form-fill {
     width: 100%;
     height: auto;
