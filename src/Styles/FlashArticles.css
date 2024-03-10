@@ -40,7 +40,9 @@
   cursor: pointer;
 }
 @media (width<=400px) {
-  .enlace-flash{
+  .enlace-flash {
     font-size: 18px;
+    width: auto;
+    max-width: 60%;
   }
 }
