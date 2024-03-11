@@ -10,7 +10,7 @@ const Aboutblog = () => {
 
             {/* Introduction paragraph */}
             <p>
-                Unibarranquilla Noticias, te da la bienvenida a su plataforma digital independiente, ofreciendo información actualizada sobre la comunidad universitaria. Explora la diversidad de temas que enriquecen nuestra vida académica y mantente conectado con nosotros.
+                Bienvenidos a Unibarranquilla News Paper, tu fuente digital de información diversa. Explora nuestro periódico, donde encontrarás noticias actuales que van más allá de la vida universitaria, abarcando una amplia gama de temas que impactan nuestra vida diaria. Únete a nuestra plataforma independiente y mantente informado.
             </p>
 
             {/* Link to official university website */}
