@@ -41,7 +41,7 @@ const Cardnewyorktimes = ({ article, database }) => {
                 <Link  to={`/${database}/${article.id}`}>
                     <article className="card-newyork">
                         <div className="newyork-title">
-                            {article.title.slice(0, 50) + " ..."}
+                            {article.title.slice(0, 47) + " ..."}
                         </div>
                         <div className="newyork-img">
                             <LazyLoadImage
