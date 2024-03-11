@@ -65,12 +65,7 @@ const Seccion = () => {
         }
     ]
     const Descripcion = ArrayDescrip.filter((index) => index.Url === name)
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    };
+    
     const [articles, setArticles] = useState()
     const [Lasdoc, setLasdoc] = useState()
     const [Firstdoc, setFirstdoc] = useState()
@@ -83,7 +78,6 @@ const Seccion = () => {
         setArticles(undefined)
         let validar = functionReturn()
         if (validar) {
-            scrollToTop()
             const articleRef = collection(validar, "Articles")
             let q = query(articleRef, orderBy("createdAt", `${Orden}`), limit(10), startAfter(Start))
             getDocs(q)

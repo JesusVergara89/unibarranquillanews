@@ -7,19 +7,11 @@ import { useNavigate } from 'react-router'
 
 const Theblog = () => {
 
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
-    };
-
     const [articles, setArticles] = useState([{}])
 
     const navigate = useNavigate()
 
     useEffect(() => {
-        scrollToTop()
         const articleRef = collection(db1, "Articles")
         const q = query(articleRef, orderBy("createdAt", "desc"))
         const unsubscribe = onSnapshot(q, (snapshot) => {

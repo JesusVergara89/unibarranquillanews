@@ -5,16 +5,6 @@ import '../Styles/Workus.css'
 
 const Workus = () => {
     const opens = useOpen()
-    useEffect(() => {
-        scrollToTop()
-    }, [])
-
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    };
     return (
         <article className='work'>
             <div className="visualization-div-header"></div>

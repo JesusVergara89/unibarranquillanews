@@ -32,14 +32,7 @@ const Singlearticle = () => {
 
     const [article, setArticle] = useState(null)
 
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    };
     useEffect(() => {
-        scrollToTop()
         setArticle(undefined)
         let validar = functionReturn()
         if (validar) {

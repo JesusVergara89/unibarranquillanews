@@ -1,5 +1,5 @@
-import React, { Suspense, lazy, memo, useState } from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import React, { Suspense, lazy, memo, useEffect, useState } from 'react'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import NotFound from './Components/NotFound'
 import Longin from './Components/Longin'
 import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
@@ -70,7 +70,11 @@ function Blog() {
       </article>
     )
   }
-
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    console.log('entre')
+  }, [pathname])
   return (
     <div className='Blog'>
       <Header reloadPage={reloadPage} setReloadPage={setReloadPage} />

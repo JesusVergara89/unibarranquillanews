@@ -33,17 +33,7 @@ const Componentform = (
     const [enterregister, setEnterregister] = useState(false)
     const enterToFormPost = () => setEnterregister(true)
     const outToFormPost = () => setEnterregister(false)
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
-    };
-
-    useEffect(() => {
-        scrollToTop()
-    }, [])
-
+    
     return (
         <article className="component-form">
 
