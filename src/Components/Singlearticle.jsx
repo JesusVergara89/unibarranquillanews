@@ -56,9 +56,15 @@ const Singlearticle = () => {
     }
 
     const formatDescription = (description) => {
+        const buttonRegex = /<button\s+(?:[^>]*?\s+)?onclick="window.location.href='([^']*)'"[^>]*>(.*?)<\/button>/gi;
         const regex = /(@\S+|#\S+|\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b)/g;
-        return description.replace(regex, '<span style="font-weight: bold;">$1</span>');
-    }
+    
+        let formattedDescription = description.replace(buttonRegex, '<button class="button-link" onclick="window.open(\'$1\', \'_blank\')">$2</button>');
+        formattedDescription = formattedDescription.replace(regex, '<span style="font-weight: bold;">$1</span>');
+    
+        return formattedDescription;
+    };
+           
 
     function getLetters(input) {
         input = input.toLowerCase().trim();

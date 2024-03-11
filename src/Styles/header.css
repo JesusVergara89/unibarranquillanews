@@ -29,8 +29,10 @@
   justify-content: start;
   align-items: center;
   cursor: pointer;
+  color: black;
+  text-decoration: none;
 }
-
+ 
 .Logo h1 {
   font-size: 0.8rem;
   letter-spacing: 2px;
@@ -82,8 +84,11 @@
 }
 
 .enlace {
+  text-align: center;
   font-size: 1rem;
   cursor: pointer;
+  color: black;
+  text-decoration: none;
 }
 
 .Menu_active {
@@ -135,6 +140,8 @@
 @media (width<=630px) {
   .enlace {
     text-align: center;
+    color: black;
+    text-decoration: none;
   }
 }
 

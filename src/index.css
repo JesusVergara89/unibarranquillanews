@@ -36,10 +36,6 @@ h5 {
   all: unset;
 }
 
-a {
-  all: unset;
-}
-
 .Blog {
   width: 100%;
   min-height: 100vh;
@@ -56,6 +52,20 @@ a {
   height: auto;
   margin-bottom: 20px;
   margin-left: -40%;
+}
+
+a {
+  all: unset;
+}
+
+.a-important{
+  color: #8b0000 !important;
+  cursor: pointer !important;
+}
+
+.a-important:hover{
+  color: #ff0000 !important;
+  text-decoration: underline !important;
 }
 
 .news-number {

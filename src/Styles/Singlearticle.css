@@ -17,6 +17,22 @@
   overflow-x: hidden;
 }
 
+.button-link{
+  width: auto;
+  border: none;
+  background-color: transparent;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: var(--color_4);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.button-link:hover{
+  color: var(--color_5);
+}
+
 .single-card {
   width: 450px;
   height: auto;

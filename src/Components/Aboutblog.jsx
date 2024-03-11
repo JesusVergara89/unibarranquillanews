@@ -14,7 +14,7 @@ const Aboutblog = () => {
             </p>
 
             {/* Link to official university website */}
-            <a href="https://www.unibarranquilla.edu.co/" target="_blank">Página oficial de la universidad</a>
+            <a className='oficial-page' href="https://www.unibarranquilla.edu.co/" target="_blank">Página oficial de la universidad</a>
 
         </article>
     );
