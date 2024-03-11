@@ -73,7 +73,6 @@ function Blog() {
   const { pathname } = useLocation()
   useEffect(() => {
     window.scrollTo(0, 0)
-    console.log('entre')
   }, [pathname])
   return (
     <div className='Blog'>

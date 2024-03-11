@@ -114,6 +114,9 @@ const Seccion = () => {
             setArticles('failed')
         }
     }, [name])
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [Start])
     return (
         <>
             {articles === 'failed' ? <NotFound /> :
