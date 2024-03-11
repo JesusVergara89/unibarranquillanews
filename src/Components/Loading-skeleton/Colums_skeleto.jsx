@@ -1,6 +1,8 @@
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 import '../../Styles/colums_skeleto.css'
+import '../../Styles/Columns.css'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Colums_skeleto = () => {
     return (
@@ -16,8 +18,8 @@ const Colums_skeleto = () => {
                 </div>
             </div>
             <div className='Columna'>
-                {Array(4).fill(0).map(() => (
-                    <Skeleton className='Mini_cards'/>
+                {Array(4).fill(0).map((z,index) => (
+                    <Skeleton key={index} className='Mini_cards'/>
                 ))
                 }
             </div>

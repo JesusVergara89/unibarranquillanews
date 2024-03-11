@@ -1,6 +1,7 @@
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import '../../Styles/Singlearticle.css'
 
 const Page_skeleton = () => {
     return (

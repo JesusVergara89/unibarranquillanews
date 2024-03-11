@@ -20,8 +20,8 @@ const Article_skeleto = () => {
     }
     return (
         <Carrusel breakpoints={breakpoints}>
-            {Array(5).fill(0).map(() => (
-                <SwiperSlide>
+            {Array(5).fill(0).map((x,index) => (
+                <SwiperSlide key={index}>
                     <div className="article-card">
                         <Skeleton height={150} />
                         <Skeleton height={60} />

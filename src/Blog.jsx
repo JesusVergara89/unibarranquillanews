@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState } from 'react'
+import React, { Suspense, lazy, memo, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import NotFound from './Components/NotFound'
 import Longin from './Components/Longin'
@@ -35,6 +35,41 @@ function Blog() {
   const arrayOfDataBase = [db2, db3, db4, db5, db6, db7, db8, db9, db10];
 
   const navigateBlog = useNavigate()
+  const Home = () => {
+    return (
+      <article className='main_page'>
+        <div className='Video'>
+          <img src={news} alt="" />
+          <h1>WELCOME</h1>
+          <h2>UNIVERSITY</h2>
+          <h3>INDEPENDET</h3>
+          <h4>NEWSPAPER</h4>
+        </div>
+
+        <Aboutblog />
+
+        <FlashArticles IsLogged={IsLogged} />
+        {arrayOfDataBase.map((user, index) => (
+          <Columns key={index} user={user} indext={index} />
+        ))
+        }
+
+        <div className="To-the-blog"
+          onClick={() => navigateBlog(`/READBLOG`)}
+        >
+          <img src={blog} alt="" />
+          <h2
+            onClick={() => navigateBlog(`/READBLOG`)}
+          >Blog</h2>
+        </div>
+
+        <Networks />
+
+        <Socialmedia />
+
+      </article>
+    )
+  }
 
   return (
     <div className='Blog'>
@@ -43,37 +78,7 @@ function Blog() {
       <Routes>
         <Route path='/'
           element={
-            <article className='main_page'>
-              <div className='Video'>
-                <img src={news} alt="" />
-                <h1>WELCOME</h1>
-                <h2>UNIVERSITY</h2>
-                <h3>INDEPENDET</h3>
-                <h4>NEWSPAPER</h4>
-              </div>
-
-              <Aboutblog />
-
-              <FlashArticles IsLogged={IsLogged} />
-              {arrayOfDataBase.map((user, index) => (
-                <Columns user={user} indext={index} />
-              ))
-              }
-
-              <div className="To-the-blog"
-                onClick={() => navigateBlog(`/READBLOG`)}
-              >
-                <img src={blog} alt="" />
-                <h2
-                  onClick={() => navigateBlog(`/READBLOG`)}
-                >Blog</h2>
-              </div>
-
-              <Networks />
-
-              <Socialmedia />
-
-            </article>
+            <Home />
           }
         />
         <Route path='/:name'

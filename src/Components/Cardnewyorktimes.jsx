@@ -5,6 +5,8 @@ import Brian from '../Images/Brian.jpg'
 import Gilberto from '../Images/Gilberto.jpg'
 import Alejandra from '../Images/Aleja.jpg'
 import { Link } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Cardnewyorktimes = ({ article, database }) => {
 
@@ -42,7 +44,11 @@ const Cardnewyorktimes = ({ article, database }) => {
                             {article.title.slice(0, 50) + " ..."}
                         </div>
                         <div className="newyork-img">
-                            <img src={article.imageUrl} alt="" />
+                            <LazyLoadImage
+                                src={article.imageUrl}
+                                effect="blur"
+                                placeholderSrc={article.imageUrl}
+                            />
                         </div>
                         <div className="newyork-information">
                             <div className="newyork-brief">

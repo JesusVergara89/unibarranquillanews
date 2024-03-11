@@ -5,8 +5,8 @@ const Card_skeleton = () => {
     return (
         <>
 
-            {Array(10).fill(0).map(() => (
-                <article className="card-newyork">
+            {Array(10).fill(0).map((x,index) => (
+                <article key={index} className="card-newyork">
                     <div className="newyork-title">
                         <Skeleton height={60} style={{ marginBottom: 7 }} />
                     </div>

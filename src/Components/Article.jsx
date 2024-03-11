@@ -5,8 +5,8 @@ import { db } from '../firebaseconfig'
 import { Link } from 'react-router-dom'
 import Carrusel from './Carrusel'
 import { SwiperSlide } from "swiper/react";
-import Loading from './Loading'
 import Article_skeleto from './Loading-skeleton/Article_skeleto'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const Article = ({ IsLogged }) => {
 
@@ -62,9 +62,12 @@ const Article = ({ IsLogged }) => {
                             <SwiperSlide key={i}>
                                 <Link to={IsLogged ? '' : `/ARTICLE/${article.id}`}>
                                     <div className="article-card">
-
-                                        <img src={article.imageUrl} alt="Foto" className="card-image" />
-
+                                        <LazyLoadImage className="card-image"
+                                            src={article.imageUrl}
+                                            alt="Foto"
+                                            effect="blur"
+                                            placeholderSrc={article.imageUrl}
+                                        />
                                         <h2 className="card-title">{truncateText(article.title, 84)}</h2>
                                         <div className="card-description">
                                             {/* Split body content by newline and display */}

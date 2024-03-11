@@ -7,6 +7,8 @@ import Button_next from './Button_next'
 import { collection, getDocs, orderBy, query, limit } from 'firebase/firestore';
 import { db2, db3, db4, db5, db6, db7, db8, db9, db10 } from '../firebaseconfig'
 import Colums_skeleto from './Loading-skeleton/Colums_skeleto'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 const Columns = ({ user, indext }) => {
@@ -76,7 +78,7 @@ const Columns = ({ user, indext }) => {
             return (
                 `<div class="${className} Seccion_imagen" >
             <a href="#/${ArrayDescrip[indext].Url}/${Datas?.[index].id}" class="Mini_cards">
-            <img src="${Datas?.[index].imageUrl}" alt="" />
+            <img src="${Datas?.[index].imageUrl} "loading="lazy"/>
             <section class="Informacion_news">
                 <h3>${Datas?.[index].title.slice(0, 40) + "..."}</h3>
                 <p class="description_new">${Datas?.[index].description.slice(0, 80) + "..."}</p>
@@ -112,8 +114,12 @@ const Columns = ({ user, indext }) => {
                 <CarruselV2 pagination={pagination}>
                     {Datas.map((user, index) => (
                         <SwiperSlide key={user.id}>
-                            <div className='Noticia-actual' key={index}>
-                                <img onClick={() => nave(ArrayDescrip[indext].Url, user.id)} className='Photo-seccion' src={user.imageUrl} alt="" />
+                            <div className='Noticia-actual' key={user.id}>
+                                <LazyLoadImage onClick={() => nave(ArrayDescrip[indext].Url, user.id)} className='Photo-seccion'
+                                    src={user.imageUrl}
+                                    effect="blur"
+                                    placeholderSrc={user.imageUrl}
+                                />
                                 <div className='Title-seccion'>
                                     <Link to={`/${ArrayDescrip[indext].Url}/${user.id}`}>{truncateText(user.title, 80)}</Link>
                                     <p>

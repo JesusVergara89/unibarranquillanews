@@ -2,6 +2,7 @@ import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Card_skeleton from './Card_skeleton'
+import '../../Styles/Cardnewyorktimes.css'
 
 const Pages_seccion_skeleto = () => {
     return (
