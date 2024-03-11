@@ -38,7 +38,7 @@ const Cardnewyorktimes = ({ article, database }) => {
     return (
         <>
             {article.description ?
-                <Link className='new-york-card-link' to={`/${database}/${article.id}`}>
+                <Link  to={`/${database}/${article.id}`}>
                     <article className="card-newyork">
                         <div className="newyork-title">
                             {article.title.slice(0, 50) + " ..."}
