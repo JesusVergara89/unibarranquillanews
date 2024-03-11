@@ -91,15 +91,43 @@
     width: 100%;
     height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    gap: 10px;
 }
+
+.comment-btn {
+    width: 50px;
+    height: auto;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--color_4);
+    color: var(--color_1);
+    transition: transform 0.3s ease-in-out;
+    font-size: 1rem;
+}
+
+.comment-btn:hover {
+    cursor: pointer;
+    transform: scale(1.01); 
+}
+
 
 .create-comment {
     width: 92%;
     height: 70px;
     resize: vertical;
     padding: 0.2rem;
+    position: relative;
+}
+
+.create-comment::placeholder {
+    color: var(--color_4); 
+    font-size: 1.2rem; 
+    text-align: center;
 }
 
 

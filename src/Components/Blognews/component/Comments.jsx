@@ -52,7 +52,7 @@ const Comments = ({ id }) => {
           currentlyLoggedinUser &&
           (
             <textarea
-              placeholder='Presiona enter para comentar'
+              placeholder='Presiona enter para enviar el comentario'
               type='text'
               className='create-comment'
               value={comment}
@@ -62,7 +62,7 @@ const Comments = ({ id }) => {
           )
         }
       </div>
-
+      
       <div className="Comments-div">
         {comments !== null &&
           comments.map(
