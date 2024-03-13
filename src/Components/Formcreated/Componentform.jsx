@@ -37,7 +37,7 @@ const Componentform = (
     return (
         <article className="component-form">
 
-            {enterregister ?
+            {enterregister || off ?
                 ''
                 :
                 <div className='Container-post-form'>
