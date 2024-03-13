@@ -82,13 +82,26 @@ const Singlearticle = () => {
         }
         return null;
     }
-    console.log()
+
+    const capitTitle = (title) =>  {
+        let words = title.split(" ");
+        const wordsNoCapit = ["de", "del", "la", "el", "los", "las", "y", "a", "en", "como", "con"];
+        for (let i = 0; i < words.length; i++) {
+            if (i === 0 || i === words.length - 1 || !wordsNoCapit.includes(words[i])) {
+                words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+            } else {
+                words[i] = words[i].toLowerCase();
+            }
+        }
+        return words.join(" ");
+    }
+    
     return (
         <>
             {article === 'failed' ? <NotFound /> : article ?
                 <article className="singles-article">
                     <div className="single-card">
-                        <h1>{article.title}</h1>
+                        <h1>{article.title && capitTitle(article.title)}</h1>
                         <img className='Photo' src={article.imageUrl} alt="" />
                         <div className="single-out">
                             <div className="img-autor">
