@@ -5,52 +5,15 @@ import CarruselV2 from './CarruselV2'
 import { SwiperSlide } from 'swiper/react'
 import Button_next from './Button_next'
 import { collection, getDocs, orderBy, query, limit } from 'firebase/firestore';
-import { db2, db3, db4, db5, db6, db7, db8, db9, db10 } from '../firebaseconfig'
 import Colums_skeleto from './Loading-skeleton/Colums_skeleto'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import useRouter from '../Hooks/useRouter'
 
 
 const Columns = ({ user, indext }) => {
     const [Datas, setDatas] = useState()
-    const ArrayDescrip = [
-        {
-            dataTitle: 'ACTUALIDAD',
-            Url: 'ACTUALIDAD'
-        },
-        {
-            dataTitle: 'CULTURA Y ARTE',
-            Url: 'CULTURA'
-        },
-        {
-            dataTitle: 'DEPORTES',
-            Url: 'DEPORTES'
-        },
-        {
-            dataTitle: 'INVESTIGACIÓN Y DESARROLLO',
-            Url: 'INVESTIGACION'
-        },
-        {
-            dataTitle: 'MI UNIVERISIDAD, MI CIUDAD',
-            Url: 'ASUNTOS'
-        },
-        {
-            dataTitle: 'VIDA ESTUDIANTIL',
-            Url: 'VIDAU'
-        },
-        {
-            dataTitle: 'EVENTOS',
-            Url: 'EVENTOS'
-        },
-        {
-            dataTitle: 'ENTREVISTAS Y PERFILES',
-            Url: 'ENTREVISTA'
-        },
-        {
-            dataTitle: 'TECNOLOGIA',
-            Url: 'TECNOLOGIA'
-        }
-    ]
+    const {ArrayDescrip} = useRouter()
     const Obtencion = () => {
         const articleRef = collection(user, "Articles")
         const q = query(articleRef, orderBy("createdAt", "desc"), limit(4));

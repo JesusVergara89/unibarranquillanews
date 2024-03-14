@@ -103,6 +103,15 @@ const firebaseConfig11 = {
     appId: "1:397578817382:web:c75140ebfdd6e75d4842a7"
 };
 
+const firebaseConfig12 = {
+    apiKey: "AIzaSyC5mM4j5PxZMzHYlF6t14Uy9X_J5N6gFu4",
+    authDomain: "ambiente-a20cb.firebaseapp.com",
+    projectId: "ambiente-a20cb",
+    storageBucket: "ambiente-a20cb.appspot.com",
+    messagingSenderId: "342410199017",
+    appId: "1:342410199017:web:f00e334e27309e1fbf5578"
+  };
+
 
 const app = initializeApp(firebaseConfig)
 const app1 = initializeApp(firebaseConfig2, "app2");
@@ -179,3 +188,10 @@ const app10 = initializeApp(firebaseConfig11, "app11");
 export const storage10 = getStorage(app10)
 export const db10 = getFirestore(app10)
 export const auth10 = getAuth(app10)
+
+////////////////////////////////////////////
+
+const app11 = initializeApp(firebaseConfig12, "app12");
+export const storage11 = getStorage(app11)
+export const db11 = getFirestore(app11)
+export const auth11 = getAuth(app11)

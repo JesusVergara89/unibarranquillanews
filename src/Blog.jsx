@@ -18,12 +18,12 @@ import FlashArticles from './Components/FlashArticles'
 import Networks from './Components/Networks'
 import Socialmedia from './Components/Socialmedia'
 import news from './Images/news.jpg'
-import { db10, db2, db3, db4, db5, db6, db7, db8, db9 } from './firebaseconfig'
 import blog from './Images/blogmain.jpg'
 import Columns from './Components/Columns';
 import Pages_seccion_skeleto from './Components/Loading-skeleton/Pages_seccion_skeleto'
 import Page_skeleton from './Components/Loading-skeleton/Page_skeleton'
 import Loading from './Components/Loading'
+import useRouter from './Hooks/useRouter'
 
 function Blog() {
 
@@ -31,8 +31,7 @@ function Blog() {
 
   const [reloadPage, setReloadPage] = useState(false)
 
-
-  const arrayOfDataBase = [db2, db3, db4, db5, db6, db7, db8, db9, db10];
+  const { arrayOfDataBase } = useRouter()
 
   const navigateBlog = useNavigate()
   const Home = () => {

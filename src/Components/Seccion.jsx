@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { db10, db2, db3, db4, db5, db6, db7, db8, db9, db } from '../firebaseconfig'
 import Cardnewyorktimes from './Cardnewyorktimes';
 import { collection, getDocs, orderBy, query, limit, startAfter, getCountFromServer } from 'firebase/firestore';
 import Card_skeleton from './Loading-skeleton/Card_skeleton';
@@ -8,62 +7,24 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import NotFound from './NotFound';
 import Botonera from './Botonera';
+import useRouter from '../Hooks/useRouter';
 
 const Seccion = () => {
+
     const { name } = useParams()
-    const arrayOfDataBase = [db, db2, db3, db4, db5, db6, db7, db8, db9, db10];
-    const arrayGuia = ['ARTICLE', 'ACTUALIDAD', 'CULTURA', 'DEPORTES', 'INVESTIGACION', 'ASUNTOS', 'VIDAU', 'EVENTOS', 'ENTREVISTA', 'TECNOLOGIA']
+
+    const {arrayOfDataBase,ArrayDescrip} = useRouter()
+
     const functionReturn = () => {
         let dato
-        arrayGuia.map((user, index) => {
-            if (user === name) {
+        ArrayDescrip.map((user, index) => {
+            if (user.Url === name) {
                 dato = arrayOfDataBase[index]
             }
         })
         return dato
     }
-    const ArrayDescrip = [
-        {
-            dataTitle: 'ACTUALIDAD',
-            Url: 'ACTUALIDAD'
-        },
-        {
-            dataTitle: 'CULTURA Y ARTE',
-            Url: 'CULTURA'
-        },
-        {
-            dataTitle: 'DEPORTES',
-            Url: 'DEPORTES'
-        },
-        {
-            dataTitle: 'INVESTIGACIÓN Y DESARROLLO',
-            Url: 'INVESTIGACION'
-        },
-        {
-            dataTitle: 'MI UNIVERISIDAD, MI CIUDAD',
-            Url: 'ASUNTOS'
-        },
-        {
-            dataTitle: 'VIDA ESTUDIANTIL',
-            Url: 'VIDAU'
-        },
-        {
-            dataTitle: 'EVENTOS',
-            Url: 'EVENTOS'
-        },
-        {
-            dataTitle: 'ENTREVISTAS Y PERFILES',
-            Url: 'ENTREVISTA'
-        },
-        {
-            dataTitle: 'TECNOLOGIA',
-            Url: 'TECNOLOGIA'
-        },
-        {
-            dataTitle: 'ARTICULOS FLASH',
-            Url: 'ARTICLE'
-        }
-    ]
+  
     const Descripcion = ArrayDescrip.filter((index) => index.Url === name)
     
     const [articles, setArticles] = useState()

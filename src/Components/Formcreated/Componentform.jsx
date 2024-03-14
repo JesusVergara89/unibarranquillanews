@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { auth2, auth3, auth4, auth5, auth6, auth7, auth8, auth9, auth10, db10, db2, db3, db4, db5, db6, db7, db8, db9, storage10, storage2, storage3, storage4, storage5, storage6, storage7, storage8, storage9 } from '../../firebaseconfig'
+import { auth2, auth3, auth4, auth5, auth6, auth7, auth8, auth9, auth10, db10, db2, db3, db4, db5, db6, db7, db8, db9, storage10, storage2, storage3, storage4, storage5, storage6, storage7, storage8, storage9, db11, storage11, auth11 } from '../../firebaseconfig'
 import Formgeneral from './Formgeneral'
 import './styles/Componentform.css'
 import { useSelector } from 'react-redux'
@@ -18,6 +18,7 @@ const Componentform = (
         , eventos
         , entrevistas
         , tecnologia
+        , ambiente
         , IsLogged, setIsLogged,
         off
     }
@@ -77,6 +78,8 @@ const Componentform = (
                             {entrevistas && <Formgeneral name={name} lastName={lastName} database={db9} storagebase={storage9} />}
 
                             {tecnologia && <Formgeneral name={name} lastName={lastName} database={db10} storagebase={storage10} />}
+
+                            {ambiente && <Formgeneral name={name} lastName={lastName} database={db11} storagebase={storage11} />}
                         </div>
 
                         <div className="components-articles">
@@ -89,6 +92,7 @@ const Componentform = (
                             {eventos && <Articlesgeneral IsLogged={IsLogged} database={db8} />}
                             {entrevistas && <Articlesgeneral IsLogged={IsLogged} database={db9} />}
                             {tecnologia && <Articlesgeneral IsLogged={IsLogged} database={db10} />}
+                            {ambiente && <Articlesgeneral IsLogged={IsLogged} database={db11} />}
                         </div>
 
                     </>
@@ -103,6 +107,7 @@ const Componentform = (
                         {eventos && <SinginAuth outToFormPost={outToFormPost} enterToFormPost={enterToFormPost} auth={auth8} />}
                         {entrevistas && <SinginAuth outToFormPost={outToFormPost} enterToFormPost={enterToFormPost} auth={auth9} />}
                         {tecnologia && <SinginAuth outToFormPost={outToFormPost} enterToFormPost={enterToFormPost} auth={auth10} />}
+                        {ambiente && <SinginAuth outToFormPost={outToFormPost} enterToFormPost={enterToFormPost} auth={auth11} />}
                     </div>
 
             }

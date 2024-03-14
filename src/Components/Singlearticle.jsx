@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../Styles/Singlearticle.css'
 import { useParams } from 'react-router-dom'
-import { db10, db2, db3, db4, db5, db6, db7, db8, db9, db } from '../firebaseconfig'
 import { doc, getDoc } from 'firebase/firestore'
 import NotFound from './NotFound'
 import Page_skeleton from './Loading-skeleton/Page_skeleton'
@@ -12,18 +11,19 @@ import Alejandra from '../Images/Aleja.jpg'
 import Compartir from './Compartir/Compartir'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import useRouter from '../Hooks/useRouter'
 
 
 const Singlearticle = () => {
 
     const { name, id } = useParams()
 
-    const arrayOfDataBase = [db, db2, db3, db4, db5, db6, db7, db8, db9, db10];
-    const arrayGuia = ['ARTICLE', 'ACTUALIDAD', 'CULTURA', 'DEPORTES', 'INVESTIGACION', 'ASUNTOS', 'VIDAU', 'EVENTOS', 'ENTREVISTA', 'TECNOLOGIA']
+    const {arrayOfDataBase,ArrayDescrip} = useRouter()
+
     const functionReturn = () => {
         let dato
-        arrayGuia.map((user, index) => {
-            if (user === name) {
+        ArrayDescrip.map((user, index) => {
+            if (user.Url === name) {
                 dato = arrayOfDataBase[index]
             }
         })

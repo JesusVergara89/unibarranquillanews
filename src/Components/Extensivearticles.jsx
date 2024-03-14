@@ -13,6 +13,7 @@ const Extensivearticles = ({IsLogged, setIsLogged }) => {
     const [eventos, setEventos] = useState(false);
     const [entrevistas, setEntrevistas] = useState(false);
     const [tecnologia, setTecnlogia] = useState(false);
+    const [ambiente, setAmbiente] = useState(false);
 
     const actualizarEstado = (estado, valor) => {
         setActualidad(estado === "actualidad" ? valor : false);
@@ -24,6 +25,7 @@ const Extensivearticles = ({IsLogged, setIsLogged }) => {
         setEventos(estado === "eventos" ? valor : false);
         setEntrevistas(estado === "entrevistas" ? valor : false);
         setTecnlogia(estado === "tecnologia" ? valor : false);
+        setAmbiente(estado === "ambiente" ? valor : false)
         setOff(false);
     };
 
@@ -43,6 +45,7 @@ const Extensivearticles = ({IsLogged, setIsLogged }) => {
                     <button onClick={() => actualizarEstado("eventos", true)}>Eventos</button>
                     <button onClick={() => actualizarEstado("entrevistas", true)}>Entrevistas</button>
                     <button onClick={() => actualizarEstado("tecnologia", true)}>Tecnología</button>
+                    <button onClick={() => actualizarEstado("ambiente", true)}>Ambiente</button>
                 </div>
             }
 
@@ -58,6 +61,7 @@ const Extensivearticles = ({IsLogged, setIsLogged }) => {
              eventos={eventos}
              entrevistas={entrevistas}
              tecnologia={tecnologia}
+             ambiente={ambiente}
 
              off={off}
 

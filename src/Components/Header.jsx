@@ -7,6 +7,7 @@ const Header = ({reloadPage,setReloadPage}) => {
         setMenu(false)
         setReloadPage(!reloadPage)
     }
+
     const arrayOfHeader = [
         {
             name: "ACTUALIDAD"
@@ -34,6 +35,9 @@ const Header = ({reloadPage,setReloadPage}) => {
         },
         {
             name: "TECNOLOGIA"
+        },
+        {
+            name: "AMBIENTE"
         },
         {
             name: "LOGIN"
