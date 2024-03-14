@@ -19,7 +19,7 @@ const Singlearticle = () => {
 
     const { name, id } = useParams()
 
-    const {arrayOfDataBase,ArrayDescrip} = useRouter()
+    const { arrayOfDataBase, ArrayDescrip } = useRouter()
 
     const functionReturn = () => {
         let dato
@@ -59,13 +59,13 @@ const Singlearticle = () => {
     const formatDescription = (description) => {
         const buttonRegex = /<button\s+(?:[^>]*?\s+)?onclick="window.location.href='([^']*)'"[^>]*>(.*?)<\/button>/gi;
         const regex = /(@\S+|#\S+|\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b)/g;
-    
+
         let formattedDescription = description.replace(buttonRegex, '<button class="button-link" onclick="window.open(\'$1\', \'_blank\')">$2</button>');
         formattedDescription = formattedDescription.replace(regex, '<span style="font-weight: bold;">$1</span>');
-    
+
         return formattedDescription;
     };
-           
+
 
     function getLetters(input) {
         input = input.toLowerCase().trim();
@@ -74,7 +74,7 @@ const Singlearticle = () => {
             'alejandra leon': 'x',
             'brian escorcia': 'y',
             'gilberto gonzales': 'z',
-            'Jose Diaz': 'p'
+            'jose diaz': 'p'
         };
         for (const keyword in keywords) {
             const regex = new RegExp(keyword.split(' ').join('\\s{1,4}'));
@@ -85,9 +85,9 @@ const Singlearticle = () => {
         return null;
     }
 
-    const capitTitle = (title) =>  {
+    const capitTitle = (title) => {
         let words = title.split(" ");
-        const wordsNoCapit = ["de", "al","su","nos","un","unos","unas","asi","es", "del", "la", "el", "los","lo", "las", "y", "a", "en", "como", "con"];
+        const wordsNoCapit = ["de", "al", "su", "nos", "un", "unos", "unas", "asi", "es", "del", "la", "el", "los", "lo", "las", "y", "a", "en", "como", "con"];
         for (let i = 0; i < words.length; i++) {
             if (i === 0 || i === words.length - 1 || !wordsNoCapit.includes(words[i])) {
                 words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
@@ -97,7 +97,7 @@ const Singlearticle = () => {
         }
         return words.join(" ");
     }
-    
+
     return (
         <>
             {article === 'failed' ? <NotFound /> : article ?
@@ -112,7 +112,7 @@ const Singlearticle = () => {
                                         getLetters(article.autor) === 'x' ? Alejandra :
                                             getLetters(article.autor) === 'z' ? Gilberto :
                                                 getLetters(article.autor) === 'y' ? Brian :
-                                                getLetters(article.autor) === 'p' ? josemanuel : null} alt="" />
+                                                    getLetters(article.autor) === 'p' ? josemanuel : null} alt="" />
                                     : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: '33%' }} />}
                                 <h2>{article.autor}</h2>
                                 <h3>{article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ')}</h3>
