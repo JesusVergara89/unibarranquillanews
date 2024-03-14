@@ -24,6 +24,7 @@ import Pages_seccion_skeleto from './Components/Loading-skeleton/Pages_seccion_s
 import Page_skeleton from './Components/Loading-skeleton/Page_skeleton'
 import Loading from './Components/Loading'
 import useRouter from './Hooks/useRouter'
+import { db } from './firebaseconfig'
 
 function Blog() {
 
@@ -32,6 +33,12 @@ function Blog() {
   const [reloadPage, setReloadPage] = useState(false)
 
   const { arrayOfDataBase } = useRouter()
+
+  let filterarrayOfDataBase = arrayOfDataBase.filter((data, i) => (
+    data != db
+  ))
+
+  console.log(filterarrayOfDataBase)
 
   const navigateBlog = useNavigate()
   const Home = () => {
@@ -48,7 +55,7 @@ function Blog() {
         <Aboutblog />
 
         <FlashArticles IsLogged={IsLogged} />
-        {arrayOfDataBase.map((user, index) => (
+        {filterarrayOfDataBase.map((user, index) => (
           <Columns key={index} user={user} indext={index} />
         ))
         }

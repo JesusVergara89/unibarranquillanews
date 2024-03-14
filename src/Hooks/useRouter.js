@@ -1,11 +1,15 @@
-import { db10, db11, db2, db3, db4, db5, db6, db7, db8, db9 } from "../firebaseconfig";
+import { db, db10, db11, db2, db3, db4, db5, db6, db7, db8, db9 } from "../firebaseconfig";
 
 
 const useRouter = () => {
 
-    const arrayOfDataBase = [db2, db3, db4, db5, db6, db7, db8, db9, db10, db11 ];
+    const arrayOfDataBase = [db, db2, db3, db4, db5, db6, db7, db8, db9, db10, db11];
 
     const ArrayDescrip = [
+        {
+            dataTitle: 'ARTICULOS FLASH',
+            Url: 'ARTICLE'
+        },
         {
             dataTitle: 'ACTUALIDAD',
             Url: 'ACTUALIDAD'
@@ -47,7 +51,7 @@ const useRouter = () => {
             Url: 'AMBIENTE'
         }
     ]
-  return {arrayOfDataBase,ArrayDescrip}
+    return { arrayOfDataBase, ArrayDescrip }
 }
 
 export default useRouter

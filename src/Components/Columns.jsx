@@ -13,7 +13,11 @@ import useRouter from '../Hooks/useRouter'
 
 const Columns = ({ user, indext }) => {
     const [Datas, setDatas] = useState()
-    const {ArrayDescrip} = useRouter()
+    const { ArrayDescrip } = useRouter()
+    let filterArrayDescrip = ArrayDescrip.filter((data, i) =>(
+        data.Url != "ARTICLE"
+    ))
+    
     const Obtencion = () => {
         const articleRef = collection(user, "Articles")
         const q = query(articleRef, orderBy("createdAt", "desc"), limit(4));
@@ -40,7 +44,7 @@ const Columns = ({ user, indext }) => {
         renderBullet: function (index, className) {
             return (
                 `<div class="${className} Seccion_imagen" >
-            <a href="#/${ArrayDescrip[indext].Url}/${Datas?.[index].id}" class="Mini_cards">
+            <a href="#/${filterArrayDescrip[indext].Url}/${Datas?.[index].id}" class="Mini_cards">
             <img src="${Datas?.[index].imageUrl} "loading="lazy"/>
             <section class="Informacion_news">
                 <h3>${Datas?.[index].title.slice(0, 40) + "..."}</h3>
@@ -70,21 +74,21 @@ const Columns = ({ user, indext }) => {
     return (
         <article className="container_column">
             <div className='Vinculo'>
-                <Link className='enlace-flash' to={`/${ArrayDescrip[indext].Url}`}>{ArrayDescrip[indext].dataTitle.toLowerCase()}</Link>
-                <i onClick={() => navegar(`${ArrayDescrip[indext].Url}`)} className='bx bxs-plus-circle' ></i>
+                <Link className='enlace-flash' to={`/${filterArrayDescrip[indext].Url}`}>{filterArrayDescrip[indext].dataTitle.toLowerCase()}</Link>
+                <i onClick={() => navegar(`${filterArrayDescrip[indext].Url}`)} className='bx bxs-plus-circle' ></i>
             </div>
             {Datas ?
                 <CarruselV2 pagination={pagination}>
                     {Datas.map((user, index) => (
                         <SwiperSlide key={user.id}>
                             <div className='Noticia-actual' key={user.id}>
-                                <LazyLoadImage onClick={() => nave(ArrayDescrip[indext].Url, user.id)} className='Photo-seccion'
+                                <LazyLoadImage onClick={() => nave(filterArrayDescrip[indext].Url, user.id)} className='Photo-seccion'
                                     src={user.imageUrl}
                                     effect="blur"
                                     placeholderSrc={user.imageUrl}
                                 />
                                 <div className='Title-seccion'>
-                                    <Link to={`/${ArrayDescrip[indext].Url}/${user.id}`}>{truncateText(user.title, 80)}</Link>
+                                    <Link to={`/${filterArrayDescrip[indext].Url}/${user.id}`}>{truncateText(user.title, 80)}</Link>
                                     <p>
                                         {user.description.slice(0, 250) + "..."}
                                     </p>
