@@ -58,12 +58,12 @@ a {
   all: unset;
 }
 
-.a-important{
+.a-important {
   color: #8b0000 !important;
   cursor: pointer !important;
 }
 
-.a-important:hover{
+.a-important:hover {
   color: #ff0000 !important;
   text-decoration: underline !important;
 }
@@ -384,7 +384,7 @@ a {
   margin-top: 20px;
 }
 
-.Button-pagi > .bx {
+.Button-pagi>.bx {
   font-size: 50px;
 }
 
@@ -435,11 +435,13 @@ a {
   justify-content: center;
   max-width: 1100px;
 }
+
 @media (width<=1100px) {
-  .main_page{
+  .main_page {
     width: 95%;
   }
 }
+
 .Video {
   width: 100vw;
   height: 500px;
@@ -478,6 +480,7 @@ a {
   color: var(--color_1);
   text-shadow: 4px 4px 16px var(--color_3);
 }
+
 .Video h3 {
   position: absolute;
   z-index: 10;
@@ -488,6 +491,7 @@ a {
   color: var(--color_1);
   text-shadow: 4px 4px 16px var(--color_3);
 }
+
 .Video h4 {
   position: absolute;
   z-index: 10;
@@ -499,7 +503,7 @@ a {
   text-shadow: 4px 4px 16px var(--color_3);
 }
 
-@media (650px <= width < 850px) {
+@media (650px <=width < 850px) {
   .Video {
     height: 340px;
   }
@@ -510,6 +514,7 @@ a {
     height: 300px;
     width: 100%;
   }
+
   .Video h1 {
     transform: scale(0.65);
   }
@@ -517,21 +522,25 @@ a {
   .Video h2 {
     transform: scale(0.65);
   }
+
   .Video h3 {
     transform: scale(0.65);
   }
+
   .Video h4 {
     transform: scale(0.65);
   }
+
   @media (width<=450px) {
     .Video {
       width: 100vw;
     }
+
     .Video h1 {
       transform: scale(0.5);
       letter-spacing: 25px;
     }
-    
+
   }
 }
 
@@ -558,7 +567,7 @@ a {
   object-fit: cover;
 }
 
-.To-the-blog h2 {
+.To-the-blog-h2-1 {
   width: 150px;
   height: 100px;
   padding: 5px;
@@ -566,6 +575,24 @@ a {
   z-index: 1000;
   top: calc(50% - 50px);
   left: calc(50% - 75px);
+  color: var(--color_7);
+  font-family: nyt-cheltenham, georgia, "times new roman", times, serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.85rem;
+  line-height: 2rem;
+  text-align: center;
+  z-index: 1;
+}
+
+.To-the-blog-h2 {
+  width: 100px;
+  height: 32px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1000;
+  top: calc(50% - 16px);
+  left: calc(50% - 50px);
   color: var(--color_7);
   font-family: nyt-cheltenham, georgia, "times new roman", times, serif;
   font-weight: bold;
@@ -659,7 +686,7 @@ a {
   background-color: #f6f6f6;
 }
 
-@media (width <= 450px) {
+@media (width <=450px) {
   .container-one-information {
     width: 100%;
     height: 100%;
@@ -674,6 +701,7 @@ a {
     left: 10px;
     overflow: hidden;
   }
+
   .container-one-information h2 {
     font-family: nyt-cheltenham, georgia, "times new roman", times, serif;
     font-weight: 700;

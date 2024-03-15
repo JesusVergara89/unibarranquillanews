@@ -40,6 +40,9 @@ const Header = ({reloadPage,setReloadPage}) => {
             name: "AMBIENTE"
         },
         {
+            name: "CIENCIAS"
+        },
+        {
             name: "LOGIN"
         },
         {

@@ -17,9 +17,6 @@
         padding: 10px;
         margin: 10px;
         box-shadow: 0 4px 8px var(--color_4);
-        position: absolute;
-        top: 100px;
-        left: 5%;
     }
 }
 
@@ -87,9 +84,6 @@
         padding: 10px;
         margin: 10px;
         box-shadow: 0 4px 8px var(--color_4);
-        position: absolute;
-        top: 100px;
-        left: 3%;
     }
 }
 
@@ -102,9 +96,6 @@
         padding: 10px;
         margin: 10px;
         box-shadow: 0 4px 8px var(--color_4);
-        position: absolute;
-        top: 100px;
-        left: 4%;
     }
 }
 

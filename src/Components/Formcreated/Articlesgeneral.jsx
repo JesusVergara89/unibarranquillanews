@@ -4,11 +4,17 @@ import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { Link } from 'react-router-dom'
 import Carrusel from '../Carrusel';
 import { SwiperSlide } from 'swiper/react';
+import { db12 } from '../../firebaseconfig';
 
-const Articlesgeneral = ({ IsLogged, database }) => {
+const Articlesgeneral = ({ IsLogged, database, arrayCollections }) => {
+    
     const [articles, setArticles] = useState([{}])
     useEffect(() => {
-        const articleRef = collection(database, "Articles")
+        let collectionName = "Articles";
+        if (database === db12) {
+            collectionName = arrayCollections[0];
+        }
+        const articleRef = collection(database, collectionName)
         const q = query(articleRef, orderBy("createdAt", "desc"))
         onSnapshot(q, (snapshot) => {
             const articles = snapshot.docs.map((doc) => ({

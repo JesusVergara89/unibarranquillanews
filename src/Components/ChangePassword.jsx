@@ -2,11 +2,11 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import '../Styles/ChangePassword.css';
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Acesscontext } from './Context/Acesscontext';
 
-const ChangePassword = ({ functionOpen }) => {
-    const{access}=useContext(Acesscontext)
+const ChangePassword = ({ name, lastName, functionOpen }) => {
+    const { access } = useContext(Acesscontext)
     const navigate = useNavigate()
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const [newpass, setNewpass] = useState();
@@ -15,15 +15,30 @@ const ChangePassword = ({ functionOpen }) => {
         Password: ''
     };
 
+    const findUser =(name, lastName, access)=> {
+        const firstName = name.toLowerCase();
+        const surname = lastName.toLowerCase();
+
+        for (const user of access) {
+            if (user.Name.toLowerCase() === firstName && user.LastName.toLowerCase() === surname) {
+                return user;
+            }
+        }
+
+        return null;
+    }
+
+    let user = findUser(name, lastName, access)
+    //console.log(user)
     const onSubmit = data => {
-        const passwordRegex = /^[a-zA-Z].{5,}$/; 
+        const passwordRegex = /^[a-zA-Z].{5,}$/;
         if (data._Password === data.Password && passwordRegex.test(data.Password)) {
             let obj = {
-                Id: access.Id,
-                Email: access.Email,
-                Password: data.Password,
-                Name: access.Name,
-                LastName: access.LastName
+                Id: user.Id,
+                Email: user.Email,
+                Password: data._Password,
+                Name: user.Name,
+                LastName: user.LastName
             };
             setNewpass(obj);
             reset(objReset);
@@ -46,8 +61,6 @@ const ChangePassword = ({ functionOpen }) => {
         ToHome()
     };
 
-    console.log('Wn4$2lf!Jz0g@FwRmTbP9cOYiG8sHaQ3Kd7IhNt5oVjL6pCuXx1yEeUrSvMkD!BTm9I#cVfUx0zKjA4$Jw5dRnQhD!1rXyM6q2gPpN7oHkFtEeG3aYs8BcOvSbZiW7uI!G5Yx9A#Uz1w@PbDdRtF2n4VjJh6i0eL7mOoXcEgQr8pKfTqSsHvNk3CFwBcK3xMvQlJyTtLp5Xo9H!b8dGj2E$1NkPfCnD4iSgAeZrU#',newpass )
-
     const ToHome = () => {
         // Navegar a otra página
         navigate('/');
@@ -66,7 +79,7 @@ const ChangePassword = ({ functionOpen }) => {
                 {!passwordMatch && <p>Las contraseñas no coinciden</p>}
                 <button type="submit" disabled={!passwordMatch || errors._Password || errors.Password}>Enter</button>
             </form>
-            <button onClick={() => updateFunction(usedata.Id)}>Come back</button>
+            <button onClick={() => updateFunction(user.Id)}>Come back</button>
         </article>
     );
 };

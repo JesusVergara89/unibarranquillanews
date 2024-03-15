@@ -3,8 +3,9 @@ import '../../Styles/ArticleForm.css';
 import { Timestamp, addDoc, collection } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { toast } from 'react-toastify';
+import { db12 } from '../../firebaseconfig';
 
-const Formgeneral = ({name, lastName,database,storagebase}) => {
+const Formgeneral = ({ name, lastName, database, storagebase, arrayCollections }) => {
 
     const [cleanForm, setCleanForm] = useState(false)
     const [progress, setProgress] = useState(0);
@@ -60,7 +61,11 @@ const Formgeneral = ({name, lastName,database,storagebase}) => {
                 // Obtener la URL de descarga de la imagen
                 getDownloadURL(uploadImage.snapshot.ref).then((url) => {
                     // Agregar el artículo a la base de datos
-                    const articleRef = collection(database, 'Articles');
+                    let collectionName = "Articles";
+                    if (database === db12) {
+                        collectionName = arrayCollections[0];
+                    }
+                    const articleRef = collection(database, collectionName);
                     addDoc(articleRef, {
                         title: formData.title,
                         description: formData.description,
@@ -82,7 +87,6 @@ const Formgeneral = ({name, lastName,database,storagebase}) => {
         );
     };
 
-    console.log(formData)
     return (
         <div className="form-articles">
             <h2 className="form-article-create">CREATE ARTICLE</h2>

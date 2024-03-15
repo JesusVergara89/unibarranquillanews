@@ -49,7 +49,7 @@ const CompanyCollaboratorAccess = ({ IsLogged, setIsLogged }) => {
             </div>
 
             {getin ?
-              <ChangePassword functionOpen={functionOpen} />
+              <ChangePassword name={name} lastName={lastName} functionOpen={functionOpen} />
               :
               <div className="main_collaborators-articles">
                 <button className='btn-change-pass' onClick={functionOpen}>Cambiar password</button>

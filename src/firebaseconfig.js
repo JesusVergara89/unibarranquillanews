@@ -112,6 +112,15 @@ const firebaseConfig12 = {
     appId: "1:342410199017:web:f00e334e27309e1fbf5578"
   };
 
+  const firebaseConfig13 = { 
+    apiKey: "AIzaSyBGsMYpmyRikdbq8uippz5LiqjeHIOAR-M", 
+    authDomain: "sciences-c92c4.firebaseapp.com", 
+    projectId: "sciences-c92c4", 
+    storageBucket: "sciences-c92c4.appspot.com", 
+    messagingSenderId: "490782936753", 
+    appId: "1:490782936753:web:ab94407e7baf0f5d881c90" 
+  };
+
 
 const app = initializeApp(firebaseConfig)
 const app1 = initializeApp(firebaseConfig2, "app2");
@@ -195,3 +204,10 @@ const app11 = initializeApp(firebaseConfig12, "app12");
 export const storage11 = getStorage(app11)
 export const db11 = getFirestore(app11)
 export const auth11 = getAuth(app11)
+
+////////////////////////////////////////////
+
+const app12 = initializeApp(firebaseConfig13, "app13");
+export const storage12 = getStorage(app12)
+export const db12 = getFirestore(app12)
+export const auth12 = getAuth(app12)

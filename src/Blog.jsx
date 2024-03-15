@@ -6,7 +6,6 @@ import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
 import RoutesProtecteds from './Components/RoutesProtecteds'
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
-
 const Singlearticle = lazy(() => import('./Components/Singlearticle'))
 const Seccion = lazy(() => import('./Components/Seccion'))
 const Workus = lazy(() => import('./Components/Workus'))
@@ -19,12 +18,14 @@ import Networks from './Components/Networks'
 import Socialmedia from './Components/Socialmedia'
 import news from './Images/news.jpg'
 import blog from './Images/blogmain.jpg'
+import math from './Images/math.svg'
 import Columns from './Components/Columns';
 import Pages_seccion_skeleto from './Components/Loading-skeleton/Pages_seccion_skeleto'
 import Page_skeleton from './Components/Loading-skeleton/Page_skeleton'
 import Loading from './Components/Loading'
 import useRouter from './Hooks/useRouter'
 import { db } from './firebaseconfig'
+import Ciencias from './Components/Ciencias'
 
 function Blog() {
 
@@ -38,7 +39,6 @@ function Blog() {
     data != db
   ))
 
-  console.log(filterarrayOfDataBase)
 
   const navigateBlog = useNavigate()
   const Home = () => {
@@ -60,11 +60,21 @@ function Blog() {
         ))
         }
 
+        {/** THIS SECTIONS HACE THE SAME CLASS JUST BECAUSE USE THE SAME CLASS FOR SIZE*/}
+        <div className="To-the-blog"
+          onClick={() => navigateBlog(`/CIENCIAS`)}
+        >
+          <img src={math} alt="" />
+          <h2 className='To-the-blog-h2'
+            onClick={() => navigateBlog(`/CIENCIAS`)}
+          >CIENCIA</h2>
+        </div>
+        {/** THIS SECTIONS HACE THE SAME CLASS JUST BECAUSE USE THE SAME CLASS FOR SIZE*/}
         <div className="To-the-blog"
           onClick={() => navigateBlog(`/READBLOG`)}
         >
           <img src={blog} alt="" />
-          <h2
+          <h2 className='To-the-blog-h2-1'
             onClick={() => navigateBlog(`/READBLOG`)}
           >Blog</h2>
         </div>
@@ -88,6 +98,13 @@ function Blog() {
         <Route path='/'
           element={
             <Home />
+          }
+        />
+        <Route path='/CIENCIAS'
+          element={
+            <Suspense fallback={<Loading />}>
+              <Ciencias />
+            </Suspense>
           }
         />
         <Route path='/:name'
