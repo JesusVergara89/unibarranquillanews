@@ -67,7 +67,7 @@ function Blog() {
           <img src={math} alt="" />
           <h2 className='To-the-blog-h2'
             onClick={() => navigateBlog(`/CIENCIAS`)}
-          >CIENCIA</h2>
+          >CIENCIAS</h2>
         </div>
         {/** THIS SECTIONS HACE THE SAME CLASS JUST BECAUSE USE THE SAME CLASS FOR SIZE*/}
         <div className="To-the-blog"

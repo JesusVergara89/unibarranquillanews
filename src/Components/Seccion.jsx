@@ -8,12 +8,13 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import NotFound from './NotFound';
 import Botonera from './Botonera';
 import useRouter from '../Hooks/useRouter';
+import { db12 } from '../firebaseconfig';
 
 const Seccion = () => {
 
     const { name } = useParams()
 
-    const {arrayOfDataBase,ArrayDescrip} = useRouter()
+    const { arrayOfDataBase, ArrayDescrip } = useRouter()
 
     const functionReturn = () => {
         let dato
@@ -24,9 +25,9 @@ const Seccion = () => {
         })
         return dato
     }
-  
+
     const Descripcion = ArrayDescrip.filter((index) => index.Url === name)
-    
+
     const [articles, setArticles] = useState()
     const [Lasdoc, setLasdoc] = useState()
     const [Firstdoc, setFirstdoc] = useState()
@@ -35,10 +36,15 @@ const Seccion = () => {
     const [Orden, setOrden] = useState("desc")
     const [Reverse, setReverse] = useState(false)
     const [Page, setPage] = useState(1)
+    
     useEffect(() => {
         setArticles(undefined)
         let validar = functionReturn()
         if (validar) {
+            let collectionName = "Articles";
+            if (database === db12) {
+                collectionName = arrayCollections[0];
+            }
             const articleRef = collection(validar, "Articles")
             let q = query(articleRef, orderBy("createdAt", `${Orden}`), limit(10), startAfter(Start))
             getDocs(q)
@@ -77,7 +83,7 @@ const Seccion = () => {
     }, [name])
     useEffect(() => {
         window.scrollTo(0, 0)
-      }, [Start])
+    }, [Start])
     return (
         <>
             {articles === 'failed' ? <NotFound /> :
@@ -102,7 +108,7 @@ const Seccion = () => {
                         : <Skeleton width={'40%'} height={50} style={{ marginLeft: '30%' }} />
                     }
                     <div className="wrapp-section">
-                        {articles?
+                        {articles ?
                             articles.map((article, i) => (
                                 <Cardnewyorktimes key={i} database={name} article={article} />
                             ))
