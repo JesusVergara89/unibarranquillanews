@@ -15,7 +15,7 @@ const Compartir = ({ link }) => {
 
     useEffect(() => {
         if (link == "Math" || link == "Physics") {
-            setShare(link)
+            setShare(`CIENCIAS/${link}`)
         } else {
             setShare(name)
         }
