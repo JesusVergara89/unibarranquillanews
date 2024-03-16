@@ -11,6 +11,7 @@ import Gilberto from '../../Images/Gilberto.jpg'
 import Alejandra from '../../Images/Aleja.jpg'
 import josemanuel from '../../Images/josemanuel.jpg'
 import Compartir from '../Compartir/Compartir'
+import NotFound from '../NotFound'
 
 const Singlearticlescience = () => {
 
@@ -108,7 +109,7 @@ const Singlearticlescience = () => {
                             <div className='main-compartir'>
                                 <a className='Fuente' href={article.link} target="_blank"> Ver mas</a>
                             </div>
-                            <Compartir />
+                            <Compartir link={collection} />
                         </div>
                     </article >
                     : <Page_skeleton />

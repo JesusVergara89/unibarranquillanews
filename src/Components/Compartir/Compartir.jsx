@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FacebookShareButton, LinkedinShareButton, TelegramShareButton, WhatsappShareButton, TwitterShareButton } from "react-share";
 import { useParams } from 'react-router-dom'
 import Carrusel from '../Carrusel'
@@ -7,10 +7,22 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Bounce, toast } from 'react-toastify';
 import './compartir.css'
 
-const Compartir = ({ Link }) => {
+const Compartir = ({ link }) => {
+
     let { name, id } = useParams()
+
+    const [share, setShare] = useState("")
+
+    useEffect(() => {
+        if (link == "Math" || link == "Physics") {
+            setShare(link)
+        } else {
+            setShare(name)
+        }
+    }, [])
+
     const [Menucom, setMenucom] = useState(false)
-    let currentpageUrl = `https://unibarranquilla-newspaper.netlify.app/#/${name}/${id}`;
+    let currentpageUrl = `https://unibarranquilla-newspaper.netlify.app/#/${share}/${id}`;
     const notify = () => {
         setMenucom(false)
         toast.success("Link copiado con éxito", {

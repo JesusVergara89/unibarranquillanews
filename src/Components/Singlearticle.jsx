@@ -128,7 +128,7 @@ const Singlearticle = () => {
                         <div className='main-compartir'>
                             <a className='Fuente' href={article.link} target="_blank"> Ver mas</a>
                         </div>
-                        <Compartir />
+                        <Compartir link={article.link} />
                     </div>
                 </article >
                 : <Page_skeleton />

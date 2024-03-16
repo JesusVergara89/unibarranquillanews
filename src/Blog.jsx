@@ -109,7 +109,7 @@ function Blog() {
             </Suspense>
           }
         />
-        <Route path='/:collection/:id'
+        <Route path='/CIENCIAS/:collection/:id'
           element={
             <Suspense fallback={<Page_skeleton />}>
               <Singlearticlescience/>

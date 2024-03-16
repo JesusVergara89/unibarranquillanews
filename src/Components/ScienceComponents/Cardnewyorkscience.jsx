@@ -38,7 +38,7 @@ const Cardnewyorkscience = ({idcollection,article}) => {
   return (
     <>
         {article.description ?
-            <Link to={`/${idcollection}/${article.id}`}>
+            <Link to={`/CIENCIAS/${idcollection}/${article.id}`}>
                 <article className="card-newyork">
                     <div className="newyork-title">
                         {article.title.slice(0, 47) + " ..."}
