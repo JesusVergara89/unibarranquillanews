@@ -553,6 +553,7 @@ a {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 15px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  border: 0.01rem solid var(--color_6);
 }
 
 @media (hover: hover) {
