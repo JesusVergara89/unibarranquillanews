@@ -53,7 +53,7 @@ const ChangePassword = ({ name, lastName, functionOpen }) => {
                 "Content-Type": "application/json",
             }
         });
-        const URL = `https://sheet.best/api/sheets/d720e03d-9e40-4c12-9e9a-5e80210e3d7b/Id/*${id}*`;
+        const URL = `https://sheet.best/api/sheets/82fb0ae8-dc4d-481c-ae5b-88a280043aed/Id/*${id}*`;
         axios.put(URL, newpass, getConfig())
             .then(res => console.log('we did it'))
             .catch(err => console.log(err));
