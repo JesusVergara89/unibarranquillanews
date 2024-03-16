@@ -26,6 +26,8 @@ import Loading from './Components/Loading'
 import useRouter from './Hooks/useRouter'
 import { db } from './firebaseconfig'
 import Ciencias from './Components/Ciencias'
+import SectionPage from './Components/ScienceComponents/SectionPage'
+import Singlearticlescience from './Components/ScienceComponents/Singlearticlescience'
 
 function Blog() {
 
@@ -104,6 +106,13 @@ function Blog() {
           element={
             <Suspense fallback={<Loading />}>
               <Ciencias />
+            </Suspense>
+          }
+        />
+        <Route path='/:collection/:id'
+          element={
+            <Suspense fallback={<Page_skeleton />}>
+              <Singlearticlescience/>
             </Suspense>
           }
         />

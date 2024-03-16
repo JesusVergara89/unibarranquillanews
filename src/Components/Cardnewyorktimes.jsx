@@ -11,7 +11,6 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Cardnewyorktimes = ({ article, database }) => {
 
-
     const TimeReading = (text, wordsPerMinutes = 200) => {
         const words = text.trim().split(/\s+/).length;
         const timeToReadPerMinutes = words / wordsPerMinutes;

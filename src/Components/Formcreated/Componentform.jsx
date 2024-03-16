@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import Articlesgeneral from './Articlesgeneral'
 import SinginAuth from '../Auth/SinginAuth'
 import SectionScience from '../ScienceComponents/SectionScience'
+import useCollections from '../../Hooks/useCollections'
 
 
 const Componentform = (
@@ -26,14 +27,14 @@ const Componentform = (
     }
 ) => {
 
+    const arrayCollections = useCollections()
+
     const name = useSelector(state => state.emailSlice)
     const lastName = useSelector(state => state.passwordSlice)
 
     const closeSesion = () => {
         setIsLogged(false)
     }
-
-    const arrayCollections = ["Math"]
 
     const [enterregister, setEnterregister] = useState(false)
     const enterToFormPost = () => setEnterregister(true)

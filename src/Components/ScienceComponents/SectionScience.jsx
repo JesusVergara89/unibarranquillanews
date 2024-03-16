@@ -1,52 +1,64 @@
-import React, { useState } from 'react'
-import Formgeneral from '../Formcreated/Formgeneral'
-import Articlesgeneral from '../Formcreated/Articlesgeneral'
-import './SectionScience.css'
+import React, { useState } from 'react';
+import Formgeneral from '../Formcreated/Formgeneral';
+import Articlesgeneral from '../Formcreated/Articlesgeneral';
+import './SectionScience.css';
+
 
 const SectionScience = ({ IsLogged, name, lastName, database, storagebase, arrayCollections }) => {
+    const [subjects, setSubjects] = useState([{ name: "Math", active: true }, { name: "Physics", active: true }]);
+    const [selectedSubject, setSelectedSubject] = useState(null);
 
-    const [math, setMath] = useState(true);
-
-    const actualizarEstado = (estado, valor) => {
-        setMath(estado === "math" ? valor : true);
+    const actualizarEstado = (index) => {
+        setSubjects(prevState => {
+            const updatedSubjects = prevState.map((subject, i) => {
+                if (i === index) {
+                    setSelectedSubject(subject.name);
+                    return { ...subject, active: true };
+                } else {
+                    return { ...subject, active: false };
+                }
+            });
+            return updatedSubjects;
+        });
     }
 
     return (
         <div className="sections-sciences">
+            {selectedSubject ? '' : <h2 className='which-one'>Elige en cuál sección quieres escribir el artículo</h2>}
 
-            {math && <h2 className='which-one'>Elige en cual sección quieres escribir el articulo</h2>}
-
-            {math &&
-                <div className="extent-btn">
-                    <button onClick={() => actualizarEstado("math", false)}>Math</button>
+            {selectedSubject ?
+                ''
+                :
+                <div className="sections-science-btns">
+                    {subjects.map((subject, index) => (
+                        <div className="extent-btn-science" key={index}>
+                            {subject.active &&
+                                <button onClick={() => actualizarEstado(index)}>{subject.name}</button>
+                            }
+                        </div>
+                    ))}
                 </div>
             }
 
-            {math ?
-                ''
-                :
+            {selectedSubject && (
                 <div className="sections-sciences-make">
-
                     <Formgeneral
-                        math={math}
                         name={name}
                         lastName={lastName}
                         database={database}
                         storagebase={storagebase}
-                        arrayCollections={arrayCollections}
+                        arrayCollections={[selectedSubject]}
                     />
 
                     <Articlesgeneral
                         IsLogged={IsLogged}
                         database={database}
-                        arrayCollections={arrayCollections}
+                        arrayCollections={[selectedSubject]}
                     />
-
                 </div>
-            }
-
+            )}
         </div>
     )
 }
 
-export default SectionScience
+export default SectionScience;

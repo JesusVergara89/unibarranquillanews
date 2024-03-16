@@ -8,11 +8,12 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import NotFound from './NotFound';
 import Botonera from './Botonera';
 import useRouter from '../Hooks/useRouter';
-import { db12 } from '../firebaseconfig';
 
 const Seccion = () => {
 
     const { name } = useParams()
+
+    console.log(name)
 
     const { arrayOfDataBase, ArrayDescrip } = useRouter()
 
@@ -41,10 +42,6 @@ const Seccion = () => {
         setArticles(undefined)
         let validar = functionReturn()
         if (validar) {
-            let collectionName = "Articles";
-            if (database === db12) {
-                collectionName = arrayCollections[0];
-            }
             const articleRef = collection(validar, "Articles")
             let q = query(articleRef, orderBy("createdAt", `${Orden}`), limit(10), startAfter(Start))
             getDocs(q)
