@@ -47,7 +47,7 @@
   font-family: nyt-cheltenham, georgia, "times new roman", times, serif;
   font-weight: bold;
   font-style: italic;
-  font-size: 21px;
+  font-size: 1.9rem;
   line-height: 1.5;
   text-align: left;
 }
@@ -121,6 +121,16 @@
   .img-autor{
     gap: 8px;
   }
+
+  .single-card h1 {
+    color: var(--color_7);
+    font-family: nyt-cheltenham, georgia, "times new roman", times, serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: left;
+  }
 }
 
 @media (width < 333px) {
@@ -129,5 +139,15 @@
   }
   .img-autor{
     gap: 20px;
+  }
+
+  .single-card h1 {
+    color: var(--color_7);
+    font-family: nyt-cheltenham, georgia, "times new roman", times, serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: left;
   }
 }
