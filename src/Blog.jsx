@@ -26,8 +26,8 @@ import Loading from './Components/Loading'
 import useRouter from './Hooks/useRouter'
 import { db } from './firebaseconfig'
 import Ciencias from './Components/Ciencias'
-import SectionPage from './Components/ScienceComponents/SectionPage'
 import Singlearticlescience from './Components/ScienceComponents/Singlearticlescience'
+import SectionPage from './Components/ScienceComponents/SectionPage'
 
 function Blog() {
 
@@ -41,8 +41,9 @@ function Blog() {
     data != db
   ))
 
-
   const navigateBlog = useNavigate()
+  const navigateScience = useNavigate()
+
   const Home = () => {
     return (
       <article className='main_page'>
@@ -64,11 +65,11 @@ function Blog() {
 
         {/** THIS SECTIONS HACE THE SAME CLASS JUST BECAUSE USE THE SAME CLASS FOR SIZE*/}
         <div className="To-the-blog"
-          onClick={() => navigateBlog(`/CIENCIAS`)}
+          onClick={() => navigateScience(`/CIENCIAS`)}
         >
           <img src={math} alt="" />
           <h2 className='To-the-blog-h2'
-            onClick={() => navigateBlog(`/CIENCIAS`)}
+            onClick={() => navigateScience(`/CIENCIAS`)}
           >CIENCIAS</h2>
         </div>
         {/** THIS SECTIONS HACE THE SAME CLASS JUST BECAUSE USE THE SAME CLASS FOR SIZE*/}
@@ -109,10 +110,17 @@ function Blog() {
             </Suspense>
           }
         />
+         <Route path='/CIENCIAS/:sectionpage'
+          element={
+            <Suspense fallback={<Pages_seccion_skeleto />}>
+              <SectionPage />
+            </Suspense>
+          }
+        />
         <Route path='/CIENCIAS/:collection/:id'
           element={
             <Suspense fallback={<Page_skeleton />}>
-              <Singlearticlescience/>
+              <Singlearticlescience />
             </Suspense>
           }
         />

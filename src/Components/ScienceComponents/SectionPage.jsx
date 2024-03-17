@@ -6,8 +6,13 @@ import Skeleton from 'react-loading-skeleton'
 import Card_skeleton from '../Loading-skeleton/Card_skeleton'
 import Botonera from '../Botonera'
 import Cardnewyorkscience from './Cardnewyorkscience'
+import { useParams } from 'react-router-dom'
 
 const SectionPage = ({arrayCollections}) => {
+
+    const {sectionpage} = useParams()
+
+    console.log(sectionpage)
 
     const [articles, setArticles] = useState([])
     const [Lasdoc, setLasdoc] = useState()
@@ -19,7 +24,7 @@ const SectionPage = ({arrayCollections}) => {
     const [Page, setPage] = useState(1)
 
     useEffect(() => {
-        const articleRef = collection(db12, arrayCollections[0])
+        const articleRef = collection(db12, sectionpage)
         let q = query(articleRef, orderBy("createdAt", `${Orden}`), limit(10), startAfter(Start))
         getDocs(q)
             .then((resp) => {
@@ -40,7 +45,7 @@ const SectionPage = ({arrayCollections}) => {
     }, [name, Start])
     useEffect(() => {
         setTotalpages(undefined)
-        const articleRef = collection(db12, arrayCollections[0])
+        const articleRef = collection(db12, sectionpage)
         getCountFromServer(articleRef)
             .then((resp) => {
                 setTotalpages(Math.ceil((resp.data().count) / 10))
@@ -54,8 +59,8 @@ const SectionPage = ({arrayCollections}) => {
             {articles === 'failed' ? <NotFound /> :
                 <article className="engineering_section">
                     <h2 className="title-actualidad">
-                        {arrayCollections[0] ?
-                            arrayCollections[0].toLowerCase()
+                        {sectionpage ?
+                            sectionpage.toLowerCase()
                             : ''
                         }
                     </h2>
@@ -75,7 +80,7 @@ const SectionPage = ({arrayCollections}) => {
                     <div className="wrapp-section">
                         {articles ?
                             articles.map((article, i) => (
-                                <Cardnewyorkscience key={i} idcollection={arrayCollections[0]} article={article} />
+                                <Cardnewyorkscience key={i} idcollection={sectionpage} article={article} />
                             ))
                             : <Card_skeleton />
                         }
