@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Carrusel from '../Carrusel';
 import { SwiperSlide } from 'swiper/react';
 import { db12 } from '../../firebaseconfig';
+import HTMLReactParser from 'html-react-parser';
 
 const Articlesgeneral = ({ IsLogged, database, arrayCollections }) => {
     
@@ -52,7 +53,7 @@ const Articlesgeneral = ({ IsLogged, database, arrayCollections }) => {
                                             <h2 className="card-title">{article.title?.slice(0, 45) + " ..."}</h2>
                                             <div className="card-description">
                                                 {/* Split body content by newline and display */}
-                                                <p>{article.description?.slice(0, 110) + " ..."}</p>
+                                                <p>{ HTMLReactParser(article.description?.slice(0, 110) + " ...")}</p>
                                             </div>
                                             <div className="card-content-information">
                                                 <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h2>

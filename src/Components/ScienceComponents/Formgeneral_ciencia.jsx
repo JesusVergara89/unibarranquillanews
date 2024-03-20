@@ -4,11 +4,13 @@ import { Timestamp, addDoc, collection } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { toast } from 'react-toastify';
 import { db12 } from '../../firebaseconfig';
+import Editor from '../Editor';
 
-const Formgeneral = ({ name, lastName, database, storagebase, arrayCollections }) => {
+const Formgeneral_ciencia = ({ name, lastName, database, storagebase, arrayCollections }) => {
 
     const [cleanForm, setCleanForm] = useState(false)
     const [progress, setProgress] = useState(0);
+    const [Description, setDescription] = useState()
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -20,18 +22,26 @@ const Formgeneral = ({ name, lastName, database, storagebase, arrayCollections }
 
     useEffect(() => {
         console.log('form cleaned')
+        reset()
     }, [cleanForm])
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-
     const handleImageChange = (e) => {
         setFormData({ ...formData, image: e.target.files[0] });
     };
-
+    const reset = () => {
+        setFormData({
+            title: '',
+            description: '',
+            link: '',
+            autor: '',
+            image: '',
+        });
+    }
     const handlePublish = () => {
-        if (!formData.title || !formData.description || !formData.image) {
+        if (!formData.title || !Description || !formData.image) {
             alert('please fill all the fields');
             return;
         }
@@ -49,15 +59,6 @@ const Formgeneral = ({ name, lastName, database, storagebase, arrayCollections }
                 console.log(error);
             },
             () => {
-                // Limpiar el formulario después de que la imagen se haya cargado correctamente
-                setFormData({
-                    title: '',
-                    description: '',
-                    link: '',
-                    autor: '',
-                    image: '',
-                });
-
                 // Obtener la URL de descarga de la imagen
                 getDownloadURL(uploadImage.snapshot.ref).then((url) => {
                     // Agregar el artículo a la base de datos
@@ -68,7 +69,7 @@ const Formgeneral = ({ name, lastName, database, storagebase, arrayCollections }
                     const articleRef = collection(database, collectionName);
                     addDoc(articleRef, {
                         title: formData.title,
-                        description: formData.description,
+                        description: Description,
                         link: formData.link,
                         autor: `${name} ${lastName}`,
                         imageUrl: url,
@@ -86,15 +87,12 @@ const Formgeneral = ({ name, lastName, database, storagebase, arrayCollections }
             }
         );
     };
-
     return (
         <div className="form-articles">
             <h2 className="form-article-create">CREATE ARTICLE</h2>
             {/* title */}
             <input placeholder="title" type="text" name="title" className="form-article-input" value={formData.title} onChange={(e) => handleChange(e)} />
-            {/* Description */}
-            <textarea placeholder="description" name="description" className="form-article-textarea" value={formData.description} onChange={(e) => handleChange(e)} />
-
+            <Editor setDescription={setDescription} />
             {/*External Link */}
             <input placeholder="link" name="link" className="form-article-link" value={formData.link} onChange={(e) => handleChange(e)} />
             {/*Image */}
@@ -111,8 +109,9 @@ const Formgeneral = ({ name, lastName, database, storagebase, arrayCollections }
             <button className="form-article-tbn" onClick={handlePublish}>
                 Publish
             </button>
+            <button onClick={() => reset()}>Reset</button>
         </div>
     )
 }
 
-export default Formgeneral
+export default Formgeneral_ciencia

@@ -12,6 +12,7 @@ import Alejandra from '../../Images/Aleja.jpg'
 import josemanuel from '../../Images/josemanuel.jpg'
 import Compartir from '../Compartir/Compartir'
 import NotFound from '../NotFound'
+import HTMLReactParser from 'html-react-parser'
 
 const Singlearticlescience = () => {
 
@@ -101,9 +102,10 @@ const Singlearticlescience = () => {
                             </div>
 
                             <div className="single-description">
-                                {article.description && article.description.split('\n').map((line, index) => (
-                                    <p key={index} dangerouslySetInnerHTML={{ __html: formatDescription(line) }} />
-                                ))}
+                                {article.description ?
+                                    <p>
+                                        {HTMLReactParser(article.description)}
+                                    </p> : ''}
                                 <h4>{`${TimeReading(article.description)} min. read`}</h4>
                             </div>
                             <div className='main-compartir'>

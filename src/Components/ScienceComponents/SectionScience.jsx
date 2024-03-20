@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Formgeneral from '../Formcreated/Formgeneral';
 import Articlesgeneral from '../Formcreated/Articlesgeneral';
 import './SectionScience.css';
+import Formgeneral_ciencia from './Formgeneral_ciencia';
 
 
 const SectionScience = ({ IsLogged, name, lastName, database, storagebase, arrayCollections }) => {
@@ -42,7 +43,7 @@ const SectionScience = ({ IsLogged, name, lastName, database, storagebase, array
 
             {selectedSubject && (
                 <div className="sections-sciences-make">
-                    <Formgeneral
+                    <Formgeneral_ciencia
                         name={name}
                         lastName={lastName}
                         database={database}

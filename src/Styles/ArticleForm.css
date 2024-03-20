@@ -64,7 +64,9 @@
 /*Estilo para el editor de texto*/
 .ql-snow * {
   width: auto;
+  font-size: 16px;
 }
+
 .ql-editor a{
     color: var(--color_4) !important;
 }
@@ -90,6 +92,9 @@
   border-radius: 10px;
   overflow: hidden;
   text-align: center;
+}
+.katex *{
+  width: auto;
 }
 
 .form-article-progress-inside {

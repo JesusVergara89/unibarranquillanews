@@ -8,6 +8,7 @@ import josemanuel from '../Images/josemanuel.jpg'
 import { Link } from 'react-router-dom'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import HTMLReactParser from 'html-react-parser'
 
 const Cardnewyorktimes = ({ article, database }) => {
 
@@ -66,7 +67,7 @@ const Cardnewyorktimes = ({ article, database }) => {
 
                             <div className="newyork-description-autor">
                                 <p>
-                                    {article.description.slice(0, 120) + " ..."}
+                                    {HTMLReactParser(article.description.slice(0, 120) + " ...")}
                                 </p>
                             </div>
                         </div>

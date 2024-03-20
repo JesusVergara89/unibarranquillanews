@@ -28,6 +28,8 @@ import { db } from './firebaseconfig'
 import Ciencias from './Components/Ciencias'
 import Singlearticlescience from './Components/ScienceComponents/Singlearticlescience'
 import SectionPage from './Components/ScienceComponents/SectionPage'
+import katex from "katex";
+import "katex/dist/katex.css";
 
 function Blog() {
 
@@ -43,7 +45,7 @@ function Blog() {
 
   const navigateBlog = useNavigate()
   const navigateScience = useNavigate()
-
+  window.katex = katex;
   const Home = () => {
     return (
       <article className='main_page'>
@@ -85,7 +87,6 @@ function Blog() {
         <Networks />
 
         <Socialmedia />
-
       </article>
     )
   }
@@ -110,7 +111,7 @@ function Blog() {
             </Suspense>
           }
         />
-         <Route path='/CIENCIAS/:sectionpage'
+        <Route path='/CIENCIAS/:sectionpage'
           element={
             <Suspense fallback={<Pages_seccion_skeleto />}>
               <SectionPage />

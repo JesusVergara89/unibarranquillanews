@@ -17,7 +17,7 @@
   overflow-x: hidden;
 }
 
-.button-link{
+.button-link {
   width: auto;
   border: none;
   background-color: transparent;
@@ -30,7 +30,7 @@
   text-align: left;
 }
 
-.button-link:hover{
+.button-link:hover {
   color: var(--color_5);
 }
 
@@ -102,6 +102,16 @@
   position: relative;
   overflow: hidden;
 }
+.single-description a {
+  text-decoration: underline;
+  color: var(--color_4);
+  cursor: pointer;
+}
+.single-description blockquote {
+  border-left: 4px solid #ccc;
+  margin: 5px;
+  padding-left: 16px;
+}
 
 .single-description p {
   font-size: 1.1em;
@@ -118,7 +128,7 @@
   .single-card {
     width: 300px;
   }
-  .img-autor{
+  .img-autor {
     gap: 8px;
   }
 
@@ -137,7 +147,7 @@
   .single-card {
     width: 250px;
   }
-  .img-autor{
+  .img-autor {
     gap: 20px;
   }
 
