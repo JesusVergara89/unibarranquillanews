@@ -13,8 +13,6 @@ const Seccion = () => {
 
     const { name } = useParams()
 
-    console.log(name)
-
     const { arrayOfDataBase, ArrayDescrip } = useRouter()
 
     const functionReturn = () => {
