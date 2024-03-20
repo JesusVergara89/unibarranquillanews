@@ -4,6 +4,11 @@ import { Timestamp, addDoc, collection } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { toast } from 'react-toastify';
 import { db12 } from '../../firebaseconfig';
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css';
+import katex from "katex";
+import "katex/dist/katex.css";
+window.katex = katex;
 
 const Formgeneral = ({ name, lastName, database, storagebase, arrayCollections }) => {
 
@@ -86,14 +91,34 @@ const Formgeneral = ({ name, lastName, database, storagebase, arrayCollections }
             }
         );
     };
+    /* configuración del editor  */
+    const toolbarOptions = [
+        ['bold', 'italic', 'underline'],
+        ['blockquote'],
+        ['link', 'formula'],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'list': 'check' }]
+    ];
+    const modules = {
+        toolbar: toolbarOptions
+    }
 
     return (
         <div className="form-articles">
             <h2 className="form-article-create">CREATE ARTICLE</h2>
             {/* title */}
             <input placeholder="title" type="text" name="title" className="form-article-input" value={formData.title} onChange={(e) => handleChange(e)} />
-            {/* Description */}
+            {/* Description 
             <textarea placeholder="description" name="description" className="form-article-textarea" value={formData.description} onChange={(e) => handleChange(e)} />
+            */}
+
+            <ReactQuill
+                modules={modules}
+                theme="snow"
+                value={formData.description}
+                onChange={(e) => handleChange(e)}
+                placeholder="description"
+                className="form-article-textarea"
+            />
             {/*External Link */}
             <input placeholder="link" name="link" className="form-article-link" value={formData.link} onChange={(e) => handleChange(e)} />
             {/*Image */}
