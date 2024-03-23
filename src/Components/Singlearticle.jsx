@@ -100,12 +100,16 @@ const Singlearticle = () => {
         return words.join(" ");
     }
 
+    const validateTitleLength = (title) => {
+        return title.length <= 52;
+    }
+
     return (
         <>
             {article === 'failed' ? <NotFound /> : article ?
                 <article className="singles-article">
                     <div className="single-card">
-                        <h1>{article.title && capitTitle(article.title)}</h1>
+                    <h1 className={validateTitleLength(article.title) ? "tocenter" : 'toleft'}>{article.title && capitTitle(article.title)}</h1>
                         <img className='Photo' src={article.imageUrl} alt="" />
                         <div className="single-out">
                             <div className="img-autor">
