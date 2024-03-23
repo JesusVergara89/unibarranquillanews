@@ -10,6 +10,7 @@ import Brian from '../../Images/Brian.jpg'
 import Gilberto from '../../Images/Gilberto.jpg'
 import Alejandra from '../../Images/Aleja.jpg'
 import josemanuel from '../../Images/josemanuel.jpg'
+import omar from '../../Images/omar.jpg'
 import Compartir from '../Compartir/Compartir'
 import NotFound from '../NotFound'
 import HTMLReactParser from 'html-react-parser'
@@ -55,7 +56,8 @@ const Singlearticlescience = () => {
             'alejandra leon': 'x',
             'brian escorcia': 'y',
             'gilberto gonzales': 'z',
-            'jose diaz': 'p'
+            'jose diaz': 'p',
+            'omar garcia': 'q'
         };
         for (const keyword in keywords) {
             const regex = new RegExp(keyword.split(' ').join('\\s{1,4}'));
@@ -94,7 +96,8 @@ const Singlearticlescience = () => {
                                             getLetters(article.autor) === 'x' ? Alejandra :
                                                 getLetters(article.autor) === 'z' ? Gilberto :
                                                     getLetters(article.autor) === 'y' ? Brian :
-                                                        getLetters(article.autor) === 'p' ? josemanuel : null} alt="" />
+                                                        getLetters(article.autor) === 'p' ? josemanuel :
+                                                            getLetters(article.autor) === 'q' ? omar : null} alt="" />
                                         : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: '33%' }} />}
                                     <h2>{article.autor}</h2>
                                     <h3>{article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ')}</h3>

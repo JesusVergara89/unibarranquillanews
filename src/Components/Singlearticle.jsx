@@ -9,6 +9,7 @@ import Gilberto from '../Images/Gilberto.jpg'
 import Brian from '../Images/Brian.jpg'
 import Alejandra from '../Images/Aleja.jpg'
 import josemanuel from '../Images/josemanuel.jpg'
+import omar from '../Images/omar.jpg'
 import Compartir from './Compartir/Compartir'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -74,7 +75,8 @@ const Singlearticle = () => {
             'alejandra leon': 'x',
             'brian escorcia': 'y',
             'gilberto gonzales': 'z',
-            'jose diaz': 'p'
+            'jose diaz': 'p',
+            'omar garcia': 'q'
         };
         for (const keyword in keywords) {
             const regex = new RegExp(keyword.split(' ').join('\\s{1,4}'));
@@ -87,7 +89,7 @@ const Singlearticle = () => {
 
     const capitTitle = (title) => {
         let words = title.split(" ");
-        const wordsNoCapit = ["de", "al", "su", "nos","da", "un", "unos", "unas", "asi", "es", "del", "la", "el", "los", "lo", "las", "y", "a", "en", "como", "con"];
+        const wordsNoCapit = ["de", "al", "su", "nos", "da", "un", "unos", "unas", "asi", "es", "del", "la", "el", "los", "lo", "las", "y", "a", "en", "como", "con"];
         for (let i = 0; i < words.length; i++) {
             if (i === 0 || i === words.length - 1 || !wordsNoCapit.includes(words[i])) {
                 words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
@@ -112,7 +114,8 @@ const Singlearticle = () => {
                                         getLetters(article.autor) === 'x' ? Alejandra :
                                             getLetters(article.autor) === 'z' ? Gilberto :
                                                 getLetters(article.autor) === 'y' ? Brian :
-                                                    getLetters(article.autor) === 'p' ? josemanuel : null} alt="" />
+                                                    getLetters(article.autor) === 'p' ? josemanuel :
+                                                        getLetters(article.autor) === 'q' ? omar : null} alt="" />
                                     : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: '33%' }} />}
                                 <h2>{article.autor}</h2>
                                 <h3>{article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ')}</h3>

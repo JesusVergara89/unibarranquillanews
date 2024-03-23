@@ -5,6 +5,7 @@ import Brian from '../Images/Brian.jpg'
 import Gilberto from '../Images/Gilberto.jpg'
 import Alejandra from '../Images/Aleja.jpg'
 import josemanuel from '../Images/josemanuel.jpg'
+import omar from '../Images/omar.jpg'
 import { Link } from 'react-router-dom'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -26,7 +27,8 @@ const Cardnewyorktimes = ({ article, database }) => {
             'alejandra leon': 'x',
             'brian escorcia': 'y',
             'gilberto gonzales': 'z',
-            'jose diaz': 'p'
+            'jose diaz': 'p',
+            'omar garcia': 'q'
         };
         for (const keyword in keywords) {
             const regex = new RegExp(keyword.split(' ').join('\\s{1,4}'));
@@ -59,7 +61,8 @@ const Cardnewyorktimes = ({ article, database }) => {
                                         getLetters(article.autor) === 'x' ? Alejandra :
                                             getLetters(article.autor) === 'z' ? Gilberto :
                                                 getLetters(article.autor) === 'y' ? Brian :
-                                                    getLetters(article.autor) === 'p' ? josemanuel : null} alt="" />
+                                                    getLetters(article.autor) === 'p' ? josemanuel :
+                                                        getLetters(article.autor) === 'q' ? omar : null} alt="" />
                                     : ''}
                                 <h3>{article.autor}</h3>
                                 <h4>{`${TimeReading(article.description)} min. read`}</h4>
