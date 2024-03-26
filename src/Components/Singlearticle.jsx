@@ -88,7 +88,6 @@ const Singlearticle = () => {
     const capitTitle = (title) => {
         let words = title.split(" ");
         const wordsNoCapit = ["de", "al", "su", "nos", "da", "un", "unos", "unas", "asi", "es", "del", "la", "el", "los", "lo", "las", "y", "a", "en", "como", "con"];
-        const wordsNoCapit = ["de", "al", "su", "nos", "da", "un", "unos", "unas", "asi", "es", "del", "la", "el", "los", "lo", "las", "y", "a", "en", "como", "con"];
         for (let i = 0; i < words.length; i++) {
             if (i === 0 || i === words.length - 1 || !wordsNoCapit.includes(words[i])) {
                 words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
@@ -109,7 +108,7 @@ const Singlearticle = () => {
                 article === 'failed' ? <NotFound /> : article ?
                     <article className="singles-article">
                         <div className="single-card">
-                            <h1>{article.title && capitTitle(article.title)}</h1>
+                            <h1 className='tocenter'>{article.title && capitTitle(article.title)}</h1>
                             <img className='Photo' src={article.imageUrl} alt="" />
                             <div className="single-out">
                                 <div className="img-autor">
