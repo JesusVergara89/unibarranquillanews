@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import './SectionPage.css'
 import { collection, getCountFromServer, getDocs, limit, orderBy, query, startAfter } from 'firebase/firestore'
-import { db12 } from '../../firebaseconfig'
 import Skeleton from 'react-loading-skeleton'
 import Card_skeleton from '../Loading-skeleton/Card_skeleton'
 import Botonera from '../Botonera'
-import Cardnewyorkscience from './Cardnewyorkscience'
 import { useParams } from 'react-router-dom'
+import Cardnewyorktimes from '../Cardnewyorktimes'
 
-const SectionPage = ({arrayCollections}) => {
-
-    const {sectionpage} = useParams()
-
-    console.log(sectionpage)
+const SectionPage = ({ user, coleccion, database }) => {
+    const { name, id } = useParams()
 
     const [articles, setArticles] = useState([])
     const [Lasdoc, setLasdoc] = useState()
@@ -24,7 +20,9 @@ const SectionPage = ({arrayCollections}) => {
     const [Page, setPage] = useState(1)
 
     useEffect(() => {
-        const articleRef = collection(db12, sectionpage)
+        setArticles(undefined)
+        setTotalpages(undefined)
+        const articleRef = collection(database, coleccion)
         let q = query(articleRef, orderBy("createdAt", `${Orden}`), limit(10), startAfter(Start))
         getDocs(q)
             .then((resp) => {
@@ -42,15 +40,16 @@ const SectionPage = ({arrayCollections}) => {
                 setLasdoc(Result[resp.docs.length - 1])
                 setFirstdoc(Result[0])
             })
-    }, [name, Start])
+    }, [name, id, Start])
     useEffect(() => {
+        setArticles(undefined)
         setTotalpages(undefined)
-        const articleRef = collection(db12, sectionpage)
+        const articleRef = collection(database, coleccion)
         getCountFromServer(articleRef)
             .then((resp) => {
                 setTotalpages(Math.ceil((resp.data().count) / 10))
             })
-    }, [name])
+    }, [name, id])
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [Start])
@@ -59,10 +58,7 @@ const SectionPage = ({arrayCollections}) => {
             {articles === 'failed' ? <NotFound /> :
                 <article className="engineering_section">
                     <h2 className="title-actualidad">
-                        {sectionpage ?
-                            sectionpage.toLowerCase()
-                            : ''
-                        }
+                        {user?.dataTitle.toLowerCase()}
                     </h2>
                     {Totalpages ?
                         <Botonera
@@ -75,12 +71,12 @@ const SectionPage = ({arrayCollections}) => {
                             setPage={setPage}
                             Page={Page}
                         />
-                        : <Skeleton width={'40%'} height={50} style={{ marginLeft: '30%' }} />
+                        : <Skeleton width={'20%'} height={35} style={{ marginLeft: '40%' }} />
                     }
                     <div className="wrapp-section">
                         {articles ?
                             articles.map((article, i) => (
-                                <Cardnewyorkscience key={i} idcollection={sectionpage} article={article} />
+                                <Cardnewyorktimes key={i} database={name} article={article} active={true} name={id} />
                             ))
                             : <Card_skeleton />
                         }
@@ -96,7 +92,7 @@ const SectionPage = ({arrayCollections}) => {
                             setPage={setPage}
                             Page={Page}
                         />
-                        : <Skeleton width={'20%'} height={35} style={{ marginLeft: '35%' }} />
+                        : <Skeleton width={'20%'} height={35} style={{ marginLeft: '40%' }} />
                     }
                 </article>
             }

@@ -53,7 +53,7 @@ const Articlesgeneral = ({ IsLogged, database, arrayCollections }) => {
                                             <h2 className="card-title">{article.title?.slice(0, 45) + " ..."}</h2>
                                             <div className="card-description">
                                                 {/* Split body content by newline and display */}
-                                                <p>{ HTMLReactParser(article.description?.slice(0, 110) + " ...")}</p>
+                                                { HTMLReactParser(article.description?.slice(0, 110) + " ...")}
                                             </div>
                                             <div className="card-content-information">
                                                 <h2 className="card-date">{article.createdAt ? article.createdAt.toDate().toDateString() : ''}</h2>

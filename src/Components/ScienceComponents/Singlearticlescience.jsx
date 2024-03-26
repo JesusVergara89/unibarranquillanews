@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import '../../Styles/Singlearticle.css'
-import { db12 } from '../../firebaseconfig'
 import Skeleton from 'react-loading-skeleton'
 import Page_skeleton from '../Loading-skeleton/Page_skeleton'
 import { doc, getDoc } from 'firebase/firestore'
@@ -13,22 +12,36 @@ import josemanuel from '../../Images/josemanuel.jpg'
 import Compartir from '../Compartir/Compartir'
 import NotFound from '../NotFound'
 import HTMLReactParser from 'html-react-parser'
+import useRouter from '../../Hooks/useRouter'
 
 const Singlearticlescience = () => {
 
-    const { collection, id } = useParams()
+    const { name, id, idSub } = useParams()
 
     const [article, setArticle] = useState(null)
 
+    const { ArrayofRouter } = useRouter()
+
+    let validar = ArrayofRouter.find(data => data.Url === name)
+    let Coleccion
+    if (validar?.Subseccion) {
+        Coleccion = validar.Subseccion.find(data => data.Url === id)
+    }
+    console.log(validar)
     useEffect(() => {
-        const docRef = doc(db12, collection, id)
-        getDoc(docRef)
-            .then((resp) => {
-                resp.exists() ?
-                    setArticle({ ...resp.data(), id: resp.id })
-                    : setArticle('failed')
-            })
-    }, [name, id])
+        setArticle(undefined)
+        if (validar && Coleccion) {
+            const docRef = doc(validar.Database, id, idSub)
+            getDoc(docRef)
+                .then((resp) => {
+                    resp.exists() ?
+                        setArticle({ ...resp.data(), id: resp.id })
+                        : setArticle('failed')
+                })
+        } else {
+            setArticle('failed')
+        }
+    }, [name, id, idSub])
 
     const TimeReading = (text, wordsPerMinutes = 200) => {
         const words = text.trim().split(/\s+/).length;
@@ -103,15 +116,13 @@ const Singlearticlescience = () => {
 
                             <div className="single-description">
                                 {article.description ?
-                                    <p>
-                                        {HTMLReactParser(article.description)}
-                                    </p> : ''}
+                                    HTMLReactParser(formatDescription(article.description)) : ''}
                                 <h4>{`${TimeReading(article.description)} min. read`}</h4>
                             </div>
                             <div className='main-compartir'>
                                 <a className='Fuente' href={article.link} target="_blank"> Ver mas</a>
                             </div>
-                            <Compartir link={collection} />
+                            <Compartir link={`${name}/${id}/${idSub} `} />
                         </div>
                     </article >
                     : <Page_skeleton />

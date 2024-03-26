@@ -8,21 +8,8 @@ import { Bounce, toast } from 'react-toastify';
 import './compartir.css'
 
 const Compartir = ({ link }) => {
-
-    let { name, id } = useParams()
-
-    const [share, setShare] = useState("")
-
-    useEffect(() => {
-        if (link == "Math" || link == "Physics") {
-            setShare(`CIENCIAS/${link}`)
-        } else {
-            setShare(name)
-        }
-    }, [])
-
     const [Menucom, setMenucom] = useState(false)
-    let currentpageUrl = `https://unibarranquilla-newspaper.netlify.app/#/${share}/${id}`;
+    let currentpageUrl = `https://unibarranquilla-newspaper.netlify.app/#/${link}`;
     const notify = () => {
         setMenucom(false)
         toast.success("Link copiado con éxito", {

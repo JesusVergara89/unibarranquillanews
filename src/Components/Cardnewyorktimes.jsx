@@ -10,7 +10,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import HTMLReactParser from 'html-react-parser'
 
-const Cardnewyorktimes = ({ article, database }) => {
+const Cardnewyorktimes = ({ article, database, active = false, name }) => {
 
     const TimeReading = (text, wordsPerMinutes = 200) => {
         const words = text.trim().split(/\s+/).length;
@@ -40,7 +40,7 @@ const Cardnewyorktimes = ({ article, database }) => {
     return (
         <>
             {article.description ?
-                <Link to={`/${database}/${article.id}`}>
+                <Link to={!active ? `/${database}/${article.id}` : `/${database}/${name}/${article.id}`}>
                     <article className="card-newyork">
                         <div className="newyork-title">
                             {article.title.slice(0, 47) + " ..."}
@@ -66,9 +66,7 @@ const Cardnewyorktimes = ({ article, database }) => {
                             </div>
 
                             <div className="newyork-description-autor">
-                                <p>
-                                    {HTMLReactParser(article.description.slice(0, 120) + " ...")}
-                                </p>
+                                {HTMLReactParser(article.description.slice(0, 120) + " ...")}
                             </div>
                         </div>
                     </article>
