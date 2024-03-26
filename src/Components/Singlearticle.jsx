@@ -137,7 +137,9 @@ const Singlearticle = () => {
                         </div>
                     </article >
                     : <Page_skeleton />
-                : <SectionPage user={Coleccion} coleccion={Coleccion.Coleccion} database={validar.Database} />}
+                : Coleccion ? <SectionPage user={Coleccion} coleccion={Coleccion.Coleccion} database={validar.Database} />
+                    : <NotFound />
+            }
         </>
     )
 }

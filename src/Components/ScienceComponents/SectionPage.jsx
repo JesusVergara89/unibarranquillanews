@@ -71,7 +71,7 @@ const SectionPage = ({ user, coleccion, database }) => {
                             setPage={setPage}
                             Page={Page}
                         />
-                        : <Skeleton width={'20%'} height={35} style={{ marginLeft: '40%' }} />
+                        : <Skeleton width={'40%'} height={50} style={{ marginLeft: '30%' }} />
                     }
                     <div className="wrapp-section">
                         {articles ?
@@ -92,7 +92,7 @@ const SectionPage = ({ user, coleccion, database }) => {
                             setPage={setPage}
                             Page={Page}
                         />
-                        : <Skeleton width={'20%'} height={35} style={{ marginLeft: '40%' }} />
+                        : <Skeleton width={'40%'} height={50} style={{ marginLeft: '30%' }} />
                     }
                 </article>
             }

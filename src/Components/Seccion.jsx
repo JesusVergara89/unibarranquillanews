@@ -117,7 +117,7 @@ const Seccion = () => {
                                 setPage={setPage}
                                 Page={Page}
                             />
-                            : <Skeleton width={'20%'} height={35} style={{ marginLeft: '35%' }} />
+                            : <Skeleton width={'40%'} height={50} style={{ marginLeft: '30%' }} />
                     }
                 </article >
             }
