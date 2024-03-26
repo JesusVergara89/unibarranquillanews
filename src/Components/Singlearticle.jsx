@@ -9,6 +9,7 @@ import Gilberto from '../Images/Gilberto.jpg'
 import Brian from '../Images/Brian.jpg'
 import Alejandra from '../Images/Aleja.jpg'
 import josemanuel from '../Images/josemanuel.jpg'
+import omar from '../Images/omar.jpg'
 import Compartir from './Compartir/Compartir'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -72,7 +73,8 @@ const Singlearticle = () => {
             'alejandra leon': 'x',
             'brian escorcia': 'y',
             'gilberto gonzales': 'z',
-            'jose diaz': 'p'
+            'jose diaz': 'p',
+            'omar garcia': 'q'
         };
         for (const keyword in keywords) {
             const regex = new RegExp(keyword.split(' ').join('\\s{1,4}'));
@@ -86,6 +88,7 @@ const Singlearticle = () => {
     const capitTitle = (title) => {
         let words = title.split(" ");
         const wordsNoCapit = ["de", "al", "su", "nos", "da", "un", "unos", "unas", "asi", "es", "del", "la", "el", "los", "lo", "las", "y", "a", "en", "como", "con"];
+        const wordsNoCapit = ["de", "al", "su", "nos", "da", "un", "unos", "unas", "asi", "es", "del", "la", "el", "los", "lo", "las", "y", "a", "en", "como", "con"];
         for (let i = 0; i < words.length; i++) {
             if (i === 0 || i === words.length - 1 || !wordsNoCapit.includes(words[i])) {
                 words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
@@ -94,6 +97,10 @@ const Singlearticle = () => {
             }
         }
         return words.join(" ");
+    }
+
+    const validateTitleLength = (title) => {
+        return title.length <= 52;
     }
 
     return (

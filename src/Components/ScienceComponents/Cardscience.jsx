@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Cardscience.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Cardscience = ({ index, imgForCardScience }) => {
     const [subjects, setSubjects] = useState([{ name: "Math", active: true }, { name: "Physics", active: true }]);

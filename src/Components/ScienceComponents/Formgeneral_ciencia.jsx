@@ -22,7 +22,6 @@ const Formgeneral_ciencia = ({ name, lastName, database, storagebase, arrayColle
 
     useEffect(() => {
         console.log('form cleaned')
-        reset()
     }, [cleanForm])
 
     const handleChange = (e) => {
@@ -31,7 +30,7 @@ const Formgeneral_ciencia = ({ name, lastName, database, storagebase, arrayColle
     const handleImageChange = (e) => {
         setFormData({ ...formData, image: e.target.files[0] });
     };
-    const reset = () => {
+    () => {
         setFormData({
             title: '',
             description: '',
@@ -109,7 +108,6 @@ const Formgeneral_ciencia = ({ name, lastName, database, storagebase, arrayColle
             <button className="form-article-tbn" onClick={handlePublish}>
                 Publish
             </button>
-            <button onClick={() => reset()}>Reset</button>
         </div>
     )
 }
