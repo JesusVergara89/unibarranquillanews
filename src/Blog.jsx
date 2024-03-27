@@ -55,13 +55,13 @@ function Blog() {
         <Aboutblog />
 
         <FlashArticles IsLogged={IsLogged} />
-        {filterarrayOfDataBase.map((user, index) => (
+        {filterarrayOfDataBase?.map((user, index) => (
           <Columns key={index} user={user} database={user.Database} />
         ))
         }
 
         {/* THIS SECTIONS HACE THE SAME CLASS JUST BECAUSE USE THE SAME CLASS FOR SIZE */}
-        {filterarrayOfSubseccion.map((user, index) => (
+        {filterarrayOfSubseccion?.map((user, index) => (
           < div className="To-the-blog"
             onClick={() => navigateScience(user.Url)}
             key={index}

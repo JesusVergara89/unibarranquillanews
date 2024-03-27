@@ -94,7 +94,43 @@
 .Close.on {
   transform: translateX(0%);
 }
+.enlace_main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  row-gap: 1rem;
+}
+.enlace_main div:first-child {
+  display: flex;
+  justify-content: center;
+}
+.enlace_main .bx {
+  height: 100%;
+  width: auto;
+  font-size: 24px;
+  position: relative;
+  top: 0;
+  left: 20px;
+  cursor: pointer;
+}
+.enlace_main .bx.on {
+  transform: rotate(180deg);
+}
 
+.Conten_subseccion {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1rem;
+}
+.Conten_subseccion.off {
+  display: none;
+}
 .enlace {
   text-align: center;
   font-size: 1rem;
