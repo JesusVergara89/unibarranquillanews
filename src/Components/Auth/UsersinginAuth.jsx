@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './UsersinginAuth.css'
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import { browserSessionPersistence, setPersistence, signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
 
 const UsersinginAuth = ({ auth, createOrSignIn, enterToFormPost }) => {
@@ -10,8 +10,11 @@ const UsersinginAuth = ({ auth, createOrSignIn, enterToFormPost }) => {
 
   const handleLogin = async () => {
     try {
-      await signInWithEmailAndPassword(auth, email, password)
-      enterToFormPost()
+      await setPersistence(auth, browserSessionPersistence)
+        .then(() => {
+          enterToFormPost()
+          return signInWithEmailAndPassword(auth, email, password)
+        })
     } catch (error) {
       toast(error.code, { type: "error" })
     }

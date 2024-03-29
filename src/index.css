@@ -361,7 +361,7 @@ a {
   }
 }
 
-.login-hiden {
+/* {
   width: 100%;
   height: 25px;
   display: flex;
@@ -379,7 +379,7 @@ a {
   font-size: 1.5rem;
   position: absolute;
   bottom: 7px;
-}
+}*/
 
 .Toastify__close-button--light {
   width: 20px;
