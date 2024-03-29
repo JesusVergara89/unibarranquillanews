@@ -88,6 +88,9 @@
 .Informacion_news p:nth-child(3) {
   display: none;
 }
+.Informacion_news p:nth-child(4) {
+  display: none;
+}
 .Imformation_date {
   color: var(--color_5);
   width: 100%;
