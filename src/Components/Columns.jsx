@@ -9,6 +9,7 @@ import Colums_skeleto from './Loading-skeleton/Colums_skeleto'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import * as ReactDOMServer from 'react-dom/server';
+import HTMLReactParser from 'html-react-parser'
 
 
 const Columns = ({ user, database, Coleccion = 'Articles', active = false, name }) => {
@@ -43,7 +44,9 @@ const Columns = ({ user, database, Coleccion = 'Articles', active = false, name 
                         <img src={Datas?.[index].imageUrl} loading='lazy' />
                         <section className='Informacion_news'>
                             <h3>{truncateText(Datas?.[index].title, 40)}</h3>
-                            <p className='description_new'>{truncateText(Datas?.[index].description, 80)}</p>
+                            <p className='description_new' >
+                                {HTMLReactParser(truncateText(Datas?.[index].description, 80))}
+                            </p>
                             <div className='Imformation_date'>
                                 <p>{Datas?.[index].createdAt.toDate().toLocaleDateString('es-co', { day: 'numeric', month: 'short', year: 'numeric' }).replace('de', ' ')}</p>
                                 <p>{TimeReading(Datas?.[index].description)} min. read</p>
@@ -85,7 +88,7 @@ const Columns = ({ user, database, Coleccion = 'Articles', active = false, name 
                                 <div className='Title-seccion'>
                                     <Link to={!active ? `/${user.Url}/${dato.id}` : `/${name}/${user.Url}/${dato.id}`}>{truncateText(dato.title, 80)}</Link>
                                     <p>
-                                        {dato.description.slice(0, 250) + '...'}
+                                        {HTMLReactParser(dato.description.slice(0, 250) + '...')}
                                     </p>
                                     <Button_next />
                                 </div>
