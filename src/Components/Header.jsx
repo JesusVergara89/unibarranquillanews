@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import '../Styles/header.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useRouter from '../Hooks/useRouter'
-const Header = ({ reloadPage, setReloadPage }) => {
+import { Acesscontext } from './Context/Acesscontext'
+import Brian from '../Images/Brian.jpg'
+import { signOut } from 'firebase/auth'
+import { auth2 } from '../firebaseconfig'
+import { toast } from 'react-toastify'
+// million-ignore
+const Header = () => {
     const [Menu, setMenu] = useState(false)
     const [DropDrown, setDropDrown] = useState(false)
     const { ArrayofRouter } = useRouter()
+    const { IsLogged, AccessInfor } = useContext(Acesscontext)
+    const navigate = useNavigate()
     const closeMenu = () => {
         setMenu(false)
-        setReloadPage(!reloadPage)
         setDropDrown(false)
     }
 
@@ -16,8 +23,25 @@ const Header = ({ reloadPage, setReloadPage }) => {
         { Url: "LOGIN" },
         { Url: "BLOG" }
     ]
+    const Navegation = (e) => {
+        navigate(`/${e}`)
+        closeMenu()
+    }
     const ArrayofHeader = ArrayofRouter.concat(ArrayOfAuxiliar)
     const menuLoad = () => { setMenu(!Menu) }
+    const closeSesion = () => {
+        closeMenu()
+        signOut(auth2)
+            .then(() => {
+                toast('Sesión cerrada con éxito', { type: 'success' })
+                window.localStorage.clear()
+                navigate('/')
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }
+
     return (
         <>
             <header className='Main_header'>
@@ -27,28 +51,46 @@ const Header = ({ reloadPage, setReloadPage }) => {
                     <div></div>
                 </button>
                 <Link onClick={closeMenu} className='Logo' to='/'>
-                    <h1 onClick={() => { closeMenu() }} >UNIBARRANQUILLA</h1>
+                    <h1 onClick={closeMenu} >UNIBARRANQUILLA</h1>
                 </Link>
             </header>
             <nav className={Menu ? 'option on' : 'option off'}>
-                <div className='box_list'>
-                    {ArrayofHeader?.map((unit, i) => (
-                        <article key={i} className='enlace_main'>
-                            <div>
-                                <Link onClick={closeMenu} className='enlace' to={`/${unit.Url}`}>{unit.Url}</Link>
-                                {unit.Subseccion && <i className={DropDrown ? 'bx bx-chevron-down on' : 'bx bx-chevron-down'} onClick={() => setDropDrown(!DropDrown)}></i>}
-                            </div>
-                            {unit.Subseccion ?
-                                <section className={DropDrown ? 'Conten_subseccion on' : 'Conten_subseccion off'}>
-                                    {unit.Subseccion.map((data, index) => (
-                                        <Link key={index} onClick={closeMenu} className='enlace' to={`/${unit.Url}/${data.Url}`}>{data.Url}</Link>
-                                    ))}
-                                </section>
-                                : ''}
-                        </article>
+                {IsLogged &&
+                    <div className='toolsUser'>
+                        <i onClick={() => Navegation('CREATE')} className='bx bx-book-add'></i>
+                        <i onClick={() => Navegation('CREATE')} className='bx bx-user-plus'></i>
+                        <i onClick={() => Navegation('CREATE')} className='bx bx-cog'></i>
+                        <i onClick={closeSesion} className='bx bx-log-out'></i>
+                    </div>
+                }
+                <div className={IsLogged ? 'box_list on' : 'box_list'}>
+                    {ArrayofHeader.map((unit, i) => (
+                        unit.Url === 'LOGIN' && IsLogged ? '' :
+                            < article key={i} className='enlace_main' >
+                                <div>
+                                    <Link onClick={closeMenu} className='enlace' to={`/${unit.Url}`}>{unit.Url}</Link>
+                                    {unit.Subseccion && <i className={DropDrown ? 'bx bx-chevron-down on' : 'bx bx-chevron-down'} onClick={() => setDropDrown(!DropDrown)}></i>
+                                    }
+                                </div>
+                                {
+                                    unit.Subseccion ?
+                                        <section className={DropDrown ? 'Conten_subseccion' : 'Conten_subseccion off'}>
+                                            {unit.Subseccion.map((data, index) => (
+                                                <Link key={index} onClick={closeMenu} className='enlace' to={`/${unit.Url}/${data.Url}`}>{data.Url}</Link>
+                                            ))}
+                                        </section>
+                                        : ''
+                                }
+                            </article>
                     ))}
                 </div>
-            </nav>
+            </nav >
+            {IsLogged &&
+                <article className='Perfil'>
+                    <p>{AccessInfor.Name}</p>
+                    <img src={AccessInfor.PhotoUrl || Brian} alt="" />
+                </article>
+            }
             <div onClick={menuLoad} className={Menu ? 'Close on' : 'Close off'} />
         </>
     )

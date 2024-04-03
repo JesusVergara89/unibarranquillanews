@@ -25,14 +25,15 @@
   align-items: center;
   padding: 10px;
   border-radius: 5px;
-  background-color: #fefffa;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
-  row-gap: 25px;
+  background-color: var(--color_1);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  row-gap: 5px;
 }
 
 .form-login h3 {
   font-size: 1.5rem;
   color: var(--color_7);
+  padding-top: 8px;
 }
 
 .form_user,
@@ -42,6 +43,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 10px;
+  margin-top: 20px;
 }
 
 .form_user label,
@@ -157,6 +159,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  margin: 15px 0;
 }
 
 .forgetten {

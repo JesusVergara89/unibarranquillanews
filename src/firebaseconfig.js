@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth } from 'firebase/auth';
+import { browserSessionPersistence, getAuth, setPersistence } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
@@ -141,6 +141,8 @@ const app2 = initializeApp(firebaseConfig31, "app31");
 export const storage2 = getStorage(app2)
 export const db2 = getFirestore(app2)
 export const auth2 = getAuth(app2)
+//Configuración para mantener activo la sesión
+setPersistence(auth2, browserSessionPersistence)
 
 /////////////////////////////////////////////
 

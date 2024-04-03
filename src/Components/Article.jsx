@@ -8,7 +8,7 @@ import { SwiperSlide } from "swiper/react";
 import Article_skeleto from './Loading-skeleton/Article_skeleto'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 
-const Article = ({ IsLogged }) => {
+const Article = () => {
 
     const [articles, setArticles] = useState([{}])
     useEffect(() => {
@@ -60,7 +60,7 @@ const Article = ({ IsLogged }) => {
                     (<Carrusel breakpoints={breakpoints}>
                         {articles.map((article, i) => (
                             <SwiperSlide key={i}>
-                                <Link to={IsLogged ? '' : `/ARTICLE/${article.id}`}>
+                                <Link to={ `/ARTICLE/${article.id}`}>
                                     <div className="article-card">
                                         <LazyLoadImage className="card-image"
                                             src={article.imageUrl}

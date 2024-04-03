@@ -26,12 +26,11 @@ import useRouter from './Hooks/useRouter'
 import { db } from './firebaseconfig'
 import katex from "katex";
 import "katex/dist/katex.css";
+import Createdarticles from './Components/Createdarticles'
+import Dasboard from './Components/Dasboard'
 
 function Blog() {
-
-  const [IsLogged, setIsLogged] = useState(false)
-
-  const [reloadPage, setReloadPage] = useState(false)
+  //const [reloadPage, setReloadPage] = useState(false)
 
   const { ArrayofRouter } = useRouter()
   /*FILTRADO DE LAS SECCIONES QUE NO TIENE SUBSECCION Y QUE NO CONTENGA LA SECCIÓN ARTICLE */
@@ -54,7 +53,7 @@ function Blog() {
 
         <Aboutblog />
 
-        <FlashArticles IsLogged={IsLogged} />
+        <FlashArticles />
         {filterarrayOfDataBase?.map((user, index) => (
           <Columns key={index} user={user} database={user.Database} />
         ))
@@ -94,7 +93,7 @@ function Blog() {
   }, [pathname])
   return (
     <div className='Blog'>
-      <Header reloadPage={reloadPage} setReloadPage={setReloadPage} />
+      <Header />
       <Flotan />
       <Routes>
         <Route path='/'
@@ -156,17 +155,18 @@ function Blog() {
         />
         <Route path="*" element={<NotFound />} />
 
-        <Route path='/LOGIN' element={<Longin IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
+        <Route path='/LOGIN' element={<Longin />} />
 
-        <Route element={<RoutesProtecteds IsLogged={IsLogged} />}>
+        <Route element={<RoutesProtecteds />}>
           <Route
-            path='/COLLABORATORS'
-            element={<CompanyCollaboratorAccess IsLogged={IsLogged} setIsLogged={setIsLogged} />}
+            path='/CREATE'
+            element={<Createdarticles />}
           />
+          
         </Route>
       </Routes>
 
-    </div>
+    </div >
   )
 }
 

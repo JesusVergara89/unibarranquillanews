@@ -1,54 +1,242 @@
 :root {
-    --color_1: #ffffff;
-    --color_2: #006400;
-    --color_3: #add8e6;
-    --color_4: #8b0000;
-    --color_5: #001f3f;
-    --color_6: #333333;
-    --color_7: #000000;
+  --color_1: #ffffff;
+  --color_2: #006400;
+  --color_3: #add8e6;
+  --color_4: #8b0000;
+  --color_5: #001f3f;
+  --color_6: #333333;
+  --color_7: #000000;
 }
 
-.create-articles {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 60px;
+.Form_create {
+  width: 80%;
+  max-width: 450px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 30px;
+  margin-top: 80px;
 }
 
-.which-one-2 {
-    text-align: center;
-    width: 50%;
-    margin-top: 150px;
-    font-weight: bold;
-    font-size: 1.1rem;
+.form_input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 20px;
 }
 
-.create-article-btns {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 50px;
+.form_input label {
+  color: var(--color_6);
+  opacity: 0.8;
+  height: 39px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  transform: translate(35px);
+  pointer-events: none;
+  transition: transform 0.3s ease-in-out;
+}
+.form-article-textarea {
+  height: 60%;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease-in-out;
+}
+/*Estilo para el editor de texto*/
+.ql-snow * {
+  width: auto;
+  font-size: 16px;
 }
 
-.create-article-btns button {
-    width: 100px;
-    padding: 10px;
-    background-color: var(--color_4);
-    border: none;
-    border-radius: 2px;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.ql-editor a {
+  color: var(--color_4) !important;
+}
+.ql-formats:first-child .ql-fill {
+  width: 12px;
+}
+.ql-snow .ql-fill,
+.ql-snow .ql-stroke.ql-fill {
+  width: 3px;
+}
+.ql-formats:nth-child(3) .ql-fill {
+  width: 5px;
+}
+.ql-container.ql-snow {
+  height: auto;
+  min-height: 300px;
+}
+.katex * {
+  width: auto;
 }
 
-.create-article-btns button:hover {
-    background-color: var(--color_7);
+.form_input .input:focus ~ label,
+.form_input.on .input ~ label {
+  transform: translate(0, -100%);
+  font-size: 16px;
+}
+
+.form_input.editor label {
+  position: static;
+  transform: none;
+}
+
+.form-article-textarea.on {
+  border-color: var(--color_5);
+}
+
+.form_input.editor.on label {
+  color: var(--color_4) !important;
+}
+
+.form_input .bx {
+  width: auto;
+  height: 39px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 18px;
+  color: var(--color_6);
+}
+
+.input {
+  width: auto;
+  height: 35px;
+  padding-left: 35px;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+  outline: none;
+  text-align: start;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+  &:focus {
+    border-color: var(--color_5);
+  }
+}
+
+.input.on {
+  border-color: var(--color_4) !important;
+  ~ label {
+    color: var(--color_4) !important;
+  }
+}
+
+.form_file {
+  width: 100%;
+  height: auto;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: black;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.form_file label {
+  height: auto;
+  color: var(--color_6);
+  opacity: 0.8;
+  text-align: start;
+}
+
+.form_file.on label {
+  color: var(--color_4) !important;
+}
+
+.file_imagen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  border: 2px dashed #ccc;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.file_imagen.on {
+  border-color: var(--color_4);
+}
+
+.file_imagen img {
+  width: 95%;
+  height: 180px;
+  object-fit: contain;
+}
+
+.file_imagen .bx {
+  height: auto;
+  width: auto;
+  font-size: 70px;
+}
+
+.input_file {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.information_imagen {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--color_7);
+}
+.information_imagen p:first-child {
+  text-align: start;
+}
+.data_imagen {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.data_imagen p {
+  width: auto;
+  font-size: 17px;
+  color: var(--color_6);
+}
+
+.data_imagen .bx {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  padding-left: 10px;
+}
+.data_imagen .bx:last-child{
+  font-size: 23px;
+}
+.form_select {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+}
+.form_select label {
+  height: auto;
+  color: var(--color_6);
+  opacity: 0.8;
+  text-align: start;
+}
+.form_select.on label {
+  color: var(--color_4);
 }
