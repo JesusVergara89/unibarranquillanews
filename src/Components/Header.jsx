@@ -14,6 +14,7 @@ const Header = () => {
     const { ArrayofRouter } = useRouter()
     const { IsLogged, AccessInfor } = useContext(Acesscontext)
     const navigate = useNavigate()
+    
     const closeMenu = () => {
         setMenu(false)
         setDropDrown(false)
@@ -58,7 +59,7 @@ const Header = () => {
                 {IsLogged &&
                     <div className='toolsUser'>
                         <i onClick={() => Navegation('CREATE')} className='bx bx-book-add'></i>
-                        <i onClick={() => Navegation('CREATE')} className='bx bx-user-plus'></i>
+                        <i onClick={() => Navegation('REGISTER')} className='bx bx-user-plus'></i>
                         <i onClick={() => Navegation('CREATE')} className='bx bx-cog'></i>
                         <i onClick={closeSesion} className='bx bx-log-out'></i>
                     </div>
@@ -68,7 +69,7 @@ const Header = () => {
                         unit.Url === 'LOGIN' && IsLogged ? '' :
                             < article key={i} className='enlace_main' >
                                 <div>
-                                    <Link onClick={closeMenu} className='enlace' to={`/${unit.Url}`}>{unit.Url}</Link>
+                                    <Link onClick={closeMenu} className='enlace' to={`/${unit.Url}`}>{unit.Url.toLowerCase()}</Link>
                                     {unit.Subseccion && <i className={DropDrown ? 'bx bx-chevron-down on' : 'bx bx-chevron-down'} onClick={() => setDropDrown(!DropDrown)}></i>
                                     }
                                 </div>
@@ -76,7 +77,7 @@ const Header = () => {
                                     unit.Subseccion ?
                                         <section className={DropDrown ? 'Conten_subseccion' : 'Conten_subseccion off'}>
                                             {unit.Subseccion.map((data, index) => (
-                                                <Link key={index} onClick={closeMenu} className='enlace' to={`/${unit.Url}/${data.Url}`}>{data.Url}</Link>
+                                                <Link key={index} onClick={closeMenu} className='enlace' to={`/${unit.Url}/${data.Url}`}>{data.Url.toLowerCase()}</Link>
                                             ))}
                                         </section>
                                         : ''

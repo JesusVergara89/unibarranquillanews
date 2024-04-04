@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import '../Styles/Createdarticles.css'
+import '../Styles/form.css'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import { Controller, useForm } from 'react-hook-form'
@@ -12,17 +12,15 @@ import { addDoc, collection } from 'firebase/firestore'
 import { Acesscontext } from './Context/Acesscontext'
 // million-ignore
 const Createdarticles = () => {
-  const [Description, setDescription] = useState()
   const [focusDescrip, setfocusDescrip] = useState(false)
-  const [Dropfile, setDropfile] = useState(false)
   const [InformImg, setInformImg] = useState()
   const { AccessInfor } = useContext(Acesscontext)
+  const [ErrorPhoto, setErrorPhoto] = useState(false)
   const { control,
     register,
     handleSubmit,
     reset,
     resetField,
-    clearErrors,
     formState: { errors },
     watch
   } = useForm();
@@ -64,21 +62,32 @@ const Createdarticles = () => {
     }
   };
 
+  const ValidatePhoto = () => {
+    // Extensiones permitidas
+    const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'tif', 'webp', 'svg', 'raw'];
+    const extension = value?.[0].name.split('.').pop()
+    return allowedExtensions.includes(extension)
+  }
   let value = watch('photo')
-
   useEffect(() => {
     let e = value?.[0]
     if (e) {
-      let Size
-      let SizeKb = (e.size / 1024).toFixed(1)
-      if (SizeKb >= 1024) {
-        let SizeMb = (SizeKb / 1024).toFixed(1)
-        Size = `${SizeMb}MB`
+      let Validatephoto = ValidatePhoto()
+      if (Validatephoto) {
+        let Size
+        let SizeKb = (e.size / 1024).toFixed(1)
+        if (SizeKb >= 1024) {
+          let SizeMb = (SizeKb / 1024).toFixed(1)
+          Size = `${SizeMb}MB`
+        } else {
+          Size = `${SizeKb}KB`
+        }
+        const UrlImg = URL.createObjectURL(e)
+        setInformImg({ size: Size, Url: UrlImg })
+        setErrorPhoto(false)
       } else {
-        Size = `${SizeKb}KB`
+        setErrorPhoto(true)
       }
-      const UrlImg = URL.createObjectURL(e)
-      setInformImg({ size: Size, Url: UrlImg })
     }
   }, [value])
 
@@ -113,16 +122,16 @@ const Createdarticles = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(submit)} className='Form_create' >
-      <section className={watch('title') ? 'form_input on' : 'form_input'}>
-        <input autoComplete='off' type='text'{...register('title', { required: true })} className={errors.title?.type === 'required' ? 'input on' : 'input'} />
+    <form onSubmit={handleSubmit(submit)} className='form_main create' >
+      <section className={watch('title') ? 'form_user on' : 'form_user'}>
+        <input autoComplete='off' type='text'{...register('title', { required: true })} className={errors.title?.type === 'required' ? 'input_user on' : 'input_user'} />
         <i className='bx bx-edit-alt'></i>
         <label>Titulo</label>
       </section>
       {errors.title?.type === 'required' &&
         <p className='error'>Por favor, ingrese el titulo.</p>
       }
-      <section className={errors.Description?.type === 'required' || errors.Description?.type === 'validate' ? 'form_input editor on' : 'form_input editor'}>
+      <section className={errors.Description?.type === 'required' || errors.Description?.type === 'validate' ? 'form_editor on' : 'form_editor'}>
         <label>Descripción</label>
         <Controller
           name='Description'
@@ -149,8 +158,8 @@ const Createdarticles = () => {
         <p className='error'>Por favor, ingrese la descripción.</p>
         : ''
       }
-      <section className={watch('link') ? 'form_input on' : 'form_input'}>
-        <input autoComplete='off' type='text'{...register('link', { required: true, pattern: /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/ })} className={errors.link?.type === 'required' || errors.link?.type === 'pattern' ? 'input on' : 'input'} />
+      <section className={watch('link') ? 'form_user on' : 'form_user'}>
+        <input autoComplete='off' type='text'{...register('link', { required: true, pattern: /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/ })} className={errors.link?.type === 'required' || errors.link?.type === 'pattern' ? 'input_user on' : 'input_user'} />
         <i className='bx bx-link'></i>
         <label>Link</label>
       </section>
@@ -160,10 +169,10 @@ const Createdarticles = () => {
       {errors.link?.type === 'pattern' &&
         <p className='error'>Por favor, ingrese un link válido.</p>
       }
-      <section className={errors.photo?.type === 'required' ? 'form_file on' : 'form_file'}>
-        <label>Subir archivo</label>
-        <div className={errors.photo?.type === 'required' ? 'file_imagen on' : 'file_imagen'}>
-          <input autoComplete='off' type='file' accept='image/*' {...register('photo', { required: true })} className='input_file' />
+      <section className={errors.photo?.type === 'required' || errors.photo?.type === 'validate' || ErrorPhoto ? 'form_file on' : 'form_file'}>
+        <label>Subir foto de perfil</label>
+        <div className={errors.photo?.type === 'required' || errors.photo?.type === 'validate' || ErrorPhoto ? 'file_imagen on' : 'file_imagen'}>
+          <input autoComplete='off' type='file' accept='image/*' {...register('photo', { required: true, validate: ValidatePhoto })} className='input_file' />
           {InformImg ?
             <img src={InformImg.Url} />
             : <>
@@ -188,6 +197,10 @@ const Createdarticles = () => {
       </section>
       {errors.photo?.type === 'required' &&
         <p className='error'>Por favor, suba el archivo.</p>
+      }
+      {errors.photo?.type === 'validate' || ErrorPhoto ?
+        <p className='error'>Formato de archivo invalido, solo imágenes</p>
+        : ''
       }
       <section className={errors.SecionMain?.type === 'required' ? 'form_select on' : 'form_select'}>
         <label>Sección</label>

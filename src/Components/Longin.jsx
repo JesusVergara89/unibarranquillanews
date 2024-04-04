@@ -1,10 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import '../Styles/Login.css';
-import { useDispatch } from 'react-redux';
-import { setEmailValue } from '../store/slices/email.slice';
-import { setPassWordValue } from '../store/slices/password.slice';
-import Createdarticles from './Createdarticles';
+import '../Styles/form.css';
 import { Acesscontext } from './Context/Acesscontext';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth2 } from '../firebaseconfig';
@@ -32,24 +28,24 @@ const Login = () => {
     const showPassword = () => setShow(!show)
 
     return (
-        <article className="protect-route">
+        <>
             {IsLogged ?
                 <Navigate to='/' replace={true} />
                 : (
-                    <form className='form-login' onSubmit={handleSubmit(submit)} >
+                    <form className='form_main' onSubmit={handleSubmit(submit)} >
                         <h3>Log in</h3>
-                        <div className={watch('email') ? 'form_user on' : 'form_user'}>
+                        <section className={watch('email') ? 'form_user on' : 'form_user'}>
                             <input autoComplete='off' className={errors.email?.type === 'required' || errors.email?.type === 'pattern' ? 'input_user on' : 'input_user'} type="text" inputMode='email' {...register("email", { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })} />
                             <label>Email:</label>
                             <i className='bx bx-envelope' ></i>
-                        </div>
+                        </section>
                         {errors.email?.type === 'required' &&
                             <p className='error'>Por favor, ingrese el email.</p>
                         }
                         {errors.email?.type === 'pattern' &&
                             <p className='error'>Por favor, ingrese un correo electrónico válido.</p>
                         }
-                        <div className={watch('password') ? 'form_password on' : 'form_password'}>
+                        <section className={watch('password') ? 'form_password on' : 'form_password'}>
                             <input autoComplete='off' className={errors.password?.type === 'required' ? 'input_password on' : 'input_password'} type={show ? "text" : "password"}{...register("password", { required: true })} />
                             <label>Password</label>
                             <i className='bx bx-lock'></i>
@@ -57,7 +53,7 @@ const Login = () => {
                             <div onClick={showPassword} className="login-hiden">
                                 {show ? <i className='bx bx-hide'></i> : <i className='bx bx-show'></i>}
                             </div>
-                        </div>
+                        </section>
                         {errors.password?.type === 'required' &&
                             <p className='error'>Por favor, ingrese una contraseña.</p>
                         }
@@ -67,7 +63,7 @@ const Login = () => {
                         </p>
                     </form>
                 )}
-        </article>
+        </>
     );
 };
 

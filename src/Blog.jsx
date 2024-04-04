@@ -27,7 +27,7 @@ import { db } from './firebaseconfig'
 import katex from "katex";
 import "katex/dist/katex.css";
 import Createdarticles from './Components/Createdarticles'
-import Dasboard from './Components/Dasboard'
+import RegisterAuth from './Components/Auth/RegisterAuth'
 
 function Blog() {
   //const [reloadPage, setReloadPage] = useState(false)
@@ -161,6 +161,10 @@ function Blog() {
           <Route
             path='/CREATE'
             element={<Createdarticles />}
+          />
+          <Route
+          path='/REGISTER'
+          element={<RegisterAuth/>}
           />
           
         </Route>

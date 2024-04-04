@@ -194,8 +194,8 @@
   font-size: 1rem;
   cursor: pointer;
   color: black;
-  text-decoration: none;
   scroll-snap-align: center;
+  text-transform: capitalize;
 }
 
 .Menu_active {

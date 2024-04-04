@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { browserSessionPersistence, getAuth, setPersistence } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore'
-import { getStorage } from 'firebase/storage'
+import { getStorage, listAll, ref } from 'firebase/storage'
 
 const firebaseConfig = {
     apiKey: "AIzaSyBf5s8IXxqS22rDXiVNQcMjZJU7eZ7Ceqo",
@@ -110,16 +110,16 @@ const firebaseConfig12 = {
     storageBucket: "ambiente-a20cb.appspot.com",
     messagingSenderId: "342410199017",
     appId: "1:342410199017:web:f00e334e27309e1fbf5578"
-  };
+};
 
-  const firebaseConfig13 = { 
-    apiKey: "AIzaSyBGsMYpmyRikdbq8uippz5LiqjeHIOAR-M", 
-    authDomain: "sciences-c92c4.firebaseapp.com", 
-    projectId: "sciences-c92c4", 
-    storageBucket: "sciences-c92c4.appspot.com", 
-    messagingSenderId: "490782936753", 
-    appId: "1:490782936753:web:ab94407e7baf0f5d881c90" 
-  };
+const firebaseConfig13 = {
+    apiKey: "AIzaSyBGsMYpmyRikdbq8uippz5LiqjeHIOAR-M",
+    authDomain: "sciences-c92c4.firebaseapp.com",
+    projectId: "sciences-c92c4",
+    storageBucket: "sciences-c92c4.appspot.com",
+    messagingSenderId: "490782936753",
+    appId: "1:490782936753:web:ab94407e7baf0f5d881c90"
+};
 
 
 const app = initializeApp(firebaseConfig)
@@ -143,7 +143,6 @@ export const db2 = getFirestore(app2)
 export const auth2 = getAuth(app2)
 //Configuración para mantener activo la sesión
 setPersistence(auth2, browserSessionPersistence)
-
 /////////////////////////////////////////////
 
 const app3 = initializeApp(firebaseConfig4, "app4");
