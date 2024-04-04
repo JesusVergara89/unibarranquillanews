@@ -1,0 +1,126 @@
+:root {
+  --color_1: #ffffff;
+  --color_2: #006400;
+  --color_3: #add8e6;
+  --color_4: #8b0000;
+  --color_5: #001f3f;
+  --color_6: #333333;
+}
+
+.setting_main {
+  width: 450px;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  backdrop-filter: blur(14px);
+  position: fixed;
+  top: 20%;
+  padding: 20px;
+  z-index: 300;
+}
+
+.setting_main h3 {
+  font-weight: bold;
+  color: var(--color_6);
+  text-align: center;
+}
+
+.edit_photo {
+  width: 40%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+  gap: 5px;
+}
+
+.edit_photo div {
+  position: relative;
+  width: auto;
+  height: auto;
+}
+
+.edit_photo img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.edit_photo p {
+  text-align: center;
+  color: var(--color_6);
+}
+
+.edit_photo .bx {
+  width: auto;
+  position: absolute;
+  font-size: 24px;
+  right: 15px;
+  bottom: 10px;
+  pointer-events: none;
+}
+
+.form_password_main {
+  width: 60%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.bottonera {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+.save {
+  width: 70px;
+  padding: 4px 0;
+  background-color: rgba(139, 0, 0, 0.8);
+  border: none;
+  border-radius: 2px;
+  color: var(--color_1);
+  font-size: 16px;
+  cursor: pointer;
+  pointer-events: none;
+  transition: background-color 0.3s ease-in-out;
+  opacity: 0.5;
+}
+.save.on {
+  pointer-events: painted;
+  opacity: 1;
+}
+.cancel {
+  width: 70px;
+  height: auto;
+  padding: 4px 0;
+  background-color: var(--color_1);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: none;
+  border-radius: 2px;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+@media (hover: hover) {
+  .forgetten:hover {
+    text-decoration: underline;
+  }
+  .save:hover {
+    background-color: rgba(139, 0, 0, 1);
+  }
+}

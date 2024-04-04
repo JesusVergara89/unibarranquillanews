@@ -14,7 +14,7 @@ const Header = () => {
     const { ArrayofRouter } = useRouter()
     const { IsLogged, AccessInfor } = useContext(Acesscontext)
     const navigate = useNavigate()
-    
+
     const closeMenu = () => {
         setMenu(false)
         setDropDrown(false)
@@ -60,7 +60,7 @@ const Header = () => {
                     <div className='toolsUser'>
                         <i onClick={() => Navegation('CREATE')} className='bx bx-book-add'></i>
                         <i onClick={() => Navegation('REGISTER')} className='bx bx-user-plus'></i>
-                        <i onClick={() => Navegation('CREATE')} className='bx bx-cog'></i>
+                        <i onClick={() => Navegation('SETTING')} className='bx bx-cog'></i>
                         <i onClick={closeSesion} className='bx bx-log-out'></i>
                     </div>
                 }
