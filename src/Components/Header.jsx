@@ -7,9 +7,11 @@ import Brian from '../Images/Brian.jpg'
 import { signOut } from 'firebase/auth'
 import { auth2 } from '../firebaseconfig'
 import { toast } from 'react-toastify'
+import Setting from './Setting'
 // million-ignore
 const Header = () => {
     const [Menu, setMenu] = useState(false)
+    const [statesetting, setstatesetting] = useState(false)
     const [DropDrown, setDropDrown] = useState(false)
     const { ArrayofRouter } = useRouter()
     const { IsLogged, AccessInfor } = useContext(Acesscontext)
@@ -60,7 +62,7 @@ const Header = () => {
                     <div className='toolsUser'>
                         <i onClick={() => Navegation('CREATE')} className='bx bx-book-add'></i>
                         <i onClick={() => Navegation('REGISTER')} className='bx bx-user-plus'></i>
-                        <i onClick={() => Navegation('SETTING')} className='bx bx-cog'></i>
+                        <i onClick={() => { setstatesetting(true), closeMenu() }} className='bx bx-cog'></i>
                         <i onClick={closeSesion} className='bx bx-log-out'></i>
                     </div>
                 }
@@ -93,6 +95,9 @@ const Header = () => {
                 </article>
             }
             <div onClick={menuLoad} className={Menu ? 'Close on' : 'Close off'} />
+            {IsLogged &&
+                <Setting setstatesetting={setstatesetting} statesetting={statesetting} />
+            }
         </>
     )
 }

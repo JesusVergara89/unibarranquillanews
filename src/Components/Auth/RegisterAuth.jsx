@@ -21,27 +21,24 @@ const RegisterAuth = () => {
         watch
     } = useForm();
 
-    const submit = ({ email, password, name, photo }) => {
-        //se carga la imagen al store de la seccion actualidad
-        const storageRef = ref(storage2, `/images/${Date.now()}${name}`);
-        uploadBytesResumable(storageRef, photo[0])
-            .then((snapshot) => {
-                //se obtiene la url de la imagen subida
-                getDownloadURL(snapshot.ref).then((url) => {
-                    ArrayofRouter.map((user, index) => {
-                        createUserWithEmailAndPassword(user.Auth, email, password)
-                            .then(() => {
-                                updateProfile(user.Auth.currentUser, { displayName: name, photoURL: url })
-                                if (index === ArrayofRouter.length - 1) {
-                                    toast('Usuario creado exitoso', { type: 'success' });
-                                    reset()
-                                    setInformImg(null)
-                                }
-                            })
-                            .catch((error) => { toast(error.code, { type: "error" }) })
-                    })
-                })
-            })
+    const submit = async ({ email, password, name, photo }) => {
+        try {
+            //se carga la imagen al store de la seccion actualidad
+            const storageRef = ref(storage2, `/images/${Date.now()}${name}`);
+            const snapshot = await uploadBytesResumable(storageRef, photo[0]);
+            //se obtiene la url de la imagen subida
+            const url = await getDownloadURL(snapshot.ref);
+            // Crear usuarios en todos los routers
+            await Promise.all(ArrayofRouter.map(async (user) => {
+                await createUserWithEmailAndPassword(user.Auth, email, password);
+                await updateProfile(user.Auth.currentUser, { displayName: name, photoURL: url });
+            }));
+            toast('Usuario creado exitoso', { type: 'success' });
+            reset({ email: '', password: '', name: '', photo: null });
+            setInformImg(null);
+        } catch (error) {
+            toast(error.code, { type: 'error' });
+        }
     };
     const showPassword = () => setShow(!show)
 

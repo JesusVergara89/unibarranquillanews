@@ -23,7 +23,7 @@ const Createdarticles = () => {
     resetField,
     formState: { errors },
     watch
-  } = useForm();
+  } = useForm()
 
   const submit = ({ title, link, photo, SecionMain, Subsecion, Description }) => {
     let collectionName = Subsecion || 'Articles'
@@ -50,7 +50,8 @@ const Createdarticles = () => {
                 })
                   .then(() => {
                     toast('Article added successfully', { type: 'success' });
-                    reset()
+                    reset({ title: '', link: '', SecionMain: '', Subsecion: '', photo: null })
+                    setInformImg(null)
                   })
                   .catch(() => {
                     toast('Error adding article', { type: 'error' });
@@ -69,6 +70,7 @@ const Createdarticles = () => {
     return allowedExtensions.includes(extension)
   }
   let value = watch('photo')
+  console.log(value)
   useEffect(() => {
     let e = value?.[0]
     if (e) {

@@ -28,7 +28,6 @@ import katex from "katex";
 import "katex/dist/katex.css";
 import Createdarticles from './Components/Createdarticles'
 import RegisterAuth from './Components/Auth/RegisterAuth'
-import Setting from './Components/Setting'
 
 function Blog() {
   //const [reloadPage, setReloadPage] = useState(false)
@@ -96,7 +95,6 @@ function Blog() {
     <div className='Blog'>
       <Header />
       <Flotan />
-      <Setting />
       <Routes>
         <Route path='/'
           element={
@@ -167,10 +165,6 @@ function Blog() {
           <Route
             path='/REGISTER'
             element={<RegisterAuth />}
-          />
-          <Route
-            path='/SETTING'
-            element={<Setting />}
           />
 
         </Route>

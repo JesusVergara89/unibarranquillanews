@@ -3,46 +3,83 @@ import '../Styles/setting.css'
 import '../Styles/form.css'
 import { Acesscontext } from './Context/Acesscontext'
 import { useForm } from 'react-hook-form'
-import { validatePassword } from 'firebase/auth'
-import { storage2 } from '../firebaseconfig'
+import { signInWithEmailAndPassword, signOut, updatePassword } from 'firebase/auth'
+import { auth2, storage2 } from '../firebaseconfig'
 import { ref, uploadBytesResumable } from 'firebase/storage'
 import { toast } from 'react-toastify'
+import useRouter from '../Hooks/useRouter'
+import { tailspin } from 'ldrs'
 // million-ignore
-const Setting = () => {
-    const { IsLogged, AccessInfor } = useContext(Acesscontext)
+const Setting = ({ setstatesetting, statesetting }) => {
+    tailspin.register()
+    const { AccessInfor } = useContext(Acesscontext)
+    const [Ok, setOk] = useState(true)
     const [show, setShow] = useState(false)
     const [showCurrent, setshowCurrent] = useState(false)
-    const [ErrorPhoto, setErrorPhoto] = useState(false)
     const [InformImg, setInformImg] = useState()
-    const { control,
+    const { ArrayofRouter } = useRouter()
+    const {
         register,
         handleSubmit,
         reset,
-        resetField,
         formState: { errors },
         watch
     } = useForm();
+    const reseteo = () => {
+        reset({ password_current: '', Newpassword: '', photo: null })
+        setInformImg(null)
+        setstatesetting(false)
+    }
     const getRefimg = () => {
         const url = AccessInfor.PhotoUrl
         const Urlobject = decodeURIComponent(url)
         const regex = /images\/(.*?)\?/;
         const match = Urlobject.match(regex);
-        console.log(match[1])
         return match[1]
     }
-    const submit = ({ photo, password_current, password }) => {
-        //se verifica que exite archivo
-        if (photo[0]) {
-            //se obtiene la referencia de la imagen de usuario
-            let referente = getRefimg()
-            const storageRef = ref(storage2, `/images/${referente}`);
-            uploadBytesResumable(storageRef, photo[0])
-                .then(() => {
-                    toast('Actualización exitosa', { type: 'success' });
-                })
-        }
+    const submit = async ({ photo, password_current, Newpassword }) => {
+        try {
+            let email = window.localStorage.getItem('Email');
+            let password = window.localStorage.getItem('Password');
+            setOk(false);
 
-    }
+            if (photo[0] && !password_current) {
+                let referente = getRefimg();
+                const storageRef = ref(storage2, `/images/${referente}`);
+                await uploadBytesResumable(storageRef, photo[0]);
+                toast('Actualización exitosa', { type: 'success' });
+                reseteo();
+                window.location.replace('')
+            } else if (password_current && !photo[0]) {
+                await signInWithEmailAndPassword(auth2, email, password_current);
+                await Promise.all(ArrayofRouter.map(async (data) => {
+                    await signInWithEmailAndPassword(data.Auth, email, password);
+                    await updatePassword(data.Auth.currentUser, Newpassword);
+                }));
+                await signOut(auth2);
+                toast('Actualización exitosa', { type: 'success' });
+                reseteo();
+            } else if (password_current && photo[0]) {
+                await signInWithEmailAndPassword(auth2, email, password_current);
+                let referente = getRefimg();
+                const storageRef = ref(storage2, `/images/${referente}`);
+                await uploadBytesResumable(storageRef, photo[0]);
+                await Promise.all(ArrayofRouter.map(async (data) => {
+                    await signInWithEmailAndPassword(data.Auth, email, password);
+                    await updatePassword(data.Auth.currentUser, Newpassword);
+                }));
+                toast('Actualización exitosa', { type: 'success' });
+                reseteo();
+                signOut(auth2)
+                window.localStorage.clear();
+            }
+            setOk(true);
+        } catch (error) {
+            toast(error.code, { type: 'error' });
+            setOk(true);
+        }
+    };
+
     let value = watch('photo')
     const ValidatePhoto = () => {
         let validate
@@ -71,65 +108,77 @@ const Setting = () => {
                 }
                 const UrlImg = URL.createObjectURL(e)
                 setInformImg({ size: Size, Url: UrlImg })
-                setErrorPhoto(false)
-            } else {
-                setErrorPhoto(true)
             }
         }
     }, [value])
     const Validapassword = (password1, password2) => {
-        return (password1 && password2) || !password1
+        return (password1 != '' && password2 != '') || !(password1 != '')
     }
 
     return (
-        <section className='setting_main'>
-            <section className='edit_photo'>
-                <div>
-                    <input autoComplete='off' type='file' accept='image/*' {...register('photo', { validate: ValidatePhoto })} className='input_file' />
-                    {InformImg ?
-                        <img src={InformImg.Url} />
-                        :
-                        <img src={AccessInfor?.PhotoUrl} alt="" />
-                    }
-                    <i className='bx bxs-camera'></i>
+        <main className={statesetting ? 'setting_main on' : 'setting_main off'}>
+            <section className='setting_modal'>
+                <section className='edit_photo'>
+                    <div>
+                        <input autoComplete='off' type='file' accept='image/*' {...register('photo', { validate: ValidatePhoto })} className='input_file' />
+                        {InformImg ?
+                            <img src={InformImg.Url} />
+                            :
+                            <img src={AccessInfor?.PhotoUrl} alt="" />
+                        }
+                        <i className='bx bxs-camera'></i>
+                    </div>
+                    <p>{AccessInfor?.Name}</p>
+                </section>
+                <div className='form_password_main'>
+                    <h3>Cambio de contraseña</h3>
+
+                    <section className={watch('password_current') ? 'form_password on' : 'form_password'}>
+                        <input autoComplete='off' className={errors.password_current?.type === 'validate' ? 'input_password on' : 'input_password'} type={showCurrent ? "text" : "password"} {...register("password_current", {
+                            validate: () => {
+                                return Validapassword(watch('Newpassword'), watch('password_current'))
+                            }
+                        })} />
+                        <label>Contraseña actual</label>
+                        <i className='bx bx-lock'></i>
+                        <div onClick={() => setshowCurrent(prev => !prev)} className="login-hiden">
+                            {showCurrent ? <i className='bx bx-hide'></i> : <i className='bx bx-show'></i>}
+                        </div>
+                    </section>
+
+                    <section className={watch('Newpassword') ? 'form_password on' : 'form_password'}>
+                        <input autoComplete='off' className={errors.Newpassword?.type === 'validate' ? 'input_password on' : 'input_password'} type={show ? "text" : "password"}{...register("Newpassword", {
+                            validate: () => {
+                                return Validapassword(watch('password_current'), watch('Newpassword'))
+                            }
+                        })} />
+                        <label>Nueva contraseña</label>
+                        <i className='bx bx-lock'></i>
+
+                        <div onClick={() => setShow(prev => !prev)} className="login-hiden">
+                            {show ? <i className='bx bx-hide'></i> : <i className='bx bx-show'></i>}
+                        </div>
+                    </section>
+                    <div className='bottonera'>
+                        {Ok ?
+                            <>
+                                <button className='cancel' onClick={reseteo}>Cancelar</button>
+                                <button className={watch('photo')?.[0] || watch('password_current') || watch('password') ? 'save on' : 'save'} onClick={handleSubmit(submit)}>Guardar</button>
+                            </>
+                            : <div className='loader'>
+                                <l-tailspin
+                                    size="30"
+                                    stroke="2"
+                                    speed="1.3"
+                                    color="#8b0000"
+                                ></l-tailspin>
+                            </div>
+                        }
+                    </div>
                 </div>
-                <p>{AccessInfor?.Name}</p>
             </section>
-            <div className='form_password_main'>
-                <h3>Cambio de contraseña</h3>
-
-                <section className={watch('password_current') ? 'form_password on' : 'form_password'}>
-                    <input autoComplete='off' className={errors.password_current?.type === 'validate' ? 'input_password on' : 'input_password'} type={showCurrent ? "text" : "password"}{...register("password_current", {
-                        validate: () => {
-                            return Validapassword(watch('password'), watch('password_current'))
-                        }
-                    })} />
-                    <label>Contraseña actual</label>
-                    <i className='bx bx-lock'></i>
-                    <div onClick={() => setshowCurrent(prev => !prev)} className="login-hiden">
-                        {showCurrent ? <i className='bx bx-hide'></i> : <i className='bx bx-show'></i>}
-                    </div>
-                </section>
-
-                <section className={watch('password') ? 'form_password on' : 'form_password'}>
-                    <input autoComplete='off' className={errors.password?.type === 'validate' ? 'input_password on' : 'input_password'} type={show ? "text" : "password"}{...register("password", {
-                        validate: () => {
-                            return Validapassword(watch('password_current'), watch('password'))
-                        }
-                    })} />
-                    <label>Nueva contraseña</label>
-                    <i className='bx bx-lock'></i>
-
-                    <div onClick={() => setShow(prev => !prev)} className="login-hiden">
-                        {show ? <i className='bx bx-hide'></i> : <i className='bx bx-show'></i>}
-                    </div>
-                </section>
-                <div className='bottonera'>
-                    <button className='cancel'>Cancelar</button>
-                    <button className={watch('photo')?.[0] || watch('password_current') != '' || watch('password') != '' ? 'save on' : 'save'} onClick={handleSubmit(submit)}>Guardar</button>
-                </div>
-            </div>
-        </section>
+            <div onClick={reseteo} className='close' />
+        </main>
     )
 }
 
