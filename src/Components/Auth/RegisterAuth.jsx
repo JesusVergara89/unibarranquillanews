@@ -6,12 +6,15 @@ import { useForm } from 'react-hook-form'
 import useRouter from '../../Hooks/useRouter'
 import { storage2 } from '../../firebaseconfig'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import Loader from '../Loader'
+import imageCompression from 'browser-image-compression';
 // million-ignore
 const RegisterAuth = () => {
     const [show, setShow] = useState(false)
     const [InformImg, setInformImg] = useState()
     const [ErrorPhoto, setErrorPhoto] = useState(false)
     const { ArrayofRouter } = useRouter()
+    const [Ok, setOk] = useState(true)
     const {
         register,
         handleSubmit,
@@ -20,12 +23,17 @@ const RegisterAuth = () => {
         formState: { errors },
         watch
     } = useForm();
-
+    const options = {
+        maxSizeMB: 5,
+        maxWidthOrHeight: 140,
+        useWebWorker: true,
+    }
     const submit = async ({ email, password, name, photo }) => {
+        setOk(false)
         try {
-            //se carga la imagen al store de la seccion actualidad
-            const storageRef = ref(storage2, `/images/${Date.now()}${name}`);
-            const snapshot = await uploadBytesResumable(storageRef, photo[0]);
+            const compressedFile = await imageCompression(photo[0], options);
+            const storageRef = ref(storage2, `/Perfiles/${Date.now()}${name}`);
+            const snapshot = await uploadBytesResumable(storageRef, compressedFile);
             //se obtiene la url de la imagen subida
             const url = await getDownloadURL(snapshot.ref);
             // Crear usuarios en todos los routers
@@ -36,15 +44,16 @@ const RegisterAuth = () => {
             toast('Usuario creado exitoso', { type: 'success' });
             reset({ email: '', password: '', name: '', photo: null });
             setInformImg(null);
+            setOk(true)
         } catch (error) {
-            toast(error.code, { type: 'error' });
+            toast(error.code, { type: 'error' }, setOk(true));
         }
     };
     const showPassword = () => setShow(!show)
 
     const ValidatePhoto = () => {
         // Extensiones permitidas
-        const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'tif', 'webp', 'svg', 'raw'];
+        const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'tif', 'webp', 'svg', 'raw', 'avi'];
         const extension = value?.[0].name.split('.').pop()
         return allowedExtensions.includes(extension)
     }
@@ -137,7 +146,9 @@ const RegisterAuth = () => {
                 <p className='error'>Formato de archivo invalido, solo imágenes</p>
                 : ''
             }
-            <button className='protect-route-btn' type='submit'>Register</button>
+            {Ok ? <button className='protect-route-btn' type='submit'>Register</button>
+                : <Loader />
+            }
         </form>
     )
 }

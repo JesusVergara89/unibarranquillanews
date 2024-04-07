@@ -8,10 +8,11 @@ import { auth2, storage2 } from '../firebaseconfig'
 import { ref, uploadBytesResumable } from 'firebase/storage'
 import { toast } from 'react-toastify'
 import useRouter from '../Hooks/useRouter'
-import { tailspin } from 'ldrs'
+import Loader from './Loader'
+import { dataDecryp } from './Crypto/Decryp'
+import imageCompression from 'browser-image-compression';
 // million-ignore
 const Setting = ({ setstatesetting, statesetting }) => {
-    tailspin.register()
     const { AccessInfor } = useContext(Acesscontext)
     const [Ok, setOk] = useState(true)
     const [show, setShow] = useState(false)
@@ -29,51 +30,63 @@ const Setting = ({ setstatesetting, statesetting }) => {
         reset({ password_current: '', Newpassword: '', photo: null })
         setInformImg(null)
         setstatesetting(false)
+        setOk(true);
     }
     const getRefimg = () => {
         const url = AccessInfor.PhotoUrl
         const Urlobject = decodeURIComponent(url)
-        const regex = /images\/(.*?)\?/;
+        const regex = /Perfiles\/(.*?)\?/;
         const match = Urlobject.match(regex);
         return match[1]
+    }
+    const options = {
+        maxSizeMB: 5,
+        maxWidthOrHeight: 140,
+        useWebWorker: true,
     }
     const submit = async ({ photo, password_current, Newpassword }) => {
         try {
             let email = window.localStorage.getItem('Email');
             let password = window.localStorage.getItem('Password');
             setOk(false);
-
             if (photo[0] && !password_current) {
+                //Compresión de imágenes
+                const compressedFile = await imageCompression(photo[0], options);
+                // se obtiene la referencia de la url de la imagen de perfil
                 let referente = getRefimg();
-                const storageRef = ref(storage2, `/images/${referente}`);
-                await uploadBytesResumable(storageRef, photo[0]);
+                //se sube la nueva imagen con la misma referencia para realizar un update con la misma url
+                const storageRef = ref(storage2, `/Perfiles/${referente}`);
+                await uploadBytesResumable(storageRef, compressedFile);
                 toast('Actualización exitosa', { type: 'success' });
                 reseteo();
                 window.location.replace('')
             } else if (password_current && !photo[0]) {
-                await signInWithEmailAndPassword(auth2, email, password_current);
+                await signInWithEmailAndPassword(auth2, dataDecryp(email), password_current);
                 await Promise.all(ArrayofRouter.map(async (data) => {
-                    await signInWithEmailAndPassword(data.Auth, email, password);
+                    await signInWithEmailAndPassword(data.Auth, dataDecryp(email), dataDecryp(password));
                     await updatePassword(data.Auth.currentUser, Newpassword);
                 }));
                 await signOut(auth2);
                 toast('Actualización exitosa', { type: 'success' });
                 reseteo();
             } else if (password_current && photo[0]) {
-                await signInWithEmailAndPassword(auth2, email, password_current);
+                await signInWithEmailAndPassword(auth2, dataDecryp(email), password_current);
+                //Compresion de imagenes
+                const compressedFile = await imageCompression(photo[0], options);
+                // se obtiene la referencia de la url de la imagen de perfil
                 let referente = getRefimg();
-                const storageRef = ref(storage2, `/images/${referente}`);
-                await uploadBytesResumable(storageRef, photo[0]);
+                //se sube la nueva imagen con la misma referencia para realizar un update con la misma url
+                const storageRef = ref(storage2, `/Perfiles/${referente}`);
+                await uploadBytesResumable(storageRef, compressedFile);
                 await Promise.all(ArrayofRouter.map(async (data) => {
-                    await signInWithEmailAndPassword(data.Auth, email, password);
+                    await signInWithEmailAndPassword(data.Auth, dataDecryp(email), dataDecryp(password));
                     await updatePassword(data.Auth.currentUser, Newpassword);
                 }));
+                await signOut(auth2);
                 toast('Actualización exitosa', { type: 'success' });
                 reseteo();
-                signOut(auth2)
                 window.localStorage.clear();
             }
-            setOk(true);
         } catch (error) {
             toast(error.code, { type: 'error' });
             setOk(true);
@@ -165,14 +178,7 @@ const Setting = ({ setstatesetting, statesetting }) => {
                                 <button className='cancel' onClick={reseteo}>Cancelar</button>
                                 <button className={watch('photo')?.[0] || watch('password_current') || watch('password') ? 'save on' : 'save'} onClick={handleSubmit(submit)}>Guardar</button>
                             </>
-                            : <div className='loader'>
-                                <l-tailspin
-                                    size="30"
-                                    stroke="2"
-                                    speed="1.3"
-                                    color="#8b0000"
-                                ></l-tailspin>
-                            </div>
+                            : <Loader />
                         }
                     </div>
                 </div>

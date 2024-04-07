@@ -33,8 +33,9 @@
 }
 
 .setting_modal {
-  width: 450px;
+  width: 80%;
   height: auto;
+  max-width: 450px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -74,6 +75,7 @@
   width: 130px;
   height: 130px;
   object-fit: cover;
+  object-position: left top;
   border-radius: 50%;
 }
 
@@ -139,15 +141,25 @@
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
-.loader{
-  width: 100%;
-  height: auto;
-}
+
 @media (hover: hover) {
   .forgetten:hover {
     text-decoration: underline;
   }
   .save:hover {
     background-color: rgba(139, 0, 0, 1);
+  }
+}
+@media (width<=463px) {
+  .setting_modal {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .edit_photo {
+    width: 100%;
+  }
+  .form_password_main {
+    width: 100%;
   }
 }

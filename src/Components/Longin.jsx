@@ -6,23 +6,31 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth2 } from '../firebaseconfig';
 import { toast } from 'react-toastify';
 import { Navigate } from 'react-router-dom';
+import Loader from './Loader';
+import { dataEncryp } from './Crypto/Encryp';
 
 const Login = () => {
     const { IsLogged } = useContext(Acesscontext)
-
     const [show, setShow] = useState(false)
+    const [Ok, setOk] = useState(true)
+
     const Loginsuccess = (email, password) => {
         toast('inicio de session exitoso', { type: 'success' })
-        window.localStorage.setItem('Email', email)
-        window.localStorage.setItem('Password', password)
+        window.localStorage.setItem('Email', dataEncryp(email))
+        window.localStorage.setItem('Password', dataEncryp(password))
+        setOk(true)
     }
 
     const { register, handleSubmit, reset, formState: { errors }, watch } = useForm();
 
     const submit = ({ email, password }) => {
+        setOk(false)
         signInWithEmailAndPassword(auth2, email, password)
             .then(() => { Loginsuccess(email, password) })
-            .catch((error) => { toast(error.code, { type: "error" }) })
+            .catch((error) => {
+                toast(error.code, { type: "error" })
+                setOk(true)
+            })
     };
 
     const showPassword = () => setShow(!show)
@@ -57,7 +65,9 @@ const Login = () => {
                         {errors.password?.type === 'required' &&
                             <p className='error'>Por favor, ingrese una contraseña.</p>
                         }
-                        <button className='protect-route-btn' type='submit'>Login</button>
+                        {Ok ? <button className='protect-route-btn' type='submit'>Login</button>
+                            : <Loader />
+                        }
                         <p className='forgetten'>
                             ¿Olvidaste tu contraseña?
                         </p>

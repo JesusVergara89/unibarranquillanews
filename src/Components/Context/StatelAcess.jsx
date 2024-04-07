@@ -6,7 +6,8 @@ import { auth2 } from '../../firebaseconfig'
 const StatelAcess = ({ children }) => {
   const [IsLogged, setIsLogged] = useState()
   const [AccessInfor, setAccessInfor] = useState()
-  
+  const [Admin, setAdmin] = useState(false)
+
   useEffect(() => {
     onAuthStateChanged(auth2, (user) => {
       if (user) {
@@ -18,6 +19,11 @@ const StatelAcess = ({ children }) => {
   }, [])
 
   const user = auth2.currentUser;
+  const AdminArray = [
+    { name: 'jesus vergara', email: 'jesusmanuelv1989@gmail.com' }
+    , { name: 'Brian Escorcia', email: 'naziegonzalez5@gmail.com' }
+  ]
+  console.log(Admin)
   useEffect(() => {
     if (user != null) {
       setAccessInfor(
@@ -26,6 +32,8 @@ const StatelAcess = ({ children }) => {
           PhotoUrl: user.photoURL
         }
       )
+      const isAdmin = AdminArray.some(data => data.name === user.displayName && data.email === user.email);
+      setAdmin(isAdmin);
     } else {
       setAccessInfor(
         {
@@ -37,7 +45,7 @@ const StatelAcess = ({ children }) => {
   }, [user])
 
   const access = useAccess()
-  const data = { access, IsLogged, AccessInfor }
+  const data = { access, IsLogged, AccessInfor, Admin }
   return (
     <Acesscontext.Provider value={data}>{children}</Acesscontext.Provider>
   )

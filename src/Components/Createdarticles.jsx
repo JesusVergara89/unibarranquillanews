@@ -7,15 +7,19 @@ import Select from 'react-select';
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
 import useRouter from '../Hooks/useRouter'
-import { uploadBytesResumable } from 'firebase/storage'
-import { addDoc, collection } from 'firebase/firestore'
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import { Timestamp, addDoc, collection } from 'firebase/firestore'
 import { Acesscontext } from './Context/Acesscontext'
+import Loader from './Loader'
+import { dataDecryp } from './Crypto/Decryp'
+import imageCompression from 'browser-image-compression';
 // million-ignore
 const Createdarticles = () => {
   const [focusDescrip, setfocusDescrip] = useState(false)
   const [InformImg, setInformImg] = useState()
   const { AccessInfor } = useContext(Acesscontext)
   const [ErrorPhoto, setErrorPhoto] = useState(false)
+  const [Ok, setOk] = useState(true)
   const { control,
     register,
     handleSubmit,
@@ -24,53 +28,52 @@ const Createdarticles = () => {
     formState: { errors },
     watch
   } = useForm()
+  const options = {
+    maxSizeMB: 5,
+    maxWidthOrHeight: 500,
+    useWebWorker: true,
+  }
+  const submit = async ({ title, link, photo, SecionMain, Subsecion, Description }) => {
+    try {
+      setOk(false);
+      const collectionName = Subsecion?.value || 'Articles';
+      const email = window.localStorage.getItem('Email');
+      const password = window.localStorage.getItem('Password');
+      const autenti = ArrayofRouter.find(data => data.Url === SecionMain.value);
+      await signInWithEmailAndPassword(autenti.Auth, dataDecryp(email), dataDecryp(password));
+      const storageRef = ref(autenti.Storage, `/images/${Date.now()}${photo[0].name}`);
+      const compressedFile = await imageCompression(photo[0], options);
+      const snapshot = await uploadBytesResumable(storageRef, compressedFile);
+      const url = await getDownloadURL(snapshot.ref);
+      const articleRef = collection(autenti.Database, collectionName);
+      await addDoc(articleRef, {
+        title: title,
+        description: Description,
+        link: link,
+        autor: AccessInfor.Name,
+        imageUrl: url,
+        createdAt: Timestamp.now().toDate(),
+        avatar: AccessInfor.PhotoUrl
+      });
 
-  const submit = ({ title, link, photo, SecionMain, Subsecion, Description }) => {
-    let collectionName = Subsecion || 'Articles'
-    console.log(collectionName)
-    if (SecionMain.value != 'ACTUALIDAD') {
-      let email = window.localStorage.getItem('Email')
-      let password = window.localStorage.getItem('Password')
-      let autenti = ArrayofRouter.find(data => data.Url === SecionMain.value)
-      signInWithEmailAndPassword(autenti.Auth, email, password)
-        .then(() => {
-          const storageRef = ref(autenti.Storage, `/images/${Date.now()}${photo[0].name}`);
-          uploadBytesResumable(storageRef, photo[0])
-            .then((snapshot) => {
-              getDownloadURL(snapshot.ref).then((url) => {
-                const articleRef = collection(autenti.Database, collectionName);
-                addDoc(articleRef, {
-                  title: title,
-                  description: Description,
-                  link: link,
-                  autor: AccessInfor.Name,
-                  imageUrl: url,
-                  createdAt: Timestamp.now().toDate(),
-                  avatar: AccessInfor.PhotoUrl
-                })
-                  .then(() => {
-                    toast('Article added successfully', { type: 'success' });
-                    reset({ title: '', link: '', SecionMain: '', Subsecion: '', photo: null })
-                    setInformImg(null)
-                  })
-                  .catch(() => {
-                    toast('Error adding article', { type: 'error' });
-                  });
-              })
-            })
-        })
-        .catch((error) => { toast(error.code, { type: "error" }) })
+      toast('Noticia añadida correctamente', { type: 'success' });
+      reset({ title: '', link: '', SecionMain: '', Subsecion: '', photo: null});
+      setInformImg(null);
+      setOk(true);
+    } catch (error) {
+      console.log(error);
+      toast('Error al añadir noticia', { type: "error" });
+      setOk(true);
     }
   };
-
+  
   const ValidatePhoto = () => {
     // Extensiones permitidas
-    const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'tif', 'webp', 'svg', 'raw'];
+    const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'tif', 'webp', 'svg', 'raw', 'avi'];
     const extension = value?.[0].name.split('.').pop()
     return allowedExtensions.includes(extension)
   }
   let value = watch('photo')
-  console.log(value)
   useEffect(() => {
     let e = value?.[0]
     if (e) {
@@ -267,7 +270,10 @@ const Createdarticles = () => {
       {errors.Subsecion?.type === 'validate' &&
         <p className='error'>Por favor, seleccione la subseccion.</p>
       }
-      <button className='protect-route-btn' type='submit'>Publicar</button>
+      {Ok ?
+        <button className='protect-route-btn' type='submit'>Publicar</button>
+        : <Loader />
+      }
     </form>
   )
 }

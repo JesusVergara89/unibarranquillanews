@@ -3,18 +3,19 @@ import '../Styles/header.css'
 import { Link, useNavigate } from 'react-router-dom'
 import useRouter from '../Hooks/useRouter'
 import { Acesscontext } from './Context/Acesscontext'
-import Brian from '../Images/Brian.jpg'
 import { signOut } from 'firebase/auth'
 import { auth2 } from '../firebaseconfig'
 import { toast } from 'react-toastify'
 import Setting from './Setting'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 // million-ignore
 const Header = () => {
     const [Menu, setMenu] = useState(false)
     const [statesetting, setstatesetting] = useState(false)
     const [DropDrown, setDropDrown] = useState(false)
     const { ArrayofRouter } = useRouter()
-    const { IsLogged, AccessInfor } = useContext(Acesscontext)
+    const { IsLogged, AccessInfor, Admin } = useContext(Acesscontext)
     const navigate = useNavigate()
 
     const closeMenu = () => {
@@ -61,7 +62,7 @@ const Header = () => {
                 {IsLogged &&
                     <div className='toolsUser'>
                         <i onClick={() => Navegation('CREATE')} className='bx bx-book-add'></i>
-                        <i onClick={() => Navegation('REGISTER')} className='bx bx-user-plus'></i>
+                       {Admin&& <i onClick={() => Navegation('REGISTER')} className='bx bx-user-plus'></i>}
                         <i onClick={() => { setstatesetting(true), closeMenu() }} className='bx bx-cog'></i>
                         <i onClick={closeSesion} className='bx bx-log-out'></i>
                     </div>
@@ -91,7 +92,7 @@ const Header = () => {
             {IsLogged &&
                 <article className='Perfil'>
                     <p>{AccessInfor.Name}</p>
-                    <img src={AccessInfor.PhotoUrl || Brian} alt="" />
+                    <img src={AccessInfor.PhotoUrl} alt="" />
                 </article>
             }
             <div onClick={menuLoad} className={Menu ? 'Close on' : 'Close off'} />
