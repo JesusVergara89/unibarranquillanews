@@ -28,7 +28,7 @@
 .form_user,
 .form_password,
 .form_editor,
-.form_select  {
+.form_select {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -295,6 +295,11 @@
   width: auto;
   font-size: 17px;
   color: var(--color_6);
+  font-family: "Roboto", "Arial", sans-serif;
+}
+.data_imagen p:nth-child(2) {
+  opacity: 0.5;
+  text-decoration: line-through;
 }
 
 .data_imagen .bx {
@@ -316,6 +321,9 @@
   flex-direction: column;
   gap: 8px;
   margin-top: 20px;
+}
+.Input_select {
+  text-transform: capitalize;
 }
 
 @media (hover: hover) {

@@ -114,6 +114,7 @@
 .newyork-information h4 {
   font-size: 0.8rem;
   color: var(--color_5);
+  font-family: "Roboto", "Arial", sans-serif;
 }
 
 .newyork-img-autor {

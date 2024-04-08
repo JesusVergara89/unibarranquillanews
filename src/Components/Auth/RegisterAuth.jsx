@@ -7,7 +7,7 @@ import useRouter from '../../Hooks/useRouter'
 import { storage2 } from '../../firebaseconfig'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import Loader from '../Loader'
-import imageCompression from 'browser-image-compression';
+import Compressor from 'compressorjs';
 // million-ignore
 const RegisterAuth = () => {
     const [show, setShow] = useState(false)
@@ -23,17 +23,11 @@ const RegisterAuth = () => {
         formState: { errors },
         watch
     } = useForm();
-    const options = {
-        maxSizeMB: 5,
-        maxWidthOrHeight: 140,
-        useWebWorker: true,
-    }
     const submit = async ({ email, password, name, photo }) => {
         setOk(false)
         try {
-            const compressedFile = await imageCompression(photo[0], options);
             const storageRef = ref(storage2, `/Perfiles/${Date.now()}${name}`);
-            const snapshot = await uploadBytesResumable(storageRef, compressedFile);
+            const snapshot = await uploadBytesResumable(storageRef, InformImg.File);
             //se obtiene la url de la imagen subida
             const url = await getDownloadURL(snapshot.ref);
             // Crear usuarios en todos los routers
@@ -53,9 +47,20 @@ const RegisterAuth = () => {
 
     const ValidatePhoto = () => {
         // Extensiones permitidas
-        const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'tif', 'webp', 'svg', 'raw', 'avi'];
+        const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'svg', 'avif'];
         const extension = value?.[0].name.split('.').pop()
         return allowedExtensions.includes(extension)
+    }
+    const Sizeimg = (file) => {
+        let Size
+        let SizeKb = (file.size / 1024).toFixed(1)
+        if (SizeKb >= 1024) {
+            let SizeMb = (SizeKb / 1024).toFixed(1)
+            Size = `${SizeMb} MB`
+        } else {
+            Size = `${SizeKb} KB`
+        }
+        return Size
     }
     let value = watch('photo')
     useEffect(() => {
@@ -63,17 +68,21 @@ const RegisterAuth = () => {
         if (e) {
             let Validatephoto = ValidatePhoto()
             if (Validatephoto) {
-                let Size
-                let SizeKb = (e.size / 1024).toFixed(1)
-                if (SizeKb >= 1024) {
-                    let SizeMb = (SizeKb / 1024).toFixed(1)
-                    Size = `${SizeMb}MB`
-                } else {
-                    Size = `${SizeKb}KB`
-                }
-                const UrlImg = URL.createObjectURL(e)
-                setInformImg({ size: Size, Url: UrlImg })
-                setErrorPhoto(false)
+                new Compressor(e, {
+                    quality: 0.8,
+                    maxWidth: 800,
+                    maxHeight: 800,
+                    success(result) {
+                        let Size = Sizeimg(e)
+                        let SizeCompri = Sizeimg(result)
+                        const UrlImg = URL.createObjectURL(result)
+                        setInformImg({ size: Size, sizeCompri: SizeCompri, Url: UrlImg, File: result })
+                        setErrorPhoto(false)
+                    },
+                    error(err) {
+                        console.log(err)
+                    }
+                })
             } else {
                 setErrorPhoto(true)
             }
@@ -131,6 +140,7 @@ const RegisterAuth = () => {
                         <div className='data_imagen'>
                             <i className='bx bx-file-blank'></i>
                             <p>{InformImg.size}</p>
+                            <p>{InformImg.sizeCompri}</p>
                             <i onClick={() => {
                                 resetField('photo')
                                 setInformImg(null)

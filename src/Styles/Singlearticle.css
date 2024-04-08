@@ -108,6 +108,7 @@
 .single-out h3 {
   font-size: 1em;
   color: var(--color_5);
+  font-family: "Roboto", "Arial", sans-serif;
 }
 
 .single-description {
@@ -139,6 +140,7 @@
 .single-description h4 {
   color: var(--color_5);
   text-align: left;
+  font-family: "Roboto", "Arial", sans-serif;
 }
 
 @media (333px <=width < 430px) {

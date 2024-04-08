@@ -10,7 +10,7 @@ import { toast } from 'react-toastify'
 import useRouter from '../Hooks/useRouter'
 import Loader from './Loader'
 import { dataDecryp } from './Crypto/Decryp'
-import imageCompression from 'browser-image-compression';
+import Compressor from 'compressorjs';
 // million-ignore
 const Setting = ({ setstatesetting, statesetting }) => {
     const { AccessInfor } = useContext(Acesscontext)
@@ -39,24 +39,16 @@ const Setting = ({ setstatesetting, statesetting }) => {
         const match = Urlobject.match(regex);
         return match[1]
     }
-    const options = {
-        maxSizeMB: 5,
-        maxWidthOrHeight: 140,
-        useWebWorker: true,
-    }
+
     const submit = async ({ photo, password_current, Newpassword }) => {
         try {
             let email = window.localStorage.getItem('Email');
             let password = window.localStorage.getItem('Password');
             setOk(false);
             if (photo[0] && !password_current) {
-                //Compresión de imágenes
-                const compressedFile = await imageCompression(photo[0], options);
-                // se obtiene la referencia de la url de la imagen de perfil
                 let referente = getRefimg();
-                //se sube la nueva imagen con la misma referencia para realizar un update con la misma url
                 const storageRef = ref(storage2, `/Perfiles/${referente}`);
-                await uploadBytesResumable(storageRef, compressedFile);
+                await uploadBytesResumable(storageRef, InformImg.File);
                 toast('Actualización exitosa', { type: 'success' });
                 reseteo();
                 window.location.replace('')
@@ -71,13 +63,10 @@ const Setting = ({ setstatesetting, statesetting }) => {
                 reseteo();
             } else if (password_current && photo[0]) {
                 await signInWithEmailAndPassword(auth2, dataDecryp(email), password_current);
-                //Compresion de imagenes
-                const compressedFile = await imageCompression(photo[0], options);
-                // se obtiene la referencia de la url de la imagen de perfil
                 let referente = getRefimg();
                 //se sube la nueva imagen con la misma referencia para realizar un update con la misma url
                 const storageRef = ref(storage2, `/Perfiles/${referente}`);
-                await uploadBytesResumable(storageRef, compressedFile);
+                await uploadBytesResumable(storageRef, InformImg.File);
                 await Promise.all(ArrayofRouter.map(async (data) => {
                     await signInWithEmailAndPassword(data.Auth, dataDecryp(email), dataDecryp(password));
                     await updatePassword(data.Auth.currentUser, Newpassword);
@@ -98,7 +87,7 @@ const Setting = ({ setstatesetting, statesetting }) => {
         let validate
         if (value[0]) {
             // Extensiones permitidas
-            const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'tif', 'webp', 'svg', 'raw', 'avi'];
+            const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'svg', 'avif'];
             const extension = value[0].name.split('.').pop()
             validate = allowedExtensions.includes(extension)
         } else {
@@ -106,21 +95,24 @@ const Setting = ({ setstatesetting, statesetting }) => {
         }
         return validate
     }
+
     useEffect(() => {
         let e = value?.[0]
         if (e) {
             let Validatephoto = ValidatePhoto()
             if (Validatephoto) {
-                let Size
-                let SizeKb = (e.size / 1024).toFixed(1)
-                if (SizeKb >= 1024) {
-                    let SizeMb = (SizeKb / 1024).toFixed(1)
-                    Size = `${SizeMb}MB`
-                } else {
-                    Size = `${SizeKb}KB`
-                }
-                const UrlImg = URL.createObjectURL(e)
-                setInformImg({ size: Size, Url: UrlImg })
+                new Compressor(e, {
+                    quality: 0.8,
+                    maxWidth: 800,
+                    maxHeight: 800,
+                    success(result) {
+                        const UrlImg = URL.createObjectURL(result)
+                        setInformImg({ Url: UrlImg, File: result })
+                    },
+                    error(err) {
+                        console.log(err)
+                    }
+                })
             }
         }
     }, [value])
