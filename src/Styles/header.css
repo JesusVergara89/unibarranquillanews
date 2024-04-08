@@ -54,11 +54,13 @@
   z-index: 1000;
   cursor: pointer;
 }
+
 .Perfil p {
   width: auto;
   font-size: 16px;
   font-weight: bold;
 }
+
 .Perfil img {
   width: 35px;
   height: 35px;
@@ -285,7 +287,10 @@
     padding: 8px 0 8px 8px;
     transition: clip-path 0.3s ease-in-out;
   }
-  .Perfil p{
+  .Perfil .Name {
+    width: 80vh;
+  }
+  .Perfil p {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -296,7 +301,7 @@
   .option.off ~ .Perfil {
     clip-path: inset(0 100% 0 0);
   }
-  .box_list{
+  .box_list {
     height: 80%;
     margin-top: 80px;
   }

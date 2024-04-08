@@ -15,7 +15,7 @@ const Header = () => {
     const [statesetting, setstatesetting] = useState(false)
     const [DropDrown, setDropDrown] = useState(false)
     const { ArrayofRouter } = useRouter()
-    const { IsLogged, AccessInfor, Admin } = useContext(Acesscontext)
+    const { IsLogged, AccessInfor, Admin, Check } = useContext(Acesscontext)
     const navigate = useNavigate()
 
     const closeMenu = () => {
@@ -62,7 +62,7 @@ const Header = () => {
                 {IsLogged &&
                     <div className='toolsUser'>
                         <i onClick={() => Navegation('CREATE')} className='bx bx-book-add'></i>
-                       {Admin&& <i onClick={() => Navegation('REGISTER')} className='bx bx-user-plus'></i>}
+                        {Admin && <i onClick={() => Navegation('REGISTER')} className='bx bx-user-plus'></i>}
                         <i onClick={() => { setstatesetting(true), closeMenu() }} className='bx bx-cog'></i>
                         <i onClick={closeSesion} className='bx bx-log-out'></i>
                     </div>
@@ -89,7 +89,12 @@ const Header = () => {
                     ))}
                 </div>
             </nav >
-            {IsLogged &&
+            {Check ?
+                <article className='Perfil'>
+                    <p className='Name'><Skeleton width={120} height={24}/></p>
+                    <Skeleton circle width={35} height={35}/>
+                </article>
+                : IsLogged &&
                 <article className='Perfil'>
                     <p>{AccessInfor.Name}</p>
                     <img src={AccessInfor.PhotoUrl} alt="" />
