@@ -41,7 +41,6 @@
   color: var(--color_5);
   text-align: left;
   font-size: 0.8rem;
-  font-family: "Roboto", "Arial", sans-serif;
 }
 
 .card-content-information {
@@ -66,7 +65,6 @@
   color: var(--color_5);
   font-size: 0.8rem;
   text-align: center;
-  font-family: "Roboto", "Arial", sans-serif;
 }
 
 .card-description {
