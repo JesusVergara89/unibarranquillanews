@@ -7,6 +7,7 @@ import Carrusel from './Carrusel'
 import { SwiperSlide } from "swiper/react";
 import Article_skeleto from './Loading-skeleton/Article_skeleto'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import HTMLReactParser from 'html-react-parser'
 
 const Article = ({ IsLogged }) => {
 
@@ -71,7 +72,7 @@ const Article = ({ IsLogged }) => {
                                         <h2 className="card-title">{truncateText(article.title, 84)}</h2>
                                         <div className="card-description">
                                             {/* Split body content by newline and display */}
-                                            <p>{article.description?.slice(0, 140) + " ..."}</p>
+                                            {HTMLReactParser(truncateText(article.description,120))}
                                         </div>
                                         <h4>{article && article.description && `${TimeReading(article.description)} min. read`}</h4>
                                         <div className="card-content-information">

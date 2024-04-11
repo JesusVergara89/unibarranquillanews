@@ -71,14 +71,9 @@
   margin: 0;
   width: 95%;
   height: auto;
-  color: var(--color_7);
-  font-size: 0.8rem;
-}
-
-.card-description p {
-  all: unset;
   color: var(--color_6);
-  opacity: .8;
+  opacity: 0.8;
+  font-size: 0.8rem;
 }
 
 @media (hover: hover) {
