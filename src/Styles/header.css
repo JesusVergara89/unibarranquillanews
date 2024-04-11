@@ -53,6 +53,7 @@
   padding: 8px;
   z-index: 1000;
   cursor: pointer;
+  text-transform: capitalize;
 }
 
 .Perfil p {

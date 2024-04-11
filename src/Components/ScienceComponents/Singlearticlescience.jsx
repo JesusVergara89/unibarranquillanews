@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import '../../Styles/Singlearticle.css'
 import Skeleton from 'react-loading-skeleton'
@@ -14,6 +14,8 @@ import Compartir from '../Compartir/Compartir'
 import NotFound from '../NotFound'
 import HTMLReactParser from 'html-react-parser'
 import useRouter from '../../Hooks/useRouter'
+import { Acesscontext } from '../Context/Acesscontext'
+import Editor from '../Editor'
 
 const Singlearticlescience = () => {
 
@@ -22,13 +24,15 @@ const Singlearticlescience = () => {
     const [article, setArticle] = useState(null)
 
     const { ArrayofRouter } = useRouter()
+    const { IsLogged, access, Admin } = useContext(Acesscontext)
+    const [Editar, setEditar] = useState(false)
 
     let validar = ArrayofRouter.find(data => data.Url === name)
     let Coleccion
     if (validar?.Subseccion) {
         Coleccion = validar.Subseccion.find(data => data.Url === id)
     }
-    console.log(validar)
+
     useEffect(() => {
         setArticle(undefined)
         if (validar && Coleccion) {
@@ -93,49 +97,70 @@ const Singlearticlescience = () => {
         }
         return words.join(" ");
     }
-
+console.log(article)
     const validateTitleLength = (title) => {
         return title.length <= 52;
     }
+    const Condicional = () => {
+        if (article === 'failed') {
+            return (
+                <NotFound />
+            )
+        } else if (article && article != 'failed' && !Editar) {
+            return (
+                <article className="singles-article">
+                    <div className="single-card">
+                        <h1 className={validateTitleLength(article.title) ? "tocenter" : 'toleft'}>{article.title && capitTitle(article.title)}</h1>
+                        <img className='Photo' src={article.imageUrl} alt="" />
+                        <div className="single-out">
+                            {article.autor ?
+                                <img src={getLetters(article.autor) === 'w' ? Jesus :
+                                    getLetters(article.autor) === 'x' ? Alejandra :
+                                        getLetters(article.autor) === 'z' ? Gilberto :
+                                            getLetters(article.autor) === 'y' ? Brian :
+                                                getLetters(article.autor) === 'p' ? josemanuel : null} alt="" />
+                                : ''}
+                            <p>{article.autor}</p>
+                            <p>{article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ')}</p>
 
-    return (
-        (
-            <>
-                {article === 'failed' ? <NotFound /> : article ?
-                    <article className="singles-article">
-                        <div className="single-card">
-                            <h1 className={validateTitleLength(article.title) ? "tocenter" : 'toleft'}>{article.title && capitTitle(article.title)}</h1>
-                            <img className='Photo' src={article.imageUrl} alt="" />
-                            <div className="single-out">
-                                <div className="img-autor">
-                                    {article.autor ?
-                                        <img src={getLetters(article.autor) === 'w' ? Jesus :
-                                            getLetters(article.autor) === 'x' ? Alejandra :
-                                                getLetters(article.autor) === 'z' ? Gilberto :
-                                                    getLetters(article.autor) === 'y' ? Brian :
-                                                        getLetters(article.autor) === 'p' ? josemanuel :
-                                                            getLetters(article.autor) === 'q' ? omar : null} alt="" />
-                                        : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: '33%' }} />}
-                                    <h2>{article.autor}</h2>
-                                    <h3>{article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ')}</h3>
-                                </div>
-                            </div>
+                            {IsLogged && ((article.autor === access?.Name) || Admin) ?
+                                < i onClick={() => setEditar(true)} className='bx bx-edit'></i>
+                                : ''
+                            }
+                            {
+                                IsLogged && Admin ?
+                                    <i className='bx bx-message-square-x'></i>
+                                    : ''
+                            }
 
-                            <div className="single-description">
-                                {article.description ?
-                                    HTMLReactParser(formatDescription(article.description)) : ''}
-                                <h4>{`${TimeReading(article.description)} min. read`}</h4>
-                            </div>
-                            <div className='main-compartir'>
-                                <a className='Fuente' href={article.link} target="_blank"> Ver mas</a>
-                            </div>
-                            <Compartir link={`${name}/${id}/${idSub} `} />
                         </div>
-                    </article >
-                    : <Page_skeleton />
-                }
-            </>
-        )
+
+                        <div className="single-description">
+                            {article.description && article.description.split('\n').map((line, index) => (
+                                <p key={index} dangerouslySetInnerHTML={{ __html: formatDescription(line) }} />
+                            ))}
+                            <h4>{`${TimeReading(article.description)} min. read`}</h4>
+                        </div>
+                        <div className='main-compartir'>
+                            <a className='Fuente' href={article.link} target="_blank"> Ver mas</a>
+                        </div>
+                        <Compartir link={`${name}/${id}/${idSub} `} />
+                    </div>
+                </article >
+            )
+        } else if (Editar) {
+            return (
+                <Editor data={article} SeccionM={validar.Url} Subseccion={Coleccion.Url} setEditar={setEditar} />
+            )
+        }
+        else {
+            return (
+                <Page_skeleton />
+            )
+        }
+    }
+    return (
+        <Condicional />
     )
 }
 

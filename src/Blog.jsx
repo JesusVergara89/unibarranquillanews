@@ -28,6 +28,7 @@ import katex from "katex";
 import "katex/dist/katex.css";
 import Createdarticles from './Components/Createdarticles'
 import RegisterAuth from './Components/Auth/RegisterAuth'
+import ForgotPassword from './Components/ForgotPassword'
 
 function Blog() {
   //const [reloadPage, setReloadPage] = useState(false)
@@ -156,7 +157,7 @@ function Blog() {
         <Route path="*" element={<NotFound />} />
 
         <Route path='/LOGIN' element={<Longin />} />
-
+        <Route path='FORGOT-PASSWORD' element={<ForgotPassword />} />
         <Route element={<RoutesProtecteds />}>
           <Route
             path='/CREATE'

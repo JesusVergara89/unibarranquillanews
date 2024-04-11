@@ -1,3 +1,12 @@
+:root {
+  --color_1: #ffffff;
+  --color_2: #006400;
+  --color_3: #add8e6;
+  --color_4: #8b0000;
+  --color_5: #001f3f;
+  --color_6: #333333;
+}
+
 .form_main {
   height: auto;
   width: 80%;
@@ -6,7 +15,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 30px;
   border-radius: 5px;
   background-color: var(--color_1);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -16,13 +25,18 @@
 
 .form_main.create {
   max-width: 450px;
-  padding: 30px;
 }
 
 .form_main h3 {
   font-size: 1.5rem;
   color: var(--color_7);
   padding-top: 8px;
+}
+.Description_password {
+  margin-top: 20px;
+  text-align: start;
+  letter-spacing: 0.5px;
+  color: var(--color_6);
 }
 
 .form_user,
@@ -126,7 +140,8 @@
 
 .ql-container.ql-snow {
   height: auto;
-  min-height: 300px;
+  height: 300px;
+  overflow-y: scroll;
 }
 
 .katex * {

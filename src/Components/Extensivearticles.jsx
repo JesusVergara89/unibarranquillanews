@@ -1,7 +1,7 @@
 import React, {useState } from 'react';
 import '../Styles/Extensivearticles.css';
 import Componentform from './Formcreated/Componentform';
-
+/*eliminar */
 const Extensivearticles = ({IsLogged, setIsLogged }) => {
     const [off, setOff] = useState(true);
     const [actualidad, setActualidad] = useState(false);

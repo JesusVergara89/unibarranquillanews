@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../Styles/Singlearticle.css'
 import { useParams } from 'react-router-dom'
-import { doc, getDoc } from 'firebase/firestore'
+import { doc, getDoc, onSnapshot } from 'firebase/firestore'
 import NotFound from './NotFound'
 import Page_skeleton from './Loading-skeleton/Page_skeleton'
 import Jesus from '../Images/Jesus.jpg'
@@ -11,17 +11,19 @@ import Alejandra from '../Images/Aleja.jpg'
 import josemanuel from '../Images/josemanuel.jpg'
 import omar from '../Images/omar.jpg'
 import Compartir from './Compartir/Compartir'
-import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import useRouter from '../Hooks/useRouter'
 import SectionPage from './ScienceComponents/SectionPage'
-
+import { Acesscontext } from './Context/Acesscontext'
+import Editor from './Editor'
 
 const Singlearticle = () => {
 
     const { name, id } = useParams()
 
     const { ArrayofRouter } = useRouter()
+    const [Editar, setEditar] = useState(false)
+    const { IsLogged, access, Admin } = useContext(Acesscontext)
 
     let validar = ArrayofRouter.find(data => data.Url === name)
     let Coleccion
@@ -30,18 +32,16 @@ const Singlearticle = () => {
     }
 
     const [article, setArticle] = useState(null)
-
     useEffect(() => {
         setArticle(undefined)
         if (validar) {
             if (!validar.Subseccion) {
                 const docRef = doc(validar.Database, "Articles", id)
-                getDoc(docRef)
-                    .then((resp) => {
-                        resp.exists() ?
-                            setArticle({ ...resp.data(), id: resp.id })
-                            : setArticle('failed')
-                    })
+                onSnapshot(docRef, (resp) => {
+                    resp.exists() ?
+                        setArticle({ ...resp.data(), id: resp.id })
+                        : setArticle('failed')
+                })
             }
         } else {
             setArticle('failed')
@@ -102,45 +102,74 @@ const Singlearticle = () => {
         return title.length <= 52;
     }
 
-    return (
-        <>
-            {!validar?.Subseccion ?
-                article === 'failed' ? <NotFound /> : article ?
-                    <article className="singles-article">
-                        <div className="single-card">
-                            <h1 className={validateTitleLength(article.title) ? "tocenter" : 'toleft'}>{article.title && capitTitle(article.title)}</h1>
-                            <img className='Photo' src={article.imageUrl} alt="" />
-                            <div className="single-out">
-                                <div className="img-autor">
-                                    {article.autor ?
-                                        <img src={getLetters(article.autor) === 'w' ? Jesus :
-                                            getLetters(article.autor) === 'x' ? Alejandra :
-                                                getLetters(article.autor) === 'z' ? Gilberto :
-                                                    getLetters(article.autor) === 'y' ? Brian :
-                                                        getLetters(article.autor) === 'p' ? josemanuel : null} alt="" />
-                                        : <Skeleton circle={true} height={50} width={50} style={{ marginLeft: '33%' }} />}
-                                    <h2>{article.autor}</h2>
-                                    <h3>{article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ')}</h3>
-                                </div>
-                            </div>
+    const Condicional = () => {
+        if (article === 'failed') {
+            return (
+                <NotFound />
+            )
+        } else if (article != 'failed' && article && !validar?.Subseccion && !Editar) {
+            return (
+                <article className="singles-article">
+                    <div className="single-card">
+                        <h1 className={validateTitleLength(article.title) ? "tocenter" : 'toleft'}>{article.title && capitTitle(article.title)}</h1>
+                        <img className='Photo' src={article.imageUrl} alt="" />
+                        <div className="single-out">
+                            {article.autor ?
+                                <img src={getLetters(article.autor) === 'w' ? Jesus :
+                                    getLetters(article.autor) === 'x' ? Alejandra :
+                                        getLetters(article.autor) === 'z' ? Gilberto :
+                                            getLetters(article.autor) === 'y' ? Brian :
+                                                getLetters(article.autor) === 'p' ? josemanuel : null} alt="" />
+                                : ''}
+                            <p>{article.autor}</p>
+                            <p>{article.createdAt.toDate().toLocaleDateString('es-co', { day: "numeric", month: "short", year: "numeric" }).replace('de', ' ')}</p>
 
-                            <div className="single-description">
-                                {article.description && article.description.split('\n').map((line, index) => (
-                                    <p key={index} dangerouslySetInnerHTML={{ __html: formatDescription(line) }} />
-                                ))}
-                                <h4>{`${TimeReading(article.description)} min. read`}</h4>
-                            </div>
-                            <div className='main-compartir'>
-                                <a className='Fuente' href={article.link} target="_blank"> Ver mas</a>
-                            </div>
-                            <Compartir link={`${name}/${id} `} />
+                            {IsLogged && ((article.autor === access?.Name) || Admin) ?
+                                < i onClick={() => setEditar(true)} className='bx bx-edit'></i>
+                                : ''
+                            }
+                            {
+                                IsLogged && Admin ?
+                                    <i className='bx bx-message-square-x'></i>
+                                    : ''
+                            }
+
                         </div>
-                    </article >
-                    : <Page_skeleton />
-                : Coleccion ? <SectionPage user={Coleccion} coleccion={Coleccion.Coleccion} database={validar.Database} />
-                    : <NotFound />
-            }
-        </>
+
+                        <div className="single-description">
+                            {article.description && article.description.split('\n').map((line, index) => (
+                                <p key={index} dangerouslySetInnerHTML={{ __html: formatDescription(line) }} />
+                            ))}
+                            <h4>{`${TimeReading(article.description)} min. read`}</h4>
+                        </div>
+                        <div className='main-compartir'>
+                            <a className='Fuente' href={article.link} target="_blank"> Ver mas</a>
+                        </div>
+                        <Compartir link={`${name}/${id} `} />
+                    </div>
+                </article >
+            )
+        } else if (!article && !validar?.Subseccion) {
+            return (
+                <Page_skeleton />
+            )
+        } else if (Coleccion) {
+            return (
+                <SectionPage user={Coleccion} coleccion={Coleccion.Coleccion} database={validar.Database} setEditar={setEditar} Editar={Editar} />
+            )
+        } else if (Editar) {
+            return (
+                <Editor data={article} autenti={validar} ID={id} setEditar={setEditar} />
+            )
+        }
+        else {
+            return (
+                <NotFound />
+            )
+        }
+    }
+    return (
+        <Condicional />
     )
 }
 

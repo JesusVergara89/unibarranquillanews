@@ -5,7 +5,7 @@ import { Acesscontext } from './Context/Acesscontext';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth2 } from '../firebaseconfig';
 import { toast } from 'react-toastify';
-import { Navigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import Loader from './Loader';
 import { dataEncryp } from './Crypto/Encryp';
 
@@ -13,6 +13,7 @@ const Login = () => {
     const { IsLogged } = useContext(Acesscontext)
     const [show, setShow] = useState(false)
     const [Ok, setOk] = useState(true)
+    const Navi = useNavigate()
 
     const Loginsuccess = (email, password) => {
         toast('inicio de session exitoso', { type: 'success' })
@@ -68,7 +69,7 @@ const Login = () => {
                         {Ok ? <button className='protect-route-btn' type='submit'>Login</button>
                             : <Loader />
                         }
-                        <p className='forgetten'>
+                        <p onClick={() => Navi('/FORGOT-PASSWORD')} className='forgetten'>
                             ¿Olvidaste tu contraseña?
                         </p>
                     </form>

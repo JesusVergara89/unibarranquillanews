@@ -5,7 +5,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { db, storage } from '../firebaseconfig';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
-
+/*elimimar */
 const ArticleForm = () => {
 
     const name = useSelector(state => state.emailSlice)

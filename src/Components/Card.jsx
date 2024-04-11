@@ -1,6 +1,6 @@
 import React from 'react'
 import "../Styles/card.css"
-
+/*eliminar */
 const Card = ({ unit }) => {
     const openUrl = (url) => {
         window.open(url, '_blank');

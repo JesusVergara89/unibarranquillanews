@@ -37,6 +37,7 @@
     "react-select": "^5.8.0",
     "react-share": "^5.1.0",
     "react-toastify": "^10.0.4",
+    "resend": "^3.2.0",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.0.6",
     "uuid": "^9.0.1"

@@ -76,38 +76,43 @@
 
 .single-out {
   width: 100%;
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.img-autor {
-  width: 100%;
-  height: 80px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.img-autor img {
-  width: 50px;
   height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+
+.single-out img {
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.img-autor h2 {
+.single-out p {
+  width: auto;
   font-size: 1rem;
   color: var(--color_6);
-  font-weight: bold;
 }
 
-.single-out h3 {
-  font-size: 1em;
+.single-out p:nth-child(2) {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.single-out p:last-child {
   color: var(--color_5);
+}
+
+.single-out .bx {
+  width: auto;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.single-out .bx:last-child{
+  color: var(--color_4);
 }
 
 .single-description {

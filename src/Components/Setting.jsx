@@ -103,8 +103,8 @@ const Setting = ({ setstatesetting, statesetting }) => {
             if (Validatephoto) {
                 new Compressor(e, {
                     quality: 0.8,
-                    maxWidth: 800,
-                    maxHeight: 800,
+                    maxWidth: 400,
+                    maxHeight: 400,
                     success(result) {
                         const UrlImg = URL.createObjectURL(result)
                         setInformImg({ Url: UrlImg, File: result })

@@ -4,10 +4,11 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import useRouter from '../../Hooks/useRouter'
-import { storage2 } from '../../firebaseconfig'
+import { db2, storage2 } from '../../firebaseconfig'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import Loader from '../Loader'
 import Compressor from 'compressorjs';
+import { addDoc, collection } from 'firebase/firestore'
 // million-ignore
 const RegisterAuth = () => {
     const [show, setShow] = useState(false)
@@ -23,18 +24,23 @@ const RegisterAuth = () => {
         formState: { errors },
         watch
     } = useForm();
-    const submit = async ({ email, password, name, photo }) => {
+    const submit = async ({ email, password, name }) => {
         setOk(false)
         try {
-            const storageRef = ref(storage2, `/Perfiles/${Date.now()}${name}`);
+            const storageRef = ref(storage2, `/Perfiles/${Date.now()}${name.toLowerCase()}`);
             const snapshot = await uploadBytesResumable(storageRef, InformImg.File);
             //se obtiene la url de la imagen subida
             const url = await getDownloadURL(snapshot.ref);
             // Crear usuarios en todos los routers
             await Promise.all(ArrayofRouter.map(async (user) => {
                 await createUserWithEmailAndPassword(user.Auth, email, password);
-                await updateProfile(user.Auth.currentUser, { displayName: name, photoURL: url });
+                await updateProfile(user.Auth.currentUser, { displayName: name.toLowerCase(), photoURL: url });
             }));
+            const articleRef = collection(db2, 'User');
+            await addDoc(articleRef, {
+                Email: email.toLowerCase(),
+                Name: name.toLowerCase()
+            });
             toast('Usuario creado exitoso', { type: 'success' });
             reset({ email: '', password: '', name: '', photo: null });
             setInformImg(null);
@@ -70,8 +76,8 @@ const RegisterAuth = () => {
             if (Validatephoto) {
                 new Compressor(e, {
                     quality: 0.8,
-                    maxWidth: 800,
-                    maxHeight: 800,
+                    maxWidth: 400,
+                    maxHeight: 400,
                     success(result) {
                         let Size = Sizeimg(e)
                         let SizeCompri = Sizeimg(result)
