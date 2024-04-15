@@ -42,11 +42,6 @@ const RegisterAuth = () => {
             const emailLocal = window.localStorage.getItem('Email');
             const passwordLocal = window.localStorage.getItem('Password');
             await signInWithEmailAndPassword(auth2, dataDecryp(emailLocal), dataDecryp(passwordLocal))
-            const articleRef = collection(db2, 'User');
-            await addDoc(articleRef, {
-                Email: email.toLowerCase(),
-                Name: name.toLowerCase()
-            });
             toast('Usuario creado con éxito', { type: 'success' });
             reset({ email: '', password: '', name: '', photo: null });
             setInformImg(null);
@@ -115,83 +110,83 @@ const RegisterAuth = () => {
     }
     return (
         <>
-            {Admin ? 
-            <form className='form_main' onSubmit={handleSubmit(submit)} >
-                <h3>Register</h3>
-                <div className={watch('name') ? 'form_user on' : 'form_user'}>
-                    <input autoComplete='off' className={errors.name?.type === 'required' || errors.name?.type === 'pattern' ? 'input_user on' : 'input_user'} type="text" {...register("name", { required: true })} />
-                    <label>Name</label>
-                    <i className='bx bx-user'></i>
-                </div>
-                {errors.name?.type === 'required' &&
-                    <p className='error'>Por favor, ingrese el nombre.</p>
-                }
-                <div className={watch('email') ? 'form_user on' : 'form_user'}>
-                    <input autoComplete='off' className={errors.email?.type === 'required' || errors.email?.type === 'pattern' ? 'input_user on' : 'input_user'} type="text" inputMode='email' {...register("email", { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })} />
-                    <label>Email:</label>
-                    <i className='bx bx-envelope' ></i>
-                </div>
-                {errors.email?.type === 'required' &&
-                    <p className='error'>Por favor, ingrese el email.</p>
-                }
-                {errors.email?.type === 'pattern' &&
-                    <p className='error'>Por favor, ingrese un correo electrónico válido.</p>
-                }
-                <div className={watch('password') ? 'form_password on' : 'form_password'}>
-                    <input autoComplete='off' className={errors.password?.type === 'required' ? 'input_password on' : 'input_password'} type={show ? "text" : "password"}{...register("password", { required: true })} />
-                    <label>Password</label>
-                    <i className='bx bx-lock'></i>
-
-                    <div onClick={showPassword} className="login-hiden">
-                        {show ? <i className='bx bx-hide'></i> : <i className='bx bx-show'></i>}
+            {Admin ?
+                <form className='form_main' onSubmit={handleSubmit(submit)} >
+                    <h3>Register</h3>
+                    <div className={watch('name') ? 'form_user on' : 'form_user'}>
+                        <input autoComplete='off' className={errors.name?.type === 'required' || errors.name?.type === 'pattern' ? 'input_user on' : 'input_user'} type="text" {...register("name", { required: true })} />
+                        <label>Name</label>
+                        <i className='bx bx-user'></i>
                     </div>
-                </div>
-                {errors.password?.type === 'required' &&
-                    <p className='error'>Por favor, ingrese una contraseña.</p>
-                }
-                <section className={errors.photo?.type === 'required' || errors.photo?.type === 'validate' ? 'form_file on' : 'form_file'}>
-                    <label>Subir foto de perfil</label>
-                    <div className={errors.photo?.type === 'required' || errors.photo?.type === 'validate' ? 'file_imagen on' : 'file_imagen'}>
-                        <input autoComplete='off' type='file' accept='image/*' {...register('photo', {
-                            required: true, validate: () => {
-                                return Validateimg(watch('photo'))
-                            }
-
-                        })} className='input_file' />
-                        {InformImg ?
-                            <img src={InformImg.Url} />
-                            : <>
-                                <i className='bx bx-image-add'></i>
-                                <p>Seleccione el archivo a subir</p>
-                            </>
-                        }
-                    </div>
-                    {InformImg &&
-                        <section className='information_imagen'>
-                            <p>Archivo cargado</p>
-                            <div className='data_imagen'>
-                                <i className='bx bx-file-blank'></i>
-                                <p>{InformImg.size}</p>
-                                <p>{InformImg.sizeCompri}</p>
-                                <i onClick={() => {
-                                    resetField('photo')
-                                    setInformImg(null)
-                                }} className='bx bx-x'></i>
-                            </div>
-                        </section>
+                    {errors.name?.type === 'required' &&
+                        <p className='error'>Por favor, ingrese el nombre.</p>
                     }
-                </section>
-                {errors.photo?.type === 'required' &&
-                    <p className='error'>Por favor, suba el archivo.</p>
-                }
-                {errors.photo?.type === 'validate' ?
-                    <p className='error'>Formato de archivo invalido, solo imágenes</p>
-                    : ''
-                }
-                {Ok ? <button className='protect-route-btn' type='submit'>Register</button>
-                    : <Loader />
-                }
-            </form>
+                    <div className={watch('email') ? 'form_user on' : 'form_user'}>
+                        <input autoComplete='off' className={errors.email?.type === 'required' || errors.email?.type === 'pattern' ? 'input_user on' : 'input_user'} type="text" inputMode='email' {...register("email", { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })} />
+                        <label>Email:</label>
+                        <i className='bx bx-envelope' ></i>
+                    </div>
+                    {errors.email?.type === 'required' &&
+                        <p className='error'>Por favor, ingrese el email.</p>
+                    }
+                    {errors.email?.type === 'pattern' &&
+                        <p className='error'>Por favor, ingrese un correo electrónico válido.</p>
+                    }
+                    <div className={watch('password') ? 'form_password on' : 'form_password'}>
+                        <input autoComplete='off' className={errors.password?.type === 'required' ? 'input_password on' : 'input_password'} type={show ? "text" : "password"}{...register("password", { required: true })} />
+                        <label>Password</label>
+                        <i className='bx bx-lock'></i>
+
+                        <div onClick={showPassword} className="login-hiden">
+                            {show ? <i className='bx bx-hide'></i> : <i className='bx bx-show'></i>}
+                        </div>
+                    </div>
+                    {errors.password?.type === 'required' &&
+                        <p className='error'>Por favor, ingrese una contraseña.</p>
+                    }
+                    <section className={errors.photo?.type === 'required' || errors.photo?.type === 'validate' ? 'form_file on' : 'form_file'}>
+                        <label>Subir foto de perfil</label>
+                        <div className={errors.photo?.type === 'required' || errors.photo?.type === 'validate' ? 'file_imagen on' : 'file_imagen'}>
+                            <input autoComplete='off' type='file' accept='image/*' {...register('photo', {
+                                required: true, validate: () => {
+                                    return Validateimg(watch('photo'))
+                                }
+
+                            })} className='input_file' />
+                            {InformImg ?
+                                <img src={InformImg.Url} />
+                                : <>
+                                    <i className='bx bx-image-add'></i>
+                                    <p>Seleccione el archivo a subir</p>
+                                </>
+                            }
+                        </div>
+                        {InformImg &&
+                            <section className='information_imagen'>
+                                <p>Archivo cargado</p>
+                                <div className='data_imagen'>
+                                    <i className='bx bx-file-blank'></i>
+                                    <p>{InformImg.size}</p>
+                                    <p>{InformImg.sizeCompri}</p>
+                                    <i onClick={() => {
+                                        resetField('photo')
+                                        setInformImg(null)
+                                    }} className='bx bx-x'></i>
+                                </div>
+                            </section>
+                        }
+                    </section>
+                    {errors.photo?.type === 'required' &&
+                        <p className='error'>Por favor, suba el archivo.</p>
+                    }
+                    {errors.photo?.type === 'validate' ?
+                        <p className='error'>Formato de archivo invalido, solo imágenes</p>
+                        : ''
+                    }
+                    {Ok ? <button className='protect-route-btn' type='submit'>Register</button>
+                        : <Loader />
+                    }
+                </form>
                 : <Navigate to='/' replace={true} />}
         </>
     )
