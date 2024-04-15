@@ -53,13 +53,13 @@
   padding: 8px;
   z-index: 1000;
   cursor: pointer;
-  text-transform: capitalize;
 }
 
 .Perfil p {
   width: auto;
   font-size: 16px;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 .Perfil img {
@@ -72,7 +72,7 @@
 
 .option {
   width: 35%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: flex-end;
   position: fixed;
@@ -88,10 +88,12 @@
 }
 
 .option.off {
+  pointer-events: none;
   clip-path: inset(0 100% 0 0);
 }
 
 .option.on {
+  pointer-events: all;
   clip-path: inset(0 -8px 0 0);
 }
 .toolsUser {
@@ -320,6 +322,9 @@
 }
 
 @media (width<400px) {
+  .toolsUser .bx{
+    top: 70%;
+  }
   .Perfil {
     width: 80%;
   }

@@ -69,9 +69,9 @@ const Login = () => {
                         {Ok ? <button className='protect-route-btn' type='submit'>Login</button>
                             : <Loader />
                         }
-                        <p onClick={() => Navi('/FORGOT-PASSWORD')} className='forgetten'>
+                        {/* <p onClick={() => Navi('/FORGOT-PASSWORD')} className='forgetten'>
                             ¿Olvidaste tu contraseña?
-                        </p>
+                    </p>*/}
                     </form>
                 )}
         </>

@@ -44,9 +44,7 @@ const Columns = ({ user, database, Coleccion = 'Articles', active = false, name 
                         <img src={Datas?.[index].imageUrl} loading='lazy' />
                         <section className='Informacion_news'>
                             <h3>{truncateText(Datas?.[index].title, 40)}</h3>
-                            <p className='description_new' >
-                                {HTMLReactParser(truncateText(Datas?.[index].description, 80))}
-                            </p>
+                            {HTMLReactParser(truncateText(Datas?.[index].description, 80))}
                             <div className='Imformation_date'>
                                 <p>{Datas?.[index].createdAt.toDate().toLocaleDateString('es-co', { day: 'numeric', month: 'short', year: 'numeric' }).replace('de', ' ')}</p>
                                 <p>{TimeReading(Datas?.[index].description)} min. read</p>

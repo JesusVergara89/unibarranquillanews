@@ -23,6 +23,7 @@ const Setting = ({ setstatesetting, statesetting }) => {
         register,
         handleSubmit,
         reset,
+        resetField,
         formState: { errors },
         watch
     } = useForm();
@@ -40,42 +41,30 @@ const Setting = ({ setstatesetting, statesetting }) => {
         return match[1]
     }
 
-    const submit = async ({ photo, password_current, Newpassword }) => {
+    const submit = async ({ password_current, Newpassword }) => {
         try {
             let email = window.localStorage.getItem('Email');
             let password = window.localStorage.getItem('Password');
             setOk(false);
-            if (photo[0] && !password_current) {
+            await signInWithEmailAndPassword(auth2, dataDecryp(email), dataDecryp(password))
+            if (InformImg) {
                 let referente = getRefimg();
                 const storageRef = ref(storage2, `/Perfiles/${referente}`);
                 await uploadBytesResumable(storageRef, InformImg.File);
-                toast('Actualización exitosa', { type: 'success' });
-                reseteo();
-                window.location.replace('')
-            } else if (password_current && !photo[0]) {
+            }
+            if (password_current) {
                 await signInWithEmailAndPassword(auth2, dataDecryp(email), password_current);
                 await Promise.all(ArrayofRouter.map(async (data) => {
                     await signInWithEmailAndPassword(data.Auth, dataDecryp(email), dataDecryp(password));
                     await updatePassword(data.Auth.currentUser, Newpassword);
                 }));
                 await signOut(auth2);
-                toast('Actualización exitosa', { type: 'success' });
-                reseteo();
-            } else if (password_current && photo[0]) {
-                await signInWithEmailAndPassword(auth2, dataDecryp(email), password_current);
-                let referente = getRefimg();
-                //se sube la nueva imagen con la misma referencia para realizar un update con la misma url
-                const storageRef = ref(storage2, `/Perfiles/${referente}`);
-                await uploadBytesResumable(storageRef, InformImg.File);
-                await Promise.all(ArrayofRouter.map(async (data) => {
-                    await signInWithEmailAndPassword(data.Auth, dataDecryp(email), dataDecryp(password));
-                    await updatePassword(data.Auth.currentUser, Newpassword);
-                }));
-                await signOut(auth2);
-                toast('Actualización exitosa', { type: 'success' });
-                reseteo();
                 window.localStorage.clear();
             }
+            toast('Actualización exitosa', { type: 'success' });
+            reseteo();
+            window.location.reload()
+
         } catch (error) {
             toast(error.code, { type: 'error' });
             setOk(true);
@@ -84,16 +73,10 @@ const Setting = ({ setstatesetting, statesetting }) => {
 
     let value = watch('photo')
     const ValidatePhoto = () => {
-        let validate
-        if (value[0]) {
-            // Extensiones permitidas
-            const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'svg', 'avif'];
-            const extension = value[0].name.split('.').pop()
-            validate = allowedExtensions.includes(extension)
-        } else {
-            validate = true
-        }
-        return validate
+        // Extensiones permitidas
+        const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'svg', 'avif'];
+        const extension = value?.[0].name.split('.').pop()
+        return allowedExtensions.includes(extension)
     }
 
     useEffect(() => {
@@ -113,6 +96,12 @@ const Setting = ({ setstatesetting, statesetting }) => {
                         console.log(err)
                     }
                 })
+            } else if (InformImg) {
+                toast('Formato de archivo invalido, solo imágenes', { type: "error" });
+            } else {
+                toast('Formato de archivo invalido, solo imágenes', { type: "error" });
+                resetField('photo')
+                setInformImg(null)
             }
         }
     }, [value])
@@ -125,7 +114,7 @@ const Setting = ({ setstatesetting, statesetting }) => {
             <section className='setting_modal'>
                 <section className='edit_photo'>
                     <div>
-                        <input autoComplete='off' type='file' accept='image/*' {...register('photo', { validate: ValidatePhoto })} className='input_file' />
+                        <input autoComplete='off' type='file' accept='image/*' {...register('photo')} className='input_file' />
                         {InformImg ?
                             <img src={InformImg.Url} />
                             :

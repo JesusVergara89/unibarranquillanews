@@ -38,7 +38,9 @@ h4,
 h5 {
   all: unset;
 }
-
+strong {
+  width: auto;
+}
 .Blog {
   width: 100%;
   height: auto;
@@ -106,7 +108,7 @@ a {
   align-items: center;
   gap: 20px;
 }
-.loading-container p{
+.loading-container p {
   text-align: center;
 }
 

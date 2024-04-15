@@ -27,6 +27,12 @@
   max-width: 450px;
 }
 
+.Timer {
+  width: auto;
+  font-size: 16px;
+  color: var(--color_6);
+  font-family: "Roboto", "Arial", sans-serif;
+}
 .form_main h3 {
   font-size: 1.5rem;
   color: var(--color_7);
@@ -120,6 +126,13 @@
   width: auto;
   font-size: 16px;
 }
+.ql-snow .ql-tooltip{
+  position: fixed !important;
+  left: 15px !important;
+}
+.ql-editor{
+overflow-y: unset !important;
+}
 
 .ql-editor a {
   color: var(--color_4) !important;
@@ -146,6 +159,7 @@
 
 .katex * {
   width: auto;
+  font-size: 16px;
 }
 
 .input_password {

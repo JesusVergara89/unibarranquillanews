@@ -91,11 +91,11 @@ const Header = () => {
             </nav >
             {Check ?
                 <article className='Perfil'>
-                    <p className='Name'><Skeleton width={120} height={24}/></p>
-                    <Skeleton circle width={35} height={35}/>
+                    <p className='Name'><Skeleton width={120} height={24} /></p>
+                    <Skeleton circle width={35} height={35} />
                 </article>
                 : IsLogged &&
-                <article className='Perfil'>
+                <article className='Perfil' onClick={() => { setstatesetting(true), closeMenu() }}>
                     <p>{AccessInfor.Name}</p>
                     <img src={AccessInfor.PhotoUrl} alt="" />
                 </article>

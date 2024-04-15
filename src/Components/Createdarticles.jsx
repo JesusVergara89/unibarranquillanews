@@ -29,7 +29,7 @@ const Createdarticles = () => {
     watch
   } = useForm()
 
-  const submit = async ({ title, link, photo, SecionMain, Subsecion, Description }) => {
+  const submit = async ({ title, link, SecionMain, Subsecion, Description }) => {
     try {
       setOk(false);
       const collectionName = Subsecion?.value || 'Articles';
@@ -37,7 +37,7 @@ const Createdarticles = () => {
       const password = window.localStorage.getItem('Password');
       const autenti = ArrayofRouter.find(data => data.Url === SecionMain.value);
       await signInWithEmailAndPassword(autenti.Auth, dataDecryp(email), dataDecryp(password));
-      const storageRef = ref(autenti.Storage, `/images/${Date.now()}${photo[0].name}`);
+      const storageRef = ref(autenti.Storage, `/images/${Date.now()}${InformImg.name}`);
       const snapshot = await uploadBytesResumable(storageRef, InformImg.File);
       const url = await getDownloadURL(snapshot.ref);
       const articleRef = collection(autenti.Database, collectionName);
@@ -87,25 +87,25 @@ const Createdarticles = () => {
       if (Validatephoto) {
         new Compressor(e, {
           quality: 0.8,
-          maxWidth: 800,
-          maxHeight: 800,
+          maxWidth: 400,
+          maxHeight: 400,
           success(result) {
             let Size = Sizeimg(e)
             let SizeCompri = Sizeimg(result)
             const UrlImg = URL.createObjectURL(result)
-            setInformImg({ size: Size, sizeCompri: SizeCompri, Url: UrlImg, File: result })
-            setErrorPhoto(false)
+            setInformImg({ size: Size, sizeCompri: SizeCompri, Url: UrlImg, File: result, name: result.name })
           },
           error(err) {
             console.log(err)
           }
         })
+      } else if (InformImg) {
+        toast('Formato de archivo invalido, solo imágenes', { type: "error" });
       } else {
-        setErrorPhoto(true)
+        setInformImg(null)
       }
     }
   }, [value])
-
   const { ArrayofRouter } = useRouter()
   /*Filtro todas las subsecciones que coicida con el seccionmain */
   let filterarrayOfSubseccion = ArrayofRouter.filter(data => data.Url === watch('SecionMain')?.value && data.Subseccion)
@@ -135,10 +135,21 @@ const Createdarticles = () => {
   const modules = {
     toolbar: toolbarOptions
   }
+  const Validateimg = (e) => {
+    let Validatephoto = true
+    if (e?.[0] && !InformImg) {
+      // Extensiones permitidas
+      const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'svg', 'avif'];
+      const extension = e[0].name.split('.').pop()
+      Validatephoto = allowedExtensions.includes(extension)
+    }
+    return Validatephoto
+  }
 
   return (
     <form onSubmit={handleSubmit(submit)} className='form_main create' >
       <section className={watch('title') ? 'form_user on' : 'form_user'}>
+
         <input autoComplete='off' type='text'{...register('title', { required: true })} className={errors.title?.type === 'required' ? 'input_user on' : 'input_user'} />
         <i className='bx bx-edit-alt'></i>
         <label>Titulo</label>
@@ -174,20 +185,22 @@ const Createdarticles = () => {
         : ''
       }
       <section className={watch('link') ? 'form_user on' : 'form_user'}>
-        <input autoComplete='off' type='text'{...register('link', { required: true, pattern: /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/ })} className={errors.link?.type === 'required' || errors.link?.type === 'pattern' ? 'input_user on' : 'input_user'} />
+        <input autoComplete='off' type='text'{...register('link', { required: true})} className={errors.link?.type === 'required' || errors.link?.type === 'pattern' ? 'input_user on' : 'input_user'} />
         <i className='bx bx-link'></i>
         <label>Link</label>
       </section>
       {errors.link?.type === 'required' &&
         <p className='error'>Por favor, ingrese el link.</p>
       }
-      {errors.link?.type === 'pattern' &&
-        <p className='error'>Por favor, ingrese un link válido.</p>
-      }
-      <section className={errors.photo?.type === 'required' || errors.photo?.type === 'validate' || ErrorPhoto ? 'form_file on' : 'form_file'}>
-        <label>Subir foto de perfil</label>
-        <div className={errors.photo?.type === 'required' || errors.photo?.type === 'validate' || ErrorPhoto ? 'file_imagen on' : 'file_imagen'}>
-          <input autoComplete='off' type='file' accept='image/*' {...register('photo', { required: true, validate: ValidatePhoto })} className='input_file' />
+      <section className={errors.photo?.type === 'required' || errors.photo?.type === 'validate' ? 'form_file on' : 'form_file'}>
+        <label>Subir archivo</label>
+        <div className={errors.photo?.type === 'required' || errors.photo?.type === 'validate' ? 'file_imagen on' : 'file_imagen'}>
+          <input autoComplete='off' type='file' accept='image/*' {...register('photo', {
+            required: true, validate: () => {
+              return Validateimg(watch('photo'))
+            }
+
+          })} className='input_file' />
           {InformImg ?
             <img src={InformImg.Url} />
             : <>
@@ -214,7 +227,7 @@ const Createdarticles = () => {
       {errors.photo?.type === 'required' &&
         <p className='error'>Por favor, suba el archivo.</p>
       }
-      {errors.photo?.type === 'validate' || ErrorPhoto ?
+      {errors.photo?.type === 'validate' ?
         <p className='error'>Formato de archivo invalido, solo imágenes</p>
         : ''
       }

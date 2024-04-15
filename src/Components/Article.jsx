@@ -69,7 +69,7 @@ const Article = () => {
                                             effect="blur"
                                             placeholderSrc={article.imageUrl}
                                         />
-                                        <h2 className="card-title">{truncateText(article.title, 50)}</h2>
+                                        <h2 className="card-title">{truncateText(article.title, 47)}</h2>
                                         <div className="card-description">
                                             {/* Split body content by newline and display */}
                                             {HTMLReactParser(truncateText(article.description,120))}

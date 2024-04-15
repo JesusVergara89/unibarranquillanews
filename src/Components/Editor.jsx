@@ -1,23 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Styles/form.css'
+import '../Styles/setting.css'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import { Controller, useForm } from 'react-hook-form'
-import Select from 'react-select';
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
-import useRouter from '../Hooks/useRouter'
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
-import { Timestamp, addDoc, collection, doc, updateDoc } from 'firebase/firestore'
-import { Acesscontext } from './Context/Acesscontext'
+import { ref, uploadBytesResumable } from 'firebase/storage'
+import { doc, updateDoc } from 'firebase/firestore'
 import Loader from './Loader'
 import { dataDecryp } from './Crypto/Decryp'
 import Compressor from 'compressorjs';
 // million-ignore
-const Editor = ({ data, autenti, Subsecion, ID, setEditar }) => {
+const Editor = ({ data, autenti, Subsecion, ID, setEditar}) => {
     const [focusDescrip, setfocusDescrip] = useState(false)
     const [InformImg, setInformImg] = useState()
-    const [ErrorPhoto, setErrorPhoto] = useState(false)
     const [Ok, setOk] = useState(true)
     const { control,
         register,
@@ -32,6 +29,7 @@ const Editor = ({ data, autenti, Subsecion, ID, setEditar }) => {
         setValue('title', data.title)
         setValue('link', data.link)
         setValue('Description', data.description)
+        window.scrollTo(0, 0)
     }, [])
     const getRefimg = () => {
         const url = data.imageUrl
@@ -40,23 +38,23 @@ const Editor = ({ data, autenti, Subsecion, ID, setEditar }) => {
         const match = Urlobject.match(regex);
         return match[1]
     }
-    const submit = async ({ title, link, photo, Description }) => {
+    const submit = async ({ title, link, Description }) => {
         setOk(false);
         try {
             const collectionName = Subsecion || 'Articles';
             const email = window.localStorage.getItem('Email');
             const password = window.localStorage.getItem('Password');
             await signInWithEmailAndPassword(autenti.Auth, dataDecryp(email), dataDecryp(password));
-            if (photo[0]) {
+            if (InformImg) {
                 let referente = getRefimg();
                 const storageRef = ref(autenti.Storage, `/images/${referente}`);
-                const snapshot = await uploadBytesResumable(storageRef, InformImg.File);
+                await uploadBytesResumable(storageRef, InformImg.File);
             }
             const docRef = doc(autenti.Database, collectionName, ID)
             await updateDoc(docRef, {
                 title: title,
                 description: Description,
-                link: link,
+                link: link
             });
 
             toast('Noticia actualizada con exito', { type: 'success' });
@@ -96,22 +94,24 @@ const Editor = ({ data, autenti, Subsecion, ID, setEditar }) => {
             if (Validatephoto) {
                 new Compressor(e, {
                     quality: 0.8,
-                    maxWidth: 800,
-                    maxHeight: 800,
+                    maxWidth: 400,
+                    maxHeight: 400,
                     success(result) {
                         let Size = Sizeimg(e)
                         let SizeCompri = Sizeimg(result)
                         const UrlImg = URL.createObjectURL(result)
                         setInformImg({ size: Size, sizeCompri: SizeCompri, Url: UrlImg, File: result })
-                        setErrorPhoto(false)
                     },
                     error(err) {
                         console.log(err)
                     }
                 })
+            } else if (InformImg) {
+                toast('Formato de archivo invalido, solo imágenes', { type: "error" });
             } else {
-                setErrorPhoto(true)
+                toast('Formato de archivo invalido, solo imágenes', { type: "error" });
                 resetField('photo')
+                setInformImg(null)
             }
         }
     }, [value])
@@ -126,6 +126,7 @@ const Editor = ({ data, autenti, Subsecion, ID, setEditar }) => {
     const modules = {
         toolbar: toolbarOptions
     }
+
     return (
         <main className='form_main create' >
             <section className={watch('title') ? 'form_user on' : 'form_user'}>
@@ -164,22 +165,21 @@ const Editor = ({ data, autenti, Subsecion, ID, setEditar }) => {
                 : ''
             }
             <section className={watch('link') ? 'form_user on' : 'form_user'}>
-                <input autoComplete='off' type='text'{...register('link', { pattern: /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/ })} className={errors.link?.type === 'pattern' ? 'input_user on' : 'input_user'} />
+                <input autoComplete='off' type='text'{...register('link', { required: true })} className={errors.link?.type === 'required' || errors.link?.type === 'pattern' ? 'input_user on' : 'input_user'} />
                 <i className='bx bx-link'></i>
                 <label>Link</label>
             </section>
-
-            {errors.link?.type === 'pattern' &&
-                <p className='error'>Por favor, ingrese un link válido.</p>
+            {errors.link?.type === 'required' &&
+                <p className='error'>Por favor, ingrese el link.</p>
             }
-            <section className={ErrorPhoto ? 'form_file on' : 'form_file'}>
-                <label>Subir foto de perfil</label>
-                <div className={ErrorPhoto ? 'file_imagen on' : 'file_imagen'}>
+
+            <section className='form_file'>
+                <label>Subir archivo</label>
+                <div className='file_imagen'>
                     <input autoComplete='off' type='file' accept='image/*' {...register('photo')} className='input_file' />
                     {InformImg ?
                         <img src={InformImg.Url} />
-                        :
-                        <img src={data.imageUrl} />
+                        : <img src={data.imageUrl} />
                     }
                 </div>
                 {InformImg &&
@@ -197,10 +197,7 @@ const Editor = ({ data, autenti, Subsecion, ID, setEditar }) => {
                     </section>
                 }
             </section>
-            {errors.photo?.type === 'validate' || ErrorPhoto ?
-                <p className='error'>Formato de archivo invalido, solo imágenes</p>
-                : ''
-            }
+
             <div className='bottonera'>
                 {Ok ?
                     <>

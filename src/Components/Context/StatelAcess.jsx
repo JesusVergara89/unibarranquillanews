@@ -45,12 +45,12 @@ const StatelAcess = ({ children }) => {
     return () => clearTimeout(temporizador);
   }, [Check]);
 
-  const user = auth2.currentUser;
   const AdminArray = [
     { name: 'jesus vergara', email: 'jesusmanuelv1989@gmail.com' }
-    , { name: 'Brian Escorcia', email: 'naziegonzalez5@gmail.com' }
+    , { name: 'brian escorcia', email: 'naziegonzalez5@gmail.com' }
   ]
 
+  const user = auth2.currentUser;
   useEffect(() => {
     if (user != null) {
       setAccessInfor(

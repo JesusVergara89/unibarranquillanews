@@ -1,8 +1,7 @@
-import React, { Suspense, lazy, memo, useEffect, useState } from 'react'
+import React, { Suspense, lazy, useEffect, } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import NotFound from './Components/NotFound'
 import Longin from './Components/Longin'
-import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
 import RoutesProtecteds from './Components/RoutesProtecteds'
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
@@ -157,7 +156,7 @@ function Blog() {
         <Route path="*" element={<NotFound />} />
 
         <Route path='/LOGIN' element={<Longin />} />
-        <Route path='FORGOT-PASSWORD' element={<ForgotPassword />} />
+        {/* <Route path='FORGOT-PASSWORD' element={<ForgotPassword />} />*/}
         <Route element={<RoutesProtecteds />}>
           <Route
             path='/CREATE'
