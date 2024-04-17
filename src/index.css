@@ -38,8 +38,12 @@ h4,
 h5 {
   all: unset;
 }
-strong {
+
+.katex * {
   width: auto;
+}
+.katex {
+  font-size: 18px;
 }
 .Blog {
   width: 100%;

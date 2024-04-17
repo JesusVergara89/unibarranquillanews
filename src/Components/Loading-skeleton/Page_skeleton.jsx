@@ -10,8 +10,10 @@ const Page_skeleton = () => {
                 <Skeleton height={135} style={{ marginBottom: 35 }} />
                 <Skeleton height={250} />
                 <div className="single-out">
-                    <p><Skeleton circle={true} height={35} width={35} /> </p>
-                    <p><Skeleton width={100} height={24} /></p>
+                    <div className='single-information'>
+                        <p><Skeleton circle={true} height={35} width={35} /> </p>
+                        <p><Skeleton width={100} height={24} /></p>
+                    </div>
                     <p><Skeleton width={120} height={24} /></p>
                 </div>
 

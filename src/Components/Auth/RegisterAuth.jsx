@@ -4,11 +4,10 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import useRouter from '../../Hooks/useRouter'
-import { auth2, db2, storage2 } from '../../firebaseconfig'
+import { auth2, storage2 } from '../../firebaseconfig'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import Loader from '../Loader'
 import Compressor from 'compressorjs';
-import { addDoc, collection } from 'firebase/firestore'
 import { dataDecryp } from '../Crypto/Decryp'
 import { Acesscontext } from '../Context/Acesscontext'
 import { Navigate } from 'react-router-dom';

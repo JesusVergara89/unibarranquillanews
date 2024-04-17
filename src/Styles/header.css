@@ -94,27 +94,29 @@
 
 .option.on {
   pointer-events: all;
-  clip-path: inset(0 -8px 0 0);
+  clip-path: inset(0 -20px 0 0);
 }
 .toolsUser {
   width: 20%;
   height: 100%;
+  border-right: 2px solid #33333349;
+  color: var(--color_6);
+  opacity: 0.9;
+  position: relative;
+}
+.boxicon {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  border-right: 2px solid #33333349;
-  color: var(--color_6);
-  opacity: 0.9;
+  position: absolute;
+  bottom: 50px;
 }
-
-.toolsUser .bx {
+.boxicon .bx {
   width: auto;
   height: auto;
   font-size: 25px;
   cursor: pointer;
-  position: relative;
-  top: 64%;
 }
 
 .box_list {
@@ -322,7 +324,7 @@
 }
 
 @media (width<400px) {
-  .toolsUser .bx{
+  .toolsUser .bx {
     top: 70%;
   }
   .Perfil {

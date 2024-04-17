@@ -83,7 +83,7 @@
   text-decoration: underline;
 }
 
-.Informacion_news p:nth-child(2) {
+.text {
   display: none;
 }
 
@@ -139,8 +139,8 @@
     align-items: center;
   }
 
-  .Informacion_news p:nth-child(2) {
-    display: flex;
+  .text {
+    display: inline;
     margin: 0;
     color: var(--color_6);
     opacity: 0.8;
@@ -171,7 +171,7 @@
       font-size: 15px;
     }
     
-    .Informacion_news p:nth-child(2) {
+    .text {
       font-size: 14px;
     }
     .Imformation_date p {

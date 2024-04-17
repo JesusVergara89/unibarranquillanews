@@ -89,8 +89,9 @@
   gap: 15px;
 }
 .newyork-brief img {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
     border-radius: 50%;
   }
 .newyork-description-autor {
@@ -105,7 +106,6 @@
 }
 
 .newyork-description-autor p {
-  all: unset;
   color: var(--color_6);
   opacity: 0.8;
 }

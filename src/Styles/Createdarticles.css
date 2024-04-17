@@ -69,9 +69,6 @@
   height: auto;
   min-height: 300px;
 }
-.katex * {
-  width: auto;
-}
 
 .form_input .input:focus ~ label,
 .form_input.on .input ~ label {

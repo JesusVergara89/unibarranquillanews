@@ -12,6 +12,8 @@ const Containerpost = lazy(() => import('./Components/Blognews/component/Contain
 const Blogarticle = lazy(() => import('../src/Components/Blognews/component/Blogarticle'))
 const Theblog = lazy(() => import('./Components/Theblog'))
 const Singlearticlescience = lazy(() => import('./Components/ScienceComponents/Singlearticlescience'))
+const Createdarticles = lazy(() => import('./Components/Createdarticles'))
+const RegisterAuth = lazy(() => import('./Components/Auth/RegisterAuth'))
 import Aboutblog from './Components/Aboutblog'
 import FlashArticles from './Components/FlashArticles'
 import Networks from './Components/Networks'
@@ -19,14 +21,11 @@ import Socialmedia from './Components/Socialmedia'
 import news from './Images/news.jpg'
 import blog from './Images/blogmain.jpg'
 import Columns from './Components/Columns';
-import Page_skeleton from './Components/Loading-skeleton/Page_skeleton'
 import Loading from './Components/Loading'
 import useRouter from './Hooks/useRouter'
 import { db } from './firebaseconfig'
 import katex from "katex";
 import "katex/dist/katex.css";
-import Createdarticles from './Components/Createdarticles'
-import RegisterAuth from './Components/Auth/RegisterAuth'
 import ForgotPassword from './Components/ForgotPassword'
 
 function Blog() {
@@ -119,7 +118,7 @@ function Blog() {
         <Route path='/:name/:id/:idSub'
           element=
           {
-            <Suspense fallback={<Page_skeleton />}>
+            <Suspense fallback={<Loading />}>
               <Singlearticlescience />
             </Suspense>
           }
@@ -160,11 +159,19 @@ function Blog() {
         <Route element={<RoutesProtecteds />}>
           <Route
             path='/CREATE'
-            element={<Createdarticles />}
+            element={
+              <Suspense fallback={<Loading />}>
+                <Createdarticles />
+              </Suspense>
+            }
           />
           <Route
             path='/REGISTER'
-            element={<RegisterAuth />}
+            element={
+              <Suspense fallback={<Loading />}>
+                <RegisterAuth />
+              </Suspense>
+            }
           />
 
         </Route>

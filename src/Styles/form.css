@@ -157,11 +157,6 @@ overflow-y: unset !important;
   overflow-y: scroll;
 }
 
-.katex * {
-  width: auto;
-  font-size: 16px;
-}
-
 .input_password {
   width: auto;
   height: 35px;

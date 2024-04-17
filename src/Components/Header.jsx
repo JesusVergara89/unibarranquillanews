@@ -61,10 +61,12 @@ const Header = () => {
             <nav className={Menu ? 'option on' : 'option off'}>
                 {IsLogged &&
                     <div className='toolsUser'>
+                        <div className='boxicon'>
                         <i onClick={() => Navegation('CREATE')} className='bx bx-book-add'></i>
                         {Admin && <i onClick={() => Navegation('REGISTER')} className='bx bx-user-plus'></i>}
                         <i onClick={() => { setstatesetting(true), closeMenu() }} className='bx bx-cog'></i>
                         <i onClick={closeSesion} className='bx bx-log-out'></i>
+                        </div>
                     </div>
                 }
                 <div className={IsLogged ? 'box_list on' : 'box_list'}>

@@ -45,7 +45,7 @@ const Cardnewyorktimes = ({ article, database, active = false, name }) => {
                             </div>
 
                             <div className="newyork-description-autor">
-                                {HTMLReactParser(truncateText(article.description, 120))}
+                                <p>{HTMLReactParser(truncateText(article.description, 120))} </p>
                             </div>
                         </div>
                     </article>
