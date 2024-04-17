@@ -73,6 +73,7 @@
   height: auto;
   color: var(--color_6);
   opacity: 0.8;
+  font-size: 0.8rem;
 }
 
 @media (hover: hover) {
