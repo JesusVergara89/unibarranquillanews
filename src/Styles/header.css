@@ -17,7 +17,8 @@
   position: fixed;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   column-gap: 20px;
@@ -39,44 +40,99 @@
   letter-spacing: 2px;
   font-weight: bold;
 }
+.Perfil {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  position: fixed;
+  top: 0;
+  right: 10px;
+  padding: 8px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.Perfil p {
+  width: auto;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.Perfil img {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  object-position: left top;
+  border-radius: 50%;
+}
 
 .option {
   width: 35%;
-  height: 100vh;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(7px);
+  background-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 3px 0 7px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   z-index: 300;
-  transition: all 0.3s ease-in-out;
+  transition: clip-path 0.3s ease-in-out;
   padding-top: 30px;
 }
 
 .option.off {
-  transform: translateX(-100%);
+  pointer-events: none;
+  clip-path: inset(0 100% 0 0);
 }
 
 .option.on {
-  transform: translateX(0%);
+  pointer-events: all;
+  clip-path: inset(0 -20px 0 0);
 }
+.toolsUser {
+  width: 20%;
+  height: 100%;
+  border-right: 2px solid #33333349;
+  color: var(--color_6);
+  opacity: 0.9;
+  position: relative;
+}
+.boxicon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  position: absolute;
+  bottom: 50px;
+}
+.boxicon .bx {
+  width: auto;
+  height: auto;
+  font-size: 25px;
+  cursor: pointer;
+}
+
 .box_list {
+  width: 100%;
   height: 85%;
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 1.5rem;
-  overflow-y: auto;
+  overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  margin-top: 43px;
 }
-.box_list a {
-  scroll-snap-align: center;
+
+.box_list.on {
+  width: 80%;
 }
 
 .Close {
@@ -87,12 +143,58 @@
   right: 0;
   z-index: 300;
 }
+
 .Close.off {
-  transform: translateX(100%);
+  display: none;
 }
 
 .Close.on {
-  transform: translateX(0%);
+  display: flex;
+}
+
+.enlace_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.enlace_main div:first-child {
+  display: flex;
+  justify-content: center;
+}
+
+.enlace_main .bx {
+  height: 100%;
+  width: auto;
+  font-size: 24px;
+  position: relative;
+  top: 0;
+  left: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.enlace_main .bx.on {
+  transform: rotate(180deg);
+}
+
+.Conten_subseccion {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1rem;
+  margin-top: 1rem;
+  clip-path: inset(0 0 0 0);
+  transition: all 0.3s ease-in-out;
+}
+
+.Conten_subseccion.off {
+  height: 0;
+  margin-top: 0;
+  clip-path: inset(0 0 100% 0);
 }
 
 .enlace {
@@ -100,7 +202,8 @@
   font-size: 1rem;
   cursor: pointer;
   color: black;
-  text-decoration: none;
+  scroll-snap-align: center;
+  text-transform: capitalize;
 }
 
 .Menu_active {
@@ -177,6 +280,37 @@
     }
   }
 }
+@media (width<=480px) {
+  .Perfil {
+    width: 60%;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    top: 50px;
+    left: 0;
+    right: auto;
+    z-index: 300;
+    padding: 8px 0 8px 8px;
+    transition: clip-path 0.3s ease-in-out;
+  }
+  .Perfil .Name {
+    width: 80vh;
+  }
+  .Perfil p {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .option.on ~ .Perfil {
+    clip-path: inset(0 0 0 0);
+  }
+  .option.off ~ .Perfil {
+    clip-path: inset(0 100% 0 0);
+  }
+  .box_list {
+    height: 80%;
+    margin-top: 80px;
+  }
+}
 
 @media (400px<=width<=570px) {
   .option {
@@ -190,6 +324,12 @@
 }
 
 @media (width<400px) {
+  .toolsUser .bx {
+    top: 70%;
+  }
+  .Perfil {
+    width: 80%;
+  }
   .option {
     width: 80%;
     row-gap: 0.8rem;

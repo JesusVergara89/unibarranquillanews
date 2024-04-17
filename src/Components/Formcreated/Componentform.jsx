@@ -7,6 +7,7 @@ import Articlesgeneral from './Articlesgeneral'
 import SinginAuth from '../Auth/SinginAuth'
 import SectionScience from '../ScienceComponents/SectionScience'
 import useCollections from '../../Hooks/useCollections'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 
 
 const Componentform = (
@@ -33,12 +34,25 @@ const Componentform = (
     const lastName = useSelector(state => state.passwordSlice)
 
     const closeSesion = () => {
-        setIsLogged(false)
+        signOut(auth2).then(() => {
+            setIsLogged(false)
+        }).catch((error) => {
+            console.log(error)
+        });
     }
 
-    const [enterregister, setEnterregister] = useState(false)
+    const [enterregister, setEnterregister] = useState()
     const enterToFormPost = () => setEnterregister(true)
     const outToFormPost = () => setEnterregister(false)
+
+    onAuthStateChanged(auth2, (user) => {
+        if (user) {
+            setEnterregister(true)
+
+        } else {
+            setEnterregister(false)
+        }
+    });
 
     return (
         <article className="component-form">
@@ -66,27 +80,27 @@ const Componentform = (
                         }
 
                         <div className="component-form-fill">
-                            {actualidad && <Formgeneral name={name} lastName={lastName} database={db2} storagebase={storage2} arrayCollections={arrayCollections}/>}
+                            {actualidad && <Formgeneral name={name} lastName={lastName} database={db2} storagebase={storage2} arrayCollections={arrayCollections} />}
 
-                            {cultura && <Formgeneral name={name} lastName={lastName} database={db3} storagebase={storage3} arrayCollections={arrayCollections}/>}
+                            {cultura && <Formgeneral name={name} lastName={lastName} database={db3} storagebase={storage3} arrayCollections={arrayCollections} />}
 
-                            {deporte && <Formgeneral name={name} lastName={lastName} database={db4} storagebase={storage4} arrayCollections={arrayCollections}/>}
+                            {deporte && <Formgeneral name={name} lastName={lastName} database={db4} storagebase={storage4} arrayCollections={arrayCollections} />}
 
-                            {investigacion && <Formgeneral name={name} lastName={lastName} database={db5} storagebase={storage5} arrayCollections={arrayCollections}/>}
+                            {investigacion && <Formgeneral name={name} lastName={lastName} database={db5} storagebase={storage5} arrayCollections={arrayCollections} />}
 
-                            {universidad && <Formgeneral name={name} lastName={lastName} database={db6} storagebase={storage6} arrayCollections={arrayCollections}/>}
+                            {universidad && <Formgeneral name={name} lastName={lastName} database={db6} storagebase={storage6} arrayCollections={arrayCollections} />}
 
-                            {vida && <Formgeneral name={name} lastName={lastName} database={db7} storagebase={storage7} arrayCollections={arrayCollections}/>}
+                            {vida && <Formgeneral name={name} lastName={lastName} database={db7} storagebase={storage7} arrayCollections={arrayCollections} />}
 
-                            {eventos && <Formgeneral name={name} lastName={lastName} database={db8} storagebase={storage8} arrayCollections={arrayCollections}/>}
+                            {eventos && <Formgeneral name={name} lastName={lastName} database={db8} storagebase={storage8} arrayCollections={arrayCollections} />}
 
-                            {entrevistas && <Formgeneral name={name} lastName={lastName} database={db9} storagebase={storage9} arrayCollections={arrayCollections}/>}
+                            {entrevistas && <Formgeneral name={name} lastName={lastName} database={db9} storagebase={storage9} arrayCollections={arrayCollections} />}
 
-                            {tecnologia && <Formgeneral name={name} lastName={lastName} database={db10} storagebase={storage10} arrayCollections={arrayCollections}/>}
+                            {tecnologia && <Formgeneral name={name} lastName={lastName} database={db10} storagebase={storage10} arrayCollections={arrayCollections} />}
 
                             {ambiente && <Formgeneral name={name} lastName={lastName} database={db11} storagebase={storage11} arrayCollections={arrayCollections} />}
 
-                            {science && <SectionScience IsLogged={IsLogged}  name={name} lastName={lastName} database={db12} storagebase={storage12} arrayCollections={arrayCollections} />}
+                            {science && <SectionScience IsLogged={IsLogged} name={name} lastName={lastName} database={db12} storagebase={storage12} arrayCollections={arrayCollections} />}
                         </div>
 
                         <div className="components-articles">

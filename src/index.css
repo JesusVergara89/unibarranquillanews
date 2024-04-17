@@ -6,6 +6,7 @@
   line-height: 1.5;
   padding: 0;
   margin: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -38,8 +39,15 @@ h5 {
   all: unset;
 }
 
+.katex * {
+  width: auto;
+}
+.katex {
+  font-size: 18px;
+}
 .Blog {
   width: 100%;
+  height: auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -47,7 +55,10 @@ h5 {
   align-items: center;
   overflow-x: hidden;
 }
-
+.loader {
+  width: 100%;
+  height: auto;
+}
 .img-actualidad {
   display: block;
   width: 50%;
@@ -93,11 +104,16 @@ a {
 
 .loading-container {
   width: 100%;
-  height: 35vh;
+  height: 100vh;
   background-color: var(--color_1);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+}
+.loading-container p {
+  text-align: center;
 }
 
 .engineering_section {
@@ -361,7 +377,7 @@ a {
   }
 }
 
-.login-hiden {
+/* {
   width: 100%;
   height: 25px;
   display: flex;
@@ -379,7 +395,7 @@ a {
   font-size: 1.5rem;
   position: absolute;
   bottom: 7px;
-}
+}*/
 
 .Toastify__close-button--light {
   width: 20px;
@@ -467,6 +483,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   max-width: 1440px;
 }
 
@@ -574,6 +591,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .To-the-blog-h2-1 {

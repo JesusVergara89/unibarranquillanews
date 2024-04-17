@@ -17,10 +17,11 @@ const Loading = () => {
             {/* Render lineSpinner component with specified props */}
             <l-line-spinner
                 size="100"
-                stroke="7"
+                stroke="5"
                 speed="1"
                 color={newColor}
             ></l-line-spinner>
+            <p>Cargando...</p>
         </div>
     );
 };

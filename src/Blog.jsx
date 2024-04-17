@@ -1,8 +1,7 @@
-import React, { Suspense, lazy, memo, useEffect, useState } from 'react'
+import React, { Suspense, lazy, useEffect, } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import NotFound from './Components/NotFound'
 import Longin from './Components/Longin'
-import CompanyCollaboratorAccess from './Components/CompanyCollaboratorAccess'
 import RoutesProtecteds from './Components/RoutesProtecteds'
 import Header from './Components/Header'
 import Flotan from './Components/Flotan'
@@ -13,6 +12,8 @@ const Containerpost = lazy(() => import('./Components/Blognews/component/Contain
 const Blogarticle = lazy(() => import('../src/Components/Blognews/component/Blogarticle'))
 const Theblog = lazy(() => import('./Components/Theblog'))
 const Singlearticlescience = lazy(() => import('./Components/ScienceComponents/Singlearticlescience'))
+const Createdarticles = lazy(() => import('./Components/Createdarticles'))
+const RegisterAuth = lazy(() => import('./Components/Auth/RegisterAuth'))
 import Aboutblog from './Components/Aboutblog'
 import FlashArticles from './Components/FlashArticles'
 import Networks from './Components/Networks'
@@ -20,18 +21,15 @@ import Socialmedia from './Components/Socialmedia'
 import news from './Images/news.jpg'
 import blog from './Images/blogmain.jpg'
 import Columns from './Components/Columns';
-import Page_skeleton from './Components/Loading-skeleton/Page_skeleton'
 import Loading from './Components/Loading'
 import useRouter from './Hooks/useRouter'
 import { db } from './firebaseconfig'
 import katex from "katex";
 import "katex/dist/katex.css";
+import ForgotPassword from './Components/ForgotPassword'
 
 function Blog() {
-
-  const [IsLogged, setIsLogged] = useState(false)
-
-  const [reloadPage, setReloadPage] = useState(false)
+  //const [reloadPage, setReloadPage] = useState(false)
 
   const { ArrayofRouter } = useRouter()
   /*FILTRADO DE LAS SECCIONES QUE NO TIENE SUBSECCION Y QUE NO CONTENGA LA SECCIÓN ARTICLE */
@@ -54,14 +52,14 @@ function Blog() {
 
         <Aboutblog />
 
-        <FlashArticles IsLogged={IsLogged} />
-        {filterarrayOfDataBase.map((user, index) => (
+        <FlashArticles />
+        {filterarrayOfDataBase?.map((user, index) => (
           <Columns key={index} user={user} database={user.Database} />
         ))
         }
 
         {/* THIS SECTIONS HACE THE SAME CLASS JUST BECAUSE USE THE SAME CLASS FOR SIZE */}
-        {filterarrayOfSubseccion.map((user, index) => (
+        {filterarrayOfSubseccion?.map((user, index) => (
           < div className="To-the-blog"
             onClick={() => navigateScience(user.Url)}
             key={index}
@@ -94,7 +92,7 @@ function Blog() {
   }, [pathname])
   return (
     <div className='Blog'>
-      <Header reloadPage={reloadPage} setReloadPage={setReloadPage} />
+      <Header />
       <Flotan />
       <Routes>
         <Route path='/'
@@ -120,7 +118,7 @@ function Blog() {
         <Route path='/:name/:id/:idSub'
           element=
           {
-            <Suspense fallback={<Page_skeleton />}>
+            <Suspense fallback={<Loading />}>
               <Singlearticlescience />
             </Suspense>
           }
@@ -156,17 +154,30 @@ function Blog() {
         />
         <Route path="*" element={<NotFound />} />
 
-        <Route path='/LOGIN' element={<Longin IsLogged={IsLogged} setIsLogged={setIsLogged} />} />
-
-        <Route element={<RoutesProtecteds IsLogged={IsLogged} />}>
+        <Route path='/LOGIN' element={<Longin />} />
+        {/* <Route path='FORGOT-PASSWORD' element={<ForgotPassword />} />*/}
+        <Route element={<RoutesProtecteds />}>
           <Route
-            path='/COLLABORATORS'
-            element={<CompanyCollaboratorAccess IsLogged={IsLogged} setIsLogged={setIsLogged} />}
+            path='/CREATE'
+            element={
+              <Suspense fallback={<Loading />}>
+                <Createdarticles />
+              </Suspense>
+            }
           />
+          <Route
+            path='/REGISTER'
+            element={
+              <Suspense fallback={<Loading />}>
+                <RegisterAuth />
+              </Suspense>
+            }
+          />
+
         </Route>
       </Routes>
 
-    </div>
+    </div >
   )
 }
 

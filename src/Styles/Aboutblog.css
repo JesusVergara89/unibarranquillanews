@@ -24,7 +24,7 @@
   font-size: 18px;
 }
 
-.oficial-page{
+.oficial-page {
   text-align: center;
   color: black;
   text-decoration: none;
@@ -38,6 +38,7 @@
   border-radius: 0.2rem;
   text-align: center;
   color: var(--color_1);
+  transition: all 0.3s ease-in-out;
 }
 @media (hover: hover) {
   .About-this-blog a:hover {

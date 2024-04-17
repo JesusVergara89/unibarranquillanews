@@ -9,7 +9,7 @@ import Article_skeleto from './Loading-skeleton/Article_skeleto'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import HTMLReactParser from 'html-react-parser'
 
-const Article = ({ IsLogged }) => {
+const Article = () => {
 
     const [articles, setArticles] = useState([{}])
     useEffect(() => {
@@ -61,7 +61,7 @@ const Article = ({ IsLogged }) => {
                     (<Carrusel breakpoints={breakpoints}>
                         {articles.map((article, i) => (
                             <SwiperSlide key={i}>
-                                <Link to={IsLogged ? '' : `/ARTICLE/${article.id}`}>
+                                <Link to={ `/ARTICLE/${article.id}`}>
                                     <div className="article-card">
                                         <LazyLoadImage className="card-image"
                                             src={article.imageUrl}
@@ -69,7 +69,7 @@ const Article = ({ IsLogged }) => {
                                             effect="blur"
                                             placeholderSrc={article.imageUrl}
                                         />
-                                        <h2 className="card-title">{truncateText(article.title, 84)}</h2>
+                                        <h2 className="card-title">{truncateText(article.title, 47)}</h2>
                                         <div className="card-description">
                                             {/* Split body content by newline and display */}
                                             {HTMLReactParser(truncateText(article.description,120))}

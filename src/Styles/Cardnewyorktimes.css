@@ -89,8 +89,9 @@
   gap: 15px;
 }
 .newyork-brief img {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
     border-radius: 50%;
   }
 .newyork-description-autor {
@@ -100,15 +101,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--color_6);
+  opacity: 0.8;
 }
 
 .newyork-description-autor p {
-  all: unset;
-  font-size: 1rem;
-  margin-bottom: 10px;
-  font-weight: normal;
   color: var(--color_6);
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .newyork-information h4 {

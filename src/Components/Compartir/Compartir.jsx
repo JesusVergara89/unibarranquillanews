@@ -98,8 +98,8 @@ const Compartir = ({ link }) => {
                         </Carrusel>
                     </section>
                 </div>
-            </article >
             <article onClick={() => setMenucom(false)} className={Menucom ? 'Close-Menu on' : 'Close-Menu off'} />
+            </article >
         </>
     )
 }

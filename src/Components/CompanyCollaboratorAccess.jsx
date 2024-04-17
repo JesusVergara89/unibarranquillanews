@@ -7,7 +7,7 @@ import ChangePassword from './ChangePassword'
 import { auth1 } from '../firebaseconfig'
 import SinginAuth from './Auth/SinginAuth'
 
-
+/* eliminar */
 const CompanyCollaboratorAccess = ({ IsLogged, setIsLogged }) => {
 
   const [getin, setGetin] = useState(false)
