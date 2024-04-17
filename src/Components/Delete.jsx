@@ -7,7 +7,9 @@ import { deleteDoc, doc } from 'firebase/firestore'
 import { toast } from 'react-toastify'
 import { dataDecryp } from './Crypto/Decryp'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-const Delete = ({ state, setState, autenti, ID, Url,Subsecion }) => {
+import { useNavigate } from 'react-router-dom'
+const Delete = ({ state, setState, autenti, ID, Url, Subsecion }) => {
+    const navigate = useNavigate()
     const [Ok, setOk] = useState(true)
     const getRefimg = () => {
         const url = Url
@@ -28,6 +30,7 @@ const Delete = ({ state, setState, autenti, ID, Url,Subsecion }) => {
             const collectionName = Subsecion || 'Articles';
             const Docref = doc(autenti.Database, collectionName, ID)
             await deleteDoc(Docref)
+            navigate('/')
             toast('Noticia borrada con éxito', { type: 'success' });
             setState(true)
         } catch (error) {
@@ -39,7 +42,7 @@ const Delete = ({ state, setState, autenti, ID, Url,Subsecion }) => {
     return (
         <main className={state ? 'setting_main on' : 'setting_main off'}>
             <section className='setting_modal confirm'>
-                <h3>¿Esta seguro en eliminar esta noticias?</h3>
+                <h3>¿Esta seguro en eliminar esta noticia?</h3>
                 <div className='bottonera'>
                     {Ok ?
                         <>

@@ -75,6 +75,7 @@
   height: 100%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -128,7 +129,6 @@
   row-gap: 1.5rem;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
-  margin-top: 43px;
 }
 
 .box_list.on {
@@ -308,7 +308,6 @@
   }
   .box_list {
     height: 80%;
-    margin-top: 80px;
   }
 }
 

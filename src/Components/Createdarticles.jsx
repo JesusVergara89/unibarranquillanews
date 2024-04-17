@@ -18,7 +18,6 @@ const Createdarticles = () => {
   const [focusDescrip, setfocusDescrip] = useState(false)
   const [InformImg, setInformImg] = useState()
   const { AccessInfor } = useContext(Acesscontext)
-  const [ErrorPhoto, setErrorPhoto] = useState(false)
   const [Ok, setOk] = useState(true)
   const { control,
     register,
@@ -148,8 +147,8 @@ const Createdarticles = () => {
 
   return (
     <form onSubmit={handleSubmit(submit)} className='form_main create' >
+      <h3>Create Article</h3>
       <section className={watch('title') ? 'form_user on' : 'form_user'}>
-
         <input autoComplete='off' type='text'{...register('title', { required: true })} className={errors.title?.type === 'required' ? 'input_user on' : 'input_user'} />
         <i className='bx bx-edit-alt'></i>
         <label>Titulo</label>
@@ -157,15 +156,13 @@ const Createdarticles = () => {
       {errors.title?.type === 'required' &&
         <p className='error'>Por favor, ingrese el titulo.</p>
       }
-      <section className={errors.Description?.type === 'required' || errors.Description?.type === 'validate' ? 'form_editor on' : 'form_editor'}>
+      <section className={errors.Description?.type === 'required' ? 'form_editor on' : 'form_editor'}>
         <label>Descripción</label>
         <Controller
           name='Description'
           control={control}
           rules={{
-            required: 'true', validate: () => {
-              return watch('Description') != '<p><br></p>'
-            }
+            required: 'true'
           }}
           render={({ field }) => (
             <ReactQuill
@@ -180,12 +177,11 @@ const Createdarticles = () => {
           )}
         />
       </section>
-      {errors.Description?.type === 'required' || errors.Description?.type === 'validate' ?
+      {errors.Description?.type === 'required' &&
         <p className='error'>Por favor, ingrese la descripción.</p>
-        : ''
       }
       <section className={watch('link') ? 'form_user on' : 'form_user'}>
-        <input autoComplete='off' type='text'{...register('link', { required: true})} className={errors.link?.type === 'required' || errors.link?.type === 'pattern' ? 'input_user on' : 'input_user'} />
+        <input autoComplete='off' type='text'{...register('link', { required: true })} className={errors.link?.type === 'required' || errors.link?.type === 'pattern' ? 'input_user on' : 'input_user'} />
         <i className='bx bx-link'></i>
         <label>Link</label>
       </section>

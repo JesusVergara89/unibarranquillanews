@@ -126,12 +126,12 @@
   width: auto;
   font-size: 16px;
 }
-.ql-snow .ql-tooltip{
+.ql-snow .ql-tooltip {
   position: fixed !important;
   left: 15px !important;
 }
-.ql-editor{
-overflow-y: unset !important;
+.ql-editor {
+  overflow-y: unset !important;
 }
 
 .ql-editor a {
@@ -357,4 +357,16 @@ overflow-y: unset !important;
   .protect-route-btn:hover {
     background-color: rgba(139, 0, 0, 1);
   }
+}
+@media (width<=450px) {
+  .form_main{
+    max-width: 280px;
+  }
+  .form_main h3 {
+    font-size: 22px;
+  }
+  .protect-route-btn{
+    padding: 8px;
+  }
+
 }
