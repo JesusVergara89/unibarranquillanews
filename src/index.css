@@ -43,7 +43,12 @@ h5 {
   width: auto;
 }
 .katex {
-  font-size: 18px;
+  font-size: 1.12rem;
+}
+@media (width<=430px) {
+  .katex {
+    font-size: 1rem;
+  }
 }
 .Blog {
   width: 100%;

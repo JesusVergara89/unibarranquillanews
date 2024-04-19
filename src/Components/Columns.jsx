@@ -45,7 +45,7 @@ const Columns = ({ user, database, Coleccion = 'Articles', active = false, name 
                         <section className='Informacion_news'>
                             <h3>{truncateText(Datas?.[index].title, 40)}</h3>
                             <div className='text'>
-                            {HTMLReactParser(truncateText(Datas?.[index].description, 80))}
+                                {HTMLReactParser(truncateText(Datas?.[index].description, 80))}
                             </div>
                             <div className='Imformation_date'>
                                 <p>{Datas?.[index].createdAt.toDate().toLocaleDateString('es-co', { day: 'numeric', month: 'short', year: 'numeric' }).replace('de', ' ')}</p>
@@ -58,6 +58,7 @@ const Columns = ({ user, database, Coleccion = 'Articles', active = false, name 
             )
         },
     };
+
     const truncateText = (text, maxLength) => {
         if (text.length > maxLength) {
             return text.substring(0, maxLength) + '...';
@@ -65,6 +66,7 @@ const Columns = ({ user, database, Coleccion = 'Articles', active = false, name 
             return text;
         }
     }
+
     const navegar = useNavigate()
     const nave = (seccion, id) => {
         navegar(`/${seccion}/${id}`)
@@ -88,7 +90,7 @@ const Columns = ({ user, database, Coleccion = 'Articles', active = false, name 
                                 <div className='Title-seccion'>
                                     <Link to={!active ? `/${user.Url}/${dato.id}` : `/${name}/${user.Url}/${dato.id}`}>{truncateText(dato.title, 80)}</Link>
                                     <p>
-                                        {HTMLReactParser(dato.description.slice(0, 250) + '...')}
+                                        {HTMLReactParser(truncateText(dato.description, 250))}
                                     </p>
                                     <Button_next />
                                 </div>
