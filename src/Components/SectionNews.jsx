@@ -1,6 +1,7 @@
 import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import '../Styles/SectionNews.css'
+import innerText from 'react-innertext';
 
 const SectionNews = ({ DataBase }) => {
 
@@ -26,11 +27,11 @@ const SectionNews = ({ DataBase }) => {
     }
   }
   const TimeReading = (text, wordsPerMinutes = 200) => {
-    const words = text.trim().split(/\s+/).length;
+    const words = innerText(HTMLReactParser(text)).split(/\s+/).length;
     const timeToReadPerMinutes = words / wordsPerMinutes;
     const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
     return RoundedTimeRead;
-  }
+}
 
   return (
     <article className="mini-sections">

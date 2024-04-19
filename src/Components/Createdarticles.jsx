@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../Styles/form.css'
+import 'quill-paste-smart';
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import { Controller, useForm } from 'react-hook-form'

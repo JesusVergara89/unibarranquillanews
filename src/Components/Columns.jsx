@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../Styles/Columns.css'
+import innerText from 'react-innertext';
 import { Link, useNavigate } from 'react-router-dom'
 import CarruselV2 from './CarruselV2'
 import { SwiperSlide } from 'swiper/react'
@@ -30,7 +31,7 @@ const Columns = ({ user, database, Coleccion = 'Articles', active = false, name 
         Obtencion()
     }, [])
     const TimeReading = (text, wordsPerMinutes = 200) => {
-        const words = text.trim().split(/\s+/).length;
+        const words = innerText(HTMLReactParser(text)).split(/\s+/).length;
         const timeToReadPerMinutes = words / wordsPerMinutes;
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;

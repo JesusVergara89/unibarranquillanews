@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../Styles/Cardnewyorktimes.css'
+import innerText from 'react-innertext';
 import Jesus from '../../Images/Jesus.jpg'
 import Brian from '../../Images/Brian.jpg'
 import Gilberto from '../../Images/Gilberto.jpg'
@@ -14,7 +15,7 @@ import HTMLReactParser from 'html-react-parser'
 const Cardnewyorkscience = ({ idcollection, article }) => {
 
     const TimeReading = (text, wordsPerMinutes = 200) => {
-        const words = text.trim().split(/\s+/).length;
+        const words = innerText(HTMLReactParser(text)).split(/\s+/).length;
         const timeToReadPerMinutes = words / wordsPerMinutes;
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;

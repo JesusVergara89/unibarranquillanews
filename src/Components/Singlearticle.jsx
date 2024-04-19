@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../Styles/Singlearticle.css'
+import innerText from 'react-innertext';
 import { useParams } from 'react-router-dom'
 import { doc, onSnapshot } from 'firebase/firestore'
 import NotFound from './NotFound'
@@ -44,7 +45,7 @@ const Singlearticle = () => {
     }, [name, id])
 
     const TimeReading = (text, wordsPerMinutes = 200) => {
-        const words = text.trim().split(/\s+/).length;
+        const words = innerText(HTMLReactParser(text)).split(/\s+/).length;
         const timeToReadPerMinutes = words / wordsPerMinutes;
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;

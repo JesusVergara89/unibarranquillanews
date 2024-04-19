@@ -127,11 +127,8 @@
   font-size: 16px;
 }
 .ql-snow .ql-tooltip {
-  position: fixed !important;
+  position: absolute !important;
   left: 15px !important;
-}
-.ql-editor {
-  overflow-y: unset !important;
 }
 
 .ql-editor a {
@@ -154,7 +151,6 @@
 .ql-container.ql-snow {
   height: auto;
   height: 300px;
-  overflow-y: scroll;
 }
 
 .input_password {
@@ -359,14 +355,13 @@
   }
 }
 @media (width<=450px) {
-  .form_main{
+  .form_main {
     max-width: 280px;
   }
   .form_main h3 {
     font-size: 22px;
   }
-  .protect-route-btn{
+  .protect-route-btn {
     padding: 8px;
   }
-
 }

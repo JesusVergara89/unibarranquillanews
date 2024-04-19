@@ -1,5 +1,6 @@
 import React from 'react'
 import '../Styles/Cardnewyorktimes.css'
+import innerText from 'react-innertext';
 import { Link } from 'react-router-dom'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -8,7 +9,7 @@ import HTMLReactParser from 'html-react-parser'
 const Cardnewyorktimes = ({ article, database, active = false, name }) => {
 
     const TimeReading = (text, wordsPerMinutes = 200) => {
-        const words = text.trim().split(/\s+/).length;
+        const words = innerText(HTMLReactParser(text)).split(/\s+/).length;
         const timeToReadPerMinutes = words / wordsPerMinutes;
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;

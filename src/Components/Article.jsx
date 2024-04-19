@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../Styles/Article.css'
+import innerText from 'react-innertext';
 import { collection, limit, getDocs, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebaseconfig'
 import { Link } from 'react-router-dom'
@@ -41,7 +42,7 @@ const Article = () => {
     }
 
     const TimeReading = (text, wordsPerMinutes = 200) => {
-        const words = text.trim().split(/\s+/).length;
+        const words = innerText(HTMLReactParser(text)).split(/\s+/).length;
         const timeToReadPerMinutes = words / wordsPerMinutes;
         const RoundedTimeRead = Math.ceil(timeToReadPerMinutes);
         return RoundedTimeRead;
@@ -61,7 +62,7 @@ const Article = () => {
                     (<Carrusel breakpoints={breakpoints}>
                         {articles.map((article, i) => (
                             <SwiperSlide key={i}>
-                                <Link to={ `/ARTICLE/${article.id}`}>
+                                <Link to={`/ARTICLE/${article.id}`}>
                                     <div className="article-card">
                                         <LazyLoadImage className="card-image"
                                             src={article.imageUrl}
@@ -72,7 +73,7 @@ const Article = () => {
                                         <h2 className="card-title">{truncateText(article.title, 47)}</h2>
                                         <div className="card-description">
                                             {/* Split body content by newline and display */}
-                                            {HTMLReactParser(truncateText(article.description,120))}
+                                            {HTMLReactParser(truncateText(article.description, 120))}
                                         </div>
                                         <h4>{article && article.description && `${TimeReading(article.description)} min. read`}</h4>
                                         <div className="card-content-information">
