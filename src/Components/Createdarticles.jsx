@@ -86,9 +86,7 @@ const Createdarticles = () => {
       let Validatephoto = ValidatePhoto()
       if (Validatephoto) {
         new Compressor(e, {
-          quality: 0.8,
-          maxWidth: 400,
-          maxHeight: 400,
+          quality: 0.6,
           success(result) {
             let Size = Sizeimg(e)
             let SizeCompri = Sizeimg(result)
