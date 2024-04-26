@@ -2,6 +2,8 @@
 
 Welcome to the Unibarranquilla News Paper repository!
 
+![](https://raw.githubusercontent.com/JesusVergara89/unibarranquillanews/main/src/Images/news.jpg)
+
 ## Description
 
 Unibarranquilla News Paper is an independent digital newspaper that offers a wide range of news and articles that go beyond university life. Our goal is to keep the community informed about relevant topics impacting daily life in Barranquilla and beyond.
