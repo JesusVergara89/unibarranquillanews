@@ -45,7 +45,7 @@ const Register = ({ createOrSignIn, enterToFormPost }) => {
                     placeholder='Password'
                     onChange={(e) => { setPassword(e.target.value) }}
                 />
-                <div onClick={showPassword} className="login-hiden">
+                <div onClick={showPassword} className="login-hiden-blog">
                     {show ? <i className='bx bx-hide'></i> : <i className='bx bx-show'></i>}
                 </div>
                 <button onClick={handleSingUp} className="form-register-btn">Register</button>

@@ -36,6 +36,21 @@
     margin-bottom: 20px;
 }
 
+.login-hiden-blog {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:8px;
+    margin-bottom: 8px;
+}
+
+.login-hiden-blog .bx {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
 .form-register-name,
 .form-register-email,
 .form-register-password {
@@ -59,7 +74,7 @@
     background-color: var(--color_7);
 }
 
-@media ( width < 350px ){
+@media (width < 350px) {
     .form-register-form {
         width: 250px;
         display: flex;
