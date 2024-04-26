@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Post from './Post'
 import Formpost from './Formpost'
 import '../styles/Containerpost.css'

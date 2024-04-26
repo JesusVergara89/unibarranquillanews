@@ -1,1 +1,1 @@
-export const SecretKey = 'e>I2kQ6n::&e_c`Ea3<B.(9B|sw_d}'
+export const SecretKey = import.meta.env.VITE_SECRETKEY_LOCALSTORAGE

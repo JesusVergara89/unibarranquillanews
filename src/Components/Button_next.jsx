@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSwiper } from 'swiper/react';
-/*eliminar */
+
 const Button_next = () => {
     const swiper = useSwiper();
     return (

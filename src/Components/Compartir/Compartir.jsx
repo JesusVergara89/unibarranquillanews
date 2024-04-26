@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { FacebookShareButton, LinkedinShareButton, TelegramShareButton, WhatsappShareButton, TwitterShareButton } from "react-share";
-import { useParams } from 'react-router-dom'
 import Carrusel from '../Carrusel'
 import { SwiperSlide } from "swiper/react";
 import { CopyToClipboard } from "react-copy-to-clipboard";

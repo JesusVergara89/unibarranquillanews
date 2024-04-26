@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { auth2, auth3, auth4, auth5, auth6, auth7, auth8, auth9, auth10, db10, db2, db3, db4, db5, db6, db7, db8, db9, storage10, storage2, storage3, storage4, storage5, storage6, storage7, storage8, storage9, db11, storage11, auth11, db12, storage12, auth12 } from '../../firebaseconfig'
 import Formgeneral from './Formgeneral'
 import './styles/Componentform.css'
