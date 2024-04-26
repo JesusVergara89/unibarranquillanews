@@ -1,124 +1,124 @@
 import { initializeApp } from 'firebase/app'
 import { browserSessionPersistence, getAuth, setPersistence } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore'
-import { getStorage, listAll, ref } from 'firebase/storage'
+import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBf5s8IXxqS22rDXiVNQcMjZJU7eZ7Ceqo",
-    authDomain: "newspaper-c31c9.firebaseapp.com",
-    projectId: "newspaper-c31c9",
-    storageBucket: "newspaper-c31c9.appspot.com",
-    messagingSenderId: "396926969662",
-    appId: "1:396926969662:web:cb21d40ff3b2e535ed2e6f",
-    measurementId: "G-8Z13N9KH6Q"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_APP_MEASUMENTID
 };
 
 const firebaseConfig2 = {
-    apiKey: "AIzaSyDN_cdJmbx7so_e4L9JeSCp6wneMe--dvI",
-    authDomain: "unibarranquillanewspaper-b3080.firebaseapp.com",
-    projectId: "unibarranquillanewspaper-b3080",
-    storageBucket: "unibarranquillanewspaper-b3080.appspot.com",
-    messagingSenderId: "796425273333",
-    appId: "1:796425273333:web:fd184f109746eec355eabc"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY1,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN1,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID1,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET1,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID1,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID1,
 };
 
 const firebaseConfig31 = {
-    apiKey: "AIzaSyDxTJYURmjO5rkYTWz7UODBoLG8sTvWCFU",
-    authDomain: "actualidaddb-41990.firebaseapp.com",
-    projectId: "actualidaddb-41990",
-    storageBucket: "actualidaddb-41990.appspot.com",
-    messagingSenderId: "112019430298",
-    appId: "1:112019430298:web:7d875259dc6cf3e673f823"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY2,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN2,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID2,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET2,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID2,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID2,
 };
 
 const firebaseConfig4 = {
-    apiKey: "AIzaSyCf2pn-_568_R9MuAwHvoyLjE7QsFCnHEg",
-    authDomain: "culturadb-41c10.firebaseapp.com",
-    projectId: "culturadb-41c10",
-    storageBucket: "culturadb-41c10.appspot.com",
-    messagingSenderId: "627139617421",
-    appId: "1:627139617421:web:92a9579e3a9bb53091f8c4"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY3,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN3,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID3,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET3,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID3,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID3,
 };
 
 const firebaseConfig5 = {
-    apiKey: "AIzaSyBP_PDy-pLhKJSxQM23EUcYEshjCKK9iTc",
-    authDomain: "deportesdb-fcc27.firebaseapp.com",
-    projectId: "deportesdb-fcc27",
-    storageBucket: "deportesdb-fcc27.appspot.com",
-    messagingSenderId: "139042021151",
-    appId: "1:139042021151:web:f9c6e25d1d847e6bb01a2a"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY4,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN4,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID4,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET4,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID4,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID4,
 };
 
 const firebaseConfig6 = {
-    apiKey: "AIzaSyBSrY0ppTnTTeHe30PLF6lcvVYAykQG8ao",
-    authDomain: "investigaciondb-9131c.firebaseapp.com",
-    projectId: "investigaciondb-9131c",
-    storageBucket: "investigaciondb-9131c.appspot.com",
-    messagingSenderId: "1082833559245",
-    appId: "1:1082833559245:web:5a5fab472300259fb69384"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY5,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN5,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID5,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET5,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID5,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID5,
 };
 
 const firebaseConfig7 = {
-    apiKey: "AIzaSyDbFFqo8honsuZwCQ45aj5awWzU8jvTEJQ",
-    authDomain: "universidaddb-bc431.firebaseapp.com",
-    projectId: "universidaddb-bc431",
-    storageBucket: "universidaddb-bc431.appspot.com",
-    messagingSenderId: "310730111716",
-    appId: "1:310730111716:web:31db7d0cb28454395b4af1"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY6,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN6,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID6,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET6,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID6,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID6,
 };
 
 const firebaseConfig8 = {
-    apiKey: "AIzaSyAh4cKlYUTeItncjMb2Aq160icOS7hxWxY",
-    authDomain: "vidadb-301dd.firebaseapp.com",
-    projectId: "vidadb-301dd",
-    storageBucket: "vidadb-301dd.appspot.com",
-    messagingSenderId: "729396491507",
-    appId: "1:729396491507:web:8bd84df37afd82c6d07386"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY7,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN7,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID7,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET7,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID7,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID7,
 };
 
 const firebaseConfig9 = {
-    apiKey: "AIzaSyA470tF1fuwrv42NMp_Ge69--iEAk3d6eI",
-    authDomain: "eventosdb-63b36.firebaseapp.com",
-    projectId: "eventosdb-63b36",
-    storageBucket: "eventosdb-63b36.appspot.com",
-    messagingSenderId: "459105791918",
-    appId: "1:459105791918:web:2ed583a1d1b73c1223a23f"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY8,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN8,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID8,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET8,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID8,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID8,
 };
 
-const firebaseConfig10 = {
-    apiKey: "AIzaSyALIDJmKNCZoqWMi7YnIUNT180jiKV-WW8",
-    authDomain: "entrevistadb-257c2.firebaseapp.com",
-    projectId: "entrevistadb-257c2",
-    storageBucket: "entrevistadb-257c2.appspot.com",
-    messagingSenderId: "147990209125",
-    appId: "1:147990209125:web:a6dc8c0c128b11ab069c8c"
+const firebaseConfig10 = {    
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY9,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN9,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID9,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET9,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID9,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID9,
 };
 
 const firebaseConfig11 = {
-    apiKey: "AIzaSyDV780qkp7HNRUANoUhj0VaE_raLwPefLU",
-    authDomain: "tecnologiadb-f1e80.firebaseapp.com",
-    projectId: "tecnologiadb-f1e80",
-    storageBucket: "tecnologiadb-f1e80.appspot.com",
-    messagingSenderId: "397578817382",
-    appId: "1:397578817382:web:c75140ebfdd6e75d4842a7"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY10,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN10,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID10,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET10,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID10,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID10,
 };
 
 const firebaseConfig12 = {
-    apiKey: "AIzaSyC5mM4j5PxZMzHYlF6t14Uy9X_J5N6gFu4",
-    authDomain: "ambiente-a20cb.firebaseapp.com",
-    projectId: "ambiente-a20cb",
-    storageBucket: "ambiente-a20cb.appspot.com",
-    messagingSenderId: "342410199017",
-    appId: "1:342410199017:web:f00e334e27309e1fbf5578"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY11,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN11,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID11,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET11,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID11,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID11,
 };
 
 const firebaseConfig13 = {
-    apiKey: "AIzaSyBGsMYpmyRikdbq8uippz5LiqjeHIOAR-M",
-    authDomain: "sciences-c92c4.firebaseapp.com",
-    projectId: "sciences-c92c4",
-    storageBucket: "sciences-c92c4.appspot.com",
-    messagingSenderId: "490782936753",
-    appId: "1:490782936753:web:ab94407e7baf0f5d881c90"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY12,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN12,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID12,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET12,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID12,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID12,
 };
 
 
